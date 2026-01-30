@@ -1,0 +1,64 @@
+---
+import { Phone, ArrowRight } from '@lucide/astro';
+
+interface Props {
+  variant?: 'default' | 'compact';
+  showCTA?: boolean;
+}
+
+const { variant = 'default', showCTA = true } = Astro.props;
+
+const attorneyPhotoUrl = 'https://www.alexhelp.com/wp-content/uploads/2022/06/Banner-Image-1.png';
+---
+
+<div class="bg-white rounded-xl overflow-hidden shadow-soft border border-gray-100">
+  <!-- Photo Section -->
+  <div class="relative h-48 bg-navy-900">
+    <img 
+      src={attorneyPhotoUrl}
+      alt="Alex Poberesky - Maryland Attorney"
+      class="w-full h-full object-cover object-top opacity-90"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/50 to-transparent"></div>
+    
+    <!-- Name Overlay -->
+    <div class="absolute bottom-0 left-0 right-0 p-4">
+      <h3 class="font-heading font-bold text-lg text-white">Alex Poberesky</h3>
+      <p class="text-gold-400 text-sm">Lead Attorney</p>
+    </div>
+    
+    <!-- Experience Badge -->
+    <div class="absolute top-3 right-3 bg-gold-500 text-navy-900 px-2 py-1 rounded-full text-xs font-bold">
+      26+ Years
+    </div>
+  </div>
+  
+  <!-- Content Section -->
+  <div class="p-4">
+    {variant === 'default' && (
+      <p class="text-gray-600 text-sm mb-4">
+        Experienced Maryland attorney fighting for your rights. Free consultation available 24/7.
+      </p>
+    )}
+    
+    {showCTA && (
+      <div class="space-y-2">
+        <a 
+          href="tel:+14104840400" 
+          class="btn btn-primary w-full text-sm py-2"
+        >
+          <Phone class="w-4 h-4" />
+          (410) 484-0400
+        </a>
+        <a 
+          href="/contact-us/" 
+          class="btn btn-outline w-full text-sm py-2"
+        >
+          Free Case Review
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </div>
+    )}
+  </div>
+</div>

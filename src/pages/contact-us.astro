@@ -2,12 +2,14 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Breadcrumbs from '../components/common/Breadcrumbs.astro';
 import ContactForm from '../components/forms/ContactForm.astro';
-import { Phone, Mail, MapPin, Clock, Globe } from '@lucide/astro';
+import { Phone, Mail, MapPin, Clock, Globe, ArrowRight, MessageSquare } from '@lucide/astro';
 import { contactInfo } from '../data/navigation';
 
 const breadcrumbs = [
   { label: 'Contact Us' }
 ];
+
+const attorneyPhotoUrl = 'https://www.alexhelp.com/wp-content/uploads/2022/06/Banner-Image-1.png';
 ---
 
 <PageLayout 
@@ -16,35 +18,74 @@ const breadcrumbs = [
 >
   <Breadcrumbs items={breadcrumbs} />
   
-  <section class="section-padding">
-    <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h1 class="font-heading font-bold text-navy-900 mb-4">Contact Us</h1>
-        <p class="text-xl text-gray-600">
-          Ready to discuss your case? Contact us today for a free, no-obligation consultation. 
+  <!-- Hero Section -->
+  <section class="bg-gradient-animated text-white py-12 md:py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-pattern-grid-light opacity-20"></div>
+    <div class="absolute top-10 right-10 w-72 h-72 rounded-full bg-gold-500/10 blur-3xl"></div>
+    
+    <div class="container-custom relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-gold-400 font-medium mb-4 flex items-center justify-center gap-2">
+          <span class="w-8 h-px bg-gold-400"></span>
+          Get In Touch
+          <span class="w-8 h-px bg-gold-400"></span>
+        </p>
+        <h1 class="font-heading font-bold text-white mb-4">Contact Us Today</h1>
+        <p class="text-xl text-gray-300 mb-6">
+          Ready to discuss your case? Contact us for a free, no-obligation consultation. 
           We're available 24/7 to help you.
         </p>
+        <a href="tel:+14104840400" class="btn btn-primary btn-glow shadow-elevated">
+          <Phone class="w-5 h-5" />
+          Call (410) 484-0400
+        </a>
       </div>
-      
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+  </section>
+  
+  <section class="section-padding relative">
+    <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
+    <div class="container-custom relative">
       <div class="grid lg:grid-cols-2 gap-12">
         <!-- Contact Form -->
-        <div>
-          <ContactForm 
-            title="Send Us a Message"
-            subtitle="Fill out the form below and we'll get back to you within 24 hours."
-            variant="default"
-            showPhone={true}
-          />
+        <div class="relative">
+          <div class="absolute -inset-2 bg-gold-500/10 rounded-3xl blur-xl"></div>
+          <div class="relative bg-white rounded-2xl p-6 md:p-8 shadow-floating border border-gray-100">
+            <ContactForm 
+              title="Send Us a Message"
+              subtitle="Fill out the form below and we'll get back to you within 24 hours."
+              variant="default"
+              showPhone={true}
+            />
+          </div>
         </div>
         
         <!-- Contact Information -->
         <div class="space-y-8">
+          <!-- Attorney Mini Card -->
+          <div class="bg-navy-900 rounded-xl p-6 flex items-center gap-6">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border-2 border-gold-500">
+              <img 
+                src={attorneyPhotoUrl}
+                alt="Alex Poberesky"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm mb-1">Speak directly with</p>
+              <h3 class="font-heading font-bold text-white text-lg">Alex Poberesky</h3>
+              <p class="text-gold-400 text-sm">Lead Attorney • 26+ Years Experience</p>
+            </div>
+          </div>
+          
           <div>
             <h2 class="font-heading font-bold text-navy-900 text-2xl mb-6">Get In Touch</h2>
             
-            <div class="space-y-6">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+            <div class="space-y-5">
+              <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-soft border border-gray-100 card-modern">
+                <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Phone class="w-6 h-6 text-gold-500" />
                 </div>
                 <div>
@@ -56,8 +97,8 @@ const breadcrumbs = [
                 </div>
               </div>
               
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-soft border border-gray-100 card-modern">
+                <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Mail class="w-6 h-6 text-gold-500" />
                 </div>
                 <div>
@@ -69,8 +110,8 @@ const breadcrumbs = [
                 </div>
               </div>
               
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-soft border border-gray-100 card-modern">
+                <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center flex-shrink-0">
                   <MapPin class="w-6 h-6 text-gold-500" />
                 </div>
                 <div>
@@ -85,37 +126,28 @@ const breadcrumbs = [
                 </div>
               </div>
               
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Clock class="w-6 h-6 text-gold-500" />
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                  <Clock class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h3 class="font-bold text-navy-900 text-sm mb-1">Hours</h3>
+                    <p class="text-gray-600 text-xs">24/7 Availability</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="font-bold text-navy-900 mb-1">Hours</h3>
-                  <p class="text-gray-700">24/7 Availability</p>
-                  <p class="text-gray-600 text-sm mt-1">
-                    Office hours: Monday - Friday, 9am - 5pm<br>
-                    Emergency consultations available anytime
-                  </p>
-                </div>
-              </div>
-              
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Globe class="w-6 h-6 text-gold-500" />
-                </div>
-                <div>
-                  <h3 class="font-bold text-navy-900 mb-1">Languages</h3>
-                  <p class="text-gray-700">{contactInfo.languages.join(', ')}</p>
-                  <p class="text-gray-600 text-sm mt-1">
-                    We're proud to serve Maryland's diverse communities
-                  </p>
+                
+                <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                  <Globe class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h3 class="font-bold text-navy-900 text-sm mb-1">Languages</h3>
+                    <p class="text-gray-600 text-xs">5 Languages</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           
           <!-- Map -->
-          <div class="bg-gray-100 rounded-xl overflow-hidden aspect-video">
+          <div class="bg-gray-100 rounded-xl overflow-hidden aspect-video shadow-soft border border-gray-200">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.8548953831437!2d-76.72486492357745!3d39.37397691545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c81a3e4c4c2a5b%3A0x8b0a8b0a8b0a8b0a!2s25%20Hooks%20Ln%20%23310%2C%20Pikesville%2C%20MD%2021208!5e0!3m2!1sen!2sus!4v1234567890"
               width="100%" 
@@ -132,37 +164,54 @@ const breadcrumbs = [
   </section>
   
   <!-- What to Expect -->
-  <section class="section-padding bg-gray-50">
-    <div class="container-custom">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="font-heading font-bold text-navy-900 mb-4">What to Expect</h2>
-        <p class="text-gray-600 mb-8">
+  <section class="section-padding bg-navy-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-pattern-grid-light opacity-10"></div>
+    <div class="container-custom relative">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-gold-400 font-medium mb-2">Our Process</p>
+        <h2 class="font-heading font-bold text-white mb-4">What to Expect</h2>
+        <p class="text-gray-400 mb-10">
           When you contact us, here's what happens next:
         </p>
         
-        <div class="grid md:grid-cols-3 gap-8 text-left">
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold mb-4">1</div>
-            <h3 class="font-bold text-navy-900 mb-2">Free Consultation</h3>
-            <p class="text-gray-600 text-sm">
-              We'll listen to your story, ask questions about your situation, and explain your legal options.
-            </p>
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 relative">
+            <div class="absolute -top-4 left-6 w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold shadow-elevated">1</div>
+            <div class="pt-4">
+              <h3 class="font-bold text-white mb-2 flex items-center gap-2">
+                <MessageSquare class="w-5 h-5 text-gold-400" />
+                Free Consultation
+              </h3>
+              <p class="text-gray-400 text-sm">
+                We'll listen to your story, ask questions about your situation, and explain your legal options.
+              </p>
+            </div>
           </div>
           
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold mb-4">2</div>
-            <h3 class="font-bold text-navy-900 mb-2">Case Evaluation</h3>
-            <p class="text-gray-600 text-sm">
-              We'll assess the strength of your case and provide an honest evaluation of your potential outcomes.
-            </p>
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 relative">
+            <div class="absolute -top-4 left-6 w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold shadow-elevated">2</div>
+            <div class="pt-4">
+              <h3 class="font-bold text-white mb-2 flex items-center gap-2">
+                <span class="text-gold-400">&#9878;</span>
+                Case Evaluation
+              </h3>
+              <p class="text-gray-400 text-sm">
+                We'll assess the strength of your case and provide an honest evaluation of your potential outcomes.
+              </p>
+            </div>
           </div>
           
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold mb-4">3</div>
-            <h3 class="font-bold text-navy-900 mb-2">Action Plan</h3>
-            <p class="text-gray-600 text-sm">
-              If you decide to work with us, we'll develop a strategy and get started on your case immediately.
-            </p>
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 relative">
+            <div class="absolute -top-4 left-6 w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold shadow-elevated">3</div>
+            <div class="pt-4">
+              <h3 class="font-bold text-white mb-2 flex items-center gap-2">
+                <ArrowRight class="w-5 h-5 text-gold-400" />
+                Action Plan
+              </h3>
+              <p class="text-gray-400 text-sm">
+                If you decide to work with us, we'll develop a strategy and get started on your case immediately.
+              </p>
+            </div>
           </div>
         </div>
       </div>

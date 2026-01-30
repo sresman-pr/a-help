@@ -30,8 +30,11 @@ const gridCols = {
 };
 ---
 
-<section class="section-padding">
-  <div class="container-custom">
+<section class="section-padding relative overflow-hidden">
+  <!-- Decorative Background -->
+  <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
+  
+  <div class="container-custom relative">
     {(title || subtitle) && (
       <div class="text-center max-w-3xl mx-auto mb-12">
         {subtitle && (
@@ -44,30 +47,36 @@ const gridCols = {
     )}
     
     <div class={`grid grid-cols-1 ${gridCols[columns]} gap-6`}>
-      {services.map((service) => {
+      {services.map((service, index) => {
         const IconComponent = iconComponents[service.icon as keyof typeof iconComponents] || Shield;
         return (
           <a 
             href={service.href}
-            class="group bg-white rounded-xl p-6 border border-gray-200 card-hover"
+            class="group bg-white rounded-2xl p-6 border border-gray-100 shadow-soft card-modern relative overflow-hidden"
+            style={`animation-delay: ${index * 50}ms`}
           >
-            <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mb-4 group-hover:bg-gold-500 transition-colors">
-              <IconComponent class="w-7 h-7 text-gold-500 group-hover:text-navy-900 transition-colors" />
-            </div>
+            {/* Hover gradient overlay */}
+            <div class="absolute inset-0 bg-gradient-to-br from-gold-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             
-            <h3 class="font-heading font-bold text-lg text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
-              {service.title}
-            </h3>
-            
-            {showDescription && (
-              <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-                {service.description}
-              </p>
-            )}
-            
-            <div class="flex items-center text-gold-600 font-medium text-sm group-hover:text-gold-500">
-              Learn More
-              <ArrowRight class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            <div class="relative">
+              <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mb-4 group-hover:bg-gold-500 group-hover:shadow-elevated transition-all duration-300">
+                <IconComponent class="w-7 h-7 text-gold-500 group-hover:text-navy-900 transition-colors" />
+              </div>
+              
+              <h3 class="font-heading font-bold text-lg text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
+                {service.title}
+              </h3>
+              
+              {showDescription && (
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                  {service.description}
+                </p>
+              )}
+              
+              <div class="flex items-center text-gold-600 font-medium text-sm group-hover:text-gold-500">
+                Learn More
+                <ArrowRight class="w-4 h-4 ml-1 group-hover:translate-x-2 transition-transform" />
+              </div>
             </div>
           </a>
         );

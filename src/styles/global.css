@@ -322,3 +322,321 @@ a:hover {
 .skip-link:focus {
   top: 0;
 }
+
+/* ========================================
+   MODERN VISUAL ENHANCEMENTS
+   ======================================== */
+
+/* Decorative Background Patterns */
+.bg-pattern-dots {
+  background-image: radial-gradient(circle, var(--gray-300) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-pattern-dots-light {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-pattern-grid {
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-pattern-grid-light {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Modern Shadow Scale */
+.shadow-soft {
+  box-shadow: 0 4px 20px rgba(10, 22, 40, 0.08);
+}
+
+.shadow-elevated {
+  box-shadow: 0 8px 30px rgba(10, 22, 40, 0.12);
+}
+
+.shadow-floating {
+  box-shadow: 0 20px 50px rgba(10, 22, 40, 0.18);
+}
+
+/* Glow Effects */
+.glow-gold {
+  box-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+}
+
+.glow-gold-subtle {
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.15);
+}
+
+/* Card Enhancements */
+.card-modern {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s ease;
+}
+
+.card-modern:hover {
+  border-color: var(--gold-400);
+  box-shadow: 0 8px 30px rgba(10, 22, 40, 0.12);
+  transform: translateY(-2px);
+}
+
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Animated Gradient Background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-gradient-animated {
+  background: linear-gradient(135deg, var(--navy-900), var(--navy-700), var(--navy-800), var(--navy-900));
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Subtle Float Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+/* Pulse Glow Animation */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(201, 162, 39, 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Decorative Shapes */
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-500), var(--gold-400));
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.decorative-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--gold-500);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Image Frame Styles */
+.image-frame {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(10, 22, 40, 0.2);
+}
+
+.image-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 3px solid var(--gold-500);
+  pointer-events: none;
+}
+
+.image-frame-offset {
+  position: relative;
+}
+
+.image-frame-offset::before {
+  content: '';
+  position: absolute;
+  inset: 12px -12px -12px 12px;
+  background: var(--gold-500);
+  border-radius: 1rem;
+  z-index: -1;
+}
+
+/* Divider Styles */
+.divider-gradient {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+
+.divider-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.divider-dots::before,
+.divider-dots::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--gold-500);
+  border-radius: 50%;
+}
+
+/* Stats/Number Styling */
+.stat-number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Testimonial Quote Styling */
+.quote-mark {
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--gold-500);
+  opacity: 0.2;
+}
+
+/* Section Overlap Effect */
+.section-overlap {
+  margin-top: -4rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .section-overlap {
+    margin-top: -6rem;
+  }
+}
+
+/* Attorney Photo Styling */
+.attorney-photo {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.attorney-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.attorney-photo-border {
+  border: 4px solid var(--gold-500);
+  box-shadow: 0 20px 50px rgba(10, 22, 40, 0.25);
+}
+
+/* Badge Styling */
+.badge-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--gold-500), var(--gold-400));
+  color: var(--navy-900);
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+}
+
+/* Enhanced Button Styles */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn-glow:hover::before {
+  transform: translateX(100%);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-float-delay,
+  .animate-pulse-glow,
+  .bg-gradient-animated {
+    animation: none;
+  }
+}

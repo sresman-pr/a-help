@@ -28,8 +28,16 @@ const {
 } = Astro.props;
 ---
 
-<section class="bg-gradient-navy text-white section-padding">
-  <div class="container-custom">
+<section class="bg-gradient-animated text-white section-padding relative overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 bg-pattern-grid-light opacity-10"></div>
+  <div class="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-gold-500/10 blur-3xl"></div>
+  <div class="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-navy-500/30 blur-3xl"></div>
+  
+  <!-- Top border gradient -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+  
+  <div class="container-custom relative">
     {variant === 'centered' ? (
       <div class="max-w-3xl mx-auto text-center">
         {subtitle && (
@@ -40,7 +48,7 @@ const {
           <p class="text-gray-300 text-lg mb-8">{description}</p>
         )}
         <div class="flex flex-wrap justify-center gap-4">
-          <a href={primaryCTA.href} class="btn btn-primary">
+          <a href={primaryCTA.href} class="btn btn-primary btn-glow shadow-elevated">
             {primaryCTA.text}
             <ArrowRight class="w-5 h-5" />
           </a>
@@ -69,7 +77,7 @@ const {
           )}
         </div>
         <div class="flex flex-wrap md:justify-end gap-4">
-          <a href={primaryCTA.href} class="btn btn-primary">
+          <a href={primaryCTA.href} class="btn btn-primary btn-glow shadow-elevated">
             {primaryCTA.text}
             <ArrowRight class="w-5 h-5" />
           </a>
@@ -93,7 +101,7 @@ const {
           )}
         </div>
         <div class="flex flex-wrap gap-4">
-          <a href={primaryCTA.href} class="btn btn-primary whitespace-nowrap">
+          <a href={primaryCTA.href} class="btn btn-primary btn-glow shadow-elevated whitespace-nowrap">
             {primaryCTA.text}
             <ArrowRight class="w-5 h-5" />
           </a>
@@ -107,4 +115,7 @@ const {
       </div>
     )}
   </div>
+  
+  <!-- Bottom border gradient -->
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
 </section>

@@ -2,11 +2,13 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Breadcrumbs from '../components/common/Breadcrumbs.astro';
 import CTASection from '../components/sections/CTASection.astro';
-import { Award, Users, Clock, Scale, Heart, MessageSquare, Check } from '@lucide/astro';
+import { Award, Users, Clock, Scale, Heart, MessageSquare, Check, Shield, Trophy, Globe } from '@lucide/astro';
 
 const breadcrumbs = [
   { label: 'About Us' }
 ];
+
+const attorneyPhotoUrl = 'https://www.alexhelp.com/wp-content/uploads/2022/06/Banner-Image-1.png';
 
 const values = [
   {
@@ -31,7 +33,7 @@ const values = [
   }
 ];
 
-const iconComponents = { Award, Users, Clock, Scale, Heart, MessageSquare };
+const iconComponents = { Award, Users, Clock, Scale, Heart, MessageSquare, Shield, Trophy, Globe };
 ---
 
 <PageLayout 
@@ -41,10 +43,19 @@ const iconComponents = { Award, Users, Clock, Scale, Heart, MessageSquare };
   <Breadcrumbs items={breadcrumbs} />
   
   <!-- Hero -->
-  <section class="bg-gradient-navy text-white py-16 md:py-24">
-    <div class="container-custom">
+  <section class="bg-gradient-animated text-white py-16 md:py-24 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute inset-0 bg-pattern-grid-light opacity-20"></div>
+    <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-gold-500/10 blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-navy-500/30 blur-3xl"></div>
+    
+    <div class="container-custom relative">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
+          <p class="text-gold-400 font-medium mb-4 flex items-center gap-2">
+            <span class="w-8 h-px bg-gold-400"></span>
+            About Our Firm
+          </p>
           <h1 class="font-heading font-bold text-white mb-6">
             Fighting for Maryland Families for Over 26 Years
           </h1>
@@ -54,86 +65,185 @@ const iconComponents = { Award, Users, Clock, Scale, Heart, MessageSquare };
             of crimes get the justice they deserve.
           </p>
           <div class="flex flex-wrap gap-6">
-            <div class="text-center">
-              <div class="text-4xl font-bold text-gold-400">26+</div>
+            <div class="text-center bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
+              <div class="stat-number text-4xl">26+</div>
               <div class="text-gray-400 text-sm">Years Experience</div>
             </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-gold-400">100s</div>
+            <div class="text-center bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
+              <div class="stat-number text-4xl">100s</div>
               <div class="text-gray-400 text-sm">Cases Won</div>
             </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-gold-400">5</div>
+            <div class="text-center bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
+              <div class="stat-number text-4xl">5</div>
               <div class="text-gray-400 text-sm">Languages</div>
             </div>
           </div>
         </div>
         
-        <div class="bg-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <!-- Placeholder for Alex's photo -->
-          <div class="aspect-[4/5] bg-navy-700 rounded-xl flex items-center justify-center mb-6">
-            <div class="text-center">
-              <div class="text-6xl text-gold-500 font-heading font-bold mb-2">A</div>
-              <div class="text-gray-400 text-sm">Photo of Alex Poberesky</div>
+        <!-- Attorney Photo -->
+        <div class="relative">
+          <div class="absolute top-6 left-6 w-full h-full bg-gold-500 rounded-2xl -z-10"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-floating border-4 border-gold-500">
+            <img 
+              src={attorneyPhotoUrl}
+              alt="Alex Poberesky - Maryland Personal Injury & Criminal Defense Attorney"
+              class="w-full aspect-[4/5] object-cover object-top"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h2 class="font-heading font-bold text-2xl text-white">Alex Poberesky</h2>
+              <p class="text-gold-400">Founder & Lead Attorney</p>
             </div>
           </div>
-          <h2 class="font-heading font-bold text-xl text-white text-center">Alex Poberesky</h2>
-          <p class="text-gold-400 text-center">Founder & Lead Attorney</p>
+          
+          <!-- Floating Badge -->
+          <div class="absolute -bottom-4 -right-4 bg-navy-900 text-white px-5 py-3 rounded-xl shadow-floating border border-gold-500/30">
+            <div class="flex items-center gap-3">
+              <Trophy class="w-8 h-8 text-gold-500" />
+              <div>
+                <div class="font-bold text-gold-400">Award-Winning</div>
+                <div class="text-xs text-gray-400">Trial Attorney</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Our Story -->
-  <section class="section-padding">
-    <div class="container-custom">
-      <div class="max-w-3xl mx-auto prose">
-        <h2>Our Story</h2>
-        <p>
-          Alex Poberesky founded this firm with a simple mission: to provide exceptional legal 
-          representation to people who need it most. Having grown up in the Baltimore area, Alex 
-          understood the challenges that working families face when dealing with the legal system.
-        </p>
-        <p>
-          Over the past 26 years, we've grown from a solo practice into a trusted firm serving 
-          clients throughout Maryland. But some things haven't changed. We still provide the same 
-          personalized attention, aggressive advocacy, and commitment to results that built our reputation.
-        </p>
-        <p>
-          Today, our multilingual team serves clients in English, Russian, Ukrainian, Turkish, and 
-          Uzbek—reflecting the diverse communities we're proud to call our neighbors.
-        </p>
+  <!-- Alex's Story -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="absolute inset-0 bg-pattern-dots opacity-30"></div>
+    <div class="container-custom relative">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <p class="text-gold-600 font-medium mb-2">The Man Behind the Firm</p>
+          <h2 class="font-heading font-bold text-navy-900">A Fighter Forged by Personal Struggle</h2>
+        </div>
         
-        <h2>Our Approach</h2>
-        <p>
-          We believe in treating every client like family. When you work with us, you're not just 
-          a case file—you're a person going through one of the most challenging times of your life. 
-          We're here to guide you through it.
-        </p>
-        <p>
-          We also believe in being straight with you. If we don't think you have a strong case, 
-          we'll tell you. If there's a better path forward than litigation, we'll recommend it. 
-          Our goal isn't just to win cases—it's to get you the best possible outcome for your situation.
-        </p>
+        <div class="prose max-w-none">
+          <div class="bg-white rounded-2xl p-8 shadow-soft border border-gray-100 mb-8">
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+              Alex Poberesky, Esq., is a committed advocate for the people. <strong>Originally from Moscow</strong>, 
+              his sense of justice was forged through personal struggle — fighting against an oppressive 
+              Soviet regime as a member of the <strong>Soviet Refusenik movement</strong> and experiencing 
+              personal tragedy (the loss of his father) during that fight.
+            </p>
+            
+            <p class="text-gray-600 mb-6">
+              As a trial attorney with a prestigious regional law firm, Mr. Poberesky has successfully 
+              represented <strong>hundreds of clients</strong> throughout the courts of the State of Maryland 
+              and before Federal and State Administrative Agencies. From serious auto accidents and job 
+              injuries to criminal cases, whether before a judge, jury, or Administrative Agency — 
+              Mr. Poberesky defends the people's rights with unwavering determination.
+            </p>
+            
+            <p class="text-gray-600 mb-6">
+              Mr. Poberesky believes in self-improvement and independence. He provides counsel for the 
+              creation of new businesses and negotiation of business disputes, helping people reach their 
+              entrepreneurial goals.
+            </p>
+          </div>
+          
+          <!-- Highlight Cards -->
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-navy-900 text-white rounded-xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 bg-gold-500 rounded-lg flex items-center justify-center">
+                  <Trophy class="w-6 h-6 text-navy-900" />
+                </div>
+                <h3 class="font-heading font-bold text-lg">Martial Arts Champion</h3>
+              </div>
+              <p class="text-gray-300 text-sm">
+                Mr. Poberesky hones his discipline as a long-standing martial arts practitioner. 
+                He has been awarded a <strong class="text-gold-400">bronze and gold medal</strong> for 
+                his competitive zeal in national full-contact matches. This same determination 
+                is what he brings to every case.
+              </p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center">
+                  <Heart class="w-6 h-6 text-gold-500" />
+                </div>
+                <h3 class="font-heading font-bold text-navy-900 text-lg">Community Leader</h3>
+              </div>
+              <p class="text-gray-600 text-sm">
+                Mr. Poberesky gives back to his community. He is involved in civic and political 
+                affairs, helping candidates seeking elected office and working with Congressmen, 
+                senators, and other public officials to assist new Americans. He supports the 
+                Associated Jewish Charities and contributes to other good causes.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-r from-gold-50 to-white rounded-xl p-6 border-l-4 border-gold-500">
+            <p class="text-gray-700 italic">
+              "Mr. Poberesky holds the respect of many of his colleagues, and through his professional 
+              relationships is able to provide representation in all practice areas within the state of 
+              Maryland, Washington, D.C., throughout the United States, and internationally."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Our Approach -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <p class="text-gold-600 font-medium mb-2">How We Work</p>
+        <h2 class="font-heading font-bold text-navy-900">Our Approach to Legal Representation</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl p-8 shadow-soft border border-gray-100">
+          <h3 class="font-heading font-bold text-navy-900 text-xl mb-4">Client-First Philosophy</h3>
+          <p class="text-gray-600 mb-4">
+            We believe in treating every client like family. When you work with us, you're not just 
+            a case file—you're a person going through one of the most challenging times of your life. 
+            We're here to guide you through it.
+          </p>
+          <p class="text-gray-600">
+            Today, our multilingual team serves clients in <strong>English, Russian, Ukrainian, Turkish, 
+            and Uzbek</strong>—reflecting the diverse communities we're proud to call our neighbors.
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-8 shadow-soft border border-gray-100">
+          <h3 class="font-heading font-bold text-navy-900 text-xl mb-4">Honest Assessment</h3>
+          <p class="text-gray-600 mb-4">
+            We believe in being straight with you. If we don't think you have a strong case, 
+            we'll tell you. If there's a better path forward than litigation, we'll recommend it.
+          </p>
+          <p class="text-gray-600">
+            Our goal isn't just to win cases—it's to get you the <strong>best possible outcome</strong> 
+            for your situation. That's why we take the time to understand your unique circumstances 
+            before recommending a strategy.
+          </p>
+        </div>
       </div>
     </div>
   </section>
   
   <!-- Our Values -->
-  <section class="section-padding bg-gray-50">
+  <section class="section-padding">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="font-heading font-bold text-navy-900">Our Values</h2>
-        <p class="text-gray-600 mt-2">The principles that guide everything we do</p>
+        <p class="text-gold-600 font-medium mb-2">What Drives Us</p>
+        <h2 class="font-heading font-bold text-navy-900">Our Core Values</h2>
+        <p class="text-gray-600 mt-2 max-w-2xl mx-auto">The principles that guide everything we do</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {values.map((value) => {
           const IconComponent = iconComponents[value.icon as keyof typeof iconComponents];
           return (
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
-              <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <IconComponent class="w-7 h-7 text-gold-500" />
+            <div class="card-modern p-6 text-center group">
+              <div class="w-16 h-16 bg-navy-900 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gold-500 transition-colors">
+                <IconComponent class="w-8 h-8 text-gold-500 group-hover:text-navy-900 transition-colors" />
               </div>
               <h3 class="font-heading font-bold text-navy-900 mb-2">{value.title}</h3>
               <p class="text-gray-600 text-sm">{value.description}</p>
@@ -145,68 +255,88 @@ const iconComponents = { Award, Users, Clock, Scale, Heart, MessageSquare };
   </section>
   
   <!-- Why Choose Us -->
-  <section class="section-padding">
-    <div class="container-custom">
+  <section class="section-padding bg-navy-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-pattern-grid-light opacity-10"></div>
+    <div class="container-custom relative">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="font-heading font-bold text-navy-900 mb-6">Why Clients Choose Us</h2>
+          <p class="text-gold-400 font-medium mb-2">The Difference</p>
+          <h2 class="font-heading font-bold text-white mb-6">Why Clients Choose Us</h2>
           <div class="space-y-4">
-            <div class="flex items-start gap-4">
-              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <div class="flex items-start gap-4 bg-white/5 rounded-xl p-4 backdrop-blur-sm border border-white/10">
+              <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <Check class="w-5 h-5 text-navy-900" />
               </div>
               <div>
-                <h3 class="font-bold text-navy-900 mb-1">Proven Track Record</h3>
-                <p class="text-gray-600">With hundreds of successful cases, we have the experience to handle even the most complex legal matters.</p>
+                <h3 class="font-bold text-white mb-1">Proven Track Record</h3>
+                <p class="text-gray-400 text-sm">With hundreds of successful cases, we have the experience to handle even the most complex legal matters.</p>
               </div>
             </div>
             
-            <div class="flex items-start gap-4">
-              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <div class="flex items-start gap-4 bg-white/5 rounded-xl p-4 backdrop-blur-sm border border-white/10">
+              <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <Check class="w-5 h-5 text-navy-900" />
               </div>
               <div>
-                <h3 class="font-bold text-navy-900 mb-1">Personal Attention</h3>
-                <p class="text-gray-600">You work directly with your attorney—not a paralegal or assistant. We're always available when you need us.</p>
+                <h3 class="font-bold text-white mb-1">Personal Attention</h3>
+                <p class="text-gray-400 text-sm">You work directly with your attorney—not a paralegal or assistant. We're always available when you need us.</p>
               </div>
             </div>
             
-            <div class="flex items-start gap-4">
-              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <div class="flex items-start gap-4 bg-white/5 rounded-xl p-4 backdrop-blur-sm border border-white/10">
+              <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <Check class="w-5 h-5 text-navy-900" />
               </div>
               <div>
-                <h3 class="font-bold text-navy-900 mb-1">No Fee Unless We Win</h3>
-                <p class="text-gray-600">For personal injury cases, you pay nothing unless we recover compensation for you. That's our promise.</p>
+                <h3 class="font-bold text-white mb-1">No Fee Unless We Win</h3>
+                <p class="text-gray-400 text-sm">For personal injury cases, you pay nothing unless we recover compensation for you. That's our promise.</p>
               </div>
             </div>
             
-            <div class="flex items-start gap-4">
-              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <div class="flex items-start gap-4 bg-white/5 rounded-xl p-4 backdrop-blur-sm border border-white/10">
+              <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <Check class="w-5 h-5 text-navy-900" />
               </div>
               <div>
-                <h3 class="font-bold text-navy-900 mb-1">Community Commitment</h3>
-                <p class="text-gray-600">We're not just lawyers—we're your neighbors. We're invested in the communities we serve.</p>
+                <h3 class="font-bold text-white mb-1">Community Commitment</h3>
+                <p class="text-gray-400 text-sm">We're not just lawyers—we're your neighbors. We're invested in the communities we serve.</p>
               </div>
             </div>
           </div>
         </div>
         
-        <div class="bg-gray-100 rounded-2xl p-8">
-          <h3 class="font-heading font-bold text-navy-900 mb-6">Our Team</h3>
+        <div class="bg-white rounded-2xl p-8 shadow-floating">
+          <h3 class="font-heading font-bold text-navy-900 mb-6 flex items-center gap-3">
+            <Users class="w-6 h-6 text-gold-500" />
+            Our Team
+          </h3>
           <p class="text-gray-600 mb-6">
             Our dedicated team includes experienced attorneys and multilingual staff ready to 
             serve you. We speak English, Russian, Ukrainian, Turkish, and Uzbek.
           </p>
           <div class="space-y-4">
-            <div class="bg-white rounded-lg p-4">
-              <div class="font-bold text-navy-900">Alex Poberesky</div>
-              <div class="text-sm text-gray-600">Founder & Lead Attorney</div>
+            <div class="bg-gray-50 rounded-xl p-4 flex items-center gap-4 border border-gray-100">
+              <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+                <img 
+                  src={attorneyPhotoUrl}
+                  alt="Alex Poberesky"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div>
+                <div class="font-bold text-navy-900">Alex Poberesky</div>
+                <div class="text-sm text-gray-600">Founder & Lead Attorney</div>
+                <div class="text-xs text-gold-600 mt-1">26+ Years Experience</div>
+              </div>
             </div>
-            <div class="bg-white rounded-lg p-4">
-              <div class="font-bold text-navy-900">Patrick Ferris</div>
-              <div class="text-sm text-gray-600">Associate Attorney</div>
+            <div class="bg-gray-50 rounded-xl p-4 flex items-center gap-4 border border-gray-100">
+              <div class="w-16 h-16 rounded-xl bg-navy-900 flex items-center justify-center flex-shrink-0">
+                <span class="text-gold-500 font-heading font-bold text-xl">PF</span>
+              </div>
+              <div>
+                <div class="font-bold text-navy-900">Patrick Ferris</div>
+                <div class="text-sm text-gray-600">Associate Attorney</div>
+              </div>
             </div>
           </div>
         </div>

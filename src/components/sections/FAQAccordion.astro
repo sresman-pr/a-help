@@ -1,5 +1,5 @@
 ---
-import { ChevronDown } from '@lucide/astro';
+import { ChevronDown, HelpCircle } from '@lucide/astro';
 
 interface FAQ {
   question: string;
@@ -35,8 +35,12 @@ const faqSchema = showSchema ? {
 } : null;
 ---
 
-<section class="section-padding">
-  <div class="container-custom">
+<section class="section-padding relative overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
+  <div class="absolute top-20 left-10 w-48 h-48 rounded-full bg-gold-500/5 blur-3xl"></div>
+  
+  <div class="container-custom relative">
     <div class="max-w-3xl mx-auto">
       {(title || subtitle) && (
         <div class="text-center mb-10">
@@ -44,7 +48,10 @@ const faqSchema = showSchema ? {
             <p class="text-gold-600 font-medium mb-2">{subtitle}</p>
           )}
           {title && (
-            <h2 class="font-heading font-bold text-navy-900">{title}</h2>
+            <h2 class="font-heading font-bold text-navy-900 flex items-center justify-center gap-3">
+              <HelpCircle class="w-8 h-8 text-gold-500" />
+              {title}
+            </h2>
           )}
         </div>
       )}
@@ -52,23 +59,40 @@ const faqSchema = showSchema ? {
       <div class="space-y-4">
         {faqs.map((faq, index) => (
           <div 
-            class="faq-item border border-gray-200 rounded-xl overflow-hidden"
+            class="faq-item bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-shadow"
             data-faq-index={index}
           >
             <button 
-              class="faq-trigger w-full flex items-center justify-between p-5 text-left bg-white hover:bg-gray-50 transition-colors"
+              class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-gray-50/50 transition-colors"
               aria-expanded="false"
             >
-              <span class="font-semibold text-navy-900 pr-4">{faq.question}</span>
-              <ChevronDown class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-200" />
+              <span class="flex items-start gap-4">
+                <span class="w-8 h-8 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0 text-gold-500 font-bold text-sm">
+                  {index + 1}
+                </span>
+                <span class="font-semibold text-navy-900 pr-4">{faq.question}</span>
+              </span>
+              <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition-colors">
+                <ChevronDown class="w-5 h-5 text-gray-500 faq-icon transition-transform duration-300" />
+              </div>
             </button>
             <div class="faq-content hidden">
-              <div class="p-5 pt-0 text-gray-600 leading-relaxed">
-                {faq.answer}
+              <div class="px-6 pb-6 pt-0 pl-18 text-gray-600 leading-relaxed border-t border-gray-100">
+                <div class="pt-4 pl-12">
+                  {faq.answer}
+                </div>
               </div>
             </div>
           </div>
         ))}
+      </div>
+      
+      <!-- Help prompt -->
+      <div class="mt-10 text-center">
+        <p class="text-gray-600 mb-4">Don't see your question answered?</p>
+        <a href="/contact-us/" class="btn btn-primary">
+          Ask Us Directly
+        </a>
       </div>
     </div>
   </div>
@@ -96,6 +120,7 @@ const faqSchema = showSchema ? {
           otherItem.querySelector('.faq-content')?.classList.add('hidden');
           otherItem.querySelector('.faq-icon')?.classList.remove('rotate-180');
           otherItem.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+          (otherItem as HTMLElement).classList.remove('ring-2', 'ring-gold-500');
         }
       });
       
@@ -104,10 +129,12 @@ const faqSchema = showSchema ? {
         content?.classList.add('hidden');
         icon?.classList.remove('rotate-180');
         trigger.setAttribute('aria-expanded', 'false');
+        (item as HTMLElement).classList.remove('ring-2', 'ring-gold-500');
       } else {
         content?.classList.remove('hidden');
         icon?.classList.add('rotate-180');
         trigger.setAttribute('aria-expanded', 'true');
+        (item as HTMLElement).classList.add('ring-2', 'ring-gold-500');
       }
     });
   });

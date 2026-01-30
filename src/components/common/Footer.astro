@@ -5,16 +5,23 @@ import { footerNavigation, contactInfo } from '../../data/navigation';
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-navy-900 text-white">
+<footer class="bg-navy-900 text-white relative overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent opacity-50"></div>
+  <div class="absolute top-20 right-10 w-64 h-64 rounded-full bg-gold-500/5 blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-20 left-10 w-48 h-48 rounded-full bg-navy-700/50 blur-3xl pointer-events-none"></div>
+  
   <!-- Main Footer -->
-  <div class="container-custom section-padding">
+  <div class="container-custom section-padding relative">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
       <!-- Brand & Contact -->
       <div class="lg:col-span-2">
         <a href="/" class="flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-            <span class="text-gold-500 font-heading font-bold text-2xl">A</span>
-          </div>
+          <img 
+            src="https://www.alexhelp.com/wp-content/uploads/2022/09/cropped-cropped-Banner-Logo.png" 
+            alt="Law Offices of Alex Poberesky" 
+            class="h-12 w-auto brightness-0 invert"
+          />
           <div>
             <div class="font-heading font-bold text-white text-lg leading-tight">Law Offices of</div>
             <div class="font-heading font-bold text-gold-400 text-lg leading-tight">Alex Poberesky</div>

@@ -1,0 +1,131 @@
+---
+import { ArrowRight, Award, Scale, Shield, Globe } from '@lucide/astro';
+
+interface Props {
+  variant?: 'full' | 'compact';
+  showCTA?: boolean;
+}
+
+const { variant = 'full', showCTA = true } = Astro.props;
+
+const attorneyPhotoUrl = 'https://www.alexhelp.com/wp-content/uploads/2022/06/Banner-Image-1.png';
+
+const credentials = [
+  { icon: 'Award', text: '26+ Years Experience' },
+  { icon: 'Scale', text: 'Hundreds of Cases Won' },
+  { icon: 'Shield', text: 'Trial-Ready Attorney' },
+  { icon: 'Globe', text: '5 Languages Spoken' }
+];
+
+const iconComponents = { Award, Scale, Shield, Globe };
+---
+
+<section class="section-padding bg-white relative overflow-hidden">
+  <!-- Decorative Background -->
+  <div class="absolute inset-0 bg-pattern-dots opacity-30"></div>
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-50 to-transparent"></div>
+  
+  <div class="container-custom relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Photo Column -->
+      <div class="relative">
+        <!-- Decorative Frame -->
+        <div class="absolute -inset-4 bg-gradient-to-br from-gold-400 to-gold-600 rounded-2xl opacity-20 blur-xl"></div>
+        <div class="absolute top-6 left-6 w-full h-full bg-gold-500 rounded-2xl -z-10"></div>
+        
+        <!-- Photo Container -->
+        <div class="relative attorney-photo-border rounded-2xl overflow-hidden bg-navy-900">
+          <img 
+            src={attorneyPhotoUrl}
+            alt="Alex Poberesky - Maryland Personal Injury & Criminal Defense Attorney"
+            class="w-full aspect-[4/5] object-cover object-top"
+            loading="lazy"
+          />
+          <!-- Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent"></div>
+          
+          <!-- Name Overlay -->
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="font-heading font-bold text-2xl text-white mb-1">Alex Poberesky</h3>
+            <p class="text-gold-400 font-medium">Founder & Lead Attorney</p>
+          </div>
+        </div>
+        
+        <!-- Floating Badge -->
+        <div class="absolute -bottom-4 -right-4 bg-navy-900 text-white px-6 py-3 rounded-xl shadow-floating">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gold-500 rounded-full flex items-center justify-center">
+              <Award class="w-6 h-6 text-navy-900" />
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gold-400">26+</div>
+              <div class="text-sm text-gray-400">Years Fighting for Clients</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Content Column -->
+      <div>
+        <p class="text-gold-600 font-medium mb-2 flex items-center gap-2">
+          <span class="w-8 h-px bg-gold-500"></span>
+          Meet Your Attorney
+        </p>
+        
+        <h2 class="font-heading font-bold text-navy-900 mb-6">
+          A Fighter for Justice with a Personal Story
+        </h2>
+        
+        <div class="prose max-w-none mb-8">
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Alex Poberesky, Esq., is a committed advocate for the people. Originally from Moscow, 
+            his sense of justice was forged through personal struggle — fighting against an oppressive 
+            Soviet regime as a member of the Soviet Refusenik movement and experiencing personal tragedy 
+            during that fight.
+          </p>
+          
+          <p class="text-gray-600">
+            As a trial attorney, Mr. Poberesky has successfully represented hundreds of clients 
+            throughout the courts of Maryland and before Federal and State Administrative Agencies. 
+            From serious auto accidents and job injuries to criminal cases, whether before a judge, 
+            jury, or Administrative Agency — he defends the people's rights with unwavering determination.
+          </p>
+          
+          <p class="text-gray-600">
+            Mr. Poberesky believes in self-improvement and discipline. As a long-standing martial arts 
+            practitioner, he has earned bronze and gold medals in national full-contact competitions. 
+            This same competitive drive and determination is what he brings to every case he handles.
+          </p>
+        </div>
+        
+        <!-- Credentials Grid -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          {credentials.map((cred) => {
+            const IconComponent = iconComponents[cred.icon as keyof typeof iconComponents];
+            return (
+              <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 border border-gray-100">
+                <div class="w-10 h-10 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <IconComponent class="w-5 h-5 text-gold-500" />
+                </div>
+                <span class="text-sm font-medium text-navy-900">{cred.text}</span>
+              </div>
+            );
+          })}
+        </div>
+        
+        <!-- CTA -->
+        {showCTA && (
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact-us/" class="btn btn-primary btn-glow">
+              Schedule Free Consultation
+              <ArrowRight class="w-5 h-5" />
+            </a>
+            <a href="/about-us/" class="btn btn-outline">
+              Learn More About Alex
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

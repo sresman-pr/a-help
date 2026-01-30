@@ -3,7 +3,8 @@ import PageLayout from './PageLayout.astro';
 import Breadcrumbs from '../components/common/Breadcrumbs.astro';
 import CTASection from '../components/sections/CTASection.astro';
 import ContactForm from '../components/forms/ContactForm.astro';
-import { Calendar, User, Clock, ArrowLeft, ArrowRight, Tag } from '@lucide/astro';
+import AttorneySidebarCard from '../components/ui/AttorneySidebarCard.astro';
+import { Calendar, User, Clock, ArrowLeft, ArrowRight, Tag, BookOpen } from '@lucide/astro';
 
 interface Props {
   title: string;
@@ -26,6 +27,8 @@ const {
   tags = [],
   image
 } = Astro.props;
+
+const attorneyPhotoUrl = 'https://www.alexhelp.com/wp-content/uploads/2022/06/Banner-Image-1.png';
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('en-US', {
@@ -67,46 +70,65 @@ const articleSchema = {
 <PageLayout title={`${title} | Alex Poberesky Law Blog`} description={description}>
   <Breadcrumbs items={breadcrumbs} />
   
-  <article class="section-padding">
-    <div class="container-custom">
-      <div class="grid lg:grid-cols-3 gap-12">
-        <!-- Main Content -->
-        <div class="lg:col-span-2">
-          <!-- Header -->
-          <header class="mb-8">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="px-3 py-1 bg-gold-50 text-gold-700 text-sm font-medium rounded-full">
-                {category}
-              </span>
-            </div>
-            
-            <h1 class="font-heading font-bold text-navy-900 text-3xl md:text-4xl mb-4">
-              {title}
-            </h1>
-            
-            <div class="flex flex-wrap items-center gap-4 text-gray-600 text-sm">
-              <div class="flex items-center gap-2">
-                <User class="w-4 h-4" />
-                <span>{author}</span>
-              </div>
-              <div class="flex items-center gap-2">
+  <!-- Article Header -->
+  <section class="bg-gradient-animated text-white py-10 md:py-14 relative overflow-hidden">
+    <div class="absolute inset-0 bg-pattern-grid-light opacity-20"></div>
+    <div class="absolute top-10 right-10 w-64 h-64 rounded-full bg-gold-500/10 blur-3xl"></div>
+    
+    <div class="container-custom relative">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-4 py-1.5 bg-gold-500/20 text-gold-400 text-sm font-medium rounded-full border border-gold-500/30">
+            {category}
+          </span>
+        </div>
+        
+        <h1 class="font-heading font-bold text-white text-3xl md:text-4xl mb-6">
+          {title}
+        </h1>
+        
+        <!-- Author Info -->
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gold-500">
+            <img 
+              src={attorneyPhotoUrl}
+              alt={author}
+              class="w-full h-full object-cover object-top"
+            />
+          </div>
+          <div>
+            <div class="font-semibold text-white">{author}</div>
+            <div class="flex items-center gap-4 text-sm text-gray-400">
+              <span class="flex items-center gap-1">
                 <Calendar class="w-4 h-4" />
                 <time datetime={publishDate.toISOString()}>
                   {formatDate(publishDate)}
                 </time>
-              </div>
+              </span>
               {updatedDate && (
-                <div class="flex items-center gap-2">
+                <span class="flex items-center gap-1">
                   <Clock class="w-4 h-4" />
-                  <span>Updated: {formatDate(updatedDate)}</span>
-                </div>
+                  Updated: {formatDate(updatedDate)}
+                </span>
               )}
             </div>
-          </header>
-          
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+  </section>
+  
+  <article class="section-padding relative">
+    <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
+    <div class="container-custom relative">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
           <!-- Featured Image -->
           {image && (
-            <div class="mb-8 rounded-xl overflow-hidden">
+            <div class="mb-8 rounded-2xl overflow-hidden shadow-soft">
               <img 
                 src={image} 
                 alt={title}
@@ -116,17 +138,17 @@ const articleSchema = {
           )}
           
           <!-- Content -->
-          <div class="prose max-w-none">
+          <div class="prose max-w-none bg-white rounded-2xl p-8 shadow-soft border border-gray-100">
             <slot />
           </div>
           
           <!-- Tags -->
           {tags.length > 0 && (
-            <div class="mt-8 pt-8 border-t border-gray-200">
-              <div class="flex items-center gap-2 flex-wrap">
-                <Tag class="w-4 h-4 text-gray-500" />
+            <div class="mt-8 bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+              <div class="flex items-center gap-3 flex-wrap">
+                <Tag class="w-5 h-5 text-gold-500" />
                 {tags.map(tag => (
-                  <span class="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
+                  <span class="px-4 py-1.5 bg-gray-50 text-gray-700 text-sm rounded-full border border-gray-200 hover:border-gold-400 transition-colors cursor-pointer">
                     {tag}
                   </span>
                 ))}
@@ -135,50 +157,67 @@ const articleSchema = {
           )}
           
           <!-- Navigation -->
-          <div class="mt-8 pt-8 border-t border-gray-200">
+          <div class="mt-8 flex items-center justify-between">
             <a href="/blog/" class="btn btn-outline">
               <ArrowLeft class="w-5 h-5" />
               Back to Blog
+            </a>
+            <a href="/contact-us/" class="btn btn-primary">
+              Have Questions? Contact Us
+              <ArrowRight class="w-5 h-5" />
             </a>
           </div>
         </div>
         
         <!-- Sidebar -->
         <aside class="space-y-6">
+          <!-- Attorney Card -->
+          <AttorneySidebarCard />
+          
           <!-- Contact Form -->
-          <ContactForm 
-            title="Free Case Evaluation"
-            subtitle="Have a legal question? Contact us today."
-            variant="sidebar"
-            showPhone={true}
-          />
+          <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+            <ContactForm 
+              title="Free Case Evaluation"
+              subtitle="Have a legal question? Contact us today."
+              variant="sidebar"
+              showPhone={true}
+            />
+          </div>
           
           <!-- Categories -->
-          <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
-            <h3 class="font-heading font-bold text-navy-900 mb-4">Categories</h3>
+          <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+            <h3 class="font-heading font-bold text-navy-900 mb-4 flex items-center gap-2">
+              <BookOpen class="w-5 h-5 text-gold-500" />
+              Categories
+            </h3>
             <ul class="space-y-2">
               <li>
-                <a href="/blog/?category=personal-injury" class="text-gray-600 hover:text-gold-600 text-sm">
+                <a href="/blog/?category=personal-injury" class="flex items-center gap-2 text-gray-600 hover:text-gold-600 text-sm py-1 transition-colors">
+                  <span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span>
                   Personal Injury
                 </a>
               </li>
               <li>
-                <a href="/blog/?category=car-accidents" class="text-gray-600 hover:text-gold-600 text-sm">
+                <a href="/blog/?category=car-accidents" class="flex items-center gap-2 text-gray-600 hover:text-gold-600 text-sm py-1 transition-colors">
+                  <span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span>
                   Car Accidents
                 </a>
               </li>
               <li>
-                <a href="/blog/?category=criminal-defense" class="text-gray-600 hover:text-gold-600 text-sm">
+                <a href="/blog/?category=criminal-defense" class="flex items-center gap-2 text-gray-600 hover:text-gold-600 text-sm py-1 transition-colors">
+                  <span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span>
                   Criminal Defense
                 </a>
               </li>
               <li>
-                <a href="/blog/?category=workers-comp" class="text-gray-600 hover:text-gold-600 text-sm">
+                <a href="/blog/?category=workers-comp" class="flex items-center gap-2 text-gray-600 hover:text-gold-600 text-sm py-1 transition-colors">
+                  <span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span>
                   Workers' Compensation
                 </a>
               </li>
               <li>
-                <a href="/blog/?category=legal-guide" class="text-gray-600 hover:text-gold-600 text-sm">
+                <a href="/blog/?category=legal-guide" class="flex items-center gap-2 text-gray-600 hover:text-gold-600 text-sm py-1 transition-colors">
+                  <span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span>
                   Legal Guides
                 </a>
               </li>

@@ -2,7 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Breadcrumbs from '../components/common/Breadcrumbs.astro';
 import CTASection from '../components/sections/CTASection.astro';
-import { Star, Quote } from '@lucide/astro';
+import { Star, Quote, Award } from '@lucide/astro';
 import { testimonials } from '../data/testimonials';
 
 const breadcrumbs = [
@@ -43,103 +43,137 @@ const reviewSchema = {
 >
   <Breadcrumbs items={breadcrumbs} />
   
-  <section class="section-padding">
-    <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h1 class="font-heading font-bold text-navy-900 mb-4">Client Reviews</h1>
-        <p class="text-xl text-gray-600 mb-6">
+  <!-- Hero Section -->
+  <section class="bg-gradient-animated text-white py-12 md:py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-pattern-grid-light opacity-20"></div>
+    <div class="absolute top-10 left-10 w-72 h-72 rounded-full bg-gold-500/10 blur-3xl"></div>
+    
+    <div class="container-custom relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <p class="text-gold-400 font-medium mb-4 flex items-center justify-center gap-2">
+          <span class="w-8 h-px bg-gold-400"></span>
+          Testimonials
+          <span class="w-8 h-px bg-gold-400"></span>
+        </p>
+        <h1 class="font-heading font-bold text-white mb-4">Client Reviews</h1>
+        <p class="text-xl text-gray-300 mb-8">
           Don't just take our word for it. Read what our clients have to say about their experience 
           working with the Law Offices of Alex Poberesky.
         </p>
         
-        <!-- Aggregate Rating -->
-        <div class="inline-flex items-center gap-3 bg-gold-50 px-6 py-3 rounded-full">
+        <!-- Aggregate Rating Badge -->
+        <div class="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm px-8 py-4 rounded-2xl border border-white/20">
           <div class="flex">
             {[...Array(5)].map(() => (
-              <Star class="w-6 h-6 text-gold-500 fill-gold-500" />
+              <Star class="w-7 h-7 text-gold-400 fill-gold-400" />
             ))}
           </div>
-          <span class="font-bold text-navy-900 text-lg">5.0</span>
-          <span class="text-gray-600">based on {testimonials.length} reviews</span>
+          <div class="text-left">
+            <div class="font-bold text-white text-2xl">5.0</div>
+            <div class="text-gray-400 text-sm">Based on {testimonials.length} reviews</div>
+          </div>
         </div>
       </div>
-      
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+  </section>
+  
+  <section class="section-padding relative">
+    <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
+    <div class="container-custom relative">
       <!-- Reviews Grid -->
       <div class="grid md:grid-cols-2 gap-8">
-        {testimonials.map((testimonial) => (
-          <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-            <Quote class="w-12 h-12 text-gold-500/20 mb-4" />
+        {testimonials.map((testimonial, index) => (
+          <div class={`bg-white rounded-2xl p-8 shadow-soft border border-gray-100 card-modern relative ${index === 0 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
+            {/* Featured badge for first review */}
+            {index === 0 && (
+              <div class="absolute -top-3 right-6 badge-premium">
+                <Award class="w-4 h-4" />
+                Featured Review
+              </div>
+            )}
             
-            <!-- Rating -->
-            <div class="flex gap-1 mb-4">
-              {[...Array(testimonial.rating)].map(() => (
-                <Star class="w-5 h-5 text-gold-500 fill-gold-500" />
-              ))}
+            <div class="flex items-start gap-4 mb-6">
+              <Quote class="w-12 h-12 text-gold-500/30 flex-shrink-0" />
+              <div class="flex-grow">
+                <!-- Rating -->
+                <div class="flex gap-1 mb-2">
+                  {[...Array(testimonial.rating)].map(() => (
+                    <Star class="w-5 h-5 text-gold-500 fill-gold-500" />
+                  ))}
+                </div>
+                {testimonial.caseType && (
+                  <span class="inline-block px-3 py-1 bg-navy-900 text-gold-400 text-xs font-medium rounded-full">
+                    {testimonial.caseType}
+                  </span>
+                )}
+              </div>
             </div>
             
             <!-- Review Text -->
-            <p class="text-gray-700 leading-relaxed mb-6">
+            <p class="text-gray-700 leading-relaxed mb-6 text-lg">
               "{testimonial.text}"
             </p>
             
             <!-- Author -->
-            <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
-              <div class="w-12 h-12 bg-navy-900 rounded-full flex items-center justify-center">
-                <span class="text-gold-500 font-bold text-lg">
+            <div class="flex items-center gap-4 pt-6 border-t border-gray-100">
+              <div class="w-14 h-14 bg-gradient-to-br from-navy-800 to-navy-900 rounded-full flex items-center justify-center shadow-soft">
+                <span class="text-gold-500 font-bold text-xl">
                   {testimonial.name.charAt(0)}
                 </span>
               </div>
               <div>
-                <div class="font-semibold text-navy-900">{testimonial.name}</div>
-                <div class="text-sm text-gray-500">{testimonial.location}</div>
+                <div class="font-bold text-navy-900 text-lg">{testimonial.name}</div>
+                <div class="text-gray-500">{testimonial.location}</div>
               </div>
-              {testimonial.caseType && (
-                <span class="ml-auto px-3 py-1 bg-gold-50 text-gold-700 text-xs font-medium rounded-full">
-                  {testimonial.caseType}
-                </span>
-              )}
             </div>
           </div>
         ))}
       </div>
       
       <!-- Review Platforms -->
-      <div class="mt-16 text-center">
-        <h2 class="font-heading font-bold text-navy-900 mb-6">Find Us On</h2>
-        <p class="text-gray-600 mb-8">
-          We're proud of our reputation. Check out our reviews on these platforms:
-        </p>
-        <div class="flex flex-wrap justify-center gap-8">
-          <a href="#" class="text-gray-400 hover:text-navy-900 transition-colors">
-            <div class="text-center">
-              <div class="text-2xl font-bold">Google</div>
-              <div class="flex justify-center mt-1">
-                {[...Array(5)].map(() => (
-                  <Star class="w-4 h-4 text-gold-500 fill-gold-500" />
-                ))}
+      <div class="mt-20 text-center">
+        <div class="inline-block bg-gray-50 rounded-2xl p-8 border border-gray-200">
+          <h2 class="font-heading font-bold text-navy-900 mb-2">Find Us On</h2>
+          <p class="text-gray-600 mb-6 text-sm">
+            We're proud of our reputation across all platforms
+          </p>
+          <div class="flex flex-wrap justify-center gap-8">
+            <a href="#" class="group">
+              <div class="text-center p-4 rounded-xl transition-colors hover:bg-white hover:shadow-soft">
+                <div class="text-2xl font-bold text-gray-400 group-hover:text-navy-900 transition-colors">Google</div>
+                <div class="flex justify-center mt-2">
+                  {[...Array(5)].map(() => (
+                    <Star class="w-4 h-4 text-gold-500 fill-gold-500" />
+                  ))}
+                </div>
+                <div class="text-xs text-gray-500 mt-1">5.0 rating</div>
               </div>
-            </div>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-navy-900 transition-colors">
-            <div class="text-center">
-              <div class="text-2xl font-bold">Avvo</div>
-              <div class="flex justify-center mt-1">
-                {[...Array(5)].map(() => (
-                  <Star class="w-4 h-4 text-gold-500 fill-gold-500" />
-                ))}
+            </a>
+            <a href="#" class="group">
+              <div class="text-center p-4 rounded-xl transition-colors hover:bg-white hover:shadow-soft">
+                <div class="text-2xl font-bold text-gray-400 group-hover:text-navy-900 transition-colors">Avvo</div>
+                <div class="flex justify-center mt-2">
+                  {[...Array(5)].map(() => (
+                    <Star class="w-4 h-4 text-gold-500 fill-gold-500" />
+                  ))}
+                </div>
+                <div class="text-xs text-gray-500 mt-1">5.0 rating</div>
               </div>
-            </div>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-navy-900 transition-colors">
-            <div class="text-center">
-              <div class="text-2xl font-bold">Yelp</div>
-              <div class="flex justify-center mt-1">
-                {[...Array(5)].map(() => (
-                  <Star class="w-4 h-4 text-gold-500 fill-gold-500" />
-                ))}
+            </a>
+            <a href="#" class="group">
+              <div class="text-center p-4 rounded-xl transition-colors hover:bg-white hover:shadow-soft">
+                <div class="text-2xl font-bold text-gray-400 group-hover:text-navy-900 transition-colors">Yelp</div>
+                <div class="flex justify-center mt-2">
+                  {[...Array(5)].map(() => (
+                    <Star class="w-4 h-4 text-gold-500 fill-gold-500" />
+                  ))}
+                </div>
+                <div class="text-xs text-gray-500 mt-1">5.0 rating</div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
     </div>

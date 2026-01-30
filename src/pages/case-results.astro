@@ -2,7 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Breadcrumbs from '../components/common/Breadcrumbs.astro';
 import CTASection from '../components/sections/CTASection.astro';
-import { ArrowRight, DollarSign } from '@lucide/astro';
+import { ArrowRight, DollarSign, TrendingUp, Shield, Search } from '@lucide/astro';
 
 const breadcrumbs = [
   { label: 'Case Results' }
@@ -59,45 +59,64 @@ const caseResults = [
 >
   <Breadcrumbs items={breadcrumbs} />
   
-  <section class="section-padding">
-    <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h1 class="font-heading font-bold text-navy-900 mb-4">Our Case Results</h1>
-        <p class="text-xl text-gray-600 mb-6">
-          Results matter. Here are some examples of the recoveries we've obtained for our clients 
+  <!-- Hero Section -->
+  <section class="bg-gradient-animated text-white py-12 md:py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-pattern-grid-light opacity-20"></div>
+    <div class="absolute top-10 right-20 w-80 h-80 rounded-full bg-gold-500/10 blur-3xl"></div>
+    
+    <div class="container-custom relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <p class="text-gold-400 font-medium mb-4 flex items-center justify-center gap-2">
+          <span class="w-8 h-px bg-gold-400"></span>
+          Proven Results
+          <span class="w-8 h-px bg-gold-400"></span>
+        </p>
+        <h1 class="font-heading font-bold text-white mb-4">Our Case Results</h1>
+        <p class="text-xl text-gray-300 mb-6">
+          Results matter. Here are examples of the recoveries we've obtained for our clients 
           in personal injury cases throughout Maryland.
         </p>
-        <p class="text-sm text-gray-500">
-          <em>Past results do not guarantee future outcomes. Each case is unique and results depend 
-          on individual circumstances.</em>
+        <p class="text-sm text-gray-400 italic">
+          Past results do not guarantee future outcomes. Each case is unique and results depend 
+          on individual circumstances.
         </p>
       </div>
-      
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+  </section>
+  
+  <section class="section-padding relative">
+    <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
+    <div class="container-custom relative">
       <!-- Featured Results -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        {caseResults.slice(0, 4).map((result) => (
-          <div class="bg-navy-900 rounded-xl p-6 text-center">
-            <div class="w-12 h-12 bg-gold-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <DollarSign class="w-6 h-6 text-navy-900" />
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {caseResults.slice(0, 4).map((result, index) => (
+          <div class="bg-navy-900 rounded-2xl p-6 text-center relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-gold-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="relative">
+              <div class="w-14 h-14 bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-elevated group-hover:scale-110 transition-transform">
+                <DollarSign class="w-7 h-7 text-navy-900" />
+              </div>
+              <div class="stat-number text-3xl md:text-4xl mb-2">{result.amount}</div>
+              <div class="text-white font-medium">{result.type}</div>
             </div>
-            <div class="text-3xl font-bold text-gold-400 mb-2">{result.amount}</div>
-            <div class="text-white font-medium mb-2">{result.type}</div>
           </div>
         ))}
       </div>
       
       <!-- All Results -->
       <div class="grid md:grid-cols-2 gap-6">
-        {caseResults.map((result) => (
-          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+        {caseResults.map((result, index) => (
+          <div class="bg-white rounded-2xl p-6 shadow-soft border border-gray-100 card-modern group">
             <div class="flex items-start gap-4">
-              <div class="bg-gold-50 rounded-lg p-3">
-                <DollarSign class="w-6 h-6 text-gold-600" />
+              <div class="bg-gradient-to-br from-gold-400 to-gold-600 rounded-xl p-3 shadow-soft group-hover:shadow-elevated transition-shadow">
+                <DollarSign class="w-6 h-6 text-navy-900" />
               </div>
-              <div>
-                <div class="flex items-center gap-3 mb-2">
-                  <span class="text-2xl font-bold text-navy-900">{result.amount}</span>
-                  <span class="px-3 py-1 bg-navy-100 text-navy-700 text-xs font-medium rounded-full">
+              <div class="flex-grow">
+                <div class="flex flex-wrap items-center gap-3 mb-2">
+                  <span class="stat-number text-2xl md:text-3xl">{result.amount}</span>
+                  <span class="px-3 py-1 bg-navy-900 text-gold-400 text-xs font-medium rounded-full">
                     {result.type}
                   </span>
                 </div>
@@ -109,9 +128,12 @@ const caseResults = [
       </div>
       
       <!-- Disclaimer -->
-      <div class="mt-12 bg-gray-50 rounded-xl p-6">
-        <h3 class="font-bold text-navy-900 mb-2">Important Disclaimer</h3>
-        <p class="text-gray-600 text-sm">
+      <div class="mt-12 bg-gradient-to-r from-gray-50 to-white rounded-2xl p-8 border border-gray-200">
+        <h3 class="font-bold text-navy-900 mb-3 flex items-center gap-2">
+          <Shield class="w-5 h-5 text-gold-500" />
+          Important Disclaimer
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
           The results shown above are examples of past case outcomes. They are not guarantees of 
           future results. Every case is unique, and the outcome depends on the specific facts and 
           circumstances involved. Factors that affect case value include the severity of injuries, 
@@ -124,35 +146,45 @@ const caseResults = [
   </section>
   
   <!-- Why We Get Results -->
-  <section class="section-padding bg-gray-50">
-    <div class="container-custom">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="font-heading font-bold text-navy-900 mb-6">Why We Get Results</h2>
-        <p class="text-gray-600 mb-8">
-          Our success comes from a combination of experience, preparation, and determination. 
-          Here's what sets us apart:
+  <section class="section-padding bg-navy-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-pattern-grid-light opacity-10"></div>
+    <div class="container-custom relative">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-gold-400 font-medium mb-2">Our Approach</p>
+        <h2 class="font-heading font-bold text-white mb-6">Why We Get Results</h2>
+        <p class="text-gray-400 mb-10">
+          Our success comes from a combination of experience, preparation, and determination.
         </p>
         
-        <div class="grid md:grid-cols-3 gap-8 text-left">
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h3 class="font-bold text-navy-900 mb-2">Thorough Investigation</h3>
-            <p class="text-gray-600 text-sm">
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+          <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+            <div class="w-12 h-12 bg-gold-500 rounded-xl flex items-center justify-center mb-4">
+              <Search class="w-6 h-6 text-navy-900" />
+            </div>
+            <h3 class="font-bold text-white mb-2">Thorough Investigation</h3>
+            <p class="text-gray-400 text-sm">
               We leave no stone unturned. Our team investigates every aspect of your case to 
               build the strongest possible claim.
             </p>
           </div>
           
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h3 class="font-bold text-navy-900 mb-2">Trial Ready</h3>
-            <p class="text-gray-600 text-sm">
+          <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+            <div class="w-12 h-12 bg-gold-500 rounded-xl flex items-center justify-center mb-4">
+              <Shield class="w-6 h-6 text-navy-900" />
+            </div>
+            <h3 class="font-bold text-white mb-2">Trial Ready</h3>
+            <p class="text-gray-400 text-sm">
               Insurance companies know we're willing to go to trial. This leverage helps us 
               negotiate better settlements.
             </p>
           </div>
           
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h3 class="font-bold text-navy-900 mb-2">Expert Resources</h3>
-            <p class="text-gray-600 text-sm">
+          <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+            <div class="w-12 h-12 bg-gold-500 rounded-xl flex items-center justify-center mb-4">
+              <TrendingUp class="w-6 h-6 text-navy-900" />
+            </div>
+            <h3 class="font-bold text-white mb-2">Expert Resources</h3>
+            <p class="text-gray-400 text-sm">
               We work with medical experts, accident reconstructionists, and economists to 
               prove the full extent of your damages.
             </p>
