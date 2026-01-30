@@ -1,0 +1,54 @@
+---
+import { MapPin, ArrowRight } from '@lucide/astro';
+import { counties } from '../../data/locations';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  limit?: number;
+}
+
+const { 
+  title = 'Areas We Serve',
+  subtitle = 'Representing clients throughout Maryland',
+  limit = 8
+} = Astro.props;
+
+const displayCounties = counties.slice(0, limit);
+---
+
+<section class="section-padding">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      {subtitle && (
+        <p class="text-gold-600 font-medium mb-2">{subtitle}</p>
+      )}
+      {title && (
+        <h2 class="font-heading font-bold text-navy-900">{title}</h2>
+      )}
+      <p class="text-gray-600 mt-4">
+        From our Pikesville office, we serve clients across all of Maryland. 
+        Contact us for a free consultation no matter where you're located.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {displayCounties.map((county) => (
+        <a 
+          href={`/${county.slug}/`}
+          class="group flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-gold-500 hover:shadow-md transition-all"
+        >
+          <MapPin class="w-5 h-5 text-gold-500 flex-shrink-0" />
+          <span class="text-gray-700 group-hover:text-navy-900 font-medium">{county.name}</span>
+        </a>
+      ))}
+    </div>
+    
+    <div class="text-center mt-8">
+      <a href="/areas-served/" class="btn btn-secondary">
+        View All Locations
+        <ArrowRight class="w-5 h-5" />
+      </a>
+    </div>
+  </div>
+</section>

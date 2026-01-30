@@ -1,0 +1,134 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What should I do after being struck by a vehicle as a pedestrian?',
+    answer: 'Your health is the priority—call 911 and get medical attention immediately. If possible, document the scene with photos, get the driver\'s information, and collect witness contact details. Don\'t give statements to insurance companies before consulting an attorney, as they may try to minimize your claim.'
+  },
+  {
+    question: 'Who is responsible when a pedestrian is hit by a car?',
+    answer: 'Drivers have a legal duty to watch for pedestrians and yield to them in crosswalks. However, Maryland\'s contributory negligence rule means the driver\'s insurance may try to blame you for the accident. An experienced attorney can protect your rights and prove driver negligence.'
+  },
+  {
+    question: 'Can I sue if I was jaywalking when hit?',
+    answer: 'Potentially, yes. Even if you weren\'t in a crosswalk, drivers still have a duty to exercise reasonable care to avoid hitting pedestrians. The specific circumstances matter—we\'ll evaluate whether the driver was speeding, distracted, or otherwise negligent despite your location.'
+  },
+  {
+    question: 'What if the driver who hit me fled the scene?',
+    answer: 'Hit-and-run accidents are unfortunately common. You may still recover compensation through your own uninsured motorist coverage or through the Maryland Automobile Insurance Fund. We also work with investigators to identify hit-and-run drivers when possible.'
+  },
+  {
+    question: 'How much compensation can I receive for pedestrian accident injuries?',
+    answer: 'Compensation depends on injury severity, medical costs, lost income, and other factors. Pedestrian accidents often cause severe injuries that justify substantial compensation for medical bills, future treatment, lost wages, pain and suffering, and diminished quality of life.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['bicycle-accidents', 'car-accidents', 'wrongful-death'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Pedestrian Accidents' }
+];
+---
+
+<PracticeAreaLayout
+  title="Pedestrian Accident Lawyer in Pikesville, MD"
+  description="Experienced pedestrian accident attorneys in Maryland. We help victims struck by vehicles recover maximum compensation for injuries. Free consultation."
+  heroTitle="Pedestrian Accident Lawyers in Maryland"
+  heroDescription="When you're struck by a vehicle while walking, the injuries can be devastating. We fight to hold negligent drivers accountable and secure the compensation you need to recover."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Dedicated Pedestrian Accident Attorneys in Maryland</h2>
+  <p>
+    Pedestrians have no protection when struck by a vehicle—no airbags, no seatbelts, no steel 
+    frame. The human body simply cannot withstand the force of a collision with a car, truck, 
+    or SUV. As a result, pedestrian accidents often cause catastrophic, life-altering injuries 
+    or death.
+  </p>
+  <p>
+    At the Law Offices of Alex Poberesky, we've spent over 26 years fighting for accident victims 
+    in Maryland. We understand the devastating impact these accidents have on victims and their 
+    families, and we work tirelessly to secure maximum compensation.
+  </p>
+
+  <h3>Common Causes of Pedestrian Accidents</h3>
+  <p>Most pedestrian accidents result from driver negligence, including:</p>
+  <ul>
+    <li><strong>Failure to yield at crosswalks</strong> – Drivers ignoring pedestrian right of way</li>
+    <li><strong>Distracted driving</strong> – Texting, phone use, eating while driving</li>
+    <li><strong>Speeding</strong> – Excessive speed in pedestrian areas</li>
+    <li><strong>Running red lights and stop signs</strong> – Intersection violations</li>
+    <li><strong>Drunk or impaired driving</strong> – DUI accidents</li>
+    <li><strong>Failure to stop for school buses</strong> – Endangering children</li>
+    <li><strong>Improper turns</strong> – Drivers failing to check for pedestrians when turning</li>
+    <li><strong>Backing up without looking</strong> – Parking lot and driveway accidents</li>
+  </ul>
+
+  <h3>Dangerous Locations for Pedestrians</h3>
+  <p>Pedestrian accidents commonly occur in:</p>
+  <ul>
+    <li>Crosswalks and intersections</li>
+    <li>Parking lots and parking garages</li>
+    <li>School zones and bus stops</li>
+    <li>Shopping centers and strip malls</li>
+    <li>Residential neighborhoods</li>
+    <li>Construction zones</li>
+    <li>Public transit stops</li>
+  </ul>
+
+  <h3>Severe Injuries in Pedestrian Accidents</h3>
+  <p>The lack of protection makes pedestrians extremely vulnerable. Common injuries include:</p>
+  <ul>
+    <li><strong>Traumatic brain injuries (TBI)</strong> – From impact with the vehicle or ground</li>
+    <li><strong>Spinal cord injuries</strong> – Potentially causing permanent paralysis</li>
+    <li><strong>Multiple bone fractures</strong> – Legs, hips, pelvis, arms, ribs</li>
+    <li><strong>Internal organ damage</strong> – Bleeding, organ rupture</li>
+    <li><strong>Severe lacerations</strong> – From impact and road contact</li>
+    <li><strong>Crush injuries</strong> – If struck by vehicle wheels</li>
+    <li><strong>Amputation</strong> – Traumatic limb loss</li>
+    <li><strong>Death</strong> – Pedestrian fatalities are tragically common</li>
+  </ul>
+
+  <h3>Maryland Pedestrian Laws</h3>
+  <p>Understanding Maryland's pedestrian laws helps protect your claim:</p>
+  <ul>
+    <li>Pedestrians have the right of way in marked crosswalks</li>
+    <li>Drivers must yield to pedestrians already in an intersection</li>
+    <li>Drivers must stop for pedestrians at crosswalks—not just yield</li>
+    <li>Pedestrians must obey walk signals where present</li>
+    <li>Pedestrians should use sidewalks where available</li>
+  </ul>
+
+  <h3>Compensation for Pedestrian Accident Victims</h3>
+  <p>Given the severity of injuries, pedestrian accident claims often involve substantial compensation for:</p>
+  <ul>
+    <li>Emergency medical treatment and hospitalization</li>
+    <li>Surgery, rehabilitation, and physical therapy</li>
+    <li>Future medical care and assistive devices</li>
+    <li>Lost wages during recovery</li>
+    <li>Permanent disability or reduced earning capacity</li>
+    <li>Pain and suffering</li>
+    <li>Emotional trauma and mental anguish</li>
+    <li>Permanent scarring and disfigurement</li>
+    <li>Loss of enjoyment of life</li>
+  </ul>
+
+  <h3>Fighting Against Contributory Negligence</h3>
+  <p>
+    Maryland's harsh contributory negligence rule means insurance companies will try everything 
+    to claim you were partially at fault—whether you were outside a crosswalk, wearing dark 
+    clothing, or "distracted" by your phone. Our attorneys know how to counter these tactics 
+    and prove that the driver's negligence caused your injuries.
+  </p>
+  <p>
+    Don't face the insurance company alone. Contact us for a free consultation to discuss your 
+    pedestrian accident case and learn how we can help you recover the compensation you deserve.
+  </p>
+</PracticeAreaLayout>

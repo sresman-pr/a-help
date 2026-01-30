@@ -1,0 +1,207 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { criminalDefenseServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What is the difference between theft, burglary, and robbery in Maryland?',
+    answer: 'Theft is taking property without consent. Burglary is entering a building with intent to commit a crime inside. Robbery is theft using force or threat of force against a person. Each has different elements and penalties, with robbery generally being the most serious due to the violent component.'
+  },
+  {
+    question: 'What are the penalties for shoplifting in Maryland?',
+    answer: 'Shoplifting penalties depend on the value of items taken. Under $100 is a misdemeanor with up to 90 days jail and $500 fine. $100-$1,500 carries up to 6 months and $500 fine. Over $1,500 can be a felony with up to 5 years and $10,000 fine. Prior convictions can enhance penalties.'
+  },
+  {
+    question: 'Can I be charged with theft if I intended to return the item?',
+    answer: 'Intent to permanently deprive the owner is an element of theft. However, prosecutors may argue your intent based on circumstances, and "borrowing" without permission can still constitute theft. Each case depends on specific facts that an attorney can evaluate.'
+  },
+  {
+    question: 'Will a theft conviction appear on my background check?',
+    answer: 'Yes, theft convictions appear on criminal background checks and can affect employment, housing, and professional licensing. Depending on the circumstances, some theft charges may be eligible for expungement after a waiting period. We fight to minimize these long-term consequences.'
+  },
+  {
+    question: 'What if I was falsely accused of theft?',
+    answer: 'False theft accusations happen more often than people realize, particularly in retail settings with mistaken identity or misunderstandings. We thoroughly investigate every case, review surveillance footage, interview witnesses, and challenge weak evidence to defend your reputation.'
+  }
+];
+
+const relatedServices = criminalDefenseServices.filter(s => 
+  ['assault', 'drug-crimes', 'domestic-violence'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Criminal Defense', href: '/criminal-defense/' },
+  { label: 'Theft Offenses Defense' }
+];
+---
+
+<PracticeAreaLayout
+  title="Theft Offenses Defense Lawyer in Pikesville, MD"
+  description="Experienced theft defense attorneys in Maryland. We defend shoplifting, burglary, robbery, and all theft charges. Protect your record with a free consultation."
+  heroTitle="Theft Offenses Defense in Maryland"
+  heroDescription="Theft charges—from shoplifting to robbery—can result in jail time and a criminal record that follows you for life. Our experienced defense attorneys fight to protect your freedom and your future."
+  category="criminal-defense"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Experienced Theft Defense in Maryland</h2>
+  <p>
+    Theft charges in Maryland range from minor shoplifting offenses to serious felonies like robbery 
+    and burglary. Regardless of the charge level, a theft conviction can have lasting consequences 
+    for your employment, housing, and reputation. At the Law Offices of Alex Poberesky, we provide 
+    aggressive defense for all theft-related charges throughout Maryland.
+  </p>
+  <p>
+    Our criminal defense attorneys understand that theft cases often involve misunderstandings, 
+    mistaken identity, or circumstances that don't tell the whole story. We thoroughly investigate 
+    every case and fight to protect your rights and your future.
+  </p>
+
+  <h3>Types of Theft Offenses We Defend</h3>
+  <p>We handle all theft-related criminal charges, including:</p>
+  <ul>
+    <li><strong>Shoplifting</strong> – Taking merchandise from retail stores</li>
+    <li><strong>Petty theft</strong> – Theft of items with lower value</li>
+    <li><strong>Grand theft</strong> – Theft of higher-value items or certain types of property</li>
+    <li><strong>Burglary</strong> – Entering a structure with intent to commit a crime</li>
+    <li><strong>Robbery</strong> – Theft using force or threat of force</li>
+    <li><strong>Armed robbery</strong> – Robbery with a dangerous weapon</li>
+    <li><strong>Carjacking</strong> – Taking a vehicle by force or intimidation</li>
+    <li><strong>Auto theft</strong> – Stealing motor vehicles</li>
+    <li><strong>Identity theft</strong> – Using another's identity for financial gain</li>
+    <li><strong>Fraud</strong> – Obtaining property through deception</li>
+    <li><strong>Embezzlement</strong> – Theft by someone entrusted with property</li>
+    <li><strong>Receiving stolen property</strong> – Knowingly possessing stolen items</li>
+  </ul>
+
+  <h3>Maryland Theft Penalties by Value</h3>
+  <p>
+    Maryland's theft penalties are primarily based on the value of property taken:
+  </p>
+
+  <h4>Theft Under $100</h4>
+  <ul>
+    <li>Misdemeanor</li>
+    <li>Up to 90 days in jail</li>
+    <li>Fine up to $500</li>
+  </ul>
+
+  <h4>Theft $100 - $1,500</h4>
+  <ul>
+    <li>Misdemeanor</li>
+    <li>Up to 6 months in jail</li>
+    <li>Fine up to $500</li>
+  </ul>
+
+  <h4>Theft $1,500 - $25,000</h4>
+  <ul>
+    <li>Felony</li>
+    <li>Up to 5 years in prison</li>
+    <li>Fine up to $10,000</li>
+  </ul>
+
+  <h4>Theft $25,000 - $100,000</h4>
+  <ul>
+    <li>Felony</li>
+    <li>Up to 10 years in prison</li>
+    <li>Fine up to $15,000</li>
+  </ul>
+
+  <h4>Theft Over $100,000</h4>
+  <ul>
+    <li>Felony</li>
+    <li>Up to 20 years in prison</li>
+    <li>Fine up to $25,000</li>
+  </ul>
+
+  <h3>Burglary in Maryland</h3>
+  <p>
+    Burglary involves breaking and entering a structure with intent to commit a crime inside. Maryland 
+    recognizes different degrees:
+  </p>
+  
+  <h4>First Degree Burglary</h4>
+  <ul>
+    <li>Breaking and entering a dwelling (home)</li>
+    <li>With intent to commit theft or a crime of violence</li>
+    <li>Up to 20 years in prison</li>
+  </ul>
+
+  <h4>Second Degree Burglary</h4>
+  <ul>
+    <li>Breaking and entering a storehouse or other structure</li>
+    <li>With intent to commit theft, arson, or crime of violence</li>
+    <li>Up to 15 years in prison</li>
+  </ul>
+
+  <h4>Third Degree Burglary</h4>
+  <ul>
+    <li>Breaking and entering a dwelling with intent to commit any crime</li>
+    <li>Up to 10 years in prison</li>
+  </ul>
+
+  <h4>Fourth Degree Burglary</h4>
+  <ul>
+    <li>Being in or on the yard of a dwelling or storehouse with intent to commit theft</li>
+    <li>Possessing burglary tools</li>
+    <li>Up to 3 years in prison</li>
+  </ul>
+
+  <h3>Robbery in Maryland</h3>
+  <p>
+    Robbery is theft accomplished through force or threat of force. It's always a felony:
+  </p>
+  <ul>
+    <li><strong>Robbery</strong> – Up to 15 years in prison</li>
+    <li><strong>Armed robbery</strong> – Up to 20 years in prison</li>
+    <li><strong>Carjacking</strong> – Up to 30 years in prison</li>
+    <li><strong>Armed carjacking</strong> – Up to 30 years; minimum 5 years without parole if firearm used</li>
+  </ul>
+
+  <h3>Defenses to Theft Charges</h3>
+  <p>We explore every possible defense strategy:</p>
+  <ul>
+    <li><strong>Mistaken identity</strong> – You weren't the person who committed the theft</li>
+    <li><strong>Lack of intent</strong> – You didn't intend to steal (misunderstanding, accident)</li>
+    <li><strong>Claim of right</strong> – You believed you had a right to the property</li>
+    <li><strong>Consent</strong> – The owner gave you permission to take the property</li>
+    <li><strong>Insufficient evidence</strong> – The prosecution can't prove all elements beyond reasonable doubt</li>
+    <li><strong>Constitutional violations</strong> – Evidence obtained through illegal searches</li>
+    <li><strong>Duress</strong> – You were forced to commit the theft under threat</li>
+    <li><strong>Value disputes</strong> – Challenging the stated value to reduce charge severity</li>
+  </ul>
+
+  <h3>Consequences Beyond Criminal Penalties</h3>
+  <p>A theft conviction affects many areas of your life:</p>
+  <ul>
+    <li><strong>Employment</strong> – Most employers conduct background checks; theft convictions are particularly damaging for positions involving money or trust</li>
+    <li><strong>Professional licenses</strong> – Many licensing boards deny or revoke licenses for theft convictions</li>
+    <li><strong>Housing</strong> – Landlords often reject applicants with theft records</li>
+    <li><strong>Education</strong> – Can affect college admissions and financial aid</li>
+    <li><strong>Immigration</strong> – Theft can be considered a crime of moral turpitude affecting immigration status</li>
+    <li><strong>Civil liability</strong> – Victims may sue for damages in addition to criminal penalties</li>
+  </ul>
+
+  <h3>First-Time Offender Options</h3>
+  <p>
+    For first-time offenders, Maryland offers several alternatives that may avoid a conviction:
+  </p>
+  <ul>
+    <li><strong>Probation Before Judgment (PBJ)</strong> – No conviction on your record if you complete probation successfully</li>
+    <li><strong>Diversion programs</strong> – Complete requirements and have charges dismissed</li>
+    <li><strong>Community service</strong> – In lieu of jail time</li>
+    <li><strong>Restitution agreements</strong> – Paying back the victim as part of a negotiated resolution</li>
+  </ul>
+  <p>
+    We work to identify all available alternatives and advocate for resolutions that protect your record.
+  </p>
+
+  <h3>Why Choose Our Theft Defense Team</h3>
+  <p>
+    With over 26 years of criminal defense experience in Maryland, we know how to effectively challenge 
+    theft charges and protect our clients' futures. We've successfully defended clients facing charges 
+    from minor shoplifting to serious robbery cases. Contact us for a free, confidential consultation 
+    to discuss your case.
+  </p>
+</PracticeAreaLayout>

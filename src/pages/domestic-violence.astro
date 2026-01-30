@@ -1,0 +1,178 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { criminalDefenseServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What happens after a domestic violence arrest in Maryland?',
+    answer: 'After arrest, you\'ll typically appear before a court commissioner who will set bail and may impose a no-contact order. You\'ll then have a bail review hearing and eventual trial. It\'s crucial to have an attorney from the earliest stage to protect your rights and advocate for reasonable bail conditions.'
+  },
+  {
+    question: 'What is a protective order and how does it affect me?',
+    answer: 'A protective order is a court order that can prohibit contact with the alleged victim, require you to leave your home, and restrict access to your children. Violating a protective order is a separate criminal offense. We can represent you at protective order hearings to challenge or limit these restrictions.'
+  },
+  {
+    question: 'Can domestic violence charges be dropped if the victim doesn\'t want to prosecute?',
+    answer: 'The decision to prosecute rests with the State\'s Attorney, not the victim. While a victim\'s cooperation affects the case strength, prosecutors can and do proceed without victim cooperation, using other evidence like 911 calls, photos, and officer observations. We work to present all mitigating factors.'
+  },
+  {
+    question: 'Will I lose custody of my children because of domestic violence charges?',
+    answer: 'Domestic violence allegations can significantly impact custody proceedings. Courts consider evidence of domestic violence when determining custody and visitation. It\'s essential to fight these charges vigorously not just for your freedom, but to protect your parental rights.'
+  },
+  {
+    question: 'What are the penalties for violating a protective order in Maryland?',
+    answer: 'Violating a protective order is a criminal offense carrying up to 90 days in jail and/or a $1,000 fine for a first offense. Subsequent violations carry enhanced penalties. Any contact with the protected person—even if they initiate it—can result in arrest and additional charges.'
+  }
+];
+
+const relatedServices = criminalDefenseServices.filter(s => 
+  ['assault', 'drug-crimes', 'theft-offenses'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Criminal Defense', href: '/criminal-defense/' },
+  { label: 'Domestic Violence Defense' }
+];
+---
+
+<PracticeAreaLayout
+  title="Domestic Violence Defense Lawyer in Pikesville, MD"
+  description="Experienced domestic violence defense attorneys in Maryland. We defend assault charges, fight protective orders, and protect your rights and family. Free confidential consultation."
+  heroTitle="Domestic Violence Defense in Maryland"
+  heroDescription="Domestic violence charges can tear apart your life, affecting your freedom, your home, and your relationship with your children. Our attorneys provide sensitive yet aggressive defense to protect everything you value."
+  category="criminal-defense"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Experienced Domestic Violence Defense in Maryland</h2>
+  <p>
+    Domestic violence allegations are among the most serious and life-altering charges you can face. 
+    Beyond potential jail time, you may be forced from your home, separated from your children, and 
+    face long-term damage to your reputation and relationships. At the Law Offices of Alex Poberesky, 
+    we understand the sensitive nature of these cases and provide aggressive, confidential defense.
+  </p>
+  <p>
+    Our experienced criminal defense attorneys know that domestic violence situations are often 
+    complicated, with heated emotions and sometimes false or exaggerated allegations. We thoroughly 
+    investigate every case and fight to protect your rights, your family relationships, and your future.
+  </p>
+
+  <h3>What Constitutes Domestic Violence in Maryland?</h3>
+  <p>
+    Domestic violence in Maryland refers to abuse between people in certain relationships, including:
+  </p>
+  <ul>
+    <li>Current or former spouses</li>
+    <li>People who live together or have lived together</li>
+    <li>People in a dating relationship</li>
+    <li>People with a child in common</li>
+    <li>Parents, stepparents, children, stepchildren</li>
+    <li>Other relatives by blood or marriage</li>
+  </ul>
+  
+  <p><strong>Types of abuse that qualify:</strong></p>
+  <ul>
+    <li>Physical assault or threat of assault</li>
+    <li>Placing someone in fear of serious harm</li>
+    <li>Stalking</li>
+    <li>Revenge porn</li>
+    <li>False imprisonment</li>
+    <li>Sexual offenses</li>
+  </ul>
+
+  <h3>Criminal Charges in Domestic Violence Cases</h3>
+  <p>
+    Domestic violence itself is not a separate crime in Maryland, but rather describes the relationship 
+    context for other criminal charges:
+  </p>
+  <ul>
+    <li><strong>Second degree assault</strong> – Up to 10 years imprisonment</li>
+    <li><strong>First degree assault</strong> – Up to 25 years imprisonment</li>
+    <li><strong>Reckless endangerment</strong> – Up to 5 years imprisonment</li>
+    <li><strong>Stalking</strong> – Up to 5 years imprisonment</li>
+    <li><strong>Harassment</strong> – Up to 90 days jail</li>
+    <li><strong>Telephone misuse</strong> – Up to 3 years imprisonment</li>
+  </ul>
+  <p>
+    Domestic context typically means prosecutors take charges more seriously and courts impose 
+    harsher conditions and sentences.
+  </p>
+
+  <h3>Protective Orders in Maryland</h3>
+  <p>
+    Maryland has several types of protective orders that can dramatically affect your life:
+  </p>
+
+  <h4>Interim Protective Order</h4>
+  <p>
+    Issued by a court commissioner, typically immediately after an allegation. Valid until a judge 
+    can review the case (usually within 2 business days).
+  </p>
+
+  <h4>Temporary Protective Order</h4>
+  <p>
+    Issued by a judge after an emergency hearing. The alleged victim need only show reasonable 
+    grounds to believe abuse occurred. Valid for up to 7 days until a final hearing.
+  </p>
+
+  <h4>Final Protective Order</h4>
+  <p>
+    Issued after a full hearing where both sides can present evidence. Can last up to 1 year 
+    (or 2 years with additional findings) and may be renewed.
+  </p>
+
+  <p><strong>A protective order can:</strong></p>
+  <ul>
+    <li>Order you to stay away from the alleged victim's home, workplace, and school</li>
+    <li>Force you to vacate your own home</li>
+    <li>Restrict or eliminate custody and visitation with your children</li>
+    <li>Require you to surrender firearms</li>
+    <li>Order you to pay temporary child support or spousal support</li>
+    <li>Give the other party possession of vehicles and property</li>
+  </ul>
+
+  <h3>Defenses to Domestic Violence Charges</h3>
+  <p>We explore all possible defenses, including:</p>
+  <ul>
+    <li><strong>Self-defense</strong> – You used reasonable force to protect yourself from harm</li>
+    <li><strong>Defense of others</strong> – You were protecting children or others from harm</li>
+    <li><strong>False allegations</strong> – Unfortunately common in custody disputes and contentious relationships</li>
+    <li><strong>Lack of evidence</strong> – Challenging the prosecution's case when evidence is weak</li>
+    <li><strong>Mutual combat</strong> – Both parties engaged in the physical confrontation</li>
+    <li><strong>Exaggeration</strong> – Injuries or events were exaggerated or misrepresented</li>
+    <li><strong>Witness credibility</strong> – Exposing inconsistencies in the accuser's statements</li>
+  </ul>
+
+  <h3>The Stakes Are High</h3>
+  <p>
+    A domestic violence conviction—or even just a protective order—can have devastating consequences:
+  </p>
+  <ul>
+    <li><strong>Loss of custody</strong> – Courts consider domestic violence in custody decisions</li>
+    <li><strong>Job loss</strong> – Many employers terminate employees with domestic violence convictions</li>
+    <li><strong>Professional licenses</strong> – May be denied, suspended, or revoked</li>
+    <li><strong>Housing</strong> – Difficulty finding housing with a domestic violence record</li>
+    <li><strong>Immigration consequences</strong> – Deportation or denial of citizenship for non-citizens</li>
+    <li><strong>Gun rights</strong> – Federal law prohibits firearm possession after domestic violence convictions</li>
+    <li><strong>Future relationships</strong> – A record that follows you and affects future relationships</li>
+  </ul>
+
+  <h3>What to Do If You're Facing Domestic Violence Charges</h3>
+  <ol>
+    <li><strong>Don't contact the alleged victim</strong> – Even if they reach out to you, any contact can result in additional charges</li>
+    <li><strong>Follow all court orders exactly</strong> – Violating a protective order leads to new criminal charges</li>
+    <li><strong>Don't discuss the case</strong> – Anything you say can be used against you</li>
+    <li><strong>Preserve evidence</strong> – Text messages, emails, photos that support your defense</li>
+    <li><strong>Contact an attorney immediately</strong> – The earlier we're involved, the better we can protect your rights</li>
+  </ol>
+
+  <h3>Confidential and Sensitive Representation</h3>
+  <p>
+    We understand that domestic violence cases are deeply personal and often involve complicated 
+    family dynamics. Our attorneys provide confidential, non-judgmental representation focused on 
+    protecting your rights and achieving the best possible outcome. With over 26 years of experience, 
+    we've helped countless clients navigate these difficult situations. Contact us for a free, 
+    confidential consultation.
+  </p>
+</PracticeAreaLayout>

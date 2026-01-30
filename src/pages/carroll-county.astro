@@ -1,0 +1,43 @@
+---
+import LocationLayout from '../layouts/LocationLayout.astro';
+import { locationsBySlug } from '../data/locations';
+
+const location = locationsBySlug['carroll-county'];
+---
+
+<LocationLayout 
+  location={location}
+  title="Personal Injury Lawyer in Carroll County | Alex Poberesky Law"
+  description="Experienced personal injury and criminal defense attorney serving Carroll County, Maryland. Free consultation. Call (410) 484-0400."
+>
+  <h2>Legal Representation for Carroll County Residents</h2>
+  <p>
+    Carroll County offers the charm of rural Maryland while remaining accessible to the Baltimore metropolitan area. With the county seat in Westminster and growing communities like Eldersburg, Sykesville, Taneytown, and Hampstead, Carroll County is home to approximately 170,000 residents who value their close-knit communities and scenic landscapes. Our office is just 25 minutes from most Carroll County locations, making it convenient for residents to access our legal services.
+  </p>
+  <p>
+    While Carroll County may be more rural than its neighbors, its roadways still see significant traffic—and significant accidents. Routes 140, 97, and 30 carry commuters to Baltimore and surrounding areas, while the county's many winding country roads present their own hazards. Agricultural vehicles sharing the road with passenger cars, wildlife crossings, and limited visibility on rural roads all contribute to accidents. Our firm understands the unique circumstances of Carroll County accidents and can effectively advocate for your interests.
+  </p>
+  <p>
+    The county's agricultural heritage means farming-related injuries are more common here than in urban areas. From equipment accidents to injuries involving livestock, these cases require an attorney who understands the specific challenges involved. We also handle slip and falls at Westminster's shops and restaurants, workplace injuries at local businesses, and all other types of personal injury cases.
+  </p>
+  
+  <h3>Personal Injury Cases We Handle in Carroll County</h3>
+  <ul>
+    <li>Car and truck accidents</li>
+    <li>Motorcycle accidents</li>
+    <li>Medical malpractice</li>
+    <li>Workers' compensation</li>
+    <li>Slip and fall accidents</li>
+    <li>Wrongful death</li>
+  </ul>
+  
+  <h3>Criminal Defense in Carroll County</h3>
+  <p>
+    Criminal charges in Carroll County require immediate attention from an experienced defense attorney. Whether you're facing DUI charges after a traffic stop on Route 140, drug possession charges, or any other criminal offense, we provide vigorous defense representation at the Carroll County Circuit Court and District Court in Westminster. We understand how a criminal record can affect your life in a close-knit community, and we fight hard to protect your reputation and your future.
+  </p>
+  
+  <h3>Why Choose Alex Poberesky for Your Carroll County Case?</h3>
+  <p>
+    Carroll County residents appreciate our straightforward, honest approach to legal representation. We don't make promises we can't keep—instead, we provide realistic assessments of your case and work diligently to achieve the best possible results. With over 26 years of experience serving clients throughout Central Maryland, Alex Poberesky Law has the expertise and dedication your case requires. Contact us today for a free consultation.
+  </p>
+</LocationLayout>

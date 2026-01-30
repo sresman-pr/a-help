@@ -1,0 +1,128 @@
+---
+import { Phone, Mail, MapPin, Clock, Facebook, Linkedin, Twitter } from '@lucide/astro';
+import { footerNavigation, contactInfo } from '../../data/navigation';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy-900 text-white">
+  <!-- Main Footer -->
+  <div class="container-custom section-padding">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+      <!-- Brand & Contact -->
+      <div class="lg:col-span-2">
+        <a href="/" class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
+            <span class="text-gold-500 font-heading font-bold text-2xl">A</span>
+          </div>
+          <div>
+            <div class="font-heading font-bold text-white text-lg leading-tight">Law Offices of</div>
+            <div class="font-heading font-bold text-gold-400 text-lg leading-tight">Alex Poberesky</div>
+          </div>
+        </a>
+        
+        <p class="text-gray-400 mb-6 max-w-md">
+          Serving Maryland with dedicated personal injury and criminal defense representation for over 26 years. 
+          We fight for your rights and won't give up until you get the justice you deserve.
+        </p>
+        
+        <div class="space-y-3">
+          <a href={`tel:${contactInfo.phoneRaw}`} class="flex items-center gap-3 text-gray-300 hover:text-gold-400 transition-colors">
+            <Phone class="w-5 h-5 text-gold-500" />
+            <span class="font-semibold">{contactInfo.phone}</span>
+          </a>
+          <a href={`mailto:${contactInfo.email}`} class="flex items-center gap-3 text-gray-300 hover:text-gold-400 transition-colors">
+            <Mail class="w-5 h-5 text-gold-500" />
+            <span>{contactInfo.email}</span>
+          </a>
+          <div class="flex items-start gap-3 text-gray-300">
+            <MapPin class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+            <span>{contactInfo.address.full}</span>
+          </div>
+          <div class="flex items-center gap-3 text-gray-300">
+            <Clock class="w-5 h-5 text-gold-500" />
+            <span>{contactInfo.hours}</span>
+          </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="flex items-center gap-4 mt-6">
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-gold-500 transition-colors" aria-label="Facebook">
+            <Facebook class="w-5 h-5" />
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-gold-500 transition-colors" aria-label="LinkedIn">
+            <Linkedin class="w-5 h-5" />
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-gold-500 transition-colors" aria-label="Twitter">
+            <Twitter class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+      
+      <!-- Practice Areas -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-4 text-gold-400">Practice Areas</h3>
+        <ul class="space-y-2">
+          {footerNavigation.practiceAreas.map((item) => (
+            <li>
+              <a href={item.href} class="text-gray-400 hover:text-white transition-colors text-sm">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Locations -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-4 text-gold-400">Locations</h3>
+        <ul class="space-y-2">
+          {footerNavigation.locations.map((item) => (
+            <li>
+              <a href={item.href} class="text-gray-400 hover:text-white transition-colors text-sm">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Company -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-4 text-gold-400">Company</h3>
+        <ul class="space-y-2">
+          {footerNavigation.company.map((item) => (
+            <li>
+              <a href={item.href} class="text-gray-400 hover:text-white transition-colors text-sm">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        
+        <h3 class="font-heading font-bold text-lg mb-4 mt-6 text-gold-400">Legal</h3>
+        <ul class="space-y-2">
+          {footerNavigation.legal.map((item) => (
+            <li>
+              <a href={item.href} class="text-gray-400 hover:text-white transition-colors text-sm">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom Bar -->
+  <div class="border-t border-white/10">
+    <div class="container-custom py-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+        <p>© {currentYear} Law Offices of Alex Poberesky, P.A. All Rights Reserved.</p>
+        <p>
+          Serving Maryland: Baltimore, Howard, Montgomery, Anne Arundel & more.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

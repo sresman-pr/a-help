@@ -1,0 +1,103 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What do I need to prove in a slip and fall case?',
+    answer: 'You must prove: (1) a dangerous condition existed on the property, (2) the property owner knew or should have known about it, (3) they failed to fix it or warn you, and (4) the condition caused your injury. Maryland\'s contributory negligence rule means you must show you weren\'t partially at fault.'
+  },
+  {
+    question: 'How long do I have to file a slip and fall claim in Maryland?',
+    answer: 'Maryland has a three-year statute of limitations for premises liability claims. However, evidence can disappear quickly, so you should contact an attorney as soon as possible to preserve your case.'
+  },
+  {
+    question: 'What if I fell on government property?',
+    answer: 'Claims against government entities have shorter deadlines and special procedures. You typically must file a notice of claim within one year. These cases are complex and require an attorney experienced with government liability.'
+  },
+  {
+    question: 'Can I still recover if I was partially at fault?',
+    answer: 'Maryland\'s contributory negligence rule is very strict. If you were even 1% at fault, you may be barred from recovery. This is why having an experienced attorney who can build a strong case is critical.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['workers-compensation', 'workplace-accidents', 'nursing-home-neglect'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Slip and Fall' }
+];
+---
+
+<PracticeAreaLayout
+  title="Slip and Fall Lawyer in Pikesville, MD"
+  description="Experienced slip and fall attorneys in Maryland. Premises liability, wet floors, uneven surfaces, icy sidewalks. We fight for fair compensation. Free consultation."
+  heroTitle="Slip and Fall Lawyers in Maryland"
+  heroDescription="Property owners have a duty to keep their premises safe. When they fail and you're injured, we hold them accountable and fight for the compensation you deserve."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Maryland Premises Liability Attorneys</h2>
+  <p>
+    Slip and fall accidents can cause serious injuries including broken bones, head trauma, and 
+    back injuries. Property owners—whether businesses, landlords, or homeowners—have a legal duty 
+    to maintain safe conditions for visitors.
+  </p>
+  <p>
+    At the Law Offices of Alex Poberesky, we hold negligent property owners accountable when their 
+    failure to maintain safe premises causes injuries. We have extensive experience handling 
+    premises liability cases throughout Maryland.
+  </p>
+
+  <h3>Common Causes of Slip and Fall Accidents</h3>
+  <ul>
+    <li><strong>Wet or slippery floors</strong> – Spills, recently mopped floors, leaks</li>
+    <li><strong>Uneven surfaces</strong> – Broken sidewalks, potholes, torn carpeting</li>
+    <li><strong>Ice and snow</strong> – Failure to clear walkways</li>
+    <li><strong>Poor lighting</strong> – Inadequate illumination in stairwells and parking lots</li>
+    <li><strong>Defective stairs</strong> – Broken handrails, loose steps, missing treads</li>
+    <li><strong>Cluttered walkways</strong> – Merchandise, cords, debris blocking paths</li>
+    <li><strong>Parking lot hazards</strong> – Potholes, unmarked curbs, oil slicks</li>
+  </ul>
+
+  <h3>Where Slip and Fall Accidents Occur</h3>
+  <ul>
+    <li>Grocery stores and retail shops</li>
+    <li>Restaurants and bars</li>
+    <li>Shopping malls</li>
+    <li>Office buildings</li>
+    <li>Apartment complexes</li>
+    <li>Hospitals and nursing homes</li>
+    <li>Parking garages and lots</li>
+    <li>Government buildings</li>
+    <li>Hotels and resorts</li>
+  </ul>
+
+  <h3>Common Slip and Fall Injuries</h3>
+  <ul>
+    <li>Broken hips, especially in elderly victims</li>
+    <li>Wrist and arm fractures from trying to break the fall</li>
+    <li>Head and brain injuries</li>
+    <li>Back and spinal injuries</li>
+    <li>Knee and ankle injuries</li>
+    <li>Soft tissue injuries</li>
+    <li>Cuts and lacerations</li>
+  </ul>
+
+  <h3>Proving Your Case</h3>
+  <p>
+    Successful slip and fall cases require proving that the property owner knew or should have 
+    known about the dangerous condition. We investigate thoroughly to establish liability, including:
+  </p>
+  <ul>
+    <li>Reviewing security camera footage</li>
+    <li>Interviewing witnesses</li>
+    <li>Examining maintenance records</li>
+    <li>Documenting the hazardous condition</li>
+    <li>Consulting with safety experts</li>
+  </ul>
+</PracticeAreaLayout>

@@ -1,0 +1,128 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import ServiceCards from '../components/sections/ServiceCards.astro';
+import WhyChooseUs from '../components/sections/WhyChooseUs.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import AreasServed from '../components/sections/AreasServed.astro';
+import BlogPreview from '../components/sections/BlogPreview.astro';
+import CTASection from '../components/sections/CTASection.astro';
+import FAQAccordion from '../components/sections/FAQAccordion.astro';
+
+import { featuredServices } from '../data/services';
+import { featuredTestimonials } from '../data/testimonials';
+
+// Homepage FAQs
+const homeFaqs = [
+  {
+    question: 'How long do I have to file an accident claim in Maryland?',
+    answer: 'In Maryland, you generally have three years from the date of the accident to file a personal injury claim. However, certain circumstances may affect this deadline, so it\'s best to consult with an attorney as soon as possible to protect your rights.'
+  },
+  {
+    question: 'What does it cost to hire a personal injury lawyer?',
+    answer: 'We work on a contingency fee basis, which means you pay nothing unless we win your case. Our fee is a percentage of the settlement or verdict we obtain for you. There are no upfront costs or hidden fees.'
+  },
+  {
+    question: 'What should I do immediately after a car accident?',
+    answer: 'First, ensure everyone\'s safety and call 911 if there are injuries. Document the scene with photos, exchange information with other drivers, get witness contact information, and seek medical attention even if you feel fine. Then, contact an attorney before speaking with insurance companies.'
+  },
+  {
+    question: 'Can I still recover damages if I was partially at fault?',
+    answer: 'Maryland follows a strict contributory negligence rule. If you are found even 1% at fault for the accident, you may be barred from recovering any damages. This is why it\'s crucial to have an experienced attorney who can build a strong case on your behalf.'
+  },
+  {
+    question: 'Do you speak languages other than English?',
+    answer: 'Yes! Our multilingual team speaks English, Russian, Ukrainian, Turkish, and Uzbek. We\'re committed to serving Maryland\'s diverse communities and ensuring all clients can communicate comfortably in their preferred language.'
+  }
+];
+
+// Sample blog posts (these will be replaced with actual content)
+const recentPosts = [
+  {
+    title: 'What to Do After a Car Accident in Maryland',
+    description: 'A step-by-step guide to protecting your rights and building a strong case after a motor vehicle accident.',
+    href: '/blog/steps-to-take-after-a-car-accident-in-maryland/',
+    date: '2024-01-15',
+    category: 'Car Accidents'
+  },
+  {
+    title: 'Understanding Maryland\'s Contributory Negligence Rule',
+    description: 'Learn how Maryland\'s strict contributory negligence law affects personal injury claims and what it means for your case.',
+    href: '/blog/contributory-negligence-in-maryland/',
+    date: '2024-01-10',
+    category: 'Personal Injury'
+  },
+  {
+    title: 'How Much Does a Personal Injury Lawyer Cost?',
+    description: 'Everything you need to know about contingency fees, costs, and what to expect when hiring a personal injury attorney.',
+    href: '/blog/how-much-does-a-personal-injury-lawyer-cost/',
+    date: '2024-01-05',
+    category: 'Legal Guide'
+  }
+];
+---
+
+<PageLayout 
+  title="Maryland Personal Injury & Criminal Defense Lawyer"
+  description="Experienced Maryland personal injury and criminal defense attorney with 26+ years of success. Free consultation, no fee unless we win. Call (410) 484-0400."
+>
+  <!-- Hero Section -->
+  <Hero 
+    title="Injured? Get the Justice You Deserve."
+    subtitle="Maryland's Trusted Personal Injury & Criminal Defense Firm"
+    description="With over 26 years of experience and a near-perfect success rate, we fight relentlessly for our clients. From car accidents to criminal charges, we're here for you 24/7."
+    showForm={true}
+    showStats={true}
+    variant="home"
+  />
+  
+  <!-- Trust Bar -->
+  <TrustBar />
+  
+  <!-- Practice Areas -->
+  <ServiceCards 
+    services={featuredServices}
+    title="How We Can Help You"
+    subtitle="Our Practice Areas"
+    columns={3}
+  />
+  
+  <!-- Why Choose Us -->
+  <WhyChooseUs />
+  
+  <!-- Testimonials -->
+  <Testimonials 
+    testimonials={featuredTestimonials}
+    title="What Our Clients Say"
+    subtitle="Real results for real people"
+  />
+  
+  <!-- Areas Served -->
+  <AreasServed 
+    title="Serving All of Maryland"
+    subtitle="From our Pikesville office"
+    limit={8}
+  />
+  
+  <!-- FAQ Section -->
+  <FAQAccordion 
+    faqs={homeFaqs}
+    title="Frequently Asked Questions"
+    subtitle="Get answers to common questions"
+  />
+  
+  <!-- Blog Preview -->
+  <BlogPreview 
+    posts={recentPosts}
+    title="Latest News & Insights"
+    subtitle="Stay informed about legal matters"
+  />
+  
+  <!-- Final CTA -->
+  <CTASection 
+    title="Ready to Fight for Your Rights?"
+    description="Don't wait to get the legal help you need. Contact us today for a free, no-obligation case evaluation. We're available 24/7."
+    variant="centered"
+  />
+</PageLayout>

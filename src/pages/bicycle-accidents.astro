@@ -1,0 +1,124 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What should I do after being hit by a car while cycling?',
+    answer: 'First, get to safety and call 911. Seek medical attention immediately, even if injuries seem minor. Document the scene with photos, get the driver\'s information and insurance details, collect witness contact information, and contact a bicycle accident attorney before speaking with insurance companies.'
+  },
+  {
+    question: 'Can I recover compensation if I wasn\'t wearing a helmet?',
+    answer: 'Yes, you can still pursue a claim. Maryland does not require adult cyclists to wear helmets. However, not wearing a helmet may affect the amount you can recover for head injuries. We can help you understand how this might impact your specific case.'
+  },
+  {
+    question: 'What if the driver claims I was at fault for the accident?',
+    answer: 'Maryland follows contributory negligence, meaning if you\'re found even partially at fault, you could be barred from recovery. That\'s why having an experienced attorney is crucial—we know how to build strong cases proving the driver\'s negligence and protecting your right to compensation.'
+  },
+  {
+    question: 'How long do I have to file a bicycle accident claim in Maryland?',
+    answer: 'Maryland has a three-year statute of limitations for personal injury claims. However, evidence can disappear quickly—witness memories fade, surveillance footage gets deleted, and physical evidence is cleared away. Contact an attorney as soon as possible to preserve your case.'
+  },
+  {
+    question: 'What compensation is available for bicycle accident injuries?',
+    answer: 'You may recover medical expenses (current and future), lost wages, loss of earning capacity, pain and suffering, bicycle replacement costs, permanent disability or disfigurement damages, and loss of quality of life. We\'ll evaluate your case to identify all available compensation.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['pedestrian-accidents', 'car-accidents', 'motorcycle-accidents'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Bicycle Accidents' }
+];
+---
+
+<PracticeAreaLayout
+  title="Bicycle Accident Lawyer in Pikesville, MD"
+  description="Experienced bicycle accident attorneys in Maryland. We fight for cyclists injured by negligent drivers to secure maximum compensation. Free consultation."
+  heroTitle="Bicycle Accident Lawyers in Maryland"
+  heroDescription="Cyclists deserve safe roads and legal protection. When negligent drivers cause accidents, we fight aggressively to hold them accountable and secure the compensation you deserve."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Experienced Bicycle Accident Attorneys in Maryland</h2>
+  <p>
+    Bicycle accidents involving motor vehicles often result in catastrophic injuries. Unlike drivers 
+    protected by steel frames and airbags, cyclists have virtually no protection when struck by a car, 
+    truck, or SUV. At the Law Offices of Alex Poberesky, we understand the unique challenges cyclists 
+    face and fight to protect their rights.
+  </p>
+  <p>
+    With over 26 years of experience, we've helped numerous cyclists throughout Maryland recover 
+    compensation for injuries caused by negligent drivers. We know how to build compelling cases 
+    that prove driver fault and maximize your recovery.
+  </p>
+
+  <h3>Common Causes of Bicycle Accidents</h3>
+  <p>Driver negligence causes most bicycle accidents. Common scenarios include:</p>
+  <ul>
+    <li><strong>Right hook accidents</strong> – Drivers turning right across a cyclist's path</li>
+    <li><strong>Left turn collisions</strong> – Drivers failing to yield when turning left</li>
+    <li><strong>Dooring accidents</strong> – Parked car occupants opening doors into cyclists</li>
+    <li><strong>Distracted driving</strong> – Texting, phone use, or other distractions</li>
+    <li><strong>Failure to yield</strong> – Drivers not respecting cyclists' right of way</li>
+    <li><strong>Unsafe passing</strong> – Passing too close to cyclists</li>
+    <li><strong>Running red lights/stop signs</strong> – Intersection violations</li>
+    <li><strong>Drunk driving</strong> – Impaired drivers failing to see cyclists</li>
+  </ul>
+
+  <h3>Common Bicycle Accident Injuries</h3>
+  <p>Bicycle accidents frequently cause severe injuries, including:</p>
+  <ul>
+    <li><strong>Traumatic brain injuries (TBI)</strong> – Even with helmets, head injuries are common</li>
+    <li><strong>Spinal cord injuries</strong> – Potentially causing paralysis</li>
+    <li><strong>Broken bones</strong> – Wrists, arms, legs, hips, and pelvis fractures</li>
+    <li><strong>Internal organ damage</strong> – Impact injuries to organs</li>
+    <li><strong>Road rash</strong> – Severe skin abrasions that may require skin grafts</li>
+    <li><strong>Facial injuries</strong> – Dental damage, jaw fractures, facial lacerations</li>
+    <li><strong>Soft tissue injuries</strong> – Torn ligaments, tendons, and muscles</li>
+    <li><strong>PTSD and anxiety</strong> – Psychological trauma from the accident</li>
+  </ul>
+
+  <h3>Maryland Bicycle Laws You Should Know</h3>
+  <p>
+    Maryland law grants cyclists the same rights and responsibilities as motor vehicle operators. 
+    Understanding these laws helps protect your claim:
+  </p>
+  <ul>
+    <li>Cyclists have the right to use the full travel lane when necessary for safety</li>
+    <li>Drivers must give cyclists at least three feet when passing</li>
+    <li>Cyclists may ride on shoulders but are not required to</li>
+    <li>Adults are not legally required to wear helmets (though it's recommended)</li>
+    <li>Cyclists must obey all traffic signals and signs</li>
+  </ul>
+
+  <h3>Compensation in Bicycle Accident Cases</h3>
+  <p>Depending on your injuries and circumstances, you may be entitled to recover:</p>
+  <ul>
+    <li>Medical expenses (emergency care, surgery, hospitalization, rehabilitation)</li>
+    <li>Future medical costs for ongoing treatment</li>
+    <li>Lost wages and loss of earning capacity</li>
+    <li>Pain and suffering</li>
+    <li>Scarring and disfigurement</li>
+    <li>Bicycle and equipment replacement</li>
+    <li>Emotional distress and mental anguish</li>
+    <li>Loss of enjoyment of life</li>
+  </ul>
+
+  <h3>Why Choose Our Bicycle Accident Lawyers</h3>
+  <p>
+    Insurance companies often try to blame cyclists for accidents, claiming they were in the wrong 
+    position or didn't follow traffic laws. We know these tactics and fight back aggressively. Our 
+    attorneys have the experience to investigate accidents thoroughly, work with accident 
+    reconstruction experts, and build cases that prove driver negligence.
+  </p>
+  <p>
+    We work on a contingency fee basis—you pay nothing unless we win your case. Contact us today 
+    for a free consultation about your bicycle accident claim.
+  </p>
+</PracticeAreaLayout>

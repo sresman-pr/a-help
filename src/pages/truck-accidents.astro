@@ -1,0 +1,115 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What makes truck accident cases different from car accidents?',
+    answer: 'Truck accidents often involve multiple liable parties (driver, trucking company, maintenance provider, manufacturer), federal regulations that may have been violated, and more severe injuries due to the size disparity. They require extensive investigation and specialized knowledge to handle effectively.'
+  },
+  {
+    question: 'Who can be held liable in a truck accident?',
+    answer: 'Potentially liable parties include the truck driver, trucking company, cargo loading company, truck or parts manufacturer, maintenance company, and even government entities if road conditions contributed to the accident.'
+  },
+  {
+    question: 'What federal regulations apply to commercial trucks?',
+    answer: 'The Federal Motor Carrier Safety Administration (FMCSA) sets regulations covering driver hours of service, vehicle maintenance, cargo securement, driver qualifications, and more. Violations of these regulations can be key evidence in your case.'
+  },
+  {
+    question: 'How long do I have to file a truck accident claim?',
+    answer: 'Maryland has a three-year statute of limitations, but you should act quickly. Trucking companies often have teams working immediately to limit their liability, and critical evidence like electronic logs may be destroyed if not preserved promptly.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['car-accidents', 'motorcycle-accidents', 'wrongful-death'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Truck Accidents' }
+];
+---
+
+<PracticeAreaLayout
+  title="Truck Accident Lawyer in Pikesville, MD"
+  description="Experienced truck accident attorneys in Maryland handling 18-wheeler, semi-truck, and commercial vehicle accidents. Maximum compensation for serious injuries. Free consultation."
+  heroTitle="Truck Accident Lawyers in Maryland"
+  heroDescription="Commercial truck accidents cause devastating injuries and require specialized legal knowledge. Our experienced attorneys have the resources to take on trucking companies and their insurers."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Commercial Truck Accident Attorneys in Maryland</h2>
+  <p>
+    When a massive commercial truck collides with a passenger vehicle, the results are often catastrophic. 
+    18-wheelers, tractor-trailers, and other commercial trucks can weigh up to 80,000 pounds fully loaded—
+    compared to an average car weighing about 4,000 pounds. This enormous size difference means truck 
+    accidents typically result in severe injuries or fatalities.
+  </p>
+  <p>
+    At the Law Offices of Alex Poberesky, we have extensive experience handling complex truck accident 
+    cases throughout Maryland. We understand the federal regulations governing the trucking industry, 
+    how to investigate these accidents, and how to hold all responsible parties accountable.
+  </p>
+
+  <h3>Common Causes of Truck Accidents</h3>
+  <ul>
+    <li><strong>Driver fatigue</strong> – Truckers often drive long hours despite federal hours-of-service regulations</li>
+    <li><strong>Distracted driving</strong> – Using phones, GPS devices, or eating while driving</li>
+    <li><strong>Impaired driving</strong> – Alcohol, drugs, or prescription medications</li>
+    <li><strong>Speeding</strong> – Pressure to meet delivery deadlines</li>
+    <li><strong>Improper loading</strong> – Overloaded or improperly secured cargo</li>
+    <li><strong>Poor maintenance</strong> – Brake failures, tire blowouts, mechanical defects</li>
+    <li><strong>Inadequate training</strong> – Inexperienced or unqualified drivers</li>
+    <li><strong>Aggressive driving</strong> – Tailgating, unsafe lane changes, failure to yield</li>
+  </ul>
+
+  <h3>Types of Truck Accidents We Handle</h3>
+  <ul>
+    <li>18-wheeler and semi-truck accidents</li>
+    <li>Tractor-trailer collisions</li>
+    <li>Tanker truck accidents</li>
+    <li>Delivery truck accidents (UPS, FedEx, Amazon)</li>
+    <li>Garbage truck accidents</li>
+    <li>Dump truck accidents</li>
+    <li>Jackknife accidents</li>
+    <li>Rollover accidents</li>
+    <li>Underride and override accidents</li>
+    <li>Wide turn accidents</li>
+  </ul>
+
+  <h3>Multiple Parties May Be Liable</h3>
+  <p>Unlike car accidents, truck accident cases often involve multiple potentially liable parties:</p>
+  <ul>
+    <li><strong>The truck driver</strong> – For negligent driving, fatigue, or impairment</li>
+    <li><strong>The trucking company</strong> – For negligent hiring, training, or supervision</li>
+    <li><strong>The cargo company</strong> – For improper loading or securement</li>
+    <li><strong>The truck manufacturer</strong> – For defective vehicles or parts</li>
+    <li><strong>Maintenance providers</strong> – For negligent repairs or inspections</li>
+    <li><strong>Government entities</strong> – For dangerous road conditions</li>
+  </ul>
+
+  <h3>Federal Trucking Regulations</h3>
+  <p>
+    Commercial trucks are governed by Federal Motor Carrier Safety Administration (FMCSA) regulations 
+    covering hours of service, vehicle maintenance, driver qualifications, and cargo securement. 
+    Violations of these regulations can be powerful evidence in your case.
+  </p>
+  <p>
+    Our attorneys are well-versed in these regulations and know how to identify violations that 
+    contributed to your accident.
+  </p>
+
+  <h3>Serious Injuries Require Serious Representation</h3>
+  <p>
+    Truck accidents often cause severe injuries including traumatic brain injuries, spinal cord injuries, 
+    multiple fractures, internal organ damage, and burns. These injuries may require extensive medical 
+    treatment and can result in permanent disabilities.
+  </p>
+  <p>
+    We fight to recover compensation for all of your damages, including future medical care, lost 
+    earning capacity, and pain and suffering.
+  </p>
+</PracticeAreaLayout>

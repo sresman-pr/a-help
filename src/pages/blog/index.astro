@@ -1,0 +1,164 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumbs from '../../components/common/Breadcrumbs.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import { Calendar, ArrowRight, User } from '@lucide/astro';
+import { getCollection } from 'astro:content';
+
+// Get all blog posts sorted by date
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => 
+  new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+
+const breadcrumbs = [
+  { label: 'Blog' }
+];
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+};
+
+// Get unique categories
+const categories = [...new Set(posts.map(post => post.data.category))];
+---
+
+<PageLayout 
+  title="Legal Blog | Maryland Personal Injury & Criminal Defense"
+  description="Legal insights, news, and guides from the Law Offices of Alex Poberesky. Learn about personal injury, criminal defense, and your rights in Maryland."
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h1 class="font-heading font-bold text-navy-900 mb-4">Legal Blog</h1>
+        <p class="text-xl text-gray-600">
+          Stay informed about legal matters in Maryland. Our blog covers personal injury, 
+          criminal defense, and practical guides to help you understand your rights.
+        </p>
+      </div>
+      
+      <!-- Category Filter -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <a 
+          href="/blog/" 
+          class="px-4 py-2 bg-navy-900 text-white rounded-full text-sm font-medium"
+        >
+          All Posts
+        </a>
+        {categories.map(category => (
+          <a 
+            href={`/blog/?category=${category.toLowerCase().replace(/\s+/g, '-')}`}
+            class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gold-50 hover:text-gold-700 rounded-full text-sm font-medium transition-colors"
+          >
+            {category}
+          </a>
+        ))}
+      </div>
+      
+      {posts.length > 0 ? (
+        <>
+          <!-- Featured Post -->
+          {posts[0] && (
+            <div class="mb-12">
+              <a 
+                href={`/blog/${posts[0].id}/`}
+                class="group grid md:grid-cols-2 gap-8 bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100"
+              >
+                <div class="aspect-video md:aspect-auto bg-gradient-navy flex items-center justify-center">
+                  {posts[0].data.image ? (
+                    <img 
+                      src={posts[0].data.image} 
+                      alt={posts[0].data.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <span class="text-gold-500 font-heading font-bold text-6xl">A</span>
+                  )}
+                </div>
+                <div class="p-8 flex flex-col justify-center">
+                  <span class="inline-block px-3 py-1 bg-gold-50 text-gold-700 text-sm font-medium rounded-full mb-4 w-fit">
+                    {posts[0].data.category}
+                  </span>
+                  <h2 class="font-heading font-bold text-2xl text-navy-900 group-hover:text-gold-600 transition-colors mb-4">
+                    {posts[0].data.title}
+                  </h2>
+                  <p class="text-gray-600 mb-4 line-clamp-3">
+                    {posts[0].data.description}
+                  </p>
+                  <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <div class="flex items-center gap-2">
+                      <User class="w-4 h-4" />
+                      {posts[0].data.author}
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <Calendar class="w-4 h-4" />
+                      {formatDate(posts[0].data.publishDate)}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          )}
+          
+          <!-- Post Grid -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.slice(1).map(post => (
+              <a 
+                href={`/blog/${post.id}/`}
+                class="group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 card-hover"
+              >
+                <div class="aspect-video bg-gradient-navy flex items-center justify-center">
+                  {post.data.image ? (
+                    <img 
+                      src={post.data.image} 
+                      alt={post.data.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <span class="text-gold-500 font-heading font-bold text-4xl">A</span>
+                  )}
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="px-2 py-1 bg-gold-50 text-gold-700 text-xs font-medium rounded-full">
+                      {post.data.category}
+                    </span>
+                    <span class="text-gray-500 text-xs">
+                      {formatDate(post.data.publishDate)}
+                    </span>
+                  </div>
+                  <h3 class="font-heading font-bold text-navy-900 group-hover:text-gold-600 transition-colors mb-2 line-clamp-2">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-gray-600 text-sm line-clamp-2 mb-4">
+                    {post.data.description}
+                  </p>
+                  <span class="flex items-center text-gold-600 font-medium text-sm group-hover:text-gold-500">
+                    Read More
+                    <ArrowRight class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-gray-600">No blog posts found. Check back soon for legal insights and updates.</p>
+        </div>
+      )}
+    </div>
+  </section>
+  
+  <CTASection 
+    title="Have a Legal Question?"
+    description="Our blog provides general information, but every case is unique. Contact us for a free consultation about your specific situation."
+    variant="centered"
+  />
+</PageLayout>

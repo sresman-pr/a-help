@@ -1,0 +1,151 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What is the difference between nursing home neglect and abuse?',
+    answer: 'Neglect occurs when a facility fails to provide necessary care—inadequate food, hygiene, medical attention, or supervision. Abuse is intentional harm, including physical abuse, emotional abuse, sexual abuse, or financial exploitation. Both are actionable under Maryland law.'
+  },
+  {
+    question: 'What are the signs of nursing home neglect or abuse?',
+    answer: 'Warning signs include unexplained injuries, bedsores, sudden weight loss, dehydration, poor hygiene, dirty living conditions, medication errors, changes in behavior or mood, social withdrawal, fear around certain staff members, and unexplained financial transactions.'
+  },
+  {
+    question: 'Can I sue a nursing home for my loved one\'s injuries?',
+    answer: 'Yes. Nursing homes have a legal duty to provide adequate care. If neglect or abuse causes injury or death, the facility can be held liable. Family members can bring claims on behalf of incapacitated residents, and wrongful death claims if neglect caused death.'
+  },
+  {
+    question: 'What should I do if I suspect nursing home abuse or neglect?',
+    answer: 'Document everything—photograph injuries, keep notes of incidents, and preserve any evidence. Report concerns to facility management and Maryland\'s Office of Health Care Quality. Seek medical attention for your loved one. Then contact an attorney to discuss your legal options.'
+  },
+  {
+    question: 'What damages are available in nursing home neglect cases?',
+    answer: 'Compensation may include medical expenses, pain and suffering, emotional distress, diminished quality of life, costs of relocation to a new facility, and in cases of death, wrongful death damages. Punitive damages may be available for egregious misconduct.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['medical-malpractice', 'wrongful-death'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Nursing Home Neglect' }
+];
+---
+
+<PracticeAreaLayout
+  title="Nursing Home Neglect Lawyer in Pikesville, MD"
+  description="Experienced nursing home abuse and neglect attorneys in Maryland. We protect elderly residents and hold negligent facilities accountable. Free consultation."
+  heroTitle="Nursing Home Neglect Lawyers in Maryland"
+  heroDescription="Our elderly loved ones deserve dignity and proper care. When nursing homes fail them through neglect or abuse, we fight to hold facilities accountable and protect vulnerable residents."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Protecting Maryland's Elderly from Nursing Home Neglect and Abuse</h2>
+  <p>
+    When we entrust our elderly loved ones to nursing homes and assisted living facilities, 
+    we expect them to receive proper care, dignity, and respect. Tragically, many facilities 
+    fail to meet even basic standards of care, resulting in preventable injuries, suffering, 
+    and death.
+  </p>
+  <p>
+    At the Law Offices of Alex Poberesky, we fight to protect Maryland's most vulnerable 
+    residents. With over 26 years of experience, we hold negligent facilities accountable 
+    and seek justice for victims of nursing home abuse and neglect.
+  </p>
+
+  <h3>Types of Nursing Home Neglect</h3>
+  <p>Neglect occurs when facilities fail to provide necessary care, including:</p>
+  <ul>
+    <li><strong>Medical neglect</strong> – Failure to provide medications, medical treatment, or monitor health conditions</li>
+    <li><strong>Basic needs neglect</strong> – Inadequate food, water, or personal hygiene</li>
+    <li><strong>Bedsore development</strong> – Failure to reposition immobile residents, leading to pressure ulcers</li>
+    <li><strong>Fall prevention failures</strong> – Lack of supervision or safety measures</li>
+    <li><strong>Sanitation neglect</strong> – Dirty rooms, soiled bedding, unsanitary conditions</li>
+    <li><strong>Social and emotional neglect</strong> – Isolation and lack of social interaction</li>
+    <li><strong>Understaffing</strong> – Insufficient staff to properly care for all residents</li>
+  </ul>
+
+  <h3>Types of Nursing Home Abuse</h3>
+  <p>Abuse involves intentional harm and can take many forms:</p>
+  <ul>
+    <li><strong>Physical abuse</strong> – Hitting, pushing, restraining, rough handling</li>
+    <li><strong>Emotional/psychological abuse</strong> – Verbal threats, humiliation, intimidation</li>
+    <li><strong>Sexual abuse</strong> – Any non-consensual sexual contact</li>
+    <li><strong>Financial exploitation</strong> – Theft, fraud, coerced changes to wills or financial documents</li>
+    <li><strong>Medication abuse</strong> – Over-sedation to make residents easier to manage</li>
+  </ul>
+
+  <h3>Warning Signs of Neglect and Abuse</h3>
+  <p>Be alert to these signs that your loved one may be suffering:</p>
+  <ul>
+    <li>Unexplained bruises, cuts, burns, or fractures</li>
+    <li>Bedsores (pressure ulcers), especially at advanced stages</li>
+    <li>Sudden weight loss or signs of malnutrition</li>
+    <li>Dehydration</li>
+    <li>Poor personal hygiene—unwashed, unchanged clothing, body odor</li>
+    <li>Unclean living conditions</li>
+    <li>Medication errors or untreated medical conditions</li>
+    <li>Behavioral changes—depression, anxiety, withdrawal, fear</li>
+    <li>Reluctance to speak openly around staff</li>
+    <li>Unusual financial activity</li>
+  </ul>
+
+  <h3>Common Causes of Nursing Home Neglect</h3>
+  <p>Neglect often results from systemic problems at facilities:</p>
+  <ul>
+    <li>Understaffing to cut costs and increase profits</li>
+    <li>Inadequately trained staff</li>
+    <li>Poor hiring practices and failure to screen employees</li>
+    <li>Lack of supervision and oversight</li>
+    <li>Failure to follow care plans</li>
+    <li>Inadequate policies and procedures</li>
+    <li>Corporate profit prioritized over patient care</li>
+  </ul>
+
+  <h3>Injuries and Harm from Nursing Home Neglect</h3>
+  <ul>
+    <li>Bedsores (pressure ulcers) that can become life-threatening</li>
+    <li>Falls resulting in broken bones, hip fractures, and head injuries</li>
+    <li>Infections from unclean conditions or untreated wounds</li>
+    <li>Malnutrition and dehydration</li>
+    <li>Medication errors causing adverse reactions</li>
+    <li>Worsening of existing medical conditions</li>
+    <li>Emotional trauma and depression</li>
+    <li>Wrongful death</li>
+  </ul>
+
+  <h3>Compensation in Nursing Home Cases</h3>
+  <p>Victims and their families may recover:</p>
+  <ul>
+    <li>Medical expenses for treating neglect-related injuries</li>
+    <li>Costs of relocating to a different facility</li>
+    <li>Pain and suffering</li>
+    <li>Emotional distress</li>
+    <li>Diminished quality of life</li>
+    <li>Wrongful death damages if neglect caused death</li>
+    <li>Punitive damages for egregious misconduct</li>
+  </ul>
+
+  <h3>Taking Action Against Negligent Facilities</h3>
+  <p>
+    If you suspect your loved one is being neglected or abused in a Maryland nursing home, 
+    take action immediately:
+  </p>
+  <ol>
+    <li>Document everything—photos of injuries, notes about incidents</li>
+    <li>Report concerns to facility management in writing</li>
+    <li>File a complaint with Maryland's Office of Health Care Quality</li>
+    <li>Seek medical attention for your loved one</li>
+    <li>Contact an experienced nursing home neglect attorney</li>
+  </ol>
+  <p>
+    Our attorneys have the experience to investigate these cases, work with medical experts 
+    to document harm, and hold facilities accountable. Contact us for a free, confidential 
+    consultation about your loved one's situation.
+  </p>
+</PracticeAreaLayout>

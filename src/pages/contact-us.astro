@@ -1,0 +1,171 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Breadcrumbs from '../components/common/Breadcrumbs.astro';
+import ContactForm from '../components/forms/ContactForm.astro';
+import { Phone, Mail, MapPin, Clock, Globe } from '@lucide/astro';
+import { contactInfo } from '../data/navigation';
+
+const breadcrumbs = [
+  { label: 'Contact Us' }
+];
+---
+
+<PageLayout 
+  title="Contact Us | Maryland Personal Injury & Criminal Defense Lawyer"
+  description="Contact the Law Offices of Alex Poberesky for a free consultation. Available 24/7. Call (410) 484-0400 or fill out our contact form."
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h1 class="font-heading font-bold text-navy-900 mb-4">Contact Us</h1>
+        <p class="text-xl text-gray-600">
+          Ready to discuss your case? Contact us today for a free, no-obligation consultation. 
+          We're available 24/7 to help you.
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div>
+          <ContactForm 
+            title="Send Us a Message"
+            subtitle="Fill out the form below and we'll get back to you within 24 hours."
+            variant="default"
+            showPhone={true}
+          />
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="font-heading font-bold text-navy-900 text-2xl mb-6">Get In Touch</h2>
+            
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Phone class="w-6 h-6 text-gold-500" />
+                </div>
+                <div>
+                  <h3 class="font-bold text-navy-900 mb-1">Phone</h3>
+                  <a href={`tel:${contactInfo.phoneRaw}`} class="text-xl text-gold-600 hover:text-gold-500 font-semibold">
+                    {contactInfo.phone}
+                  </a>
+                  <p class="text-gray-600 text-sm mt-1">Available 24 hours a day, 7 days a week</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Mail class="w-6 h-6 text-gold-500" />
+                </div>
+                <div>
+                  <h3 class="font-bold text-navy-900 mb-1">Email</h3>
+                  <a href={`mailto:${contactInfo.email}`} class="text-gold-600 hover:text-gold-500">
+                    {contactInfo.email}
+                  </a>
+                  <p class="text-gray-600 text-sm mt-1">We respond to most emails within 24 hours</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MapPin class="w-6 h-6 text-gold-500" />
+                </div>
+                <div>
+                  <h3 class="font-bold text-navy-900 mb-1">Office Location</h3>
+                  <p class="text-gray-700">
+                    {contactInfo.address.street}<br>
+                    {contactInfo.address.city}, {contactInfo.address.state} {contactInfo.address.zip}
+                  </p>
+                  <p class="text-gray-600 text-sm mt-1">
+                    Located in the Pikesville business district, near State Police HQ
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Clock class="w-6 h-6 text-gold-500" />
+                </div>
+                <div>
+                  <h3 class="font-bold text-navy-900 mb-1">Hours</h3>
+                  <p class="text-gray-700">24/7 Availability</p>
+                  <p class="text-gray-600 text-sm mt-1">
+                    Office hours: Monday - Friday, 9am - 5pm<br>
+                    Emergency consultations available anytime
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Globe class="w-6 h-6 text-gold-500" />
+                </div>
+                <div>
+                  <h3 class="font-bold text-navy-900 mb-1">Languages</h3>
+                  <p class="text-gray-700">{contactInfo.languages.join(', ')}</p>
+                  <p class="text-gray-600 text-sm mt-1">
+                    We're proud to serve Maryland's diverse communities
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Map -->
+          <div class="bg-gray-100 rounded-xl overflow-hidden aspect-video">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.8548953831437!2d-76.72486492357745!3d39.37397691545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c81a3e4c4c2a5b%3A0x8b0a8b0a8b0a8b0a!2s25%20Hooks%20Ln%20%23310%2C%20Pikesville%2C%20MD%2021208!5e0!3m2!1sen!2sus!4v1234567890"
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy"
+              title="Office Location Map"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- What to Expect -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-heading font-bold text-navy-900 mb-4">What to Expect</h2>
+        <p class="text-gray-600 mb-8">
+          When you contact us, here's what happens next:
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-8 text-left">
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold mb-4">1</div>
+            <h3 class="font-bold text-navy-900 mb-2">Free Consultation</h3>
+            <p class="text-gray-600 text-sm">
+              We'll listen to your story, ask questions about your situation, and explain your legal options.
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold mb-4">2</div>
+            <h3 class="font-bold text-navy-900 mb-2">Case Evaluation</h3>
+            <p class="text-gray-600 text-sm">
+              We'll assess the strength of your case and provide an honest evaluation of your potential outcomes.
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-navy-900 font-bold mb-4">3</div>
+            <h3 class="font-bold text-navy-900 mb-2">Action Plan</h3>
+            <p class="text-gray-600 text-sm">
+              If you decide to work with us, we'll develop a strategy and get started on your case immediately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

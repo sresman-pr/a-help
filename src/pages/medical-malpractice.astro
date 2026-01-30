@@ -1,0 +1,102 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What qualifies as medical malpractice in Maryland?',
+    answer: 'Medical malpractice occurs when a healthcare provider deviates from the accepted standard of care, causing injury to a patient. This can include misdiagnosis, surgical errors, medication mistakes, birth injuries, and failure to treat conditions properly.'
+  },
+  {
+    question: 'How long do I have to file a medical malpractice claim?',
+    answer: 'Maryland generally has a three-year statute of limitations for medical malpractice claims from the date of injury. However, in some cases where the injury wasn\'t immediately discoverable, you have three years from when you discovered (or should have discovered) the injury, up to a maximum of five years.'
+  },
+  {
+    question: 'Do I need an expert witness for my medical malpractice case?',
+    answer: 'Yes. Maryland requires a certificate of qualified expert before filing most medical malpractice lawsuits. The expert must attest that the defendant breached the standard of care and caused your injury. We work with qualified medical experts to build strong cases.'
+  },
+  {
+    question: 'Can I sue a hospital for medical malpractice?',
+    answer: 'Yes. Hospitals can be held liable for their employees\' negligence, inadequate staffing, improper equipment maintenance, and failure to ensure patient safety. We investigate all potentially liable parties to maximize your recovery.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['dental-malpractice', 'nursing-home-neglect', 'wrongful-death'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Medical Malpractice' }
+];
+---
+
+<PracticeAreaLayout
+  title="Medical Malpractice Lawyer in Pikesville, MD"
+  description="Experienced medical malpractice attorneys in Maryland. Misdiagnosis, surgical errors, birth injuries, hospital negligence. Free consultation."
+  heroTitle="Medical Malpractice Lawyers in Maryland"
+  heroDescription="When healthcare providers fail in their duty to provide competent care, patients suffer. We hold negligent doctors, hospitals, and healthcare facilities accountable."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Holding Healthcare Providers Accountable</h2>
+  <p>
+    When you seek medical care, you trust that healthcare providers will treat you competently and 
+    safely. Unfortunately, medical errors occur far too often, causing serious injuries and even death. 
+    Medical malpractice is the third leading cause of death in the United States.
+  </p>
+  <p>
+    At the Law Offices of Alex Poberesky, we represent patients and families harmed by medical 
+    negligence. These complex cases require significant resources and expertise, and we have both.
+  </p>
+
+  <h3>Types of Medical Malpractice We Handle</h3>
+  <ul>
+    <li><strong>Misdiagnosis or delayed diagnosis</strong> – Failing to identify conditions in time</li>
+    <li><strong>Surgical errors</strong> – Wrong-site surgery, surgical tool left inside, nerve damage</li>
+    <li><strong>Medication errors</strong> – Wrong medication, dosage, or dangerous interactions</li>
+    <li><strong>Birth injuries</strong> – Cerebral palsy, Erb's palsy, brain damage during delivery</li>
+    <li><strong>Anesthesia errors</strong> – Overdose, failure to monitor, allergic reactions</li>
+    <li><strong>Emergency room errors</strong> – Failure to treat, premature discharge</li>
+    <li><strong>Failure to obtain informed consent</strong> – Performing procedures without proper consent</li>
+    <li><strong>Hospital-acquired infections</strong> – Preventable infections from poor sanitation</li>
+  </ul>
+
+  <h3>Who Can Be Held Liable?</h3>
+  <p>Medical malpractice claims may be filed against:</p>
+  <ul>
+    <li>Doctors and physicians</li>
+    <li>Surgeons</li>
+    <li>Anesthesiologists</li>
+    <li>Nurses and nursing staff</li>
+    <li>Hospitals and medical facilities</li>
+    <li>Pharmacists</li>
+    <li>Laboratories and diagnostic centers</li>
+    <li>Medical device manufacturers</li>
+  </ul>
+
+  <h3>Maryland Medical Malpractice Requirements</h3>
+  <p>
+    Maryland has specific requirements for medical malpractice cases that make having an experienced 
+    attorney essential:
+  </p>
+  <ul>
+    <li><strong>Certificate of qualified expert</strong> – Required before filing suit</li>
+    <li><strong>Damages caps</strong> – Maryland caps non-economic damages in malpractice cases</li>
+    <li><strong>Statute of limitations</strong> – Generally 3 years, with some exceptions</li>
+    <li><strong>Standard of care</strong> – Must prove the provider deviated from accepted practice</li>
+  </ul>
+
+  <h3>What You May Recover</h3>
+  <p>Compensation in medical malpractice cases may include:</p>
+  <ul>
+    <li>Medical expenses for corrective treatment</li>
+    <li>Future medical care and rehabilitation</li>
+    <li>Lost wages and earning capacity</li>
+    <li>Pain and suffering (subject to Maryland's caps)</li>
+    <li>Loss of enjoyment of life</li>
+    <li>In cases of death, wrongful death damages</li>
+  </ul>
+</PracticeAreaLayout>

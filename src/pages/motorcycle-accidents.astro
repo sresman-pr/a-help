@@ -1,0 +1,99 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What makes motorcycle accidents more dangerous?',
+    answer: 'Motorcyclists lack the protective shell that cars provide. Even with helmets and protective gear, riders are directly exposed to impact forces, road surfaces, and other vehicles. Statistics show motorcyclists are 29 times more likely to die in a crash than car occupants.'
+  },
+  {
+    question: 'What if I wasn\'t wearing a helmet?',
+    answer: 'Maryland law requires helmets for all motorcycle riders. However, not wearing a helmet doesn\'t necessarily bar you from recovering compensation. We can still fight for your damages, though it may affect the amount you can recover for head injuries.'
+  },
+  {
+    question: 'The other driver says they didn\'t see me. Is that a defense?',
+    answer: 'No. Drivers have a duty to watch for all vehicles, including motorcycles. "I didn\'t see the motorcycle" is one of the most common excuses but it doesn\'t excuse negligent driving. We fight to hold drivers accountable for failing to see motorcyclists.'
+  },
+  {
+    question: 'Can I still recover if I was lane splitting?',
+    answer: 'Lane splitting (riding between lanes of traffic) is illegal in Maryland. However, even if you were lane splitting, you may still have a claim if the other driver was also negligent. Each case is different, so consult with an attorney.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['car-accidents', 'bicycle-accidents', 'pedestrian-accidents'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Motorcycle Accidents' }
+];
+---
+
+<PracticeAreaLayout
+  title="Motorcycle Accident Lawyer in Pikesville, MD"
+  description="Experienced motorcycle accident attorneys in Maryland. We understand rider rights and fight for maximum compensation for injuries. Free consultation."
+  heroTitle="Motorcycle Accident Lawyers in Maryland"
+  heroDescription="Motorcyclists deserve the same respect and protection as any other driver. When negligent drivers cause accidents, we fight aggressively for riders' rights to full compensation."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Dedicated Motorcycle Accident Attorneys</h2>
+  <p>
+    Motorcycle accidents often result in severe injuries due to the rider's exposure and vulnerability. 
+    At the Law Offices of Alex Poberesky, we understand the unique challenges motorcyclists face—both 
+    on the road and in the legal system.
+  </p>
+  <p>
+    Many people, including insurance adjusters, hold unfair biases against motorcyclists. We fight 
+    these biases and ensure our clients receive the compensation they deserve, regardless of 
+    preconceived notions about motorcycle riders.
+  </p>
+
+  <h3>Common Causes of Motorcycle Accidents</h3>
+  <ul>
+    <li><strong>Left-turn accidents</strong> – Drivers failing to see motorcycles when turning</li>
+    <li><strong>Failure to yield</strong> – Drivers not giving motorcyclists right of way</li>
+    <li><strong>Distracted driving</strong> – Drivers on phones missing motorcycles in traffic</li>
+    <li><strong>Speeding</strong> – Both by motorcyclists and other drivers</li>
+    <li><strong>Lane changes</strong> – Drivers failing to check blind spots</li>
+    <li><strong>Road hazards</strong> – Potholes, debris, oil slicks particularly dangerous for bikes</li>
+    <li><strong>Door opening accidents</strong> – Parked car occupants opening doors into traffic</li>
+    <li><strong>DUI/Impaired driving</strong> – Intoxicated drivers failing to see motorcycles</li>
+  </ul>
+
+  <h3>Common Motorcycle Accident Injuries</h3>
+  <p>Due to the lack of protection, motorcycle accidents often cause serious injuries:</p>
+  <ul>
+    <li><strong>Road rash</strong> – Severe skin abrasions requiring skin grafts</li>
+    <li><strong>Traumatic brain injuries</strong> – Even with helmets, TBIs are common</li>
+    <li><strong>Spinal cord injuries</strong> – Potentially causing paralysis</li>
+    <li><strong>Broken bones</strong> – Legs, arms, pelvis, ribs</li>
+    <li><strong>Internal injuries</strong> – Organ damage and internal bleeding</li>
+    <li><strong>Biker's arm</strong> – Nerve damage from impact to the arm</li>
+    <li><strong>Facial and dental injuries</strong> – From impact with road or objects</li>
+  </ul>
+
+  <h3>Compensation for Motorcycle Accidents</h3>
+  <p>You may be entitled to recover:</p>
+  <ul>
+    <li>All medical expenses including future treatment</li>
+    <li>Lost wages and diminished earning capacity</li>
+    <li>Motorcycle repair or replacement</li>
+    <li>Pain and suffering</li>
+    <li>Scarring and disfigurement</li>
+    <li>Loss of enjoyment of life</li>
+    <li>Emotional distress</li>
+  </ul>
+
+  <h3>Why Choose a Motorcycle Accident Specialist</h3>
+  <p>
+    Motorcycle accident cases require an attorney who understands the physics of motorcycle crashes, 
+    the biases that motorcyclists face, and the serious nature of typical motorcycle injuries. We 
+    have the experience and resources to build compelling cases that overcome anti-motorcycle bias 
+    and secure maximum compensation for our clients.
+  </p>
+</PracticeAreaLayout>

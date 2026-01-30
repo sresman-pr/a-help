@@ -1,0 +1,187 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { criminalDefenseServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What is the difference between first and second degree assault in Maryland?',
+    answer: 'First degree assault is a felony involving serious physical injury or use of a firearm, carrying up to 25 years in prison. Second degree assault is a misdemeanor covering all other assault situations, with penalties up to 10 years for assault on certain protected individuals or up to $2,500 fine and 10 years for general assault.'
+  },
+  {
+    question: 'Can I claim self-defense if I\'m charged with assault?',
+    answer: 'Yes, self-defense is a valid legal defense in Maryland. You must show you reasonably believed you were in imminent danger of harm and used only the force necessary to protect yourself. Maryland also recognizes the defense of others and, in limited circumstances, defense of property.'
+  },
+  {
+    question: 'What if the alleged victim doesn\'t want to press charges?',
+    answer: 'In Maryland, the decision to prosecute lies with the State\'s Attorney, not the victim. Even if the alleged victim wants to drop charges, the prosecution may proceed. However, a victim\'s reluctance can affect the strength of the case, and we can work to present this and other mitigating factors.'
+  },
+  {
+    question: 'Can assault charges be expunged in Maryland?',
+    answer: 'Second degree assault convictions may be eligible for expungement after a waiting period (typically 15 years after completing your sentence). Charges that were dismissed or resulted in acquittal can be expunged sooner. First degree assault (felony) convictions are generally not eligible for expungement.'
+  },
+  {
+    question: 'What if I was defending someone else during an assault?',
+    answer: 'Defense of others is a recognized legal defense in Maryland. You may use reasonable force to protect another person if you reasonably believe they are in imminent danger of harm. The same principles that apply to self-defense generally apply to defending others.'
+  }
+];
+
+const relatedServices = criminalDefenseServices.filter(s => 
+  ['domestic-violence', 'drug-crimes', 'theft-offenses'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Criminal Defense', href: '/criminal-defense/' },
+  { label: 'Assault Defense' }
+];
+---
+
+<PracticeAreaLayout
+  title="Assault Defense Lawyer in Pikesville, MD"
+  description="Experienced assault defense attorneys in Maryland. We defend first and second degree assault charges with aggressive strategies including self-defense. Free consultation."
+  heroTitle="Assault Defense Lawyers in Maryland"
+  heroDescription="Assault charges can result in serious prison time and a permanent criminal record. Our experienced defense attorneys fight aggressively to protect your rights and build the strongest possible defense."
+  category="criminal-defense"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Aggressive Assault Defense in Maryland</h2>
+  <p>
+    Being charged with assault in Maryland is a serious matter that can change your life forever. 
+    Whether you're facing misdemeanor or felony charges, a conviction can mean prison time, a 
+    permanent criminal record, and lasting damage to your reputation and career. At the Law Offices 
+    of Alex Poberesky, we provide aggressive defense for all assault charges throughout Maryland.
+  </p>
+  <p>
+    Our experienced criminal defense attorneys understand that assault cases are often not as 
+    straightforward as they appear. We thoroughly investigate the circumstances, identify all 
+    available defenses, and fight to protect your rights and your future.
+  </p>
+
+  <h3>Understanding Assault Charges in Maryland</h3>
+  <p>
+    Maryland law recognizes different degrees of assault with varying penalties:
+  </p>
+
+  <h4>First Degree Assault (Felony)</h4>
+  <p>
+    First degree assault is the most serious assault charge in Maryland. It involves:
+  </p>
+  <ul>
+    <li>Intentionally causing or attempting to cause serious physical injury</li>
+    <li>Assault with a firearm (including airsoft, BB guns, and pepper spray)</li>
+  </ul>
+  <p><strong>Penalties:</strong> Up to 25 years in state prison</p>
+
+  <h4>Second Degree Assault (Misdemeanor)</h4>
+  <p>
+    Second degree assault covers all other assault situations, including:
+  </p>
+  <ul>
+    <li>Offensive physical contact</li>
+    <li>Attempting to cause physical harm</li>
+    <li>Placing someone in fear of imminent harm</li>
+  </ul>
+  <p><strong>Penalties:</strong></p>
+  <ul>
+    <li>General assault – Up to 10 years imprisonment and/or $2,500 fine</li>
+    <li>Assault on law enforcement, emergency personnel, or other protected individuals – Up to 10 years and/or $5,000 fine</li>
+  </ul>
+
+  <h3>Common Defenses to Assault Charges</h3>
+  <p>Our attorneys explore every possible defense, including:</p>
+
+  <h4>Self-Defense</h4>
+  <p>
+    Maryland law allows you to use reasonable force to defend yourself if you reasonably believe 
+    you're in imminent danger of harm. Key elements include:
+  </p>
+  <ul>
+    <li>You reasonably believed you were in danger</li>
+    <li>You used only the force necessary to protect yourself</li>
+    <li>You didn't provoke or escalate the confrontation</li>
+    <li>In most situations, you had no duty to retreat (Maryland follows "stand your ground" principles)</li>
+  </ul>
+
+  <h4>Defense of Others</h4>
+  <p>
+    You may use reasonable force to protect another person from harm. The same principles that 
+    apply to self-defense generally apply when defending others.
+  </p>
+
+  <h4>Defense of Property</h4>
+  <p>
+    In limited circumstances, you may use reasonable (non-deadly) force to protect your property 
+    from theft or damage.
+  </p>
+
+  <h4>Lack of Intent</h4>
+  <p>
+    Assault requires intent to cause harm or offensive contact. Accidental contact, no matter 
+    how unwelcome, is not assault.
+  </p>
+
+  <h4>False Accusations</h4>
+  <p>
+    Unfortunately, false assault allegations are not uncommon, particularly in domestic situations, 
+    custody disputes, or when there are ulterior motives. We thoroughly investigate the circumstances 
+    and credibility of accusers.
+  </p>
+
+  <h4>Mutual Combat</h4>
+  <p>
+    When both parties willingly engaged in a physical confrontation, this may serve as a defense 
+    or mitigating factor.
+  </p>
+
+  <h3>Assault on Protected Individuals</h3>
+  <p>
+    Maryland imposes enhanced penalties for assault on certain protected individuals:
+  </p>
+  <ul>
+    <li>Law enforcement officers</li>
+    <li>Firefighters and emergency medical personnel</li>
+    <li>Parole and probation officers</li>
+    <li>School employees</li>
+    <li>Transit operators</li>
+    <li>Health care workers</li>
+  </ul>
+  <p>
+    If you're charged with assault on a protected individual, it's crucial to have experienced 
+    legal representation to navigate the enhanced charges and penalties.
+  </p>
+
+  <h3>Consequences Beyond Criminal Penalties</h3>
+  <p>
+    An assault conviction affects more than just your immediate freedom:
+  </p>
+  <ul>
+    <li><strong>Criminal record</strong> – A permanent record that shows on background checks</li>
+    <li><strong>Employment</strong> – Many employers won't hire individuals with assault convictions</li>
+    <li><strong>Professional licenses</strong> – May be denied, suspended, or revoked</li>
+    <li><strong>Gun rights</strong> – Certain convictions prohibit firearm ownership</li>
+    <li><strong>Immigration</strong> – Non-citizens may face deportation or denial of naturalization</li>
+    <li><strong>Housing</strong> – Difficulty renting, especially with violent offense convictions</li>
+    <li><strong>Child custody</strong> – Courts consider criminal history in custody decisions</li>
+  </ul>
+
+  <h3>What to Do If You're Charged with Assault</h3>
+  <p>
+    If you've been arrested or charged with assault, take these steps to protect yourself:
+  </p>
+  <ol>
+    <li><strong>Exercise your right to remain silent</strong> – Don't discuss the incident with police without an attorney</li>
+    <li><strong>Don't contact the alleged victim</strong> – This can result in additional charges</li>
+    <li><strong>Preserve evidence</strong> – Photos of any injuries you sustained, witness contact information</li>
+    <li><strong>Contact an attorney immediately</strong> – Early intervention can make a significant difference</li>
+    <li><strong>Follow all court orders</strong> – Violating conditions of release can make things worse</li>
+  </ol>
+
+  <h3>Why Choose Our Assault Defense Team</h3>
+  <p>
+    With over 26 years defending clients against assault charges in Maryland, we have the experience 
+    and courtroom skills to fight for the best possible outcome. We've successfully defended clients 
+    facing everything from minor altercations to serious felony assault charges. Your initial 
+    consultation is free and confidential.
+  </p>
+</PracticeAreaLayout>

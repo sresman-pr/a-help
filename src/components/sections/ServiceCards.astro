@@ -1,0 +1,77 @@
+---
+import { ArrowRight, Car, Truck, Bike, Shield, Scale, AlertTriangle, Stethoscope, HardHat, Dog, Heart, Package, Home, Building, Footprints, Lock, Pill, Smile } from '@lucide/astro';
+import type { Service } from '../../data/services';
+
+interface Props {
+  services: Service[];
+  title?: string;
+  subtitle?: string;
+  columns?: 2 | 3 | 4;
+  showDescription?: boolean;
+}
+
+const { 
+  services, 
+  title,
+  subtitle,
+  columns = 3,
+  showDescription = true
+} = Astro.props;
+
+const iconComponents = {
+  Car, Truck, Bike, Shield, Scale, AlertTriangle, Stethoscope, HardHat, 
+  Dog, Heart, Package, Home, Building, Footprints, Lock, Pill, Smile
+};
+
+const gridCols = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4'
+};
+---
+
+<section class="section-padding">
+  <div class="container-custom">
+    {(title || subtitle) && (
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        {subtitle && (
+          <p class="text-gold-600 font-medium mb-2">{subtitle}</p>
+        )}
+        {title && (
+          <h2 class="font-heading font-bold text-navy-900">{title}</h2>
+        )}
+      </div>
+    )}
+    
+    <div class={`grid grid-cols-1 ${gridCols[columns]} gap-6`}>
+      {services.map((service) => {
+        const IconComponent = iconComponents[service.icon as keyof typeof iconComponents] || Shield;
+        return (
+          <a 
+            href={service.href}
+            class="group bg-white rounded-xl p-6 border border-gray-200 card-hover"
+          >
+            <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mb-4 group-hover:bg-gold-500 transition-colors">
+              <IconComponent class="w-7 h-7 text-gold-500 group-hover:text-navy-900 transition-colors" />
+            </div>
+            
+            <h3 class="font-heading font-bold text-lg text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
+              {service.title}
+            </h3>
+            
+            {showDescription && (
+              <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                {service.description}
+              </p>
+            )}
+            
+            <div class="flex items-center text-gold-600 font-medium text-sm group-hover:text-gold-500">
+              Learn More
+              <ArrowRight class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

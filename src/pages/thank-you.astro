@@ -1,0 +1,83 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { Check, Phone, Clock, ArrowRight } from '@lucide/astro';
+
+// noindex this page - it's only for form submissions
+---
+
+<PageLayout 
+  title="Thank You | Law Offices of Alex Poberesky"
+  description="Thank you for contacting us. We'll be in touch shortly."
+  noindex={true}
+>
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Check class="w-10 h-10 text-green-600" />
+        </div>
+        
+        <h1 class="font-heading font-bold text-navy-900 mb-4">
+          Thank You for Contacting Us
+        </h1>
+        
+        <p class="text-xl text-gray-600 mb-8">
+          We've received your message and will be in touch shortly. Our team typically responds 
+          within 24 hours during business days.
+        </p>
+        
+        <div class="bg-gray-50 rounded-xl p-8 mb-8">
+          <h2 class="font-heading font-bold text-navy-900 mb-4">What Happens Next?</h2>
+          
+          <div class="space-y-4 text-left">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0 text-navy-900 font-bold">
+                1
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900">We Review Your Case</h3>
+                <p class="text-gray-600 text-sm">Our team will review the information you provided and prepare for your consultation.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0 text-navy-900 font-bold">
+                2
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900">We Contact You</h3>
+                <p class="text-gray-600 text-sm">A member of our team will reach out to schedule your free consultation.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0 text-navy-900 font-bold">
+                3
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900">Free Consultation</h3>
+                <p class="text-gray-600 text-sm">We'll discuss your case, answer your questions, and explain your options.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-navy-900 text-white rounded-xl p-8 mb-8">
+          <h2 class="font-heading font-bold text-xl mb-4">Need Immediate Assistance?</h2>
+          <p class="text-gray-300 mb-4">
+            If your matter is urgent, please call us directly. We're available 24/7.
+          </p>
+          <a href="tel:+14104840400" class="btn btn-primary">
+            <Phone class="w-5 h-5" />
+            (410) 484-0400
+          </a>
+        </div>
+        
+        <a href="/" class="btn btn-outline">
+          <ArrowRight class="w-5 h-5 rotate-180" />
+          Return to Homepage
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

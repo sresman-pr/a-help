@@ -1,0 +1,108 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What benefits am I entitled to under Maryland workers\' compensation?',
+    answer: 'Maryland workers\' compensation provides medical benefits for treatment of your injury, temporary total or partial disability benefits while you recover, permanent disability benefits if you have lasting impairment, and vocational rehabilitation if you cannot return to your previous job.'
+  },
+  {
+    question: 'My workers\' comp claim was denied. What can I do?',
+    answer: 'If your claim is denied, you have the right to request a hearing before the Maryland Workers\' Compensation Commission. An attorney can help you gather evidence, prepare your case, and represent you at the hearing to fight for the benefits you deserve.'
+  },
+  {
+    question: 'Can I sue my employer for a workplace injury?',
+    answer: 'Generally, workers\' compensation is your exclusive remedy against your employer. However, if a third party (not your employer) contributed to your injury, you may be able to file a separate personal injury lawsuit against that party in addition to your workers\' comp claim.'
+  },
+  {
+    question: 'How quickly do I need to report a workplace injury?',
+    answer: 'You should report your injury to your employer as soon as possible. Maryland law requires written notice within 10 days of the accident, though there are some exceptions. Failing to report promptly can jeopardize your claim.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['workplace-accidents', 'slip-and-fall', 'product-liability'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Workers\' Compensation' }
+];
+---
+
+<PracticeAreaLayout
+  title="Workers' Compensation Lawyer in Pikesville, MD"
+  description="Experienced workers' comp attorneys in Maryland. Denied claims, workplace injuries, permanent disability. We fight for the benefits you deserve. Free consultation."
+  heroTitle="Workers' Compensation Lawyers in Maryland"
+  heroDescription="Injured on the job? You have rights. We help workers navigate the complex workers' compensation system and fight for maximum benefits when claims are denied or undervalued."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Fighting for Injured Workers in Maryland</h2>
+  <p>
+    Every worker in Maryland has the right to a safe workplace. When accidents happen, workers' 
+    compensation insurance is supposed to provide benefits for medical treatment and lost wages. 
+    Unfortunately, insurance companies and employers often deny legitimate claims or offer 
+    inadequate benefits.
+  </p>
+  <p>
+    At the Law Offices of Alex Poberesky, we fight for injured workers throughout Maryland. Whether 
+    your claim has been denied, you're not receiving adequate benefits, or you're unsure of your 
+    rights, we can help.
+  </p>
+
+  <h3>Workers' Compensation Benefits in Maryland</h3>
+  <p>Injured workers may be entitled to:</p>
+  <ul>
+    <li><strong>Medical benefits</strong> – All reasonable and necessary treatment for your injury</li>
+    <li><strong>Temporary total disability</strong> – Weekly payments while you cannot work</li>
+    <li><strong>Temporary partial disability</strong> – Payments if you can only work part-time</li>
+    <li><strong>Permanent partial disability</strong> – Compensation for lasting impairment</li>
+    <li><strong>Permanent total disability</strong> – Ongoing payments if you cannot work at all</li>
+    <li><strong>Vocational rehabilitation</strong> – Job retraining if needed</li>
+    <li><strong>Death benefits</strong> – For families of workers killed on the job</li>
+  </ul>
+
+  <h3>Common Workplace Injuries We Handle</h3>
+  <ul>
+    <li>Back and spinal cord injuries</li>
+    <li>Head and brain injuries</li>
+    <li>Broken bones and fractures</li>
+    <li>Repetitive stress injuries (carpal tunnel, tendinitis)</li>
+    <li>Burns and chemical exposure</li>
+    <li>Occupational diseases</li>
+    <li>Hearing loss</li>
+    <li>Construction accidents</li>
+    <li>Machinery accidents</li>
+    <li>Falls from heights</li>
+  </ul>
+
+  <h3>Why Workers' Comp Claims Get Denied</h3>
+  <p>Common reasons for denial include:</p>
+  <ul>
+    <li>The insurer claims the injury isn't work-related</li>
+    <li>Failure to report the injury promptly</li>
+    <li>Pre-existing conditions</li>
+    <li>Missed deadlines or paperwork errors</li>
+    <li>Allegations of intoxication or horseplay</li>
+    <li>Disputes over the extent of disability</li>
+  </ul>
+
+  <h3>Third-Party Claims</h3>
+  <p>
+    If someone other than your employer contributed to your injury (such as a negligent driver, 
+    equipment manufacturer, or property owner), you may have a third-party claim in addition to 
+    workers' compensation. These claims can provide additional compensation including pain and 
+    suffering, which is not available through workers' comp.
+  </p>
+
+  <h3>We Handle the Appeal Process</h3>
+  <p>
+    If your claim has been denied, don't give up. We represent workers at Maryland Workers' 
+    Compensation Commission hearings and fight to get claims approved and benefits restored. 
+    Our experience with the system helps us build strong cases and advocate effectively for our clients.
+  </p>
+</PracticeAreaLayout>

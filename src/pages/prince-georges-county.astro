@@ -1,0 +1,43 @@
+---
+import LocationLayout from '../layouts/LocationLayout.astro';
+import { locationsBySlug } from '../data/locations';
+
+const location = locationsBySlug['prince-georges-county'];
+---
+
+<LocationLayout 
+  location={location}
+  title="Personal Injury Lawyer in Prince George's County | Alex Poberesky Law"
+  description="Experienced personal injury and criminal defense attorney serving Prince George's County, Maryland. Free consultation. Call (410) 484-0400."
+>
+  <h2>Legal Representation for Prince George's County Residents</h2>
+  <p>
+    Prince George's County is one of Maryland's largest and most diverse counties, with nearly one million residents living in communities from College Park and Hyattsville to Bowie, Largo, and Upper Marlboro. Home to the University of Maryland, FedExField, and National Harbor, this dynamic county borders Washington, D.C., and plays a vital role in the regional economy. Our firm proudly serves Prince George's County residents, providing experienced legal representation for personal injury and criminal defense matters.
+  </p>
+  <p>
+    The county's extensive highway system—including I-495, I-95, I-295, and Route 301—carries enormous traffic volumes, contributing to frequent motor vehicle accidents. The busy commercial corridors along Route 1 (Baltimore Avenue), Route 450, and Central Avenue see accidents involving cars, trucks, pedestrians, and Metro riders. We've successfully represented Prince George's County residents injured in accidents throughout the county.
+  </p>
+  <p>
+    With major employers like the University of Maryland, Joint Base Andrews, and numerous federal agencies, workplace injuries are also common in Prince George's County. Whether you've been hurt on a construction site, in a warehouse, or at an office complex, our workers' compensation attorneys can help you obtain the benefits you're entitled to receive.
+  </p>
+  
+  <h3>Personal Injury Cases We Handle in Prince George's County</h3>
+  <ul>
+    <li>Car and truck accidents</li>
+    <li>Motorcycle accidents</li>
+    <li>Medical malpractice</li>
+    <li>Workers' compensation</li>
+    <li>Slip and fall accidents</li>
+    <li>Wrongful death</li>
+  </ul>
+  
+  <h3>Criminal Defense in Prince George's County</h3>
+  <p>
+    Prince George's County has an active criminal court system, and facing charges here requires experienced legal representation. From the Circuit Court in Upper Marlboro to District Courts in Hyattsville and throughout the county, we defend clients against all types of criminal charges, including DUI/DWI, drug offenses, assault, theft, and domestic violence. We understand the local court procedures and work tirelessly to protect your rights and minimize the impact on your life.
+  </p>
+  
+  <h3>Why Choose Alex Poberesky for Your Prince George's County Case?</h3>
+  <p>
+    Prince George's County residents deserve an attorney who will treat their case with the attention and dedication it deserves. At Alex Poberesky Law, we take pride in providing personalized legal services to every client. We know that your injury or criminal charge has turned your life upside down, and we're committed to helping you get back on your feet. Contact us today for a free consultation—we're ready to fight for you.
+  </p>
+</LocationLayout>

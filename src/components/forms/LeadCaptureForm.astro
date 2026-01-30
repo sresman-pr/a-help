@@ -1,0 +1,63 @@
+---
+interface Props {
+  variant?: 'light' | 'dark';
+  compact?: boolean;
+}
+
+const { variant = 'light', compact = false } = Astro.props;
+const isDark = variant === 'dark';
+---
+
+<form 
+  action="https://api.web3forms.com/submit" 
+  method="POST"
+  class="space-y-3"
+>
+  <!-- Web3Forms Access Key - Replace with actual key -->
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+  <input type="hidden" name="subject" value="Quick Lead from AlexHelp.com" />
+  <input type="hidden" name="redirect" value="https://www.alexhelp.com/thank-you/" />
+  <input type="hidden" name="from_name" value="AlexHelp Website - Quick Form" />
+  
+  <!-- Honeypot for spam prevention -->
+  <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+  
+  <div>
+    <input 
+      type="text" 
+      name="name" 
+      required 
+      placeholder="Your Name *"
+      class={`form-input py-3 ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-gray-300' : ''}`}
+    />
+  </div>
+  
+  <div>
+    <input 
+      type="tel" 
+      name="phone" 
+      required 
+      placeholder="Phone Number *"
+      class={`form-input py-3 ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-gray-300' : ''}`}
+    />
+  </div>
+  
+  {!compact && (
+    <div>
+      <input 
+        type="email" 
+        name="email" 
+        required 
+        placeholder="Email Address *"
+        class={`form-input py-3 ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-gray-300' : ''}`}
+      />
+    </div>
+  )}
+  
+  <button 
+    type="submit" 
+    class={`btn w-full ${isDark ? 'bg-gold-500 text-navy-900 hover:bg-gold-400' : 'btn-primary'}`}
+  >
+    Get Free Consultation
+  </button>
+</form>

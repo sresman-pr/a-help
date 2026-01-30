@@ -1,0 +1,181 @@
+---
+import PageLayout from './PageLayout.astro';
+import Breadcrumbs from '../components/common/Breadcrumbs.astro';
+import ContactForm from '../components/forms/ContactForm.astro';
+import ServiceCards from '../components/sections/ServiceCards.astro';
+import CTASection from '../components/sections/CTASection.astro';
+import { Phone, ArrowRight, MapPin, Building, Clock, Check } from '@lucide/astro';
+import { featuredServices } from '../data/services';
+import type { Location } from '../data/locations';
+
+interface Props {
+  location: Location;
+  title: string;
+  description: string;
+}
+
+const { location, title, description } = Astro.props;
+
+const breadcrumbs = [
+  { label: 'Areas Served', href: '/areas-served/' },
+  { label: location.name }
+];
+---
+
+<PageLayout title={title} description={description}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <!-- Hero Section -->
+  <section class="bg-gradient-navy text-white py-12 md:py-16">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <MapPin class="w-5 h-5 text-gold-400" />
+            <span class="text-gold-400 font-medium">{location.type === 'county' ? 'County' : 'City'}</span>
+          </div>
+          
+          <h1 class="font-heading font-bold text-white mb-4">
+            Personal Injury & Criminal Defense Lawyer in {location.name}
+          </h1>
+          
+          <p class="text-xl text-gray-300 mb-6">
+            {location.description}
+          </p>
+          
+          {location.distanceFromOffice && (
+            <p class="text-gray-400 mb-6">
+              <strong class="text-gold-400">{location.distanceFromOffice}</strong>
+            </p>
+          )}
+          
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="flex items-center gap-2">
+              <Check class="w-5 h-5 text-gold-500" />
+              <span class="text-gray-200">Free Consultation</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Check class="w-5 h-5 text-gold-500" />
+              <span class="text-gray-200">No Fee Unless We Win</span>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact-us/" class="btn btn-primary">
+              Free Case Review
+              <ArrowRight class="w-5 h-5" />
+            </a>
+            <a href="tel:+14104840400" class="btn btn-outline">
+              <Phone class="w-5 h-5" />
+              (410) 484-0400
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-2xl">
+          <ContactForm 
+            title={`Free Consultation for ${location.name} Residents`}
+            subtitle="Tell us about your case and we'll get back to you within 24 hours."
+            variant="default"
+            showPhone={false}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 prose max-w-none">
+          <slot />
+          
+          {location.courts && location.courts.length > 0 && (
+            <>
+              <h3>Local Courts Serving {location.name}</h3>
+              <ul>
+                {location.courts.map(court => (
+                  <li>{court}</li>
+                ))}
+              </ul>
+            </>
+          )}
+          
+          {location.hospitals && location.hospitals.length > 0 && (
+            <>
+              <h3>Hospitals in {location.name}</h3>
+              <ul>
+                {location.hospitals.map(hospital => (
+                  <li>{hospital}</li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+        
+        <aside class="space-y-6">
+          <div class="bg-navy-900 text-white rounded-xl p-6">
+            <h3 class="font-heading font-bold text-lg mb-4">Contact Our Office</h3>
+            <div class="space-y-4 text-sm">
+              <div class="flex items-start gap-3">
+                <MapPin class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p class="text-gray-300">25 Hooks Ln # 310</p>
+                  <p class="text-gray-300">Pikesville, MD 21208</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <Phone class="w-5 h-5 text-gold-500" />
+                <a href="tel:+14104840400" class="text-white hover:text-gold-400">(410) 484-0400</a>
+              </div>
+              <div class="flex items-center gap-3">
+                <Clock class="w-5 h-5 text-gold-500" />
+                <span class="text-gray-300">Available 24/7</span>
+              </div>
+            </div>
+            <a href="/contact-us/" class="btn btn-primary w-full mt-4">
+              Get Directions
+            </a>
+          </div>
+          
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <h3 class="font-heading font-bold text-navy-900 mb-4">Why Choose Us</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <Check class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                <span class="text-sm text-gray-700">26+ years of experience</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                <span class="text-sm text-gray-700">Serving all of {location.name}</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                <span class="text-sm text-gray-700">No fee unless we win</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                <span class="text-sm text-gray-700">Multilingual staff</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services -->
+  <ServiceCards 
+    services={featuredServices}
+    title={`Legal Services in ${location.name}`}
+    subtitle="How we can help"
+    columns={3}
+  />
+  
+  <CTASection 
+    title={`Need Legal Help in ${location.name}?`}
+    description="Contact us today for a free consultation. We serve clients throughout Maryland and are ready to fight for your rights."
+    variant="centered"
+  />
+</PageLayout>

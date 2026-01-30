@@ -1,0 +1,43 @@
+---
+import LocationLayout from '../layouts/LocationLayout.astro';
+import { locationsBySlug } from '../data/locations';
+
+const location = locationsBySlug['howard-county'];
+---
+
+<LocationLayout 
+  location={location}
+  title="Personal Injury Lawyer in Howard County | Alex Poberesky Law"
+  description="Experienced personal injury and criminal defense attorney serving Howard County, Maryland. Free consultation. Call (410) 484-0400."
+>
+  <h2>Legal Representation for Howard County Residents</h2>
+  <p>
+    Howard County is known for its excellent quality of life, top-rated schools, and thriving communities like Columbia, Ellicott City, Elkridge, and Laurel. As one of Maryland's most affluent and fastest-growing counties, it presents unique legal challenges that require an experienced attorney who understands the area. Our Pikesville office is just 20 minutes from most Howard County locations, making it easy for clients to meet with us in person.
+  </p>
+  <p>
+    The county's major roadways—including I-95, US-29, and Route 100—carry significant traffic between Baltimore and Washington, D.C., resulting in frequent motor vehicle accidents. Historic Ellicott City's charming but narrow streets present their own hazards, while the commercial areas around Columbia Town Center see heavy pedestrian and vehicle traffic. We've successfully handled accident cases originating from all parts of Howard County.
+  </p>
+  <p>
+    Whether your case involves an accident on Route 32, a slip and fall at one of Columbia's many village centers, or a workplace injury at one of the industrial parks along US-1, we have the resources and experience to pursue maximum compensation on your behalf.
+  </p>
+  
+  <h3>Personal Injury Cases We Handle in Howard County</h3>
+  <ul>
+    <li>Car and truck accidents</li>
+    <li>Motorcycle accidents</li>
+    <li>Medical malpractice</li>
+    <li>Workers' compensation</li>
+    <li>Slip and fall accidents</li>
+    <li>Wrongful death</li>
+  </ul>
+  
+  <h3>Criminal Defense in Howard County</h3>
+  <p>
+    Howard County takes criminal offenses seriously, and the consequences of a conviction can be severe. Whether you're facing charges for DUI, drug possession, domestic violence, or other criminal matters, you need an attorney who can navigate the Howard County court system effectively. We represent clients at the Howard County Circuit Court and District Court in Ellicott City, providing aggressive defense while protecting your rights and reputation.
+  </p>
+  
+  <h3>Why Choose Alex Poberesky for Your Howard County Case?</h3>
+  <p>
+    When Howard County residents need experienced legal representation, they turn to Alex Poberesky Law. With over two decades of experience handling personal injury and criminal defense cases throughout Central Maryland, we bring the knowledge, dedication, and resources your case deserves. We understand the stakes—your health, your freedom, and your family's financial security. Contact us today for a free consultation and learn how we can help you move forward.
+  </p>
+</LocationLayout>

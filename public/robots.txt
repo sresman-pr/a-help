@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.alexhelp.com/sitemap-index.xml
+
+# Disallow admin and private paths
+Disallow: /thank-you/

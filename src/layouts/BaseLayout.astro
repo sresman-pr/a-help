@@ -1,0 +1,166 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+}
+
+const { 
+  title, 
+  description, 
+  canonical = Astro.url.href,
+  ogImage = '/images/og/default.jpg',
+  ogType = 'website',
+  noindex = false
+} = Astro.props;
+
+const siteName = 'Law Offices of Alex Poberesky, P.A.';
+const fullTitle = title.includes('Alex Poberesky') ? title : `${title} | ${siteName}`;
+
+// Schema.org LocalBusiness data (used on every page)
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "@id": "https://www.alexhelp.com/#organization",
+  "name": "Law Offices of Alex Poberesky, P.A.",
+  "alternateName": "Alex Poberesky Law",
+  "url": "https://www.alexhelp.com",
+  "logo": "https://www.alexhelp.com/images/logo.png",
+  "image": "https://www.alexhelp.com/images/alex/alex-poberesky.jpg",
+  "description": "Maryland personal injury and criminal defense law firm with over 26 years of experience. Free consultations available 24/7.",
+  "telephone": "+1-410-484-0400",
+  "email": "alex@alexhelp.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "25 Hooks Ln # 310",
+    "addressLocality": "Pikesville",
+    "addressRegion": "MD",
+    "postalCode": "21208",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "39.3743",
+    "longitude": "-76.7227"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "priceRange": "Free Consultation",
+  "areaServed": {
+    "@type": "State",
+    "name": "Maryland"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Legal Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Personal Injury Law"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Criminal Defense"
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.facebook.com/alexpobereskylaw",
+    "https://www.linkedin.com/in/alexpoberesky"
+  ],
+  "knowsLanguage": ["en", "ru", "uk", "tr", "uz"]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <!-- Primary Meta Tags -->
+  <title>{fullTitle}</title>
+  <meta name="title" content={fullTitle} />
+  <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonical} />
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content="en_US" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonical} />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  
+  <!-- Additional schema from page -->
+  <slot name="schema" />
+  
+  <!-- Google Analytics - Replace GA_MEASUREMENT_ID with actual ID when ready -->
+  <!-- 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  -->
+</head>
+<body class="min-h-screen bg-white">
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <slot name="header" />
+  
+  <main id="main-content">
+    <slot />
+  </main>
+  
+  <slot name="footer" />
+  
+  <!-- Analytics placeholder - will be configured in forms-analytics phase -->
+  <slot name="scripts" />
+</body>
+</html>

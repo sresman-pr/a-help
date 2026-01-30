@@ -1,0 +1,80 @@
+---
+import { Award, Users, Clock, MessageSquare, Scale, Heart } from '@lucide/astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { 
+  title = 'Why Choose Alex Poberesky',
+  subtitle = 'Dedicated to your success'
+} = Astro.props;
+
+const reasons = [
+  {
+    icon: 'Award',
+    title: '26+ Years of Experience',
+    description: 'Over two decades of successfully representing clients in personal injury and criminal defense cases throughout Maryland.'
+  },
+  {
+    icon: 'Scale',
+    title: 'Proven Track Record',
+    description: 'A near-perfect success rate with hundreds of cases won and millions recovered for our clients.'
+  },
+  {
+    icon: 'Users',
+    title: 'Multilingual Team',
+    description: 'We speak English, Russian, Ukrainian, Turkish, and Uzbek to serve our diverse community.'
+  },
+  {
+    icon: 'Clock',
+    title: 'Available 24/7',
+    description: 'Accidents don\'t wait for business hours. Neither do we. Call us anytime, day or night.'
+  },
+  {
+    icon: 'Heart',
+    title: 'Personalized Attention',
+    description: 'You\'re not just a case number. We treat every client with the care and respect they deserve.'
+  },
+  {
+    icon: 'MessageSquare',
+    title: 'Clear Communication',
+    description: 'We keep you informed every step of the way. No legal jargon, just straight answers.'
+  }
+];
+
+const iconComponents = {
+  Award, Users, Clock, MessageSquare, Scale, Heart
+};
+---
+
+<section class="section-padding bg-gray-50">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      {subtitle && (
+        <p class="text-gold-600 font-medium mb-2">{subtitle}</p>
+      )}
+      {title && (
+        <h2 class="font-heading font-bold text-navy-900">{title}</h2>
+      )}
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {reasons.map((reason) => {
+        const IconComponent = iconComponents[reason.icon as keyof typeof iconComponents];
+        return (
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center flex-shrink-0">
+              <IconComponent class="w-6 h-6 text-gold-500" />
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-navy-900 mb-2">{reason.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{reason.description}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

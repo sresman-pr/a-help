@@ -1,0 +1,182 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumbs from '../../components/common/Breadcrumbs.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import { MapPin, ArrowRight, Phone } from '@lucide/astro';
+import { counties, cities } from '../../data/locations';
+
+const breadcrumbs = [
+  { label: 'Areas Served' }
+];
+---
+
+<PageLayout 
+  title="Areas Served | Maryland Personal Injury & Criminal Defense Lawyer"
+  description="Law Offices of Alex Poberesky serves all of Maryland including Baltimore, Howard, Montgomery, Anne Arundel, and more. Free consultation."
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <!-- Hero Section -->
+  <section class="bg-gradient-navy text-white py-12 md:py-16">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-2 mb-4">
+          <MapPin class="w-5 h-5 text-gold-400" />
+          <span class="text-gold-400 font-medium">Serving All of Maryland</span>
+        </div>
+        
+        <h1 class="font-heading font-bold text-white mb-4">
+          Maryland Personal Injury & Criminal Defense Representation
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-6">
+          From our centrally-located Pikesville office, we represent clients throughout Maryland. 
+          No matter where you're located, our experienced attorneys are ready to fight for your rights.
+        </p>
+        
+        <div class="flex flex-wrap gap-4">
+          <a href="/contact-us/" class="btn btn-primary">
+            Free Consultation
+            <ArrowRight class="w-5 h-5" />
+          </a>
+          <a href="tel:+14104840400" class="btn btn-outline">
+            <Phone class="w-5 h-5" />
+            (410) 484-0400
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Office Location -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-heading font-bold text-navy-900 mb-4">Our Office Location</h2>
+          <p class="text-gray-600 mb-6">
+            Our office is conveniently located in Pikesville, at the center of the Baltimore 
+            metropolitan area. We're easily accessible from all major highways and are just 
+            25 minutes from BWI Airport.
+          </p>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <h3 class="font-bold text-navy-900 mb-3">Law Offices of Alex Poberesky, P.A.</h3>
+            <address class="not-italic text-gray-600 space-y-2">
+              <p>25 Hooks Ln # 310</p>
+              <p>Pikesville, MD 21208</p>
+              <p class="pt-2">
+                <a href="tel:+14104840400" class="text-gold-600 font-semibold hover:text-gold-500">
+                  (410) 484-0400
+                </a>
+              </p>
+              <p class="text-sm text-gray-500">Available 24/7</p>
+            </address>
+          </div>
+        </div>
+        
+        <div class="bg-gray-200 rounded-xl aspect-video flex items-center justify-center">
+          <!-- Google Maps embed placeholder -->
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.8548953831437!2d-76.72486492357745!3d39.37397691545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c81a3e4c4c2a5b%3A0x8b0a8b0a8b0a8b0a!2s25%20Hooks%20Ln%20%23310%2C%20Pikesville%2C%20MD%2021208!5e0!3m2!1sen!2sus!4v1234567890"
+            width="100%" 
+            height="100%" 
+            style="border:0; border-radius: 0.75rem;" 
+            allowfullscreen="" 
+            loading="lazy"
+            title="Office Location Map"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Counties -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="font-heading font-bold text-navy-900">Maryland Counties We Serve</h2>
+        <p class="text-gray-600 mt-2">Click on a county to learn more about our services in your area</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {counties.map((county) => (
+          <a 
+            href={`/${county.slug}/`}
+            class="group flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200 hover:border-gold-500 hover:shadow-md transition-all"
+          >
+            <MapPin class="w-5 h-5 text-gold-500 flex-shrink-0" />
+            <div>
+              <span class="font-medium text-gray-800 group-hover:text-navy-900">{county.name}</span>
+              {county.distanceFromOffice && (
+                <p class="text-xs text-gray-500">{county.distanceFromOffice}</p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Key Cities -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="font-heading font-bold text-navy-900">Key Cities & Areas</h2>
+        <p class="text-gray-600 mt-2">Major communities we serve throughout Maryland</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {cities.map((city) => (
+          <a 
+            href={`/${city.slug}/`}
+            class="group flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200 hover:border-gold-500 hover:shadow-md transition-all"
+          >
+            <MapPin class="w-5 h-5 text-gold-500 flex-shrink-0" />
+            <div>
+              <span class="font-medium text-gray-800 group-hover:text-navy-900">{city.name}</span>
+              {city.county && (
+                <p class="text-xs text-gray-500">{city.county}</p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Why Local Representation Matters -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto prose">
+        <h2 class="text-center">Why Local Representation Matters</h2>
+        <p>
+          When you're facing a personal injury claim or criminal charges, having an attorney who 
+          knows the local courts, judges, and legal community can make a significant difference 
+          in your case outcome.
+        </p>
+        <p>
+          Our attorneys have been practicing in Maryland courts for over 26 years. We know the 
+          procedures, the people, and the strategies that work best in each jurisdiction. This 
+          local expertise allows us to provide more effective representation for our clients.
+        </p>
+        <h3>Our Commitment to Maryland Communities</h3>
+        <p>
+          We're proud to serve communities throughout Maryland. Whether you're in Baltimore County, 
+          on the Eastern Shore, or anywhere in between, we're committed to providing the same 
+          high-quality legal representation that has earned us the trust of hundreds of clients.
+        </p>
+        <p>
+          Contact us today for a free consultation. We'll discuss your case and explain how we 
+          can help, no matter where you're located in Maryland.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <CTASection 
+    title="Need Legal Help in Maryland?"
+    description="Contact us today for a free consultation. We serve clients throughout the state and are ready to fight for your rights."
+    variant="centered"
+  />
+</PageLayout>

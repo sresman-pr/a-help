@@ -1,0 +1,137 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What qualifies as dental malpractice?',
+    answer: 'Dental malpractice occurs when a dentist or oral surgeon fails to provide the standard of care that a reasonably competent dental professional would provide, causing injury to the patient. This includes surgical errors, misdiagnosis, failure to diagnose, improper treatment, and failure to obtain informed consent.'
+  },
+  {
+    question: 'How do I know if my dental injury is the result of malpractice?',
+    answer: 'Not every bad outcome is malpractice. To have a valid claim, we must prove the dentist deviated from accepted standards of care and that deviation caused your injury. Our attorneys work with dental experts to evaluate whether your treatment fell below acceptable standards.'
+  },
+  {
+    question: 'What is the statute of limitations for dental malpractice in Maryland?',
+    answer: 'Maryland has a three-year statute of limitations for dental malpractice from the date of injury, with a five-year "statute of repose" from the date the negligent act occurred. However, there are exceptions, so consult an attorney as soon as you suspect malpractice.'
+  },
+  {
+    question: 'Can I sue for nerve damage from a dental procedure?',
+    answer: 'Yes. Nerve damage is one of the most common dental malpractice injuries. If a dentist damages the lingual, inferior alveolar, or other nerves due to negligence during extractions, implant placement, or other procedures, you may have a valid claim.'
+  },
+  {
+    question: 'What compensation can I receive for dental malpractice?',
+    answer: 'You may recover costs of corrective dental treatment, medical expenses, lost wages, pain and suffering, and permanent injury damages like chronic pain or loss of taste. In cases of gross negligence, punitive damages may also be available.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['medical-malpractice', 'wrongful-death'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Dental Malpractice' }
+];
+---
+
+<PracticeAreaLayout
+  title="Dental Malpractice Lawyer in Pikesville, MD"
+  description="Experienced dental malpractice attorneys in Maryland. We hold negligent dentists accountable for injuries from improper treatment. Free consultation."
+  heroTitle="Dental Malpractice Lawyers in Maryland"
+  heroDescription="When dental care goes wrong due to negligence, the results can be painful and permanent. We fight to hold negligent dental professionals accountable and secure compensation for your injuries."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Experienced Dental Malpractice Attorneys in Maryland</h2>
+  <p>
+    We trust dental professionals to provide safe, competent care. When that trust is violated 
+    through negligence, the consequences can be severe—permanent nerve damage, chronic pain, 
+    disfigurement, and even life-threatening infections. At the Law Offices of Alex Poberesky, 
+    we hold negligent dentists and oral surgeons accountable for the harm they cause.
+  </p>
+  <p>
+    With over 26 years of experience handling medical and dental malpractice cases in Maryland, 
+    we understand the complexities of these claims and have the resources to take on dental 
+    professionals and their insurance companies.
+  </p>
+
+  <h3>Types of Dental Malpractice</h3>
+  <p>We handle a wide range of dental negligence cases, including:</p>
+  <ul>
+    <li><strong>Nerve damage</strong> – Injury to the lingual, inferior alveolar, or other facial nerves causing numbness, tingling, pain, or loss of taste</li>
+    <li><strong>Surgical errors</strong> – Mistakes during extractions, implants, or oral surgery</li>
+    <li><strong>Failure to diagnose</strong> – Missing oral cancer, gum disease, or infections</li>
+    <li><strong>Improper root canals</strong> – Incomplete treatment, broken instruments left in canals</li>
+    <li><strong>Anesthesia complications</strong> – Overdose, allergic reactions, or improper administration</li>
+    <li><strong>Wrongful tooth extraction</strong> – Removing the wrong tooth</li>
+    <li><strong>Infection</strong> – Failure to maintain sterile conditions or treat infections</li>
+    <li><strong>TMJ injuries</strong> – Damage to the temporomandibular joint from improper treatment</li>
+    <li><strong>Delayed treatment</strong> – Failing to refer patients to specialists when needed</li>
+    <li><strong>Lack of informed consent</strong> – Performing procedures without explaining risks</li>
+  </ul>
+
+  <h3>Nerve Damage from Dental Procedures</h3>
+  <p>
+    One of the most devastating dental malpractice injuries is nerve damage. The mouth contains 
+    critical nerves that control sensation and movement in the face, tongue, and lips. When a 
+    dentist negligently damages these nerves, the effects can be permanent:
+  </p>
+  <ul>
+    <li><strong>Lingual nerve damage</strong> – Loss of taste, tongue numbness, difficulty speaking</li>
+    <li><strong>Inferior alveolar nerve damage</strong> – Numbness in the chin, lip, and gums</li>
+    <li><strong>Neuropathic pain</strong> – Chronic burning or shooting pain</li>
+    <li><strong>Loss of function</strong> – Difficulty eating, drinking, and speaking normally</li>
+  </ul>
+
+  <h3>Common Causes of Dental Malpractice</h3>
+  <ul>
+    <li>Inadequate X-rays or failure to review imaging before procedures</li>
+    <li>Improper technique during extractions or implant placement</li>
+    <li>Failure to recognize anatomical variations</li>
+    <li>Use of excessive force during procedures</li>
+    <li>Inadequate training or experience with complex procedures</li>
+    <li>Poor surgical planning</li>
+    <li>Failure to monitor patients under sedation</li>
+    <li>Unsterile instruments or facilities</li>
+  </ul>
+
+  <h3>Proving Dental Malpractice</h3>
+  <p>Dental malpractice cases require proving:</p>
+  <ol>
+    <li><strong>Duty of care</strong> – The dentist had a professional relationship with you</li>
+    <li><strong>Breach of standard</strong> – The dentist failed to meet accepted standards of care</li>
+    <li><strong>Causation</strong> – The breach directly caused your injury</li>
+    <li><strong>Damages</strong> – You suffered actual harm as a result</li>
+  </ol>
+  <p>
+    We work with dental experts who can review your records, explain what should have been done 
+    differently, and testify about how the dentist's negligence caused your injuries.
+  </p>
+
+  <h3>Compensation in Dental Malpractice Cases</h3>
+  <p>Victims of dental malpractice may recover:</p>
+  <ul>
+    <li>Cost of corrective dental procedures</li>
+    <li>Medical expenses for related treatment</li>
+    <li>Lost wages from missed work</li>
+    <li>Future treatment costs</li>
+    <li>Pain and suffering</li>
+    <li>Permanent disability (loss of taste, chronic pain)</li>
+    <li>Emotional distress</li>
+    <li>Punitive damages in cases of gross negligence</li>
+  </ul>
+
+  <h3>Why Choose Our Dental Malpractice Lawyers</h3>
+  <p>
+    Dental malpractice cases are complex and require specialized knowledge. Dentists and their 
+    insurers aggressively defend these claims, often denying any wrongdoing. We have the experience, 
+    resources, and expert network to build strong cases and fight for the compensation you deserve.
+  </p>
+  <p>
+    If you've been injured by negligent dental care, contact us for a free consultation. We work 
+    on a contingency fee basis—you pay nothing unless we recover compensation for you.
+  </p>
+</PracticeAreaLayout>

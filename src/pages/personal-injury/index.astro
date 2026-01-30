@@ -1,0 +1,138 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumbs from '../../components/common/Breadcrumbs.astro';
+import Hero from '../../components/sections/Hero.astro';
+import ServiceCards from '../../components/sections/ServiceCards.astro';
+import TrustBar from '../../components/sections/TrustBar.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import FAQAccordion from '../../components/sections/FAQAccordion.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+
+import { personalInjuryServices } from '../../data/services';
+import { featuredTestimonials } from '../../data/testimonials';
+
+const faqs = [
+  {
+    question: 'How long do I have to file a personal injury claim in Maryland?',
+    answer: 'In Maryland, the statute of limitations for most personal injury claims is three years from the date of the injury. However, certain cases like medical malpractice may have different deadlines. It\'s crucial to consult with an attorney as soon as possible to ensure you don\'t miss important deadlines.'
+  },
+  {
+    question: 'How much does it cost to hire a personal injury lawyer?',
+    answer: 'We work on a contingency fee basis, which means you pay nothing upfront and only pay if we win your case. Our fee is a percentage of your settlement or verdict. This ensures everyone has access to quality legal representation regardless of their financial situation.'
+  },
+  {
+    question: 'What damages can I recover in a personal injury case?',
+    answer: 'You may be entitled to recover economic damages (medical bills, lost wages, future medical care) and non-economic damages (pain and suffering, emotional distress, loss of enjoyment of life). The specific damages depend on your case circumstances.'
+  },
+  {
+    question: 'What is contributory negligence in Maryland?',
+    answer: 'Maryland follows a strict contributory negligence rule, meaning if you\'re found even 1% at fault for your injury, you may be barred from recovering any compensation. This makes it essential to have an experienced attorney who can build a strong case proving the other party\'s complete fault.'
+  },
+  {
+    question: 'How long does a personal injury case take?',
+    answer: 'The timeline varies significantly depending on the complexity of your case, the severity of injuries, and whether it settles or goes to trial. Simple cases may resolve in a few months, while complex cases can take a year or more. We work efficiently to resolve cases as quickly as possible while maximizing your compensation.'
+  }
+];
+
+const breadcrumbs = [
+  { label: 'Personal Injury' }
+];
+---
+
+<PageLayout 
+  title="Personal Injury Lawyers in Maryland"
+  description="Experienced Maryland personal injury attorneys fighting for maximum compensation. Car accidents, medical malpractice, workplace injuries & more. Free consultation."
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <Hero 
+    title="Maryland Personal Injury Lawyers Fighting for Your Rights"
+    subtitle="Dedicated Personal Injury Representation"
+    description="When you've been injured due to someone else's negligence, you deserve an attorney who will fight relentlessly for your compensation. With over 26 years of experience, we've helped hundreds of Marylanders recover the damages they deserve."
+    showForm={true}
+    showStats={true}
+    variant="home"
+  />
+  
+  <TrustBar />
+  
+  <!-- All Personal Injury Services -->
+  <ServiceCards 
+    services={personalInjuryServices}
+    title="Personal Injury Practice Areas"
+    subtitle="We handle all types of injury cases"
+    columns={3}
+  />
+  
+  <!-- Content Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto prose">
+        <h2>Comprehensive Personal Injury Representation in Maryland</h2>
+        <p>
+          The Law Offices of Alex Poberesky has been successfully representing personal injury 
+          victims throughout Maryland for over 26 years. We understand that being injured in an 
+          accident can turn your life upside down. Medical bills pile up, you may be unable to 
+          work, and the physical and emotional pain can be overwhelming.
+        </p>
+        <p>
+          That's why we're committed to handling every aspect of your case so you can focus on 
+          your recovery. From investigating the accident and gathering evidence to negotiating 
+          with insurance companies and, if necessary, taking your case to trial, we're with you 
+          every step of the way.
+        </p>
+        
+        <h3>What Makes Our Firm Different</h3>
+        <ul>
+          <li><strong>Experience:</strong> Over 26 years handling personal injury cases in Maryland</li>
+          <li><strong>Results:</strong> A near-perfect success rate and millions recovered for our clients</li>
+          <li><strong>Personal Attention:</strong> You work directly with your attorney, not a paralegal</li>
+          <li><strong>No Fee Unless We Win:</strong> We only get paid if you get paid</li>
+          <li><strong>Multilingual:</strong> We serve clients in English, Russian, Ukrainian, Turkish, and Uzbek</li>
+        </ul>
+        
+        <h3>Understanding Your Personal Injury Claim</h3>
+        <p>
+          Maryland law allows you to seek compensation when you've been injured due to another 
+          party's negligence. However, Maryland's contributory negligence rule makes it critical 
+          to have an experienced attorney on your side. Under this rule, if you're found even 
+          partially at fault for your injuries, you may be barred from recovering any compensation.
+        </p>
+        <p>
+          Our attorneys know how to build strong cases that establish the other party's complete 
+          liability, protecting your right to full compensation for your injuries.
+        </p>
+        
+        <h3>Types of Damages You May Recover</h3>
+        <p>Depending on your case, you may be entitled to recover:</p>
+        <ul>
+          <li>Medical expenses (past and future)</li>
+          <li>Lost wages and loss of earning capacity</li>
+          <li>Pain and suffering</li>
+          <li>Emotional distress</li>
+          <li>Loss of enjoyment of life</li>
+          <li>Property damage</li>
+          <li>Rehabilitation costs</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <Testimonials 
+    testimonials={featuredTestimonials}
+    title="What Our Clients Say"
+    subtitle="Real results for real people"
+  />
+  
+  <FAQAccordion 
+    faqs={faqs}
+    title="Personal Injury FAQ"
+    subtitle="Common questions about injury claims"
+  />
+  
+  <CTASection 
+    title="Injured? Get the Help You Need Today"
+    description="Don't let the insurance companies take advantage of you. Contact us for a free consultation and learn how we can help you get the compensation you deserve."
+    variant="centered"
+  />
+</PageLayout>

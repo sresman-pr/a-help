@@ -1,0 +1,222 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Breadcrumbs from '../components/common/Breadcrumbs.astro';
+import CTASection from '../components/sections/CTASection.astro';
+import { Award, Users, Clock, Scale, Heart, MessageSquare, Check } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'About Us' }
+];
+
+const values = [
+  {
+    icon: 'Scale',
+    title: 'Integrity',
+    description: 'We are honest and upfront about your case, your options, and what to expect. No surprises, no hidden agendas.'
+  },
+  {
+    icon: 'Heart',
+    title: 'Compassion',
+    description: 'We understand you\'re going through a difficult time. We treat every client with empathy and respect.'
+  },
+  {
+    icon: 'Award',
+    title: 'Excellence',
+    description: 'We pursue excellence in everything we do, from case preparation to courtroom advocacy.'
+  },
+  {
+    icon: 'MessageSquare',
+    title: 'Communication',
+    description: 'We keep you informed every step of the way. Your calls and emails are always returned promptly.'
+  }
+];
+
+const iconComponents = { Award, Users, Clock, Scale, Heart, MessageSquare };
+---
+
+<PageLayout 
+  title="About Us | Law Offices of Alex Poberesky"
+  description="Learn about Alex Poberesky and his team of dedicated personal injury and criminal defense attorneys serving Maryland for over 26 years."
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <!-- Hero -->
+  <section class="bg-gradient-navy text-white py-16 md:py-24">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="font-heading font-bold text-white mb-6">
+            Fighting for Maryland Families for Over 26 Years
+          </h1>
+          <p class="text-xl text-gray-300 mb-6">
+            At the Law Offices of Alex Poberesky, we believe everyone deserves access to quality 
+            legal representation. Since 1998, we've been helping injured victims and those accused 
+            of crimes get the justice they deserve.
+          </p>
+          <div class="flex flex-wrap gap-6">
+            <div class="text-center">
+              <div class="text-4xl font-bold text-gold-400">26+</div>
+              <div class="text-gray-400 text-sm">Years Experience</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-gold-400">100s</div>
+              <div class="text-gray-400 text-sm">Cases Won</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-gold-400">5</div>
+              <div class="text-gray-400 text-sm">Languages</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <!-- Placeholder for Alex's photo -->
+          <div class="aspect-[4/5] bg-navy-700 rounded-xl flex items-center justify-center mb-6">
+            <div class="text-center">
+              <div class="text-6xl text-gold-500 font-heading font-bold mb-2">A</div>
+              <div class="text-gray-400 text-sm">Photo of Alex Poberesky</div>
+            </div>
+          </div>
+          <h2 class="font-heading font-bold text-xl text-white text-center">Alex Poberesky</h2>
+          <p class="text-gold-400 text-center">Founder & Lead Attorney</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Our Story -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto prose">
+        <h2>Our Story</h2>
+        <p>
+          Alex Poberesky founded this firm with a simple mission: to provide exceptional legal 
+          representation to people who need it most. Having grown up in the Baltimore area, Alex 
+          understood the challenges that working families face when dealing with the legal system.
+        </p>
+        <p>
+          Over the past 26 years, we've grown from a solo practice into a trusted firm serving 
+          clients throughout Maryland. But some things haven't changed. We still provide the same 
+          personalized attention, aggressive advocacy, and commitment to results that built our reputation.
+        </p>
+        <p>
+          Today, our multilingual team serves clients in English, Russian, Ukrainian, Turkish, and 
+          Uzbek—reflecting the diverse communities we're proud to call our neighbors.
+        </p>
+        
+        <h2>Our Approach</h2>
+        <p>
+          We believe in treating every client like family. When you work with us, you're not just 
+          a case file—you're a person going through one of the most challenging times of your life. 
+          We're here to guide you through it.
+        </p>
+        <p>
+          We also believe in being straight with you. If we don't think you have a strong case, 
+          we'll tell you. If there's a better path forward than litigation, we'll recommend it. 
+          Our goal isn't just to win cases—it's to get you the best possible outcome for your situation.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Our Values -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="font-heading font-bold text-navy-900">Our Values</h2>
+        <p class="text-gray-600 mt-2">The principles that guide everything we do</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {values.map((value) => {
+          const IconComponent = iconComponents[value.icon as keyof typeof iconComponents];
+          return (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+              <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <IconComponent class="w-7 h-7 text-gold-500" />
+              </div>
+              <h3 class="font-heading font-bold text-navy-900 mb-2">{value.title}</h3>
+              <p class="text-gray-600 text-sm">{value.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Why Choose Us -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-heading font-bold text-navy-900 mb-6">Why Clients Choose Us</h2>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <Check class="w-5 h-5 text-navy-900" />
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900 mb-1">Proven Track Record</h3>
+                <p class="text-gray-600">With hundreds of successful cases, we have the experience to handle even the most complex legal matters.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <Check class="w-5 h-5 text-navy-900" />
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900 mb-1">Personal Attention</h3>
+                <p class="text-gray-600">You work directly with your attorney—not a paralegal or assistant. We're always available when you need us.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <Check class="w-5 h-5 text-navy-900" />
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900 mb-1">No Fee Unless We Win</h3>
+                <p class="text-gray-600">For personal injury cases, you pay nothing unless we recover compensation for you. That's our promise.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <Check class="w-5 h-5 text-navy-900" />
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900 mb-1">Community Commitment</h3>
+                <p class="text-gray-600">We're not just lawyers—we're your neighbors. We're invested in the communities we serve.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-100 rounded-2xl p-8">
+          <h3 class="font-heading font-bold text-navy-900 mb-6">Our Team</h3>
+          <p class="text-gray-600 mb-6">
+            Our dedicated team includes experienced attorneys and multilingual staff ready to 
+            serve you. We speak English, Russian, Ukrainian, Turkish, and Uzbek.
+          </p>
+          <div class="space-y-4">
+            <div class="bg-white rounded-lg p-4">
+              <div class="font-bold text-navy-900">Alex Poberesky</div>
+              <div class="text-sm text-gray-600">Founder & Lead Attorney</div>
+            </div>
+            <div class="bg-white rounded-lg p-4">
+              <div class="font-bold text-navy-900">Patrick Ferris</div>
+              <div class="text-sm text-gray-600">Associate Attorney</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <CTASection 
+    title="Ready to Work with Us?"
+    description="Experience the difference of working with attorneys who truly care about your outcome. Contact us today for a free consultation."
+    variant="centered"
+  />
+</PageLayout>

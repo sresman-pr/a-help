@@ -1,0 +1,146 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'What is a third-party workplace injury claim?',
+    answer: 'A third-party claim allows you to sue someone other than your employer for a workplace injury. While workers\' comp limits claims against employers, you can still sue third parties like equipment manufacturers, subcontractors, property owners, or negligent drivers whose actions caused your injury.'
+  },
+  {
+    question: 'Can I file both a workers\' comp claim and a third-party lawsuit?',
+    answer: 'Yes. Workers\' compensation and third-party claims serve different purposes. Workers\' comp provides immediate benefits regardless of fault, while third-party claims allow you to recover full damages including pain and suffering. You may be entitled to both, but coordination is important to maximize your recovery.'
+  },
+  {
+    question: 'Who can be held liable as a third party in workplace accidents?',
+    answer: 'Potential third parties include manufacturers of defective equipment, property owners (if different from your employer), general contractors (if you work for a subcontractor), other subcontractors, drivers who cause accidents, and any other party whose negligence contributed to your injury.'
+  },
+  {
+    question: 'What types of compensation are available in third-party claims that aren\'t in workers\' comp?',
+    answer: 'Workers\' comp only covers medical expenses and partial wage replacement. Third-party claims allow you to recover pain and suffering, full lost wages, emotional distress, permanent disability, loss of enjoyment of life, and potentially punitive damages—significantly more than workers\' comp alone.'
+  },
+  {
+    question: 'What if my employer doesn\'t have workers\' compensation insurance?',
+    answer: 'Maryland law requires most employers to carry workers\' comp insurance. If your employer is uninsured, you may be able to sue them directly (the exclusive remedy rule doesn\'t protect uninsured employers), or file a claim with the Uninsured Employers\' Fund. Contact an attorney to explore your options.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['workers-compensation', 'product-liability', 'wrongful-death'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Workplace Accidents' }
+];
+---
+
+<PracticeAreaLayout
+  title="Workplace Accident Lawyer in Pikesville, MD"
+  description="Experienced workplace accident attorneys in Maryland. We handle third-party claims for construction, industrial, and other workplace injuries. Free consultation."
+  heroTitle="Workplace Accident Lawyers in Maryland"
+  heroDescription="When third-party negligence causes your workplace injury, you deserve more than workers' comp. We fight to hold all responsible parties accountable and maximize your recovery."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Third-Party Workplace Accident Attorneys in Maryland</h2>
+  <p>
+    Workplace injuries can be devastating, and while workers' compensation provides some benefits, 
+    it often falls far short of covering all your damages. When a third party—someone other than 
+    your employer—caused or contributed to your injury, you may have additional legal options that 
+    provide significantly more compensation.
+  </p>
+  <p>
+    At the Law Offices of Alex Poberesky, we have over 26 years of experience helping injured 
+    workers navigate both workers' compensation and third-party claims. We fight to ensure you 
+    receive every dollar you're entitled to from all responsible parties.
+  </p>
+
+  <h3>Understanding Third-Party Workplace Claims</h3>
+  <p>
+    Workers' compensation is a "no-fault" system—you receive benefits regardless of who caused 
+    the accident, but in exchange, you generally cannot sue your employer. However, this 
+    "exclusive remedy" rule does not protect third parties whose negligence injured you.
+  </p>
+  <p>
+    Third-party claims allow you to recover full damages, including pain and suffering, which 
+    are not available under workers' comp. Common third-party defendants include:
+  </p>
+  <ul>
+    <li><strong>Equipment manufacturers</strong> – Defective machinery, tools, or safety equipment</li>
+    <li><strong>Property owners</strong> – Dangerous conditions on premises you're working at</li>
+    <li><strong>General contractors</strong> – If you work for a subcontractor</li>
+    <li><strong>Other subcontractors</strong> – Negligence by other trades on a jobsite</li>
+    <li><strong>Motor vehicle drivers</strong> – Accidents while working on roads or making deliveries</li>
+    <li><strong>Architects and engineers</strong> – Design defects that create dangerous conditions</li>
+    <li><strong>Maintenance companies</strong> – Negligent maintenance of equipment</li>
+  </ul>
+
+  <h3>High-Risk Industries for Workplace Accidents</h3>
+  <p>Some industries have higher rates of serious workplace injuries:</p>
+  <ul>
+    <li><strong>Construction</strong> – Falls, struck-by accidents, electrocution, caught-between</li>
+    <li><strong>Manufacturing</strong> – Machinery accidents, chemical exposure, repetitive stress</li>
+    <li><strong>Transportation and warehousing</strong> – Forklift accidents, loading dock falls, vehicle crashes</li>
+    <li><strong>Healthcare</strong> – Patient handling injuries, needle sticks, violence</li>
+    <li><strong>Oil and gas</strong> – Explosions, fires, equipment failures</li>
+    <li><strong>Agriculture</strong> – Machinery accidents, chemical exposure</li>
+  </ul>
+
+  <h3>Common Types of Workplace Injuries</h3>
+  <ul>
+    <li><strong>Traumatic brain injuries</strong> – Falls, struck-by incidents</li>
+    <li><strong>Spinal cord injuries</strong> – Falls from heights, crushing accidents</li>
+    <li><strong>Amputations</strong> – Machinery accidents, power tool injuries</li>
+    <li><strong>Burns</strong> – Chemical, electrical, thermal</li>
+    <li><strong>Fractures</strong> – Falls, crush injuries, struck-by accidents</li>
+    <li><strong>Electrocution injuries</strong> – Contact with power lines or electrical equipment</li>
+    <li><strong>Toxic exposure</strong> – Asbestos, chemicals, fumes</li>
+    <li><strong>Hearing loss</strong> – Prolonged noise exposure</li>
+    <li><strong>Death</strong> – Fatal workplace accidents</li>
+  </ul>
+
+  <h3>Construction Site Accidents</h3>
+  <p>
+    Construction sites are among the most dangerous workplaces. OSHA identifies the "Fatal Four" 
+    causes of construction deaths:
+  </p>
+  <ol>
+    <li><strong>Falls</strong> – From scaffolds, ladders, roofs, and other heights</li>
+    <li><strong>Struck-by objects</strong> – Falling tools, materials, or equipment</li>
+    <li><strong>Electrocution</strong> – Contact with power lines or faulty wiring</li>
+    <li><strong>Caught-in/between</strong> – Crushing injuries from machinery or collapsing structures</li>
+  </ol>
+  <p>
+    Multiple contractors and subcontractors on construction sites create numerous opportunities 
+    for third-party claims when one party's negligence injures another's workers.
+  </p>
+
+  <h3>Compensation Available in Third-Party Claims</h3>
+  <p>Unlike workers' comp, third-party claims allow you to recover:</p>
+  <ul>
+    <li>Full lost wages (not just partial replacement)</li>
+    <li>Pain and suffering</li>
+    <li>Emotional distress</li>
+    <li>Permanent disability and disfigurement</li>
+    <li>Loss of enjoyment of life</li>
+    <li>Loss of consortium (impact on family relationships)</li>
+    <li>Future medical expenses</li>
+    <li>Punitive damages in cases of egregious negligence</li>
+  </ul>
+
+  <h3>Coordinating Workers' Comp and Third-Party Claims</h3>
+  <p>
+    Pursuing both workers' compensation and a third-party claim requires careful coordination. 
+    Your workers' comp carrier has a lien on any third-party recovery, but this can often be 
+    negotiated. Our attorneys understand how to maximize your total recovery while properly 
+    addressing workers' comp liens.
+  </p>
+  <p>
+    If you've been injured at work and believe a third party may be responsible, contact us for 
+    a free consultation. We'll evaluate your case and explain all your legal options for 
+    obtaining full compensation for your injuries.
+  </p>
+</PracticeAreaLayout>

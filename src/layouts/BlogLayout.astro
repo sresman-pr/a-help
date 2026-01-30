@@ -1,0 +1,199 @@
+---
+import PageLayout from './PageLayout.astro';
+import Breadcrumbs from '../components/common/Breadcrumbs.astro';
+import CTASection from '../components/sections/CTASection.astro';
+import ContactForm from '../components/forms/ContactForm.astro';
+import { Calendar, User, Clock, ArrowLeft, ArrowRight, Tag } from '@lucide/astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  author?: string;
+  category: string;
+  tags?: string[];
+  image?: string;
+}
+
+const { 
+  title, 
+  description, 
+  publishDate,
+  updatedDate,
+  author = 'Alex Poberesky',
+  category,
+  tags = [],
+  image
+} = Astro.props;
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: title }
+];
+
+// Article Schema
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "image": image ? `https://www.alexhelp.com${image}` : undefined,
+  "author": {
+    "@type": "Person",
+    "name": author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Law Offices of Alex Poberesky, P.A.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.alexhelp.com/images/logo.png"
+    }
+  },
+  "datePublished": publishDate.toISOString(),
+  "dateModified": updatedDate ? updatedDate.toISOString() : publishDate.toISOString()
+};
+---
+
+<PageLayout title={`${title} | Alex Poberesky Law Blog`} description={description}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article class="section-padding">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <!-- Header -->
+          <header class="mb-8">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="px-3 py-1 bg-gold-50 text-gold-700 text-sm font-medium rounded-full">
+                {category}
+              </span>
+            </div>
+            
+            <h1 class="font-heading font-bold text-navy-900 text-3xl md:text-4xl mb-4">
+              {title}
+            </h1>
+            
+            <div class="flex flex-wrap items-center gap-4 text-gray-600 text-sm">
+              <div class="flex items-center gap-2">
+                <User class="w-4 h-4" />
+                <span>{author}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <Calendar class="w-4 h-4" />
+                <time datetime={publishDate.toISOString()}>
+                  {formatDate(publishDate)}
+                </time>
+              </div>
+              {updatedDate && (
+                <div class="flex items-center gap-2">
+                  <Clock class="w-4 h-4" />
+                  <span>Updated: {formatDate(updatedDate)}</span>
+                </div>
+              )}
+            </div>
+          </header>
+          
+          <!-- Featured Image -->
+          {image && (
+            <div class="mb-8 rounded-xl overflow-hidden">
+              <img 
+                src={image} 
+                alt={title}
+                class="w-full aspect-video object-cover"
+              />
+            </div>
+          )}
+          
+          <!-- Content -->
+          <div class="prose max-w-none">
+            <slot />
+          </div>
+          
+          <!-- Tags -->
+          {tags.length > 0 && (
+            <div class="mt-8 pt-8 border-t border-gray-200">
+              <div class="flex items-center gap-2 flex-wrap">
+                <Tag class="w-4 h-4 text-gray-500" />
+                {tags.map(tag => (
+                  <span class="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          <!-- Navigation -->
+          <div class="mt-8 pt-8 border-t border-gray-200">
+            <a href="/blog/" class="btn btn-outline">
+              <ArrowLeft class="w-5 h-5" />
+              Back to Blog
+            </a>
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <aside class="space-y-6">
+          <!-- Contact Form -->
+          <ContactForm 
+            title="Free Case Evaluation"
+            subtitle="Have a legal question? Contact us today."
+            variant="sidebar"
+            showPhone={true}
+          />
+          
+          <!-- Categories -->
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <h3 class="font-heading font-bold text-navy-900 mb-4">Categories</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="/blog/?category=personal-injury" class="text-gray-600 hover:text-gold-600 text-sm">
+                  Personal Injury
+                </a>
+              </li>
+              <li>
+                <a href="/blog/?category=car-accidents" class="text-gray-600 hover:text-gold-600 text-sm">
+                  Car Accidents
+                </a>
+              </li>
+              <li>
+                <a href="/blog/?category=criminal-defense" class="text-gray-600 hover:text-gold-600 text-sm">
+                  Criminal Defense
+                </a>
+              </li>
+              <li>
+                <a href="/blog/?category=workers-comp" class="text-gray-600 hover:text-gold-600 text-sm">
+                  Workers' Compensation
+                </a>
+              </li>
+              <li>
+                <a href="/blog/?category=legal-guide" class="text-gray-600 hover:text-gold-600 text-sm">
+                  Legal Guides
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+  
+  <CTASection 
+    title="Need Legal Help?"
+    description="If you have questions about your legal situation, contact us for a free consultation."
+    variant="centered"
+  />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+</PageLayout>

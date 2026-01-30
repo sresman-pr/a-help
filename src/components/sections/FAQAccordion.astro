@@ -1,0 +1,114 @@
+---
+import { ChevronDown } from '@lucide/astro';
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQ[];
+  title?: string;
+  subtitle?: string;
+  showSchema?: boolean;
+}
+
+const { 
+  faqs, 
+  title = 'Frequently Asked Questions',
+  subtitle,
+  showSchema = true
+} = Astro.props;
+
+// Generate FAQ Schema
+const faqSchema = showSchema ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+} : null;
+---
+
+<section class="section-padding">
+  <div class="container-custom">
+    <div class="max-w-3xl mx-auto">
+      {(title || subtitle) && (
+        <div class="text-center mb-10">
+          {subtitle && (
+            <p class="text-gold-600 font-medium mb-2">{subtitle}</p>
+          )}
+          {title && (
+            <h2 class="font-heading font-bold text-navy-900">{title}</h2>
+          )}
+        </div>
+      )}
+      
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <div 
+            class="faq-item border border-gray-200 rounded-xl overflow-hidden"
+            data-faq-index={index}
+          >
+            <button 
+              class="faq-trigger w-full flex items-center justify-between p-5 text-left bg-white hover:bg-gray-50 transition-colors"
+              aria-expanded="false"
+            >
+              <span class="font-semibold text-navy-900 pr-4">{faq.question}</span>
+              <ChevronDown class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-200" />
+            </button>
+            <div class="faq-content hidden">
+              <div class="p-5 pt-0 text-gray-600 leading-relaxed">
+                {faq.answer}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+{showSchema && faqSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+)}
+
+<script>
+  // FAQ Accordion functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector('.faq-trigger');
+    const content = item.querySelector('.faq-content');
+    const icon = item.querySelector('.faq-icon');
+    
+    trigger?.addEventListener('click', () => {
+      const isOpen = content?.classList.contains('hidden') === false;
+      
+      // Close all other FAQs
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item) {
+          otherItem.querySelector('.faq-content')?.classList.add('hidden');
+          otherItem.querySelector('.faq-icon')?.classList.remove('rotate-180');
+          otherItem.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      // Toggle current FAQ
+      if (isOpen) {
+        content?.classList.add('hidden');
+        icon?.classList.remove('rotate-180');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        content?.classList.remove('hidden');
+        icon?.classList.add('rotate-180');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

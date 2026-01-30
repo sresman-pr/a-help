@@ -1,0 +1,110 @@
+---
+import { Phone, ArrowRight } from '@lucide/astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  variant?: 'default' | 'centered' | 'split';
+  showPhone?: boolean;
+  primaryCTA?: {
+    text: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    text: string;
+    href: string;
+  };
+}
+
+const { 
+  title = "Ready to Fight for Your Rights?",
+  subtitle,
+  description = "Contact us today for a free, no-obligation case evaluation. We're here to help you get the justice and compensation you deserve.",
+  variant = 'default',
+  showPhone = true,
+  primaryCTA = { text: 'Free Case Review', href: '/contact-us/' },
+  secondaryCTA
+} = Astro.props;
+---
+
+<section class="bg-gradient-navy text-white section-padding">
+  <div class="container-custom">
+    {variant === 'centered' ? (
+      <div class="max-w-3xl mx-auto text-center">
+        {subtitle && (
+          <p class="text-gold-400 font-medium mb-2">{subtitle}</p>
+        )}
+        <h2 class="font-heading font-bold text-white mb-4">{title}</h2>
+        {description && (
+          <p class="text-gray-300 text-lg mb-8">{description}</p>
+        )}
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={primaryCTA.href} class="btn btn-primary">
+            {primaryCTA.text}
+            <ArrowRight class="w-5 h-5" />
+          </a>
+          {showPhone && (
+            <a href="tel:+14104840400" class="btn btn-outline">
+              <Phone class="w-5 h-5" />
+              (410) 484-0400
+            </a>
+          )}
+          {secondaryCTA && (
+            <a href={secondaryCTA.href} class="btn btn-outline">
+              {secondaryCTA.text}
+            </a>
+          )}
+        </div>
+      </div>
+    ) : variant === 'split' ? (
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          {subtitle && (
+            <p class="text-gold-400 font-medium mb-2">{subtitle}</p>
+          )}
+          <h2 class="font-heading font-bold text-white mb-4">{title}</h2>
+          {description && (
+            <p class="text-gray-300">{description}</p>
+          )}
+        </div>
+        <div class="flex flex-wrap md:justify-end gap-4">
+          <a href={primaryCTA.href} class="btn btn-primary">
+            {primaryCTA.text}
+            <ArrowRight class="w-5 h-5" />
+          </a>
+          {showPhone && (
+            <a href="tel:+14104840400" class="btn btn-outline">
+              <Phone class="w-5 h-5" />
+              (410) 484-0400
+            </a>
+          )}
+        </div>
+      </div>
+    ) : (
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="md:max-w-2xl">
+          {subtitle && (
+            <p class="text-gold-400 font-medium mb-2">{subtitle}</p>
+          )}
+          <h2 class="font-heading font-bold text-white mb-2">{title}</h2>
+          {description && (
+            <p class="text-gray-300">{description}</p>
+          )}
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a href={primaryCTA.href} class="btn btn-primary whitespace-nowrap">
+            {primaryCTA.text}
+            <ArrowRight class="w-5 h-5" />
+          </a>
+          {showPhone && (
+            <a href="tel:+14104840400" class="btn btn-outline whitespace-nowrap">
+              <Phone class="w-5 h-5" />
+              Call Now
+            </a>
+          )}
+        </div>
+      </div>
+    )}
+  </div>
+</section>

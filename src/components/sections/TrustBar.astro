@@ -1,0 +1,62 @@
+---
+import { Shield, Clock, Award, Globe, Scale, Phone } from '@lucide/astro';
+
+interface Props {
+  variant?: 'default' | 'compact';
+}
+
+const { variant = 'default' } = Astro.props;
+
+const trustItems = [
+  {
+    icon: 'Award',
+    title: '26+ Years',
+    subtitle: 'Of Experience'
+  },
+  {
+    icon: 'Clock',
+    title: 'Available 24/7',
+    subtitle: 'Always Here for You'
+  },
+  {
+    icon: 'Shield',
+    title: 'No Fee',
+    subtitle: 'Unless We Win'
+  },
+  {
+    icon: 'Globe',
+    title: 'Multilingual',
+    subtitle: '5 Languages Spoken'
+  }
+];
+
+const iconComponents = {
+  Award,
+  Clock,
+  Shield,
+  Globe,
+  Scale,
+  Phone
+};
+---
+
+<section class={`bg-gray-50 border-y border-gray-200 ${variant === 'compact' ? 'py-4' : 'py-8'}`}>
+  <div class="container-custom">
+    <div class={`grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8`}>
+      {trustItems.map((item) => {
+        const IconComponent = iconComponents[item.icon as keyof typeof iconComponents];
+        return (
+          <div class="flex items-center gap-3 justify-center md:justify-start">
+            <div class="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <IconComponent class="w-6 h-6 text-gold-600" />
+            </div>
+            <div>
+              <div class="font-bold text-navy-900">{item.title}</div>
+              <div class="text-sm text-gray-600">{item.subtitle}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

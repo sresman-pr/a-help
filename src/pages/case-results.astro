@@ -1,0 +1,170 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Breadcrumbs from '../components/common/Breadcrumbs.astro';
+import CTASection from '../components/sections/CTASection.astro';
+import { ArrowRight, DollarSign } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Case Results' }
+];
+
+// Sample case results - these would ideally come from a content collection
+const caseResults = [
+  {
+    amount: '$1,200,000',
+    type: 'Car Accident',
+    description: 'Settlement for client who suffered traumatic brain injury in a rear-end collision caused by a distracted driver.'
+  },
+  {
+    amount: '$850,000',
+    type: 'Medical Malpractice',
+    description: 'Verdict for surgical error that resulted in permanent nerve damage requiring multiple corrective surgeries.'
+  },
+  {
+    amount: '$675,000',
+    type: 'Truck Accident',
+    description: 'Settlement for client struck by commercial truck whose driver violated hours-of-service regulations.'
+  },
+  {
+    amount: '$525,000',
+    type: 'Wrongful Death',
+    description: 'Settlement for family of worker killed in construction site accident due to inadequate safety measures.'
+  },
+  {
+    amount: '$450,000',
+    type: 'Motorcycle Accident',
+    description: 'Recovery for motorcyclist severely injured when driver failed to yield while making left turn.'
+  },
+  {
+    amount: '$375,000',
+    type: 'Slip and Fall',
+    description: 'Settlement for client who suffered broken hip after falling on unmarked wet floor at retail store.'
+  },
+  {
+    amount: '$325,000',
+    type: 'Workers\' Compensation',
+    description: 'Benefits secured for warehouse worker with back injury requiring spinal fusion surgery.'
+  },
+  {
+    amount: '$275,000',
+    type: 'Dog Bite',
+    description: 'Settlement for child who suffered facial scarring requiring multiple plastic surgeries.'
+  }
+];
+---
+
+<PageLayout 
+  title="Case Results | Maryland Personal Injury Lawyer"
+  description="View our case results. Millions recovered for personal injury victims in Maryland. Car accidents, medical malpractice, workers' comp, and more."
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h1 class="font-heading font-bold text-navy-900 mb-4">Our Case Results</h1>
+        <p class="text-xl text-gray-600 mb-6">
+          Results matter. Here are some examples of the recoveries we've obtained for our clients 
+          in personal injury cases throughout Maryland.
+        </p>
+        <p class="text-sm text-gray-500">
+          <em>Past results do not guarantee future outcomes. Each case is unique and results depend 
+          on individual circumstances.</em>
+        </p>
+      </div>
+      
+      <!-- Featured Results -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {caseResults.slice(0, 4).map((result) => (
+          <div class="bg-navy-900 rounded-xl p-6 text-center">
+            <div class="w-12 h-12 bg-gold-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <DollarSign class="w-6 h-6 text-navy-900" />
+            </div>
+            <div class="text-3xl font-bold text-gold-400 mb-2">{result.amount}</div>
+            <div class="text-white font-medium mb-2">{result.type}</div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- All Results -->
+      <div class="grid md:grid-cols-2 gap-6">
+        {caseResults.map((result) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div class="flex items-start gap-4">
+              <div class="bg-gold-50 rounded-lg p-3">
+                <DollarSign class="w-6 h-6 text-gold-600" />
+              </div>
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-2xl font-bold text-navy-900">{result.amount}</span>
+                  <span class="px-3 py-1 bg-navy-100 text-navy-700 text-xs font-medium rounded-full">
+                    {result.type}
+                  </span>
+                </div>
+                <p class="text-gray-600">{result.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Disclaimer -->
+      <div class="mt-12 bg-gray-50 rounded-xl p-6">
+        <h3 class="font-bold text-navy-900 mb-2">Important Disclaimer</h3>
+        <p class="text-gray-600 text-sm">
+          The results shown above are examples of past case outcomes. They are not guarantees of 
+          future results. Every case is unique, and the outcome depends on the specific facts and 
+          circumstances involved. Factors that affect case value include the severity of injuries, 
+          available insurance coverage, evidence of liability, and many others. During your free 
+          consultation, we can discuss the potential value of your specific case based on its 
+          unique circumstances.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Why We Get Results -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-heading font-bold text-navy-900 mb-6">Why We Get Results</h2>
+        <p class="text-gray-600 mb-8">
+          Our success comes from a combination of experience, preparation, and determination. 
+          Here's what sets us apart:
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-8 text-left">
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-bold text-navy-900 mb-2">Thorough Investigation</h3>
+            <p class="text-gray-600 text-sm">
+              We leave no stone unturned. Our team investigates every aspect of your case to 
+              build the strongest possible claim.
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-bold text-navy-900 mb-2">Trial Ready</h3>
+            <p class="text-gray-600 text-sm">
+              Insurance companies know we're willing to go to trial. This leverage helps us 
+              negotiate better settlements.
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-bold text-navy-900 mb-2">Expert Resources</h3>
+            <p class="text-gray-600 text-sm">
+              We work with medical experts, accident reconstructionists, and economists to 
+              prove the full extent of your damages.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <CTASection 
+    title="Let Us Fight for You"
+    description="If you've been injured or are facing criminal charges, we're ready to put our experience and track record to work for you. Contact us for a free consultation."
+    variant="centered"
+  />
+</PageLayout>

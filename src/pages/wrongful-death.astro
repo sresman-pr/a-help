@@ -1,0 +1,99 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'Who can file a wrongful death claim in Maryland?',
+    answer: 'In Maryland, wrongful death claims can be filed by the spouse, children, or parents of the deceased. If there are no primary beneficiaries, secondary beneficiaries (siblings, other relatives) may have rights. A survival action can be brought by the personal representative of the estate.'
+  },
+  {
+    question: 'What\'s the difference between a wrongful death claim and a survival action?',
+    answer: 'A wrongful death claim compensates surviving family members for their losses (loss of companionship, financial support). A survival action recovers damages the deceased could have claimed if they survived (medical expenses, pain and suffering before death). Both may be pursued.'
+  },
+  {
+    question: 'How long do I have to file a wrongful death claim?',
+    answer: 'Maryland has a three-year statute of limitations for wrongful death claims, starting from the date of death. Given the complexity of these cases and the grieving process, it\'s important to consult an attorney promptly.'
+  },
+  {
+    question: 'What damages can be recovered in a wrongful death case?',
+    answer: 'Recoverable damages include funeral and burial expenses, lost income and benefits the deceased would have provided, loss of companionship and guidance, mental anguish of surviving family members, and medical expenses before death.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['car-accidents', 'medical-malpractice', 'truck-accidents'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Wrongful Death' }
+];
+---
+
+<PracticeAreaLayout
+  title="Wrongful Death Lawyer in Pikesville, MD"
+  description="Compassionate wrongful death attorneys in Maryland. We help families seek justice and compensation after losing a loved one to negligence. Free consultation."
+  heroTitle="Wrongful Death Lawyers in Maryland"
+  heroDescription="Losing a loved one due to someone else's negligence is devastating. We provide compassionate representation while fighting aggressively for the justice your family deserves."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Compassionate Legal Representation for Grieving Families</h2>
+  <p>
+    The death of a loved one is always painful, but when that death is caused by someone else's 
+    negligence or wrongdoing, the grief is compounded by anger and a sense of injustice. At the 
+    Law Offices of Alex Poberesky, we understand what your family is going through.
+  </p>
+  <p>
+    We provide compassionate support while fighting aggressively to hold responsible parties 
+    accountable. While no amount of money can bring back your loved one, a wrongful death claim 
+    can help provide financial security and a sense of justice.
+  </p>
+
+  <h3>Causes of Wrongful Death</h3>
+  <p>Wrongful death claims may arise from:</p>
+  <ul>
+    <li><strong>Car and truck accidents</strong> – Fatal crashes caused by negligent drivers</li>
+    <li><strong>Medical malpractice</strong> – Fatal surgical errors, misdiagnosis, medication errors</li>
+    <li><strong>Workplace accidents</strong> – Construction fatalities, industrial accidents</li>
+    <li><strong>Defective products</strong> – Fatal product malfunctions or failures</li>
+    <li><strong>Premises liability</strong> – Fatal falls, inadequate security</li>
+    <li><strong>Nursing home abuse</strong> – Deaths from neglect or abuse</li>
+    <li><strong>Criminal acts</strong> – Murder, assault, drunk driving</li>
+  </ul>
+
+  <h3>Who Can File a Wrongful Death Claim?</h3>
+  <p>Under Maryland law, the following may file a wrongful death claim:</p>
+  <ul>
+    <li><strong>Primary beneficiaries:</strong> Spouse, children, parents of the deceased</li>
+    <li><strong>Secondary beneficiaries:</strong> If no primary beneficiaries exist, siblings and other relatives may have rights</li>
+    <li><strong>Personal representative:</strong> May file a survival action on behalf of the estate</li>
+  </ul>
+
+  <h3>Damages Available</h3>
+  <p>Wrongful death claims may recover:</p>
+  <ul>
+    <li>Funeral and burial expenses</li>
+    <li>Medical expenses before death</li>
+    <li>Lost income and financial support the deceased would have provided</li>
+    <li>Lost benefits (health insurance, pension, etc.)</li>
+    <li>Loss of companionship and consortium</li>
+    <li>Loss of parental guidance and nurturing for children</li>
+    <li>Mental anguish and emotional pain of surviving family members</li>
+  </ul>
+
+  <h3>Our Approach to Wrongful Death Cases</h3>
+  <p>
+    We handle wrongful death cases with the sensitivity and care they require. We work to minimize 
+    the burden on your family during this difficult time while conducting thorough investigations 
+    to establish liability and build the strongest possible case.
+  </p>
+  <p>
+    If you've lost a loved one due to someone else's negligence, we encourage you to contact us 
+    for a free, confidential consultation. There's no pressure and no obligation—just answers to 
+    your questions and guidance on your options.
+  </p>
+</PracticeAreaLayout>

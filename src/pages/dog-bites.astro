@@ -1,0 +1,100 @@
+---
+import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
+import { personalInjuryServices } from '../data/services';
+
+const faqs = [
+  {
+    question: 'Does Maryland have a "one bite rule" for dog attacks?',
+    answer: 'Maryland has moved away from the traditional one bite rule. Under current law, dog owners can be held strictly liable if their dog was running at large and attacks someone. Otherwise, you may need to prove the owner knew or should have known the dog was dangerous.'
+  },
+  {
+    question: 'What should I do after a dog bite?',
+    answer: 'Seek medical attention immediately, report the bite to animal control, document your injuries with photos, get the owner\'s information and insurance details, and contact an attorney. Don\'t sign anything from the dog owner\'s insurance company without legal advice.'
+  },
+  {
+    question: 'Who can be held liable for a dog bite?',
+    answer: 'The dog\'s owner is typically liable, but landlords, property managers, and parents of minor dog owners may also be responsible in certain circumstances. We investigate all potential sources of compensation.'
+  },
+  {
+    question: 'What compensation can I receive for a dog bite?',
+    answer: 'You may recover medical expenses, lost wages, pain and suffering, scarring and disfigurement, psychological trauma, and future treatment costs. Severe bites may result in significant compensation.'
+  }
+];
+
+const relatedServices = personalInjuryServices.filter(s => 
+  ['slip-and-fall', 'personal-injury', 'wrongful-death'].includes(s.slug)
+);
+
+const breadcrumbs = [
+  { label: 'Personal Injury', href: '/personal-injury/' },
+  { label: 'Dog Bites' }
+];
+---
+
+<PracticeAreaLayout
+  title="Dog Bite Lawyer in Pikesville, MD"
+  description="Experienced dog bite attorneys in Maryland. We fight for maximum compensation for dog attack victims. Strict liability cases. Free consultation."
+  heroTitle="Dog Bite Lawyers in Maryland"
+  heroDescription="Dog bites can cause serious physical and emotional injuries. We hold negligent dog owners accountable and fight for full compensation for victims of dog attacks."
+  category="personal-injury"
+  faqs={faqs}
+  relatedServices={relatedServices}
+  breadcrumbs={breadcrumbs}
+>
+  <h2>Experienced Dog Bite Attorneys in Maryland</h2>
+  <p>
+    Dog bite injuries can be devastating, causing permanent scarring, nerve damage, and lasting 
+    psychological trauma. Children are especially vulnerable and often suffer facial injuries that 
+    can affect them for life.
+  </p>
+  <p>
+    At the Law Offices of Alex Poberesky, we understand the physical and emotional toll of dog 
+    attacks. We fight aggressively to hold negligent dog owners responsible and secure maximum 
+    compensation for our clients.
+  </p>
+
+  <h3>Maryland Dog Bite Laws</h3>
+  <p>
+    Maryland has specific laws governing dog bite liability. A dog owner can be held liable if:
+  </p>
+  <ul>
+    <li>The dog was running at large (strict liability applies)</li>
+    <li>The owner knew or should have known the dog was dangerous</li>
+    <li>The owner failed to properly restrain or control the dog</li>
+  </ul>
+
+  <h3>Common Dog Bite Injuries</h3>
+  <ul>
+    <li>Puncture wounds and lacerations</li>
+    <li>Facial injuries and disfigurement</li>
+    <li>Nerve damage</li>
+    <li>Broken bones</li>
+    <li>Infections including rabies</li>
+    <li>Scarring requiring plastic surgery</li>
+    <li>Emotional trauma and PTSD</li>
+    <li>In severe cases, amputation or death</li>
+  </ul>
+
+  <h3>Compensation for Dog Bite Victims</h3>
+  <p>You may be entitled to:</p>
+  <ul>
+    <li>Medical expenses including emergency care and surgery</li>
+    <li>Plastic surgery and reconstructive procedures</li>
+    <li>Physical therapy and rehabilitation</li>
+    <li>Psychological counseling</li>
+    <li>Lost wages</li>
+    <li>Pain and suffering</li>
+    <li>Permanent scarring and disfigurement</li>
+  </ul>
+
+  <h3>What to Do After a Dog Bite</h3>
+  <ol>
+    <li>Seek immediate medical attention</li>
+    <li>Report the attack to local animal control</li>
+    <li>Document your injuries with photographs</li>
+    <li>Get the dog owner's information and insurance details</li>
+    <li>Identify any witnesses</li>
+    <li>Keep records of all medical treatment</li>
+    <li>Contact an experienced dog bite attorney</li>
+  </ol>
+</PracticeAreaLayout>

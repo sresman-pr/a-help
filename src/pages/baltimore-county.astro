@@ -1,0 +1,43 @@
+---
+import LocationLayout from '../layouts/LocationLayout.astro';
+import { locationsBySlug } from '../data/locations';
+
+const location = locationsBySlug['baltimore-county'];
+---
+
+<LocationLayout 
+  location={location}
+  title="Personal Injury Lawyer in Baltimore County | Alex Poberesky Law"
+  description="Experienced personal injury and criminal defense attorney serving Baltimore County, Maryland. Free consultation. Call (410) 484-0400."
+>
+  <h2>Legal Representation for Baltimore County Residents</h2>
+  <p>
+    As a Baltimore County resident and with our office located right here in Pikesville, Alex Poberesky has deep roots in this community. We understand the unique challenges faced by residents throughout the county—from the bustling commercial corridors of Towson and Hunt Valley to the quiet neighborhoods of Reisterstown, Owings Mills, and Catonsville. Our central location means we're never far from where you live and work.
+  </p>
+  <p>
+    Baltimore County's extensive road network, including major routes like I-695 (the Baltimore Beltway), I-83, and I-795, sees heavy traffic daily, leading to numerous motor vehicle accidents. Whether you've been injured in a collision on York Road, at the busy intersections near Towson Town Center, or on the winding roads of the county's rural areas, we have the experience to handle your personal injury case effectively.
+  </p>
+  <p>
+    Our proximity to the Baltimore County Circuit Court in Towson and the District Courts throughout the county means we can respond quickly to your legal needs. We've built strong professional relationships within the local legal community, which benefits our clients when negotiating settlements or litigating cases.
+  </p>
+  
+  <h3>Personal Injury Cases We Handle in Baltimore County</h3>
+  <ul>
+    <li>Car and truck accidents</li>
+    <li>Motorcycle accidents</li>
+    <li>Medical malpractice</li>
+    <li>Workers' compensation</li>
+    <li>Slip and fall accidents</li>
+    <li>Wrongful death</li>
+  </ul>
+  
+  <h3>Criminal Defense in Baltimore County</h3>
+  <p>
+    If you're facing criminal charges in Baltimore County, you need an attorney who knows the local court system inside and out. We defend clients against DUI/DWI charges, drug offenses, assault, theft, and other criminal matters at both the Circuit Court in Towson and District Courts in Catonsville, Essex, and throughout the county. Our familiarity with local prosecutors and judges helps us develop effective defense strategies for your case.
+  </p>
+  
+  <h3>Why Choose Alex Poberesky for Your Baltimore County Case?</h3>
+  <p>
+    With over 26 years of experience serving Baltimore County residents, Alex Poberesky brings unmatched local knowledge and legal expertise to every case. Our Pikesville office is conveniently located for clients throughout the county, and we offer free consultations to evaluate your case. We work on a contingency fee basis for personal injury cases, meaning you pay nothing unless we recover compensation for you. When you need a trusted local attorney who will fight for your rights, call Alex Poberesky Law.
+  </p>
+</LocationLayout>

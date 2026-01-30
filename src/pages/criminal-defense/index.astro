@@ -1,0 +1,141 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumbs from '../../components/common/Breadcrumbs.astro';
+import Hero from '../../components/sections/Hero.astro';
+import ServiceCards from '../../components/sections/ServiceCards.astro';
+import TrustBar from '../../components/sections/TrustBar.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import FAQAccordion from '../../components/sections/FAQAccordion.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+
+import { criminalDefenseServices } from '../../data/services';
+import { featuredTestimonials } from '../../data/testimonials';
+
+const faqs = [
+  {
+    question: 'What should I do if I\'m arrested in Maryland?',
+    answer: 'Exercise your right to remain silent and ask for an attorney immediately. Do not answer questions or make statements to police without your lawyer present. Be polite but firm in asserting your rights. Contact a criminal defense attorney as soon as possible.'
+  },
+  {
+    question: 'What\'s the difference between a misdemeanor and a felony?',
+    answer: 'Misdemeanors are less serious crimes punishable by up to 3 years in county jail, while felonies are more serious crimes that can result in longer prison sentences. Felony convictions also have more severe long-term consequences for employment, housing, and civil rights.'
+  },
+  {
+    question: 'Can I get my criminal record expunged in Maryland?',
+    answer: 'Many charges can be expunged in Maryland, including acquittals, dismissals, and some completed sentences. Certain convictions are also eligible after waiting periods. An attorney can evaluate your record and help you navigate the expungement process.'
+  },
+  {
+    question: 'Do I really need a lawyer for a misdemeanor?',
+    answer: 'Yes. Even misdemeanor convictions can result in jail time, fines, and a permanent criminal record that affects employment, housing, and educational opportunities. An experienced defense attorney can often get charges reduced or dismissed, protecting your future.'
+  },
+  {
+    question: 'How much does a criminal defense lawyer cost?',
+    answer: 'Fees vary depending on the complexity of the case and charges involved. We offer competitive rates and payment plans. During your free consultation, we\'ll discuss fees and ensure you understand all costs upfront before making any decisions.'
+  }
+];
+
+const breadcrumbs = [
+  { label: 'Criminal Defense' }
+];
+---
+
+<PageLayout 
+  title="Criminal Defense Lawyers in Maryland"
+  description="Aggressive Maryland criminal defense attorneys. DUI, drug crimes, assault, traffic offenses. Protecting your rights and your future. Free consultation."
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <Hero 
+    title="Maryland Criminal Defense Lawyers Protecting Your Rights"
+    subtitle="Aggressive Criminal Defense Representation"
+    description="When you're facing criminal charges, your freedom, reputation, and future are at stake. Our experienced defense attorneys fight relentlessly to protect your rights and achieve the best possible outcome."
+    showForm={true}
+    showStats={true}
+    variant="home"
+  />
+  
+  <TrustBar />
+  
+  <!-- All Criminal Defense Services -->
+  <ServiceCards 
+    services={criminalDefenseServices}
+    title="Criminal Defense Practice Areas"
+    subtitle="We defend all types of criminal charges"
+    columns={3}
+  />
+  
+  <!-- Content Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto prose">
+        <h2>Experienced Criminal Defense in Maryland</h2>
+        <p>
+          Being charged with a crime is one of the most stressful experiences anyone can face. 
+          The consequences of a conviction—jail time, fines, a permanent record—can affect every 
+          aspect of your life. That's why having an experienced criminal defense attorney on your 
+          side is essential.
+        </p>
+        <p>
+          At the Law Offices of Alex Poberesky, we've been defending clients against criminal 
+          charges throughout Maryland for over 26 years. We understand the criminal justice system, 
+          the prosecutors, and the courts—and we use that knowledge to build the strongest possible 
+          defense for every client.
+        </p>
+        
+        <h3>Our Approach to Criminal Defense</h3>
+        <p>Every case is different, but our approach remains consistent:</p>
+        <ul>
+          <li><strong>Thorough investigation</strong> of the facts and circumstances</li>
+          <li><strong>Aggressive challenge</strong> of the prosecution's evidence</li>
+          <li><strong>Protection of your constitutional rights</strong></li>
+          <li><strong>Strategic negotiation</strong> when it benefits you</li>
+          <li><strong>Trial-ready preparation</strong> for every case</li>
+        </ul>
+        
+        <h3>Understanding the Criminal Process in Maryland</h3>
+        <p>
+          The Maryland criminal justice system can be confusing and intimidating. From arrest 
+          through trial, there are numerous procedures, deadlines, and opportunities that can 
+          affect the outcome of your case. We guide you through every step:
+        </p>
+        <ul>
+          <li><strong>Arrest and booking</strong></li>
+          <li><strong>Initial appearance and bail</strong></li>
+          <li><strong>Preliminary hearing</strong></li>
+          <li><strong>Arraignment</strong></li>
+          <li><strong>Pre-trial motions</strong></li>
+          <li><strong>Plea negotiations</strong></li>
+          <li><strong>Trial</strong></li>
+          <li><strong>Sentencing</strong></li>
+          <li><strong>Appeals</strong></li>
+        </ul>
+        
+        <h3>Protecting Your Future</h3>
+        <p>
+          A criminal conviction can follow you for the rest of your life, affecting your ability 
+          to find employment, housing, and educational opportunities. We fight not just to win 
+          your case, but to protect your future and minimize the long-term impact of any charges 
+          you face.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <Testimonials 
+    testimonials={featuredTestimonials}
+    title="What Our Clients Say"
+    subtitle="Real results for real people"
+  />
+  
+  <FAQAccordion 
+    faqs={faqs}
+    title="Criminal Defense FAQ"
+    subtitle="Common questions about criminal charges"
+  />
+  
+  <CTASection 
+    title="Facing Criminal Charges? Get Help Now"
+    description="The sooner you have an attorney, the better your chances. Contact us immediately for a free, confidential consultation."
+    variant="centered"
+  />
+</PageLayout>

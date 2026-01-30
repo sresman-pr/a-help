@@ -1,0 +1,43 @@
+---
+import LocationLayout from '../layouts/LocationLayout.astro';
+import { locationsBySlug } from '../data/locations';
+
+const location = locationsBySlug['montgomery-county'];
+---
+
+<LocationLayout 
+  location={location}
+  title="Personal Injury Lawyer in Montgomery County | Alex Poberesky Law"
+  description="Experienced personal injury and criminal defense attorney serving Montgomery County, Maryland. Free consultation. Call (410) 484-0400."
+>
+  <h2>Legal Representation for Montgomery County Residents</h2>
+  <p>
+    Montgomery County is Maryland's most populous county, home to over one million residents in communities ranging from Bethesda and Silver Spring to Rockville, Gaithersburg, and Germantown. This diverse county features everything from urban neighborhoods along the I-270 corridor to the rural landscapes of the Agricultural Reserve. Our office serves clients throughout Montgomery County, providing experienced legal representation when you need it most.
+  </p>
+  <p>
+    The county's extensive road network, including I-270, I-495 (the Capital Beltway), and numerous busy surface streets, sees some of the heaviest traffic in the region. The Rockville Pike corridor, Georgia Avenue, and the areas around major Metro stations experience frequent accidents involving cars, pedestrians, and cyclists. We've helped countless Montgomery County residents injured in these accidents obtain the compensation they deserve.
+  </p>
+  <p>
+    With world-class medical facilities like Suburban Hospital, Holy Cross Hospital, and Shady Grove Medical Center, Montgomery County residents have access to excellent healthcare. However, when medical errors occur, the consequences can be devastating. Our firm handles complex medical malpractice cases, holding negligent healthcare providers accountable for the harm they cause.
+  </p>
+  
+  <h3>Personal Injury Cases We Handle in Montgomery County</h3>
+  <ul>
+    <li>Car and truck accidents</li>
+    <li>Motorcycle accidents</li>
+    <li>Medical malpractice</li>
+    <li>Workers' compensation</li>
+    <li>Slip and fall accidents</li>
+    <li>Wrongful death</li>
+  </ul>
+  
+  <h3>Criminal Defense in Montgomery County</h3>
+  <p>
+    Montgomery County's court system handles a high volume of criminal cases, and prosecutors here are well-resourced and aggressive. If you're facing criminal charges—whether for DUI, drug offenses, assault, theft, or white-collar crimes—you need an experienced defense attorney on your side. We represent clients at the Montgomery County Circuit Court in Rockville and District Courts throughout the county, fighting to protect your rights, your freedom, and your future.
+  </p>
+  
+  <h3>Why Choose Alex Poberesky for Your Montgomery County Case?</h3>
+  <p>
+    Montgomery County residents choose Alex Poberesky Law because we combine decades of legal experience with a genuine commitment to our clients' well-being. We understand that dealing with an injury or criminal charge is one of the most stressful experiences you'll face. Our job is to guide you through the legal process, answer your questions, and fight tirelessly for the best possible outcome. Call us today for a free consultation—we're here to help.
+  </p>
+</LocationLayout>

@@ -1,0 +1,150 @@
+---
+interface Props {
+  variant?: 'default' | 'dark' | 'sidebar';
+  title?: string;
+  subtitle?: string;
+  showPhone?: boolean;
+}
+
+const { 
+  variant = 'default', 
+  title = 'Free Case Evaluation',
+  subtitle = 'Get started with a free, no-obligation consultation',
+  showPhone = true
+} = Astro.props;
+
+const isDark = variant === 'dark';
+const isSidebar = variant === 'sidebar';
+---
+
+<div class={`rounded-xl p-6 md:p-8 ${
+  isDark 
+    ? 'bg-navy-800 text-white' 
+    : isSidebar 
+      ? 'bg-gray-50 border border-gray-200' 
+      : 'bg-white shadow-xl border border-gray-100'
+}`}>
+  {title && (
+    <h3 class={`font-heading font-bold text-xl md:text-2xl mb-2 ${isDark ? 'text-white' : 'text-navy-900'}`}>
+      {title}
+    </h3>
+  )}
+  
+  {subtitle && (
+    <p class={`mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+      {subtitle}
+    </p>
+  )}
+  
+  <form 
+    action="https://api.web3forms.com/submit" 
+    method="POST"
+    class="space-y-4"
+  >
+    <!-- Web3Forms Access Key - Replace with actual key -->
+    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+    <input type="hidden" name="subject" value="New Lead from AlexHelp.com" />
+    <input type="hidden" name="redirect" value="https://www.alexhelp.com/thank-you/" />
+    <input type="hidden" name="from_name" value="AlexHelp Website" />
+    
+    <!-- Honeypot for spam prevention -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+    
+    <div>
+      <label for="name" class="sr-only">Full Name</label>
+      <input 
+        type="text" 
+        id="name"
+        name="name" 
+        required 
+        placeholder="Full Name *"
+        class={`form-input ${isDark ? 'bg-navy-700 border-navy-600 text-white placeholder:text-gray-400' : ''}`}
+      />
+    </div>
+    
+    <div>
+      <label for="phone" class="sr-only">Phone Number</label>
+      <input 
+        type="tel" 
+        id="phone"
+        name="phone" 
+        required 
+        placeholder="Phone Number *"
+        class={`form-input ${isDark ? 'bg-navy-700 border-navy-600 text-white placeholder:text-gray-400' : ''}`}
+      />
+    </div>
+    
+    <div>
+      <label for="email" class="sr-only">Email Address</label>
+      <input 
+        type="email" 
+        id="email"
+        name="email" 
+        required 
+        placeholder="Email Address *"
+        class={`form-input ${isDark ? 'bg-navy-700 border-navy-600 text-white placeholder:text-gray-400' : ''}`}
+      />
+    </div>
+    
+    <div>
+      <label for="case_type" class="sr-only">Case Type</label>
+      <select 
+        id="case_type"
+        name="case_type"
+        class={`form-input ${isDark ? 'bg-navy-700 border-navy-600 text-white' : ''}`}
+      >
+        <option value="">Select Case Type</option>
+        <option value="Car Accident">Car Accident</option>
+        <option value="Truck Accident">Truck Accident</option>
+        <option value="Motorcycle Accident">Motorcycle Accident</option>
+        <option value="Medical Malpractice">Medical Malpractice</option>
+        <option value="Workers Compensation">Workers' Compensation</option>
+        <option value="Slip and Fall">Slip and Fall</option>
+        <option value="Dog Bite">Dog Bite</option>
+        <option value="Wrongful Death">Wrongful Death</option>
+        <option value="DUI">DUI/DWI</option>
+        <option value="Criminal Defense">Criminal Defense</option>
+        <option value="Traffic Offense">Traffic Offense</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    
+    <div>
+      <label for="message" class="sr-only">Tell us about your case</label>
+      <textarea 
+        id="message"
+        name="message" 
+        rows="4"
+        required 
+        placeholder="Tell us about your case... *"
+        class={`form-input resize-none ${isDark ? 'bg-navy-700 border-navy-600 text-white placeholder:text-gray-400' : ''}`}
+      ></textarea>
+    </div>
+    
+    <button 
+      type="submit" 
+      class="btn btn-primary w-full text-lg"
+    >
+      Get Free Consultation
+    </button>
+    
+    <p class={`text-xs text-center ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+      By submitting this form, you agree to our 
+      <a href="/privacy-policy/" class="underline hover:text-gold-500">Privacy Policy</a>.
+    </p>
+  </form>
+  
+  {showPhone && (
+    <div class={`mt-6 pt-6 border-t ${isDark ? 'border-navy-600' : 'border-gray-200'} text-center`}>
+      <p class={`text-sm mb-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        Prefer to call? We're available 24/7
+      </p>
+      <a 
+        href="tel:+14104840400" 
+        class={`text-2xl font-bold ${isDark ? 'text-gold-400 hover:text-gold-300' : 'text-navy-900 hover:text-gold-600'} transition-colors`}
+      >
+        (410) 484-0400
+      </a>
+    </div>
+  )}
+</div>
