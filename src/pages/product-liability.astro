@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
 
 const faqs = [
   {
@@ -33,6 +35,66 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Product Liability' }
 ];
+
+const designDefectExamples = [
+  'Vehicles prone to rollover due to high center of gravity',
+  "Children's toys with small parts that pose choking hazards",
+  'Furniture that tips over easily',
+  'Electronic devices that overheat and catch fire',
+];
+
+const manufacturingDefectExamples = [
+  'Contaminated food or medications',
+  'Improperly installed vehicle components',
+  'Faulty welds or materials in appliances',
+  'Missing safety components',
+];
+
+const failureToWarnExamples = [
+  'Medications without proper warning labels about side effects',
+  'Power tools lacking safety instructions',
+  'Products without warnings about foreseeable misuse risks',
+  "Missing age-appropriate warnings for children's products",
+];
+
+const commonInjuryProducts = [
+  { text: 'Vehicles and auto parts', subtext: 'Defective airbags, tires, brakes, seatbelts' },
+  { text: 'Medications and medical devices', subtext: 'Dangerous drugs, faulty implants, defective surgical instruments' },
+  { text: 'Household appliances', subtext: 'Fires, electrocution, explosions' },
+  { text: "Children's products", subtext: 'Toys, cribs, car seats, strollers' },
+  { text: 'Power tools and machinery', subtext: 'Inadequate guards, unexpected activation' },
+  { text: 'Electronics', subtext: 'Battery fires, electrocution, burns' },
+  { text: 'Food products', subtext: 'Contamination, foreign objects, allergen labeling failures' },
+  { text: 'Recreational equipment', subtext: 'Bikes, ATVs, exercise equipment' },
+];
+
+const distributionChainParties = [
+  'Product manufacturers',
+  'Component part manufacturers',
+  'Wholesalers and distributors',
+  'Retail stores',
+  'Importers',
+];
+
+const productLiabilityCompensation = [
+  'Medical expenses (current and future)',
+  'Lost wages and diminished earning capacity',
+  'Pain and suffering',
+  'Permanent disability or disfigurement',
+  'Property damage',
+  'Emotional distress',
+  'Loss of enjoyment of life',
+  'Wrongful death damages for families who lost loved ones',
+  'Punitive damages when manufacturers knowingly sold dangerous products (when available)',
+];
+
+const whyTheseCasesAreComplex = [
+  'Expert witnesses in engineering, medicine, and manufacturing',
+  'Extensive investigation and evidence preservation',
+  'Complex scientific and technical evidence',
+  'Large corporations with aggressive legal teams',
+  'Multi-state or federal litigation',
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +106,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/hero-courthouse.jpg"
+  accentColor="gold"
 >
   <h2>Experienced Product Liability Attorneys in Maryland</h2>
   <p>
@@ -58,95 +122,67 @@ const breadcrumbs = [
     for victims of defective products.
   </p>
 
+  <CalloutBox title="Strict Liability in Many Defect Cases" variant="info">
+    <p class="mb-0">
+      In many product defect claims, you may not need to prove a company was “careless.” Instead, the focus is often on
+      whether the product was <strong>defective and unreasonably dangerous</strong> and whether that defect caused your injuries.
+      We evaluate all available theories—strict liability, negligence, and failure to warn—to maximize your case.
+    </p>
+  </CalloutBox>
+
   <h3>Types of Product Defects</h3>
   <p>Product liability claims generally fall into three categories:</p>
+
+  <IconList
+    items={[
+      { text: 'Design defects', subtext: 'The product is unsafe as designed, even when manufactured correctly.' },
+      { text: 'Manufacturing defects', subtext: 'A mistake in production makes a particular unit dangerous.' },
+      { text: 'Failure to warn', subtext: 'Inadequate instructions or warnings about known or foreseeable risks.' },
+    ]}
+    columns={2}
+    variant="card"
+  />
   
   <h4>Design Defects</h4>
   <p>
     A design defect exists when the product's basic design is inherently dangerous, regardless 
     of how carefully it's manufactured. Examples include:
   </p>
-  <ul>
-    <li>Vehicles prone to rollover due to high center of gravity</li>
-    <li>Children's toys with small parts that pose choking hazards</li>
-    <li>Furniture that tips over easily</li>
-    <li>Electronic devices that overheat and catch fire</li>
-  </ul>
+  <IconList items={designDefectExamples} columns={2} />
 
   <h4>Manufacturing Defects</h4>
   <p>
     Manufacturing defects occur when errors during production make a specific product dangerous, 
     even though the design is safe. Examples include:
   </p>
-  <ul>
-    <li>Contaminated food or medications</li>
-    <li>Improperly installed vehicle components</li>
-    <li>Faulty welds or materials in appliances</li>
-    <li>Missing safety components</li>
-  </ul>
+  <IconList items={manufacturingDefectExamples} columns={2} />
 
   <h4>Marketing Defects (Failure to Warn)</h4>
   <p>
     Even a well-designed, properly manufactured product can be dangerous if it lacks adequate 
     warnings or instructions. Examples include:
   </p>
-  <ul>
-    <li>Medications without proper warning labels about side effects</li>
-    <li>Power tools lacking safety instructions</li>
-    <li>Products without warnings about foreseeable misuse risks</li>
-    <li>Missing age-appropriate warnings for children's products</li>
-  </ul>
+  <IconList items={failureToWarnExamples} columns={2} />
 
   <h3>Products That Commonly Cause Injuries</h3>
-  <ul>
-    <li><strong>Vehicles and auto parts</strong> – Defective airbags, tires, brakes, seatbelts</li>
-    <li><strong>Medications and medical devices</strong> – Dangerous drugs, faulty implants, defective surgical instruments</li>
-    <li><strong>Household appliances</strong> – Fires, electrocution, explosions</li>
-    <li><strong>Children's products</strong> – Toys, cribs, car seats, strollers</li>
-    <li><strong>Power tools and machinery</strong> – Inadequate guards, unexpected activation</li>
-    <li><strong>Electronics</strong> – Battery fires, electrocution, burns</li>
-    <li><strong>Food products</strong> – Contamination, foreign objects, allergen labeling failures</li>
-    <li><strong>Recreational equipment</strong> – Bikes, ATVs, exercise equipment</li>
-  </ul>
+  <IconList items={commonInjuryProducts} columns={2} variant="card" />
 
   <h3>Who Can Be Held Liable?</h3>
   <p>
     Product liability claims can be brought against any party in the distribution chain, 
     including:
   </p>
-  <ul>
-    <li>Product manufacturers</li>
-    <li>Component part manufacturers</li>
-    <li>Wholesalers and distributors</li>
-    <li>Retail stores</li>
-    <li>Importers</li>
-  </ul>
+  <IconList items={distributionChainParties} columns={2} />
 
   <h3>Compensation in Product Liability Cases</h3>
   <p>Victims of defective products may recover:</p>
-  <ul>
-    <li>Medical expenses (current and future)</li>
-    <li>Lost wages and diminished earning capacity</li>
-    <li>Pain and suffering</li>
-    <li>Permanent disability or disfigurement</li>
-    <li>Property damage</li>
-    <li>Emotional distress</li>
-    <li>Loss of enjoyment of life</li>
-    <li>Wrongful death damages for families who lost loved ones</li>
-    <li>Punitive damages when manufacturers knowingly sold dangerous products</li>
-  </ul>
+  <IconList items={productLiabilityCompensation} columns={2} />
 
   <h3>Why Product Liability Cases Require Experienced Attorneys</h3>
   <p>
     Product liability cases are among the most complex personal injury claims. They often involve:
   </p>
-  <ul>
-    <li>Expert witnesses in engineering, medicine, and manufacturing</li>
-    <li>Extensive investigation and evidence preservation</li>
-    <li>Complex scientific and technical evidence</li>
-    <li>Large corporations with aggressive legal teams</li>
-    <li>Multi-state or federal litigation</li>
-  </ul>
+  <IconList items={whyTheseCasesAreComplex} columns={2} />
   <p>
     We have the experience and resources to handle these challenging cases. If you've been 
     injured by a defective product, contact us for a free consultation. We work on a contingency 

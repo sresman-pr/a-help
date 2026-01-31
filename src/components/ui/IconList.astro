@@ -1,0 +1,71 @@
+---
+import { Check, ChevronRight, Circle, ArrowRight } from '@lucide/astro';
+
+interface ListItem {
+  text: string;
+  subtext?: string;
+}
+
+interface Props {
+  items: (string | ListItem)[];
+  icon?: 'check' | 'chevron' | 'circle' | 'arrow';
+  columns?: 1 | 2;
+  variant?: 'default' | 'card' | 'compact';
+}
+
+const { 
+  items, 
+  icon = 'check',
+  columns = 1,
+  variant = 'default'
+} = Astro.props;
+
+const iconComponents = {
+  check: Check,
+  chevron: ChevronRight,
+  circle: Circle,
+  arrow: ArrowRight
+};
+
+const IconComponent = iconComponents[icon];
+
+const gridCols = {
+  1: 'grid-cols-1',
+  2: 'grid-cols-1 md:grid-cols-2'
+};
+
+const variantStyles = {
+  default: '',
+  card: 'bg-gray-50 rounded-xl p-6 border border-gray-100',
+  compact: ''
+};
+
+const itemStyles = {
+  default: 'py-3 border-b border-gray-100 last:border-0',
+  card: 'py-2',
+  compact: 'py-1.5'
+};
+---
+
+<div class={`my-6 ${variantStyles[variant]}`}>
+  <ul class={`grid ${gridCols[columns]} gap-x-8 gap-y-1`}>
+    {items.map((item) => {
+      const text = typeof item === 'string' ? item : item.text;
+      const subtext = typeof item === 'string' ? null : item.subtext;
+      
+      return (
+        <li class={`flex items-start gap-3 ${itemStyles[variant]}`}>
+          <div class="w-6 h-6 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <IconComponent class="w-4 h-4 text-gold-600" />
+          </div>
+          <div>
+            <span class="text-gray-800">{text}</span>
+            {subtext && (
+              <p class="text-sm text-gray-500 mt-0.5">{subtext}</p>
+            )}
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</div>

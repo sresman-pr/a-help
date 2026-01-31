@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
 
 const faqs = [
   {
@@ -33,6 +35,47 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Pedestrian Accidents' }
 ];
+
+const accidentScenarios = [
+  'Crosswalks and intersections',
+  'Parking lots and parking garages',
+  'School zones and bus stops',
+  'Shopping centers and strip malls',
+  'Residential neighborhoods',
+  'Construction zones',
+  'Public transit stops',
+];
+
+const pedestrianInjuries = [
+  { text: 'Traumatic brain injuries (TBI)', subtext: 'From impact with the vehicle or ground' },
+  { text: 'Spinal cord injuries', subtext: 'Potentially causing permanent paralysis' },
+  { text: 'Multiple bone fractures', subtext: 'Legs, hips, pelvis, arms, ribs' },
+  { text: 'Internal organ damage', subtext: 'Bleeding, organ rupture' },
+  { text: 'Severe lacerations', subtext: 'From impact and road contact' },
+  { text: 'Crush injuries', subtext: 'If struck by vehicle wheels' },
+  { text: 'Amputation', subtext: 'Traumatic limb loss' },
+  { text: 'Wrongful death', subtext: 'Pedestrian fatalities are tragically common' },
+];
+
+const pedestrianLaws = [
+  'Pedestrians have the right of way in marked crosswalks',
+  'Drivers must yield to pedestrians already in an intersection',
+  'Drivers must stop for pedestrians at crosswalks—not just yield',
+  'Pedestrians must obey walk signals where present',
+  'Pedestrians should use sidewalks where available',
+];
+
+const pedestrianCompensation = [
+  'Emergency medical treatment and hospitalization',
+  'Surgery, rehabilitation, and physical therapy',
+  'Future medical care and assistive devices',
+  'Lost wages during recovery',
+  'Permanent disability or reduced earning capacity',
+  'Pain and suffering',
+  'Emotional trauma and mental anguish',
+  'Permanent scarring and disfigurement',
+  'Loss of enjoyment of life',
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +87,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/road-highway.jpg"
+  accentColor="gold"
 >
   <h2>Dedicated Pedestrian Accident Attorneys in Maryland</h2>
   <p>
@@ -60,65 +105,44 @@ const breadcrumbs = [
 
   <h3>Common Causes of Pedestrian Accidents</h3>
   <p>Most pedestrian accidents result from driver negligence, including:</p>
-  <ul>
-    <li><strong>Failure to yield at crosswalks</strong> – Drivers ignoring pedestrian right of way</li>
-    <li><strong>Distracted driving</strong> – Texting, phone use, eating while driving</li>
-    <li><strong>Speeding</strong> – Excessive speed in pedestrian areas</li>
-    <li><strong>Running red lights and stop signs</strong> – Intersection violations</li>
-    <li><strong>Drunk or impaired driving</strong> – DUI accidents</li>
-    <li><strong>Failure to stop for school buses</strong> – Endangering children</li>
-    <li><strong>Improper turns</strong> – Drivers failing to check for pedestrians when turning</li>
-    <li><strong>Backing up without looking</strong> – Parking lot and driveway accidents</li>
-  </ul>
+  <IconList
+    items={[
+      { text: 'Failure to yield at crosswalks', subtext: 'Drivers ignoring pedestrian right of way' },
+      { text: 'Distracted driving', subtext: 'Texting, phone use, eating while driving' },
+      { text: 'Speeding', subtext: 'Excessive speed in pedestrian areas' },
+      { text: 'Running red lights/stop signs', subtext: 'Intersection violations' },
+      { text: 'Drunk or impaired driving', subtext: 'DUI crashes involving pedestrians' },
+      { text: 'Failure to stop for school buses', subtext: 'Endangering children in school zones' },
+      { text: 'Improper turns', subtext: 'Drivers not checking for pedestrians when turning' },
+      { text: 'Backing up without looking', subtext: 'Parking lot and driveway collisions' },
+    ]}
+    columns={2}
+    variant="card"
+  />
+
+  <CalloutBox title="Right-of-Way in Crosswalks" variant="warning">
+    <p class="mb-0">
+      Drivers often claim a pedestrian “came out of nowhere.” In reality, Maryland law generally requires drivers to
+      <strong> yield to pedestrians in crosswalks</strong> and to use reasonable care to avoid collisions. Because Maryland is a
+      contributory negligence state, it’s critical to build the facts early and clearly.
+    </p>
+  </CalloutBox>
 
   <h3>Dangerous Locations for Pedestrians</h3>
   <p>Pedestrian accidents commonly occur in:</p>
-  <ul>
-    <li>Crosswalks and intersections</li>
-    <li>Parking lots and parking garages</li>
-    <li>School zones and bus stops</li>
-    <li>Shopping centers and strip malls</li>
-    <li>Residential neighborhoods</li>
-    <li>Construction zones</li>
-    <li>Public transit stops</li>
-  </ul>
+  <IconList items={accidentScenarios} columns={2} variant="card" />
 
   <h3>Severe Injuries in Pedestrian Accidents</h3>
   <p>The lack of protection makes pedestrians extremely vulnerable. Common injuries include:</p>
-  <ul>
-    <li><strong>Traumatic brain injuries (TBI)</strong> – From impact with the vehicle or ground</li>
-    <li><strong>Spinal cord injuries</strong> – Potentially causing permanent paralysis</li>
-    <li><strong>Multiple bone fractures</strong> – Legs, hips, pelvis, arms, ribs</li>
-    <li><strong>Internal organ damage</strong> – Bleeding, organ rupture</li>
-    <li><strong>Severe lacerations</strong> – From impact and road contact</li>
-    <li><strong>Crush injuries</strong> – If struck by vehicle wheels</li>
-    <li><strong>Amputation</strong> – Traumatic limb loss</li>
-    <li><strong>Death</strong> – Pedestrian fatalities are tragically common</li>
-  </ul>
+  <IconList items={pedestrianInjuries} columns={2} variant="card" />
 
   <h3>Maryland Pedestrian Laws</h3>
   <p>Understanding Maryland's pedestrian laws helps protect your claim:</p>
-  <ul>
-    <li>Pedestrians have the right of way in marked crosswalks</li>
-    <li>Drivers must yield to pedestrians already in an intersection</li>
-    <li>Drivers must stop for pedestrians at crosswalks—not just yield</li>
-    <li>Pedestrians must obey walk signals where present</li>
-    <li>Pedestrians should use sidewalks where available</li>
-  </ul>
+  <IconList items={pedestrianLaws} columns={2} variant="card" />
 
   <h3>Compensation for Pedestrian Accident Victims</h3>
   <p>Given the severity of injuries, pedestrian accident claims often involve substantial compensation for:</p>
-  <ul>
-    <li>Emergency medical treatment and hospitalization</li>
-    <li>Surgery, rehabilitation, and physical therapy</li>
-    <li>Future medical care and assistive devices</li>
-    <li>Lost wages during recovery</li>
-    <li>Permanent disability or reduced earning capacity</li>
-    <li>Pain and suffering</li>
-    <li>Emotional trauma and mental anguish</li>
-    <li>Permanent scarring and disfigurement</li>
-    <li>Loss of enjoyment of life</li>
-  </ul>
+  <IconList items={pedestrianCompensation} columns={2} />
 
   <h3>Fighting Against Contributory Negligence</h3>
   <p>

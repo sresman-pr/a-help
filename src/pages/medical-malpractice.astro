@@ -1,6 +1,10 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import StepCards from '../components/ui/StepCards.astro';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
+import StatHighlight from '../components/ui/StatHighlight.astro';
 
 const faqs = [
   {
@@ -29,6 +33,50 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Medical Malpractice' }
 ];
+
+const malpracticeTypes = [
+  { text: 'Misdiagnosis or delayed diagnosis', subtext: 'Failing to identify conditions in time' },
+  { text: 'Surgical errors', subtext: 'Wrong-site surgery, surgical tool left inside, nerve damage' },
+  { text: 'Medication errors', subtext: 'Wrong medication, dosage, or dangerous interactions' },
+  { text: 'Birth injuries', subtext: 'Cerebral palsy, Erb\'s palsy, brain damage during delivery' },
+  { text: 'Anesthesia errors', subtext: 'Overdose, failure to monitor, allergic reactions' },
+  { text: 'Emergency room errors', subtext: 'Failure to treat, premature discharge' },
+  { text: 'Failure to obtain informed consent', subtext: 'Performing procedures without proper consent' },
+  { text: 'Hospital-acquired infections', subtext: 'Preventable infections from poor sanitation' },
+];
+
+const liableParties = [
+  'Doctors and physicians',
+  'Surgeons',
+  'Anesthesiologists',
+  'Nurses and nursing staff',
+  'Hospitals and medical facilities',
+  'Pharmacists',
+  'Laboratories and diagnostic centers',
+  'Medical device manufacturers'
+];
+
+const marylandRequirements = [
+  { title: 'Expert Certificate', description: 'A certificate of qualified expert is required before filing suit' },
+  { title: 'Damages Caps', description: 'Maryland caps non-economic damages in malpractice cases' },
+  { title: '3-Year Limit', description: 'Statute of limitations generally 3 years, with some exceptions' },
+  { title: 'Standard of Care', description: 'Must prove the provider deviated from accepted practice' },
+];
+
+const recoveryItems = [
+  'Medical expenses for corrective treatment',
+  'Future medical care and rehabilitation',
+  'Lost wages and earning capacity',
+  'Pain and suffering (subject to Maryland\'s caps)',
+  'Loss of enjoyment of life',
+  'In cases of death, wrongful death damages'
+];
+
+const stats = [
+  { value: '#3', label: 'Cause of Death', description: 'Medical errors in the U.S.' },
+  { value: '26+', label: 'Years Experience' },
+  { value: '$0', label: 'Unless We Win' },
+];
 ---
 
 <PracticeAreaLayout
@@ -40,6 +88,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/hospital-corridor.jpg"
+  accentColor="blue"
 >
   <h2>Holding Healthcare Providers Accountable</h2>
   <p>
@@ -52,51 +102,36 @@ const breadcrumbs = [
     negligence. These complex cases require significant resources and expertise, and we have both.
   </p>
 
+  <StatHighlight stats={stats} variant="cards" columns={3} />
+
   <h3>Types of Medical Malpractice We Handle</h3>
-  <ul>
-    <li><strong>Misdiagnosis or delayed diagnosis</strong> – Failing to identify conditions in time</li>
-    <li><strong>Surgical errors</strong> – Wrong-site surgery, surgical tool left inside, nerve damage</li>
-    <li><strong>Medication errors</strong> – Wrong medication, dosage, or dangerous interactions</li>
-    <li><strong>Birth injuries</strong> – Cerebral palsy, Erb's palsy, brain damage during delivery</li>
-    <li><strong>Anesthesia errors</strong> – Overdose, failure to monitor, allergic reactions</li>
-    <li><strong>Emergency room errors</strong> – Failure to treat, premature discharge</li>
-    <li><strong>Failure to obtain informed consent</strong> – Performing procedures without proper consent</li>
-    <li><strong>Hospital-acquired infections</strong> – Preventable infections from poor sanitation</li>
-  </ul>
+  
+  <IconList items={malpracticeTypes} columns={2} variant="default" />
 
   <h3>Who Can Be Held Liable?</h3>
   <p>Medical malpractice claims may be filed against:</p>
-  <ul>
-    <li>Doctors and physicians</li>
-    <li>Surgeons</li>
-    <li>Anesthesiologists</li>
-    <li>Nurses and nursing staff</li>
-    <li>Hospitals and medical facilities</li>
-    <li>Pharmacists</li>
-    <li>Laboratories and diagnostic centers</li>
-    <li>Medical device manufacturers</li>
-  </ul>
+  
+  <IconList items={liableParties} columns={2} icon="chevron" variant="card" />
 
-  <h3>Maryland Medical Malpractice Requirements</h3>
-  <p>
-    Maryland has specific requirements for medical malpractice cases that make having an experienced 
-    attorney essential:
-  </p>
-  <ul>
-    <li><strong>Certificate of qualified expert</strong> – Required before filing suit</li>
-    <li><strong>Damages caps</strong> – Maryland caps non-economic damages in malpractice cases</li>
-    <li><strong>Statute of limitations</strong> – Generally 3 years, with some exceptions</li>
-    <li><strong>Standard of care</strong> – Must prove the provider deviated from accepted practice</li>
-  </ul>
+  <CalloutBox title="Maryland Medical Malpractice Requirements" variant="navy">
+    <p>
+      Maryland has specific requirements for medical malpractice cases that make having an experienced 
+      attorney essential. Understanding these requirements is crucial to protecting your rights.
+    </p>
+  </CalloutBox>
+
+  <StepCards steps={marylandRequirements} columns={4} variant="numbered" />
 
   <h3>What You May Recover</h3>
   <p>Compensation in medical malpractice cases may include:</p>
-  <ul>
-    <li>Medical expenses for corrective treatment</li>
-    <li>Future medical care and rehabilitation</li>
-    <li>Lost wages and earning capacity</li>
-    <li>Pain and suffering (subject to Maryland's caps)</li>
-    <li>Loss of enjoyment of life</li>
-    <li>In cases of death, wrongful death damages</li>
-  </ul>
+  
+  <IconList items={recoveryItems} icon="check" variant="default" />
+
+  <CalloutBox title="Free Case Evaluation" variant="info">
+    <p>
+      Medical malpractice cases are complex and require extensive investigation. We offer a free, 
+      confidential consultation to review your case and explain your legal options. If we take your 
+      case, you pay nothing unless we win.
+    </p>
+  </CalloutBox>
 </PracticeAreaLayout>

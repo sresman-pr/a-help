@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import StepCards from '../components/ui/StepCards.astro';
+import IconList from '../components/ui/IconList.astro';
 
 const faqs = [
   {
@@ -29,6 +31,25 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Motorcycle Accidents' }
 ];
+
+const postAccidentSteps = [
+  { title: 'Get to Safety & Call 911', description: 'Move out of traffic if you can and request police and medical assistance.' },
+  { title: 'Get Medical Care', description: 'Even if you feel okay, get evaluated—motorcycle injuries can show up later.' },
+  { title: 'Document Everything', description: 'Take photos of the scene, your bike, vehicles, road hazards, and visible injuries.' },
+  { title: 'Collect Witness Info', description: 'Get names and contact details from anyone who saw the crash.' },
+  { title: 'Avoid Insurance Statements', description: 'Don’t give recorded statements or accept quick offers before legal advice.' },
+  { title: 'Talk to a Lawyer', description: 'An attorney can preserve evidence and handle insurers while you focus on recovery.' },
+];
+
+const compensationItems = [
+  'All medical expenses including future treatment',
+  'Lost wages and diminished earning capacity',
+  'Motorcycle repair or replacement',
+  'Pain and suffering',
+  'Scarring and disfigurement',
+  'Loss of enjoyment of life',
+  'Emotional distress',
+];
 ---
 
 <PracticeAreaLayout
@@ -40,6 +61,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/road-highway.jpg"
+  accentColor="gold"
 >
   <h2>Dedicated Motorcycle Accident Attorneys</h2>
   <p>
@@ -53,41 +76,47 @@ const breadcrumbs = [
     preconceived notions about motorcycle riders.
   </p>
 
+  <h3>What to Do After a Motorcycle Accident</h3>
+  <p>
+    The steps you take right after a crash can make a major difference in both your health and your claim.
+  </p>
+  <StepCards steps={postAccidentSteps} columns={3} variant="numbered" />
+
   <h3>Common Causes of Motorcycle Accidents</h3>
-  <ul>
-    <li><strong>Left-turn accidents</strong> – Drivers failing to see motorcycles when turning</li>
-    <li><strong>Failure to yield</strong> – Drivers not giving motorcyclists right of way</li>
-    <li><strong>Distracted driving</strong> – Drivers on phones missing motorcycles in traffic</li>
-    <li><strong>Speeding</strong> – Both by motorcyclists and other drivers</li>
-    <li><strong>Lane changes</strong> – Drivers failing to check blind spots</li>
-    <li><strong>Road hazards</strong> – Potholes, debris, oil slicks particularly dangerous for bikes</li>
-    <li><strong>Door opening accidents</strong> – Parked car occupants opening doors into traffic</li>
-    <li><strong>DUI/Impaired driving</strong> – Intoxicated drivers failing to see motorcycles</li>
-  </ul>
+  <IconList 
+    items={[
+      { text: 'Left-turn accidents', subtext: 'Drivers failing to see motorcycles when turning' },
+      { text: 'Failure to yield', subtext: 'Drivers not giving motorcyclists right of way' },
+      { text: 'Distracted driving', subtext: 'Drivers on phones missing motorcycles in traffic' },
+      { text: 'Speeding', subtext: 'Both by motorcyclists and other drivers' },
+      { text: 'Lane changes', subtext: 'Drivers failing to check blind spots' },
+      { text: 'Road hazards', subtext: 'Potholes, debris, oil slicks particularly dangerous for bikes' },
+      { text: 'Door opening accidents', subtext: 'Parked car occupants opening doors into traffic' },
+      { text: 'DUI/Impaired driving', subtext: 'Intoxicated drivers failing to see motorcycles' },
+    ]}
+    columns={2}
+    variant="card"
+  />
 
   <h3>Common Motorcycle Accident Injuries</h3>
   <p>Due to the lack of protection, motorcycle accidents often cause serious injuries:</p>
-  <ul>
-    <li><strong>Road rash</strong> – Severe skin abrasions requiring skin grafts</li>
-    <li><strong>Traumatic brain injuries</strong> – Even with helmets, TBIs are common</li>
-    <li><strong>Spinal cord injuries</strong> – Potentially causing paralysis</li>
-    <li><strong>Broken bones</strong> – Legs, arms, pelvis, ribs</li>
-    <li><strong>Internal injuries</strong> – Organ damage and internal bleeding</li>
-    <li><strong>Biker's arm</strong> – Nerve damage from impact to the arm</li>
-    <li><strong>Facial and dental injuries</strong> – From impact with road or objects</li>
-  </ul>
+  <IconList 
+    items={[
+      { text: 'Road rash', subtext: 'Severe skin abrasions requiring skin grafts' },
+      { text: 'Traumatic brain injuries', subtext: 'Even with helmets, TBIs are common' },
+      { text: 'Spinal cord injuries', subtext: 'Potentially causing paralysis' },
+      { text: 'Broken bones', subtext: 'Legs, arms, pelvis, ribs' },
+      { text: 'Internal injuries', subtext: 'Organ damage and internal bleeding' },
+      { text: 'Biker\'s arm', subtext: 'Nerve damage from impact to the arm' },
+      { text: 'Facial and dental injuries', subtext: 'From impact with road or objects' },
+    ]}
+    columns={2}
+    variant="card"
+  />
 
   <h3>Compensation for Motorcycle Accidents</h3>
   <p>You may be entitled to recover:</p>
-  <ul>
-    <li>All medical expenses including future treatment</li>
-    <li>Lost wages and diminished earning capacity</li>
-    <li>Motorcycle repair or replacement</li>
-    <li>Pain and suffering</li>
-    <li>Scarring and disfigurement</li>
-    <li>Loss of enjoyment of life</li>
-    <li>Emotional distress</li>
-  </ul>
+  <IconList items={compensationItems} columns={2} />
 
   <h3>Why Choose a Motorcycle Accident Specialist</h3>
   <p>

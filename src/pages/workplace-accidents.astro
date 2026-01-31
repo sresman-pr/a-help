@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import StepCards from '../components/ui/StepCards.astro';
 
 const faqs = [
   {
@@ -33,6 +35,63 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Workplace Accidents' }
 ];
+
+const thirdPartyClaimSteps = [
+  { title: 'Report & Treat', description: 'Report the injury and get medical care right away.' },
+  { title: 'Start Workers’ Comp', description: 'Open the workers’ compensation claim to secure immediate benefits.' },
+  { title: 'Preserve Evidence', description: 'Save equipment, photos, incident reports, and witness information.' },
+  { title: 'Investigate Third Parties', description: 'Identify negligent contractors, owners, drivers, or manufacturers.' },
+  { title: 'Build Damages Proof', description: 'Document lost wages, future care needs, and long-term impacts.' },
+  { title: 'Negotiate or Litigate', description: 'Pursue settlement or trial to recover full damages beyond workers’ comp.' },
+];
+
+const workplaceAccidentTypes = [
+  { text: 'Falls', subtext: 'Ladders, scaffolds, rooftops, and elevated platforms' },
+  { text: 'Struck-by incidents', subtext: 'Falling tools/materials or moving equipment' },
+  { text: 'Caught-in/between', subtext: 'Crushing injuries from machinery or collapsing structures' },
+  { text: 'Electrocution', subtext: 'Power lines, wiring, and faulty equipment' },
+  { text: 'Vehicle and forklift crashes', subtext: 'Warehouses, loading docks, and work zones' },
+  { text: 'Defective equipment', subtext: 'Unsafe tools, guards, or machine failures' },
+];
+
+const highRiskIndustries = [
+  { text: 'Construction', subtext: 'Falls, struck-by accidents, electrocution, caught-between' },
+  { text: 'Manufacturing', subtext: 'Machinery accidents, chemical exposure, repetitive stress' },
+  { text: 'Transportation and warehousing', subtext: 'Forklift accidents, loading dock falls, vehicle crashes' },
+  { text: 'Healthcare', subtext: 'Patient handling injuries, needle sticks, workplace violence' },
+  { text: 'Oil and gas', subtext: 'Explosions, fires, equipment failures' },
+  { text: 'Agriculture', subtext: 'Machinery accidents and chemical exposure' },
+];
+
+const commonInjuries = [
+  { text: 'Traumatic brain injuries', subtext: 'Falls and struck-by incidents' },
+  { text: 'Spinal cord injuries', subtext: 'Falls from heights and crushing accidents' },
+  { text: 'Amputations', subtext: 'Machinery accidents and power tool injuries' },
+  { text: 'Burns', subtext: 'Chemical, electrical, and thermal burns' },
+  { text: 'Fractures', subtext: 'Falls, crush injuries, and impacts' },
+  { text: 'Electrocution injuries', subtext: 'Contact with power lines or electrical equipment' },
+  { text: 'Toxic exposure', subtext: 'Asbestos, chemicals, fumes' },
+  { text: 'Hearing loss', subtext: 'Prolonged noise exposure' },
+  { text: 'Wrongful death', subtext: 'Fatal workplace accidents' },
+];
+
+const fatalFour = [
+  { text: 'Falls', subtext: 'From scaffolds, ladders, roofs, and other heights' },
+  { text: 'Struck-by objects', subtext: 'Falling tools, materials, or equipment' },
+  { text: 'Electrocution', subtext: 'Contact with power lines or faulty wiring' },
+  { text: 'Caught-in/between', subtext: 'Crushing injuries from machinery or collapsing structures' },
+];
+
+const thirdPartyCompensation = [
+  'Full lost wages (not just partial replacement)',
+  'Pain and suffering',
+  'Emotional distress',
+  'Permanent disability and disfigurement',
+  'Loss of enjoyment of life',
+  'Loss of consortium (impact on family relationships)',
+  'Future medical expenses',
+  'Punitive damages in cases of egregious negligence (when available)',
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +103,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/construction-cranes.jpg"
+  accentColor="teal"
 >
   <h2>Third-Party Workplace Accident Attorneys in Maryland</h2>
   <p>
@@ -68,51 +129,39 @@ const breadcrumbs = [
     Third-party claims allow you to recover full damages, including pain and suffering, which 
     are not available under workers' comp. Common third-party defendants include:
   </p>
-  <ul>
-    <li><strong>Equipment manufacturers</strong> – Defective machinery, tools, or safety equipment</li>
-    <li><strong>Property owners</strong> – Dangerous conditions on premises you're working at</li>
-    <li><strong>General contractors</strong> – If you work for a subcontractor</li>
-    <li><strong>Other subcontractors</strong> – Negligence by other trades on a jobsite</li>
-    <li><strong>Motor vehicle drivers</strong> – Accidents while working on roads or making deliveries</li>
-    <li><strong>Architects and engineers</strong> – Design defects that create dangerous conditions</li>
-    <li><strong>Maintenance companies</strong> – Negligent maintenance of equipment</li>
-  </ul>
+  <StepCards steps={thirdPartyClaimSteps} columns={3} variant="numbered" />
+
+  <IconList
+    items={[
+      { text: 'Equipment manufacturers', subtext: 'Defective machinery, tools, or safety equipment' },
+      { text: 'Property owners', subtext: "Dangerous conditions on premises you're working at" },
+      { text: 'General contractors', subtext: 'Negligent site coordination or safety failures' },
+      { text: 'Other subcontractors', subtext: 'Negligence by other trades on a jobsite' },
+      { text: 'Motor vehicle drivers', subtext: 'Work-zone and delivery-related crashes' },
+      { text: 'Architects and engineers', subtext: 'Design defects that create dangerous conditions' },
+      { text: 'Maintenance companies', subtext: 'Negligent maintenance or inspections' },
+    ]}
+    columns={2}
+    variant="card"
+  />
+
+  <h3>Common Types of Workplace Accidents</h3>
+  <p>Many serious workplace injuries involve hazards like:</p>
+  <IconList items={workplaceAccidentTypes} columns={2} variant="card" />
 
   <h3>High-Risk Industries for Workplace Accidents</h3>
   <p>Some industries have higher rates of serious workplace injuries:</p>
-  <ul>
-    <li><strong>Construction</strong> – Falls, struck-by accidents, electrocution, caught-between</li>
-    <li><strong>Manufacturing</strong> – Machinery accidents, chemical exposure, repetitive stress</li>
-    <li><strong>Transportation and warehousing</strong> – Forklift accidents, loading dock falls, vehicle crashes</li>
-    <li><strong>Healthcare</strong> – Patient handling injuries, needle sticks, violence</li>
-    <li><strong>Oil and gas</strong> – Explosions, fires, equipment failures</li>
-    <li><strong>Agriculture</strong> – Machinery accidents, chemical exposure</li>
-  </ul>
+  <IconList items={highRiskIndustries} columns={2} variant="card" />
 
   <h3>Common Types of Workplace Injuries</h3>
-  <ul>
-    <li><strong>Traumatic brain injuries</strong> – Falls, struck-by incidents</li>
-    <li><strong>Spinal cord injuries</strong> – Falls from heights, crushing accidents</li>
-    <li><strong>Amputations</strong> – Machinery accidents, power tool injuries</li>
-    <li><strong>Burns</strong> – Chemical, electrical, thermal</li>
-    <li><strong>Fractures</strong> – Falls, crush injuries, struck-by accidents</li>
-    <li><strong>Electrocution injuries</strong> – Contact with power lines or electrical equipment</li>
-    <li><strong>Toxic exposure</strong> – Asbestos, chemicals, fumes</li>
-    <li><strong>Hearing loss</strong> – Prolonged noise exposure</li>
-    <li><strong>Death</strong> – Fatal workplace accidents</li>
-  </ul>
+  <IconList items={commonInjuries} columns={2} variant="card" />
 
   <h3>Construction Site Accidents</h3>
   <p>
     Construction sites are among the most dangerous workplaces. OSHA identifies the "Fatal Four" 
     causes of construction deaths:
   </p>
-  <ol>
-    <li><strong>Falls</strong> – From scaffolds, ladders, roofs, and other heights</li>
-    <li><strong>Struck-by objects</strong> – Falling tools, materials, or equipment</li>
-    <li><strong>Electrocution</strong> – Contact with power lines or faulty wiring</li>
-    <li><strong>Caught-in/between</strong> – Crushing injuries from machinery or collapsing structures</li>
-  </ol>
+  <IconList items={fatalFour} columns={2} variant="card" />
   <p>
     Multiple contractors and subcontractors on construction sites create numerous opportunities 
     for third-party claims when one party's negligence injures another's workers.
@@ -120,16 +169,7 @@ const breadcrumbs = [
 
   <h3>Compensation Available in Third-Party Claims</h3>
   <p>Unlike workers' comp, third-party claims allow you to recover:</p>
-  <ul>
-    <li>Full lost wages (not just partial replacement)</li>
-    <li>Pain and suffering</li>
-    <li>Emotional distress</li>
-    <li>Permanent disability and disfigurement</li>
-    <li>Loss of enjoyment of life</li>
-    <li>Loss of consortium (impact on family relationships)</li>
-    <li>Future medical expenses</li>
-    <li>Punitive damages in cases of egregious negligence</li>
-  </ul>
+  <IconList items={thirdPartyCompensation} columns={2} />
 
   <h3>Coordinating Workers' Comp and Third-Party Claims</h3>
   <p>

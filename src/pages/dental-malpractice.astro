@@ -1,6 +1,9 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import StepCards from '../components/ui/StepCards.astro';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
 
 const faqs = [
   {
@@ -33,6 +36,53 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Dental Malpractice' }
 ];
+
+const dentalMalpracticeTypes = [
+  { text: 'Nerve damage', subtext: 'Injury to lingual or inferior alveolar nerves causing numbness or chronic pain' },
+  { text: 'Surgical errors', subtext: 'Mistakes during extractions, implants, or oral surgery' },
+  { text: 'Failure to diagnose', subtext: 'Missing oral cancer, gum disease, infections, or other conditions' },
+  { text: 'Improper root canals', subtext: 'Incomplete treatment or broken instruments left behind' },
+  { text: 'Anesthesia complications', subtext: 'Overdose, allergic reaction, or improper administration' },
+  { text: 'Wrong tooth extraction', subtext: 'Removing or damaging the wrong tooth' },
+  { text: 'Infection', subtext: 'Sterility failures or untreated post-procedure infections' },
+  { text: 'Lack of informed consent', subtext: 'Proceeding without explaining material risks and alternatives' },
+];
+
+const nerveDamageImpacts = [
+  { text: 'Lingual nerve damage', subtext: 'Loss of taste, tongue numbness, difficulty speaking' },
+  { text: 'Inferior alveolar nerve damage', subtext: 'Numbness in the chin, lip, and gums' },
+  { text: 'Neuropathic pain', subtext: 'Chronic burning or shooting pain' },
+  { text: 'Loss of function', subtext: 'Difficulty eating, drinking, and speaking normally' },
+];
+
+const malpracticeCauses = [
+  'Inadequate X-rays or failure to review imaging before procedures',
+  'Improper technique during extractions or implant placement',
+  'Failure to recognize anatomical variations',
+  'Use of excessive force during procedures',
+  'Inadequate training or experience with complex procedures',
+  'Poor surgical planning',
+  'Failure to monitor patients under sedation',
+  'Unsterile instruments or facilities',
+];
+
+const malpracticeElements = [
+  { title: 'Duty of care', description: 'The dentist had a professional relationship with you.' },
+  { title: 'Breach of standard', description: 'The dentist failed to meet accepted standards of care.' },
+  { title: 'Causation', description: 'The breach directly caused your injury.' },
+  { title: 'Damages', description: 'You suffered harm as a result.' },
+];
+
+const malpracticeCompensation = [
+  'Cost of corrective dental procedures',
+  'Medical expenses for related treatment',
+  'Lost wages from missed work',
+  'Future treatment costs',
+  'Pain and suffering',
+  'Permanent disability (loss of taste, chronic pain)',
+  'Emotional distress',
+  'Punitive damages in cases of gross negligence (when available)',
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +94,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/hospital-corridor.jpg"
+  accentColor="blue"
 >
   <h2>Experienced Dental Malpractice Attorneys in Maryland</h2>
   <p>
@@ -58,20 +110,17 @@ const breadcrumbs = [
     professionals and their insurance companies.
   </p>
 
+  <CalloutBox title="Maryland Dental Malpractice Time Limits" variant="warning">
+    <p class="mb-0">
+      Maryland generally allows <strong>three years from the date of injury</strong> to file a dental malpractice claim, and it
+      also has a <strong>five-year statute of repose</strong> from the date the negligent act occurred. These deadlines can be
+      complicated—talk to a lawyer as soon as you suspect malpractice.
+    </p>
+  </CalloutBox>
+
   <h3>Types of Dental Malpractice</h3>
   <p>We handle a wide range of dental negligence cases, including:</p>
-  <ul>
-    <li><strong>Nerve damage</strong> – Injury to the lingual, inferior alveolar, or other facial nerves causing numbness, tingling, pain, or loss of taste</li>
-    <li><strong>Surgical errors</strong> – Mistakes during extractions, implants, or oral surgery</li>
-    <li><strong>Failure to diagnose</strong> – Missing oral cancer, gum disease, or infections</li>
-    <li><strong>Improper root canals</strong> – Incomplete treatment, broken instruments left in canals</li>
-    <li><strong>Anesthesia complications</strong> – Overdose, allergic reactions, or improper administration</li>
-    <li><strong>Wrongful tooth extraction</strong> – Removing the wrong tooth</li>
-    <li><strong>Infection</strong> – Failure to maintain sterile conditions or treat infections</li>
-    <li><strong>TMJ injuries</strong> – Damage to the temporomandibular joint from improper treatment</li>
-    <li><strong>Delayed treatment</strong> – Failing to refer patients to specialists when needed</li>
-    <li><strong>Lack of informed consent</strong> – Performing procedures without explaining risks</li>
-  </ul>
+  <IconList items={dentalMalpracticeTypes} columns={2} variant="card" />
 
   <h3>Nerve Damage from Dental Procedures</h3>
   <p>
@@ -79,33 +128,14 @@ const breadcrumbs = [
     critical nerves that control sensation and movement in the face, tongue, and lips. When a 
     dentist negligently damages these nerves, the effects can be permanent:
   </p>
-  <ul>
-    <li><strong>Lingual nerve damage</strong> – Loss of taste, tongue numbness, difficulty speaking</li>
-    <li><strong>Inferior alveolar nerve damage</strong> – Numbness in the chin, lip, and gums</li>
-    <li><strong>Neuropathic pain</strong> – Chronic burning or shooting pain</li>
-    <li><strong>Loss of function</strong> – Difficulty eating, drinking, and speaking normally</li>
-  </ul>
+  <IconList items={nerveDamageImpacts} columns={2} variant="card" />
 
   <h3>Common Causes of Dental Malpractice</h3>
-  <ul>
-    <li>Inadequate X-rays or failure to review imaging before procedures</li>
-    <li>Improper technique during extractions or implant placement</li>
-    <li>Failure to recognize anatomical variations</li>
-    <li>Use of excessive force during procedures</li>
-    <li>Inadequate training or experience with complex procedures</li>
-    <li>Poor surgical planning</li>
-    <li>Failure to monitor patients under sedation</li>
-    <li>Unsterile instruments or facilities</li>
-  </ul>
+  <IconList items={malpracticeCauses} columns={2} />
 
   <h3>Proving Dental Malpractice</h3>
   <p>Dental malpractice cases require proving:</p>
-  <ol>
-    <li><strong>Duty of care</strong> – The dentist had a professional relationship with you</li>
-    <li><strong>Breach of standard</strong> – The dentist failed to meet accepted standards of care</li>
-    <li><strong>Causation</strong> – The breach directly caused your injury</li>
-    <li><strong>Damages</strong> – You suffered actual harm as a result</li>
-  </ol>
+  <StepCards steps={malpracticeElements} columns={2} variant="numbered" />
   <p>
     We work with dental experts who can review your records, explain what should have been done 
     differently, and testify about how the dentist's negligence caused your injuries.
@@ -113,16 +143,7 @@ const breadcrumbs = [
 
   <h3>Compensation in Dental Malpractice Cases</h3>
   <p>Victims of dental malpractice may recover:</p>
-  <ul>
-    <li>Cost of corrective dental procedures</li>
-    <li>Medical expenses for related treatment</li>
-    <li>Lost wages from missed work</li>
-    <li>Future treatment costs</li>
-    <li>Pain and suffering</li>
-    <li>Permanent disability (loss of taste, chronic pain)</li>
-    <li>Emotional distress</li>
-    <li>Punitive damages in cases of gross negligence</li>
-  </ul>
+  <IconList items={malpracticeCompensation} columns={2} />
 
   <h3>Why Choose Our Dental Malpractice Lawyers</h3>
   <p>

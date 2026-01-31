@@ -6,20 +6,22 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 bg-white shadow-sm">
+  <!-- Top accent line -->
+  <div class="h-1 bg-gold-500"></div>
   <!-- Top bar with phone and languages -->
-  <div class="bg-navy-900 text-white py-2">
-    <div class="container-custom flex items-center justify-between text-sm">
-      <div class="flex items-center gap-4">
-        <a href={`tel:${contactInfo.phoneRaw}`} class="flex items-center gap-2 hover:text-gold-400 transition-colors">
-          <Phone class="w-4 h-4" />
-          <span class="font-semibold">{contactInfo.phone}</span>
+  <div class="bg-navy-900 text-white py-2.5">
+    <div class="container-custom">
+      <div class="flex items-center justify-between text-sm">
+        <a href={`tel:${contactInfo.phoneRaw}`} class="flex items-center gap-2 hover:text-gold-300 transition-colors">
+          <Phone class="w-4 h-4 text-gold-400" />
+          <span class="font-bold text-gold-400">{contactInfo.phone}</span>
+          <span class="hidden sm:inline text-white/40 mx-2">|</span>
+          <span class="hidden sm:inline text-white">{contactInfo.hours}</span>
         </a>
-        <span class="hidden sm:inline text-gray-400">|</span>
-        <span class="hidden sm:inline text-gray-300">{contactInfo.hours}</span>
-      </div>
-      <div class="hidden md:flex items-center gap-2 text-gray-300">
-        <Globe class="w-4 h-4" />
-        <span>We speak: {contactInfo.languages.slice(0, 3).join(', ')} & more</span>
+        <div class="hidden md:flex items-center gap-2 text-white">
+          <Globe class="w-4 h-4 text-gold-400" />
+          <span>We speak: English, Russian, Ukrainian, Turkish &amp; Uzbek</span>
+        </div>
       </div>
     </div>
   </div>

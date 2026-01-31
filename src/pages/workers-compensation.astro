@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import StepCards from '../components/ui/StepCards.astro';
+import IconList from '../components/ui/IconList.astro';
 
 const faqs = [
   {
@@ -29,6 +31,45 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Workers\' Compensation' }
 ];
+
+const workersCompSteps = [
+  { title: 'Report the Injury', description: 'Notify your employer as soon as possible and request medical care.' },
+  { title: 'Get Treatment & Documentation', description: 'Follow medical advice and keep records of visits, diagnoses, and restrictions.' },
+  { title: 'File the Claim', description: 'Submit required paperwork and meet deadlines with the Workers’ Compensation Commission.' },
+  { title: 'Insurance Review', description: 'The insurer may accept, deny, or request additional information or an IME.' },
+  { title: 'Hearing (If Needed)', description: 'Denied or disputed claims can be appealed and heard by the Commission.' },
+  { title: 'Ongoing Benefits', description: 'We fight for fair wage benefits, medical care, and proper disability ratings.' },
+];
+
+const workersCompBenefits = [
+  { text: 'Medical benefits', subtext: 'All reasonable and necessary treatment for your injury' },
+  { text: 'Temporary total disability', subtext: 'Weekly payments while you cannot work' },
+  { text: 'Temporary partial disability', subtext: 'Payments if you can only work part-time' },
+  { text: 'Permanent partial disability', subtext: 'Compensation for lasting impairment' },
+  { text: 'Permanent total disability', subtext: 'Ongoing payments if you cannot work at all' },
+  { text: 'Vocational rehabilitation', subtext: 'Job retraining if needed' },
+  { text: 'Death benefits', subtext: 'For families of workers killed on the job' },
+];
+
+const coveredInjuries = [
+  { text: 'Back and spinal injuries', subtext: 'Lifting injuries, herniated discs, spinal trauma' },
+  { text: 'Head and brain injuries', subtext: 'Falls, struck-by incidents, concussions and TBIs' },
+  { text: 'Broken bones and fractures', subtext: 'Construction falls, machinery accidents, impacts' },
+  { text: 'Repetitive stress injuries', subtext: 'Carpal tunnel, tendinitis, repetitive motion strain' },
+  { text: 'Burns and chemical exposure', subtext: 'Thermal burns, chemical burns, inhalation injuries' },
+  { text: 'Occupational diseases', subtext: 'Respiratory illness, toxic exposure-related conditions' },
+  { text: 'Hearing loss', subtext: 'Long-term noise exposure in industrial settings' },
+  { text: 'Falls from heights', subtext: 'Ladders, scaffolding, rooftops, elevated platforms' },
+];
+
+const denialReasons = [
+  'The insurer claims the injury is not work-related',
+  'Failure to report the injury promptly',
+  'Pre-existing conditions (used to dispute causation)',
+  'Missed deadlines or paperwork errors',
+  'Allegations of intoxication or horseplay',
+  'Disputes over the extent of disability',
+];
 ---
 
 <PracticeAreaLayout
@@ -40,6 +81,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/construction-cranes.jpg"
+  accentColor="teal"
 >
   <h2>Fighting for Injured Workers in Maryland</h2>
   <p>
@@ -56,40 +99,20 @@ const breadcrumbs = [
 
   <h3>Workers' Compensation Benefits in Maryland</h3>
   <p>Injured workers may be entitled to:</p>
-  <ul>
-    <li><strong>Medical benefits</strong> – All reasonable and necessary treatment for your injury</li>
-    <li><strong>Temporary total disability</strong> – Weekly payments while you cannot work</li>
-    <li><strong>Temporary partial disability</strong> – Payments if you can only work part-time</li>
-    <li><strong>Permanent partial disability</strong> – Compensation for lasting impairment</li>
-    <li><strong>Permanent total disability</strong> – Ongoing payments if you cannot work at all</li>
-    <li><strong>Vocational rehabilitation</strong> – Job retraining if needed</li>
-    <li><strong>Death benefits</strong> – For families of workers killed on the job</li>
-  </ul>
+  <IconList items={workersCompBenefits} columns={2} variant="card" />
+
+  <h3>How the Workers' Comp Process Works</h3>
+  <p>
+    Workers’ compensation has strict timelines and rules. Here’s the basic filing and dispute process:
+  </p>
+  <StepCards steps={workersCompSteps} columns={3} variant="numbered" />
 
   <h3>Common Workplace Injuries We Handle</h3>
-  <ul>
-    <li>Back and spinal cord injuries</li>
-    <li>Head and brain injuries</li>
-    <li>Broken bones and fractures</li>
-    <li>Repetitive stress injuries (carpal tunnel, tendinitis)</li>
-    <li>Burns and chemical exposure</li>
-    <li>Occupational diseases</li>
-    <li>Hearing loss</li>
-    <li>Construction accidents</li>
-    <li>Machinery accidents</li>
-    <li>Falls from heights</li>
-  </ul>
+  <IconList items={coveredInjuries} columns={2} variant="card" />
 
   <h3>Why Workers' Comp Claims Get Denied</h3>
   <p>Common reasons for denial include:</p>
-  <ul>
-    <li>The insurer claims the injury isn't work-related</li>
-    <li>Failure to report the injury promptly</li>
-    <li>Pre-existing conditions</li>
-    <li>Missed deadlines or paperwork errors</li>
-    <li>Allegations of intoxication or horseplay</li>
-    <li>Disputes over the extent of disability</li>
-  </ul>
+  <IconList items={denialReasons} columns={2} />
 
   <h3>Third-Party Claims</h3>
   <p>

@@ -5,8 +5,10 @@ export interface Service {
   icon: string;
   href: string;
   category: 'personal-injury' | 'criminal-defense';
+  backgroundImage?: string;
 }
 
+// Homepage services - matches original alexhelp.com (10 boxes)
 export const featuredServices: Service[] = [
   {
     title: 'Personal Injury',
@@ -14,23 +16,35 @@ export const featuredServices: Service[] = [
     description: 'Comprehensive representation for all types of injury cases. We fight to get you the compensation you deserve.',
     icon: 'Shield',
     href: '/personal-injury/',
-    category: 'personal-injury'
+    category: 'personal-injury',
+    backgroundImage: '/images/stock/road-highway.jpg'
   },
   {
-    title: 'Car Accidents',
+    title: 'Car / Truck / Motorcycle Accidents',
     slug: 'car-accidents',
-    description: 'Experienced car accident lawyers helping victims recover damages for injuries, lost wages, and pain and suffering.',
+    description: 'Experienced accident lawyers helping victims recover damages for injuries, lost wages, and pain and suffering.',
     icon: 'Car',
     href: '/car-accidents/',
-    category: 'personal-injury'
+    category: 'personal-injury',
+    backgroundImage: '/images/stock/road-highway.jpg'
   },
   {
-    title: 'Medical Malpractice',
+    title: 'Dog Bites',
+    slug: 'dog-bites',
+    description: 'Pursuing compensation for dog bite injuries under Maryland law.',
+    icon: 'Dog',
+    href: '/dog-bites/',
+    category: 'personal-injury',
+    backgroundImage: '/images/stock/road-highway.jpg'
+  },
+  {
+    title: 'Medical / Dental Malpractice',
     slug: 'medical-malpractice',
     description: 'Holding healthcare providers accountable for negligence that causes patient harm.',
     icon: 'Stethoscope',
     href: '/medical-malpractice/',
-    category: 'personal-injury'
+    category: 'personal-injury',
+    backgroundImage: '/images/stock/hospital-corridor.jpg'
   },
   {
     title: 'Workers\' Compensation',
@@ -38,7 +52,8 @@ export const featuredServices: Service[] = [
     description: 'Helping injured workers obtain the benefits they deserve after workplace accidents.',
     icon: 'HardHat',
     href: '/workers-compensation/',
-    category: 'personal-injury'
+    category: 'personal-injury',
+    backgroundImage: '/images/stock/construction-cranes.jpg'
   },
   {
     title: 'Criminal Defense',
@@ -46,15 +61,44 @@ export const featuredServices: Service[] = [
     description: 'Aggressive defense for misdemeanor and felony charges. Protecting your rights and your future.',
     icon: 'Scale',
     href: '/criminal-defense/',
-    category: 'criminal-defense'
+    category: 'criminal-defense',
+    backgroundImage: '/images/stock/courtroom-empty.jpg'
   },
   {
-    title: 'DUI Defense',
+    title: 'Traffic Offenses',
+    slug: 'traffic-offenses',
+    description: 'Representation for speeding, reckless driving, and license violations.',
+    icon: 'Car',
+    href: '/traffic-offenses/',
+    category: 'criminal-defense',
+    backgroundImage: '/images/stock/road-highway.jpg'
+  },
+  {
+    title: 'DUI Offenses',
     slug: 'dui',
     description: 'Strategic DUI defense to minimize penalties and protect your driving privileges.',
     icon: 'AlertTriangle',
     href: '/dui/',
-    category: 'criminal-defense'
+    category: 'criminal-defense',
+    backgroundImage: '/images/stock/road-highway.jpg'
+  },
+  {
+    title: 'Drug Crimes',
+    slug: 'drug-crimes',
+    description: 'Defense for possession, distribution, and trafficking charges.',
+    icon: 'Pill',
+    href: '/drug-crimes/',
+    category: 'criminal-defense',
+    backgroundImage: '/images/stock/courtroom-empty.jpg'
+  },
+  {
+    title: 'Theft Offenses',
+    slug: 'theft-offenses',
+    description: 'Defense for shoplifting, burglary, and robbery charges.',
+    icon: 'Lock',
+    href: '/theft-offenses/',
+    category: 'criminal-defense',
+    backgroundImage: '/images/stock/courtroom-empty.jpg'
   }
 ];
 

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'default' | 'dark' | 'sidebar';
+  variant?: 'default' | 'dark' | 'sidebar' | 'compact';
   title?: string;
   subtitle?: string;
   showPhone?: boolean;
@@ -15,23 +15,26 @@ const {
 
 const isDark = variant === 'dark';
 const isSidebar = variant === 'sidebar';
+const isCompact = variant === 'compact';
 ---
 
-<div class={`rounded-xl p-6 md:p-8 ${
+<div class={`rounded-xl ${isCompact ? 'p-0' : 'p-6 md:p-8'} ${
   isDark 
     ? 'bg-navy-800 text-white' 
     : isSidebar 
       ? 'bg-gray-50 border border-gray-200' 
-      : 'bg-white shadow-xl border border-gray-100'
+      : isCompact
+        ? ''
+        : 'bg-white shadow-xl border border-gray-100'
 }`}>
   {title && (
-    <h3 class={`font-heading font-bold text-xl md:text-2xl mb-2 ${isDark ? 'text-white' : 'text-navy-900'}`}>
+    <h3 class={`font-heading font-bold ${isCompact ? 'text-lg mb-1' : 'text-xl md:text-2xl mb-2'} ${isDark ? 'text-white' : 'text-navy-900'}`}>
       {title}
     </h3>
   )}
   
   {subtitle && (
-    <p class={`mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+    <p class={`${isCompact ? 'text-sm mb-4' : 'mb-6'} ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
       {subtitle}
     </p>
   )}
@@ -39,7 +42,7 @@ const isSidebar = variant === 'sidebar';
   <form 
     action="https://api.web3forms.com/submit" 
     method="POST"
-    class="space-y-4"
+    class={isCompact ? "space-y-3" : "space-y-4"}
   >
     <!-- Web3Forms Access Key - Replace with actual key -->
     <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
@@ -114,7 +117,7 @@ const isSidebar = variant === 'sidebar';
       <textarea 
         id="message"
         name="message" 
-        rows="4"
+        rows={isCompact ? 2 : 4}
         required 
         placeholder="Tell us about your case... *"
         class={`form-input resize-none ${isDark ? 'bg-navy-700 border-navy-600 text-white placeholder:text-gray-400' : ''}`}
@@ -123,7 +126,7 @@ const isSidebar = variant === 'sidebar';
     
     <button 
       type="submit" 
-      class="btn btn-primary w-full text-lg"
+      class={`btn btn-primary w-full ${isCompact ? '' : 'text-lg'}`}
     >
       Get Free Consultation
     </button>

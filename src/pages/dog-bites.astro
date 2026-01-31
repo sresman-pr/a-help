@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import StepCards from '../components/ui/StepCards.astro';
+import IconList from '../components/ui/IconList.astro';
 
 const faqs = [
   {
@@ -29,6 +31,41 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Dog Bites' }
 ];
+
+const dogBiteSteps = [
+  { title: 'Get Medical Care', description: 'Dog bites can become infected quickly—seek treatment right away.' },
+  { title: 'Report the Attack', description: 'Notify local animal control so the incident is documented.' },
+  { title: 'Document Injuries', description: 'Take photos and keep records of treatment, prescriptions, and symptoms.' },
+  { title: 'Get Owner & Insurance Info', description: 'Collect the dog owner’s contact information and any insurer details.' },
+  { title: 'Identify Witnesses', description: 'Get contact info for anyone who saw the bite or the dog’s behavior.' },
+  { title: 'Talk to a Lawyer', description: 'Avoid signing anything from an insurer before you understand your rights.' },
+];
+
+const marylandLiabilityBasics = [
+  { text: 'Dog running at large', subtext: 'Strict liability may apply when a dog is roaming and attacks.' },
+  { text: 'Known dangerous tendencies', subtext: 'Owner knew or should have known the dog was dangerous.' },
+  { text: 'Failure to restrain or control', subtext: 'Negligent handling, leash violations, or poor containment.' },
+];
+
+const commonDogBiteInjuries = [
+  'Puncture wounds and lacerations',
+  'Facial injuries and disfigurement',
+  'Nerve damage',
+  'Broken bones',
+  'Infections (including serious complications)',
+  'Scarring requiring plastic surgery',
+  'Emotional trauma and PTSD',
+  'In severe cases, amputation or wrongful death',
+];
+
+const dogBiteDamages = [
+  { text: 'Medical bills', subtext: 'Emergency care, stitches, rabies shots, antibiotics, follow-up care' },
+  { text: 'Plastic surgery', subtext: 'Reconstructive procedures for scarring and disfigurement' },
+  { text: 'Lost wages', subtext: 'Time missed from work and reduced earning capacity' },
+  { text: 'Pain and suffering', subtext: 'Physical pain, ongoing symptoms, and recovery impact' },
+  { text: 'Emotional trauma', subtext: 'Anxiety, PTSD, fear of dogs—especially in children' },
+  { text: 'Permanent scarring', subtext: 'Visible scars that affect confidence and quality of life' },
+];
 ---
 
 <PracticeAreaLayout
@@ -40,6 +77,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/hero-courthouse.jpg"
+  accentColor="gold"
 >
   <h2>Experienced Dog Bite Attorneys in Maryland</h2>
   <p>
@@ -57,44 +96,15 @@ const breadcrumbs = [
   <p>
     Maryland has specific laws governing dog bite liability. A dog owner can be held liable if:
   </p>
-  <ul>
-    <li>The dog was running at large (strict liability applies)</li>
-    <li>The owner knew or should have known the dog was dangerous</li>
-    <li>The owner failed to properly restrain or control the dog</li>
-  </ul>
+  <IconList items={marylandLiabilityBasics} columns={2} variant="card" />
 
   <h3>Common Dog Bite Injuries</h3>
-  <ul>
-    <li>Puncture wounds and lacerations</li>
-    <li>Facial injuries and disfigurement</li>
-    <li>Nerve damage</li>
-    <li>Broken bones</li>
-    <li>Infections including rabies</li>
-    <li>Scarring requiring plastic surgery</li>
-    <li>Emotional trauma and PTSD</li>
-    <li>In severe cases, amputation or death</li>
-  </ul>
+  <IconList items={commonDogBiteInjuries} columns={2} variant="card" />
 
   <h3>Compensation for Dog Bite Victims</h3>
   <p>You may be entitled to:</p>
-  <ul>
-    <li>Medical expenses including emergency care and surgery</li>
-    <li>Plastic surgery and reconstructive procedures</li>
-    <li>Physical therapy and rehabilitation</li>
-    <li>Psychological counseling</li>
-    <li>Lost wages</li>
-    <li>Pain and suffering</li>
-    <li>Permanent scarring and disfigurement</li>
-  </ul>
+  <IconList items={dogBiteDamages} columns={2} variant="card" />
 
   <h3>What to Do After a Dog Bite</h3>
-  <ol>
-    <li>Seek immediate medical attention</li>
-    <li>Report the attack to local animal control</li>
-    <li>Document your injuries with photographs</li>
-    <li>Get the dog owner's information and insurance details</li>
-    <li>Identify any witnesses</li>
-    <li>Keep records of all medical treatment</li>
-    <li>Contact an experienced dog bite attorney</li>
-  </ol>
+  <StepCards steps={dogBiteSteps} columns={3} variant="numbered" />
 </PracticeAreaLayout>

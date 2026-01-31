@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
 
 const faqs = [
   {
@@ -29,6 +31,36 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Slip and Fall' }
 ];
+
+const commonLocations = [
+  'Grocery stores and retail shops',
+  'Restaurants and bars',
+  'Shopping malls',
+  'Office buildings',
+  'Apartment complexes',
+  'Hospitals and nursing homes',
+  'Parking garages and lots',
+  'Government buildings',
+  'Hotels and resorts',
+];
+
+const commonInjuries = [
+  { text: 'Broken hips', subtext: 'Especially common in elderly victims' },
+  { text: 'Wrist and arm fractures', subtext: 'Often from trying to break the fall' },
+  { text: 'Head and brain injuries', subtext: 'Concussions and traumatic brain injuries' },
+  { text: 'Back and spinal injuries', subtext: 'Herniated discs, spinal trauma' },
+  { text: 'Knee and ankle injuries', subtext: 'Sprains, tears, fractures' },
+  { text: 'Soft tissue injuries', subtext: 'Strains, sprains, tears' },
+  { text: 'Cuts and lacerations', subtext: 'From impact with surfaces or objects' },
+];
+
+const investigationSteps = [
+  'Reviewing security camera footage',
+  'Interviewing witnesses',
+  'Examining maintenance records',
+  'Documenting the hazardous condition',
+  'Consulting with safety experts',
+];
 ---
 
 <PracticeAreaLayout
@@ -40,6 +72,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/hero-courthouse.jpg"
+  accentColor="gold"
 >
   <h2>Maryland Premises Liability Attorneys</h2>
   <p>
@@ -54,50 +88,41 @@ const breadcrumbs = [
   </p>
 
   <h3>Common Causes of Slip and Fall Accidents</h3>
-  <ul>
-    <li><strong>Wet or slippery floors</strong> – Spills, recently mopped floors, leaks</li>
-    <li><strong>Uneven surfaces</strong> – Broken sidewalks, potholes, torn carpeting</li>
-    <li><strong>Ice and snow</strong> – Failure to clear walkways</li>
-    <li><strong>Poor lighting</strong> – Inadequate illumination in stairwells and parking lots</li>
-    <li><strong>Defective stairs</strong> – Broken handrails, loose steps, missing treads</li>
-    <li><strong>Cluttered walkways</strong> – Merchandise, cords, debris blocking paths</li>
-    <li><strong>Parking lot hazards</strong> – Potholes, unmarked curbs, oil slicks</li>
-  </ul>
+  <IconList
+    items={[
+      { text: 'Wet or slippery floors', subtext: 'Spills, recently mopped floors, leaks' },
+      { text: 'Uneven surfaces', subtext: 'Broken sidewalks, potholes, torn carpeting' },
+      { text: 'Ice and snow', subtext: 'Failure to clear walkways and entry areas' },
+      { text: 'Poor lighting', subtext: 'Inadequate illumination in stairwells and parking lots' },
+      { text: 'Defective stairs', subtext: 'Broken handrails, loose steps, missing treads' },
+      { text: 'Cluttered walkways', subtext: 'Merchandise, cords, debris blocking paths' },
+      { text: 'Parking lot hazards', subtext: 'Potholes, unmarked curbs, oil slicks' },
+    ]}
+    columns={2}
+    variant="card"
+  />
 
   <h3>Where Slip and Fall Accidents Occur</h3>
-  <ul>
-    <li>Grocery stores and retail shops</li>
-    <li>Restaurants and bars</li>
-    <li>Shopping malls</li>
-    <li>Office buildings</li>
-    <li>Apartment complexes</li>
-    <li>Hospitals and nursing homes</li>
-    <li>Parking garages and lots</li>
-    <li>Government buildings</li>
-    <li>Hotels and resorts</li>
-  </ul>
+  <IconList items={commonLocations} columns={2} variant="card" />
 
   <h3>Common Slip and Fall Injuries</h3>
-  <ul>
-    <li>Broken hips, especially in elderly victims</li>
-    <li>Wrist and arm fractures from trying to break the fall</li>
-    <li>Head and brain injuries</li>
-    <li>Back and spinal injuries</li>
-    <li>Knee and ankle injuries</li>
-    <li>Soft tissue injuries</li>
-    <li>Cuts and lacerations</li>
-  </ul>
+  <IconList items={commonInjuries} columns={2} variant="card" />
 
   <h3>Proving Your Case</h3>
+  <CalloutBox title="What We Must Prove" variant="info">
+    <p class="mb-2">
+      In a Maryland slip and fall case, the details matter. We work to prove:
+    </p>
+    <ol class="mb-0">
+      <li>A dangerous condition existed on the property</li>
+      <li>The owner knew or should have known about it</li>
+      <li>They failed to fix it or warn you</li>
+      <li>The condition caused your injuries and damages</li>
+    </ol>
+  </CalloutBox>
   <p>
     Successful slip and fall cases require proving that the property owner knew or should have 
     known about the dangerous condition. We investigate thoroughly to establish liability, including:
   </p>
-  <ul>
-    <li>Reviewing security camera footage</li>
-    <li>Interviewing witnesses</li>
-    <li>Examining maintenance records</li>
-    <li>Documenting the hazardous condition</li>
-    <li>Consulting with safety experts</li>
-  </ul>
+  <IconList items={investigationSteps} columns={2} />
 </PracticeAreaLayout>

@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { criminalDefenseServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
 
 const faqs = [
   {
@@ -33,6 +35,53 @@ const breadcrumbs = [
   { label: 'Criminal Defense', href: '/criminal-defense/' },
   { label: 'Domestic Violence Defense' }
 ];
+
+const coveredRelationships = [
+  'Current or former spouses',
+  'People who live together or have lived together',
+  'People in a dating relationship',
+  'People with a child in common',
+  'Parents, stepparents, children, stepchildren',
+  'Other relatives by blood or marriage',
+];
+
+const qualifyingAbuse = [
+  'Physical assault or threat of assault',
+  'Placing someone in fear of serious harm',
+  'Stalking',
+  'Revenge porn',
+  'False imprisonment',
+  'Sexual offenses',
+];
+
+const protectiveOrderEffects = [
+  'Order you to stay away from the alleged victim’s home, workplace, and school',
+  'Force you to vacate your own home',
+  'Restrict or eliminate custody and visitation with your children',
+  'Require you to surrender firearms',
+  'Order temporary child support or spousal support',
+  'Give the other party possession of vehicles and property',
+];
+
+const commonDefenses = [
+  { text: 'Self-defense', subtext: 'You used reasonable force to protect yourself from harm' },
+  { text: 'Defense of others', subtext: 'You were protecting children or others from harm' },
+  { text: 'False allegations', subtext: 'Unfortunately common in custody disputes and contentious relationships' },
+  { text: 'Lack of evidence', subtext: "Challenging the prosecution's case when evidence is weak" },
+  { text: 'Mutual combat', subtext: 'Both parties engaged in a physical confrontation' },
+  { text: 'Exaggeration', subtext: 'Injuries or events were exaggerated or misrepresented' },
+  { text: 'Witness credibility', subtext: "Exposing inconsistencies in the accuser's statements" },
+];
+
+const highStakes = [
+  { text: 'Loss of custody', subtext: 'Courts consider domestic violence in custody decisions' },
+  { text: 'Job loss', subtext: 'Some employers terminate employees with domestic violence convictions' },
+  { text: 'Professional licenses', subtext: 'May be denied, suspended, or revoked' },
+  { text: 'Housing', subtext: 'Difficulty finding housing with a domestic violence record' },
+  { text: 'Immigration consequences', subtext: 'Deportation or denial of citizenship for non-citizens' },
+  { text: 'Gun rights', subtext: 'Federal law can prohibit firearm possession after DV convictions' },
+  { text: 'Future relationships', subtext: 'A record that follows you and affects reputation' },
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +93,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/courtroom-empty.jpg"
+  accentColor="red"
 >
   <h2>Experienced Domestic Violence Defense in Maryland</h2>
   <p>
@@ -62,44 +113,41 @@ const breadcrumbs = [
   <p>
     Domestic violence in Maryland refers to abuse between people in certain relationships, including:
   </p>
-  <ul>
-    <li>Current or former spouses</li>
-    <li>People who live together or have lived together</li>
-    <li>People in a dating relationship</li>
-    <li>People with a child in common</li>
-    <li>Parents, stepparents, children, stepchildren</li>
-    <li>Other relatives by blood or marriage</li>
-  </ul>
+  <IconList items={coveredRelationships} columns={2} variant="card" />
   
   <p><strong>Types of abuse that qualify:</strong></p>
-  <ul>
-    <li>Physical assault or threat of assault</li>
-    <li>Placing someone in fear of serious harm</li>
-    <li>Stalking</li>
-    <li>Revenge porn</li>
-    <li>False imprisonment</li>
-    <li>Sexual offenses</li>
-  </ul>
+  <IconList items={qualifyingAbuse} columns={2} variant="card" />
 
   <h3>Criminal Charges in Domestic Violence Cases</h3>
   <p>
     Domestic violence itself is not a separate crime in Maryland, but rather describes the relationship 
     context for other criminal charges:
   </p>
-  <ul>
-    <li><strong>Second degree assault</strong> – Up to 10 years imprisonment</li>
-    <li><strong>First degree assault</strong> – Up to 25 years imprisonment</li>
-    <li><strong>Reckless endangerment</strong> – Up to 5 years imprisonment</li>
-    <li><strong>Stalking</strong> – Up to 5 years imprisonment</li>
-    <li><strong>Harassment</strong> – Up to 90 days jail</li>
-    <li><strong>Telephone misuse</strong> – Up to 3 years imprisonment</li>
-  </ul>
+  <IconList
+    items={[
+      { text: 'Second degree assault', subtext: 'Up to 10 years imprisonment (depending on circumstances)' },
+      { text: 'First degree assault', subtext: 'Up to 25 years imprisonment (felony)' },
+      { text: 'Reckless endangerment', subtext: 'Up to 5 years imprisonment' },
+      { text: 'Stalking', subtext: 'Up to 5 years imprisonment' },
+      { text: 'Harassment', subtext: 'Up to 90 days jail' },
+      { text: 'Telephone misuse', subtext: 'Up to 3 years imprisonment' },
+    ]}
+    columns={2}
+    variant="card"
+  />
   <p>
     Domestic context typically means prosecutors take charges more seriously and courts impose 
     harsher conditions and sentences.
   </p>
 
   <h3>Protective Orders in Maryland</h3>
+  <CalloutBox title="Protective Orders Can Have Immediate Consequences" variant="warning">
+    <p class="mb-0">
+      A protective order can force you to leave your home, restrict contact with your children, and create a no-contact
+      condition that’s easy to accidentally violate. <strong>Violating a protective order is a separate criminal offense</strong>,
+      even if the protected person initiates contact.
+    </p>
+  </CalloutBox>
   <p>
     Maryland has several types of protective orders that can dramatically affect your life:
   </p>
@@ -123,40 +171,17 @@ const breadcrumbs = [
   </p>
 
   <p><strong>A protective order can:</strong></p>
-  <ul>
-    <li>Order you to stay away from the alleged victim's home, workplace, and school</li>
-    <li>Force you to vacate your own home</li>
-    <li>Restrict or eliminate custody and visitation with your children</li>
-    <li>Require you to surrender firearms</li>
-    <li>Order you to pay temporary child support or spousal support</li>
-    <li>Give the other party possession of vehicles and property</li>
-  </ul>
+  <IconList items={protectiveOrderEffects} columns={2} />
 
   <h3>Defenses to Domestic Violence Charges</h3>
   <p>We explore all possible defenses, including:</p>
-  <ul>
-    <li><strong>Self-defense</strong> – You used reasonable force to protect yourself from harm</li>
-    <li><strong>Defense of others</strong> – You were protecting children or others from harm</li>
-    <li><strong>False allegations</strong> – Unfortunately common in custody disputes and contentious relationships</li>
-    <li><strong>Lack of evidence</strong> – Challenging the prosecution's case when evidence is weak</li>
-    <li><strong>Mutual combat</strong> – Both parties engaged in the physical confrontation</li>
-    <li><strong>Exaggeration</strong> – Injuries or events were exaggerated or misrepresented</li>
-    <li><strong>Witness credibility</strong> – Exposing inconsistencies in the accuser's statements</li>
-  </ul>
+  <IconList items={commonDefenses} columns={2} variant="card" />
 
   <h3>The Stakes Are High</h3>
   <p>
     A domestic violence conviction—or even just a protective order—can have devastating consequences:
   </p>
-  <ul>
-    <li><strong>Loss of custody</strong> – Courts consider domestic violence in custody decisions</li>
-    <li><strong>Job loss</strong> – Many employers terminate employees with domestic violence convictions</li>
-    <li><strong>Professional licenses</strong> – May be denied, suspended, or revoked</li>
-    <li><strong>Housing</strong> – Difficulty finding housing with a domestic violence record</li>
-    <li><strong>Immigration consequences</strong> – Deportation or denial of citizenship for non-citizens</li>
-    <li><strong>Gun rights</strong> – Federal law prohibits firearm possession after domestic violence convictions</li>
-    <li><strong>Future relationships</strong> – A record that follows you and affects future relationships</li>
-  </ul>
+  <IconList items={highStakes} columns={2} variant="card" />
 
   <h3>What to Do If You're Facing Domestic Violence Charges</h3>
   <ol>

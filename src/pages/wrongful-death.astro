@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import StatHighlight from '../components/ui/StatHighlight.astro';
 
 const faqs = [
   {
@@ -29,6 +31,38 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Wrongful Death' }
 ];
+
+const whoCanSue = [
+  { text: 'Spouse, children, or parents', subtext: 'Primary beneficiaries under Maryland wrongful death law' },
+  { text: 'Other relatives', subtext: 'Potential secondary beneficiaries when no primary beneficiaries exist' },
+  { text: 'The estate (survival action)', subtext: 'Brought by the personal representative for damages the deceased could have claimed' },
+];
+
+const compensationTypes = [
+  { value: 'Economic', label: 'Losses', description: 'Funeral/burial costs, medical bills, lost income and benefits.' },
+  { value: 'Non‑Economic', label: 'Losses', description: 'Loss of companionship, guidance, and mental anguish.' },
+  { value: 'Estate', label: 'Damages', description: 'Pain and suffering before death and other survival action damages.' },
+];
+
+const commonWrongfulDeathCauses = [
+  { text: 'Car and truck accidents', subtext: 'Fatal crashes caused by negligent drivers' },
+  { text: 'Medical malpractice', subtext: 'Fatal surgical errors, misdiagnosis, medication errors' },
+  { text: 'Workplace accidents', subtext: 'Construction fatalities, industrial accidents' },
+  { text: 'Defective products', subtext: 'Fatal product malfunctions or failures' },
+  { text: 'Premises liability', subtext: 'Fatal falls, inadequate security' },
+  { text: 'Nursing home abuse/neglect', subtext: 'Deaths from neglect or abuse' },
+  { text: 'Criminal acts', subtext: 'Assault, DUI, and other violent acts' },
+];
+
+const wrongfulDeathDamages = [
+  'Funeral and burial expenses',
+  'Medical expenses before death',
+  'Lost income and financial support the deceased would have provided',
+  'Lost benefits (health insurance, pension, etc.)',
+  'Loss of companionship and consortium',
+  'Loss of parental guidance and nurturing for children',
+  'Mental anguish and emotional pain of surviving family members',
+];
 ---
 
 <PracticeAreaLayout
@@ -40,6 +74,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/hero-courthouse.jpg"
+  accentColor="gold"
 >
   <h2>Compassionate Legal Representation for Grieving Families</h2>
   <p>
@@ -55,35 +91,16 @@ const breadcrumbs = [
 
   <h3>Causes of Wrongful Death</h3>
   <p>Wrongful death claims may arise from:</p>
-  <ul>
-    <li><strong>Car and truck accidents</strong> – Fatal crashes caused by negligent drivers</li>
-    <li><strong>Medical malpractice</strong> – Fatal surgical errors, misdiagnosis, medication errors</li>
-    <li><strong>Workplace accidents</strong> – Construction fatalities, industrial accidents</li>
-    <li><strong>Defective products</strong> – Fatal product malfunctions or failures</li>
-    <li><strong>Premises liability</strong> – Fatal falls, inadequate security</li>
-    <li><strong>Nursing home abuse</strong> – Deaths from neglect or abuse</li>
-    <li><strong>Criminal acts</strong> – Murder, assault, drunk driving</li>
-  </ul>
+  <IconList items={commonWrongfulDeathCauses} columns={2} variant="card" />
 
   <h3>Who Can File a Wrongful Death Claim?</h3>
   <p>Under Maryland law, the following may file a wrongful death claim:</p>
-  <ul>
-    <li><strong>Primary beneficiaries:</strong> Spouse, children, parents of the deceased</li>
-    <li><strong>Secondary beneficiaries:</strong> If no primary beneficiaries exist, siblings and other relatives may have rights</li>
-    <li><strong>Personal representative:</strong> May file a survival action on behalf of the estate</li>
-  </ul>
+  <IconList items={whoCanSue} columns={2} variant="card" />
 
   <h3>Damages Available</h3>
   <p>Wrongful death claims may recover:</p>
-  <ul>
-    <li>Funeral and burial expenses</li>
-    <li>Medical expenses before death</li>
-    <li>Lost income and financial support the deceased would have provided</li>
-    <li>Lost benefits (health insurance, pension, etc.)</li>
-    <li>Loss of companionship and consortium</li>
-    <li>Loss of parental guidance and nurturing for children</li>
-    <li>Mental anguish and emotional pain of surviving family members</li>
-  </ul>
+  <StatHighlight stats={compensationTypes} variant="centered" columns={3} />
+  <IconList items={wrongfulDeathDamages} columns={2} />
 
   <h3>Our Approach to Wrongful Death Cases</h3>
   <p>

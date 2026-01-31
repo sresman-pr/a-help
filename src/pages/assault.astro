@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { criminalDefenseServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
 
 const faqs = [
   {
@@ -33,6 +35,56 @@ const breadcrumbs = [
   { label: 'Criminal Defense', href: '/criminal-defense/' },
   { label: 'Assault Defense' }
 ];
+
+const firstDegreeElements = [
+  'Intentionally causing or attempting to cause serious physical injury',
+  'Assault with a firearm (including airsoft, BB guns, and pepper spray)',
+];
+
+const secondDegreeExamples = [
+  'Offensive physical contact',
+  'Attempting to cause physical harm',
+  'Placing someone in fear of imminent harm',
+];
+
+const secondDegreePenaltyTiers = [
+  'General assault – Up to 10 years imprisonment and/or $2,500 fine',
+  'Assault on law enforcement, emergency personnel, or other protected individuals – Up to 10 years and/or $5,000 fine',
+];
+
+const selfDefenseElements = [
+  'You reasonably believed you were in danger',
+  'You used only the force necessary to protect yourself',
+  "You didn't provoke or escalate the confrontation",
+  'In most situations, you had no duty to retreat (Maryland follows stand-your-ground principles in many contexts)',
+];
+
+const protectedIndividuals = [
+  'Law enforcement officers',
+  'Firefighters and emergency medical personnel',
+  'Parole and probation officers',
+  'School employees',
+  'Transit operators',
+  'Health care workers',
+];
+
+const collateralConsequences = [
+  { text: 'Criminal record', subtext: 'A permanent record that shows on background checks' },
+  { text: 'Employment', subtext: "Many employers won't hire individuals with assault convictions" },
+  { text: 'Professional licenses', subtext: 'May be denied, suspended, or revoked' },
+  { text: 'Gun rights', subtext: 'Certain convictions prohibit firearm ownership' },
+  { text: 'Immigration', subtext: 'Non-citizens may face deportation or denial of naturalization' },
+  { text: 'Housing', subtext: 'Difficulty renting, especially with violent offense convictions' },
+  { text: 'Child custody', subtext: 'Courts consider criminal history in custody decisions' },
+];
+
+const whatToDoSteps = [
+  { text: 'Exercise your right to remain silent', subtext: "Don't discuss the incident with police without an attorney" },
+  { text: "Don't contact the alleged victim", subtext: 'This can result in additional charges' },
+  { text: 'Preserve evidence', subtext: 'Photos of injuries, witness info, texts, and other helpful records' },
+  { text: 'Contact an attorney immediately', subtext: 'Early intervention can make a significant difference' },
+  { text: 'Follow all court orders', subtext: 'Violating conditions of release can make things worse' },
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +96,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/courtroom-empty.jpg"
+  accentColor="red"
 >
   <h2>Aggressive Assault Defense in Maryland</h2>
   <p>
@@ -63,30 +117,29 @@ const breadcrumbs = [
     Maryland law recognizes different degrees of assault with varying penalties:
   </p>
 
+  <IconList
+    items={[
+      { text: 'First Degree Assault (Felony)', subtext: 'Serious physical injury or assault with a firearm; up to 25 years.' },
+      { text: 'Second Degree Assault (Misdemeanor)', subtext: 'Most other assault allegations; penalties vary by circumstances.' },
+    ]}
+    columns={2}
+    variant="card"
+  />
+
   <h4>First Degree Assault (Felony)</h4>
   <p>
     First degree assault is the most serious assault charge in Maryland. It involves:
   </p>
-  <ul>
-    <li>Intentionally causing or attempting to cause serious physical injury</li>
-    <li>Assault with a firearm (including airsoft, BB guns, and pepper spray)</li>
-  </ul>
+  <IconList items={firstDegreeElements} columns={2} />
   <p><strong>Penalties:</strong> Up to 25 years in state prison</p>
 
   <h4>Second Degree Assault (Misdemeanor)</h4>
   <p>
     Second degree assault covers all other assault situations, including:
   </p>
-  <ul>
-    <li>Offensive physical contact</li>
-    <li>Attempting to cause physical harm</li>
-    <li>Placing someone in fear of imminent harm</li>
-  </ul>
+  <IconList items={secondDegreeExamples} columns={2} />
   <p><strong>Penalties:</strong></p>
-  <ul>
-    <li>General assault – Up to 10 years imprisonment and/or $2,500 fine</li>
-    <li>Assault on law enforcement, emergency personnel, or other protected individuals – Up to 10 years and/or $5,000 fine</li>
-  </ul>
+  <IconList items={secondDegreePenaltyTiers} columns={2} />
 
   <h3>Common Defenses to Assault Charges</h3>
   <p>Our attorneys explore every possible defense, including:</p>
@@ -96,12 +149,14 @@ const breadcrumbs = [
     Maryland law allows you to use reasonable force to defend yourself if you reasonably believe 
     you're in imminent danger of harm. Key elements include:
   </p>
-  <ul>
-    <li>You reasonably believed you were in danger</li>
-    <li>You used only the force necessary to protect yourself</li>
-    <li>You didn't provoke or escalate the confrontation</li>
-    <li>In most situations, you had no duty to retreat (Maryland follows "stand your ground" principles)</li>
-  </ul>
+  <CalloutBox title="Self-Defense Can Be a Complete Defense" variant="info">
+    <p class="mb-0">
+      Self-defense often turns on credibility and details—who started the confrontation, what was said, and whether the
+      force used was reasonable under the circumstances. We look for evidence (texts, video, witness statements, injuries)
+      that supports your right to protect yourself.
+    </p>
+  </CalloutBox>
+  <IconList items={selfDefenseElements} columns={2} />
 
   <h4>Defense of Others</h4>
   <p>
@@ -138,14 +193,7 @@ const breadcrumbs = [
   <p>
     Maryland imposes enhanced penalties for assault on certain protected individuals:
   </p>
-  <ul>
-    <li>Law enforcement officers</li>
-    <li>Firefighters and emergency medical personnel</li>
-    <li>Parole and probation officers</li>
-    <li>School employees</li>
-    <li>Transit operators</li>
-    <li>Health care workers</li>
-  </ul>
+  <IconList items={protectedIndividuals} columns={2} />
   <p>
     If you're charged with assault on a protected individual, it's crucial to have experienced 
     legal representation to navigate the enhanced charges and penalties.
@@ -155,27 +203,13 @@ const breadcrumbs = [
   <p>
     An assault conviction affects more than just your immediate freedom:
   </p>
-  <ul>
-    <li><strong>Criminal record</strong> – A permanent record that shows on background checks</li>
-    <li><strong>Employment</strong> – Many employers won't hire individuals with assault convictions</li>
-    <li><strong>Professional licenses</strong> – May be denied, suspended, or revoked</li>
-    <li><strong>Gun rights</strong> – Certain convictions prohibit firearm ownership</li>
-    <li><strong>Immigration</strong> – Non-citizens may face deportation or denial of naturalization</li>
-    <li><strong>Housing</strong> – Difficulty renting, especially with violent offense convictions</li>
-    <li><strong>Child custody</strong> – Courts consider criminal history in custody decisions</li>
-  </ul>
+  <IconList items={collateralConsequences} columns={2} variant="card" />
 
   <h3>What to Do If You're Charged with Assault</h3>
   <p>
     If you've been arrested or charged with assault, take these steps to protect yourself:
   </p>
-  <ol>
-    <li><strong>Exercise your right to remain silent</strong> – Don't discuss the incident with police without an attorney</li>
-    <li><strong>Don't contact the alleged victim</strong> – This can result in additional charges</li>
-    <li><strong>Preserve evidence</strong> – Photos of any injuries you sustained, witness contact information</li>
-    <li><strong>Contact an attorney immediately</strong> – Early intervention can make a significant difference</li>
-    <li><strong>Follow all court orders</strong> – Violating conditions of release can make things worse</li>
-  </ol>
+  <IconList items={whatToDoSteps} columns={2} variant="card" />
 
   <h3>Why Choose Our Assault Defense Team</h3>
   <p>

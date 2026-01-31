@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import StatHighlight from '../components/ui/StatHighlight.astro';
 
 const faqs = [
   {
@@ -33,6 +35,42 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Bicycle Accidents' }
 ];
+
+const cyclistStats = [
+  { value: '3 ft', label: 'Passing Distance', description: 'Drivers must give cyclists at least three feet when passing.' },
+  { value: '3 yrs', label: 'Time Limit', description: 'Most injury claims must be filed within three years in Maryland.' },
+  { value: '911', label: 'First Call', description: 'Get medical help and a police report whenever a vehicle hits you.' },
+];
+
+const commonInjuries = [
+  { text: 'Traumatic brain injuries (TBI)', subtext: 'Even with helmets, head injuries are common' },
+  { text: 'Spinal cord injuries', subtext: 'Potentially causing paralysis' },
+  { text: 'Broken bones', subtext: 'Wrists, arms, legs, hips, and pelvis fractures' },
+  { text: 'Internal organ damage', subtext: 'Impact injuries to organs' },
+  { text: 'Road rash', subtext: 'Severe abrasions that may require skin grafts' },
+  { text: 'Facial injuries', subtext: 'Dental damage, jaw fractures, facial lacerations' },
+  { text: 'Soft tissue injuries', subtext: 'Torn ligaments, tendons, and muscles' },
+  { text: 'PTSD and anxiety', subtext: 'Psychological trauma from the accident' },
+];
+
+const marylandBicycleLaws = [
+  'Cyclists have the right to use the full travel lane when necessary for safety',
+  'Drivers must give cyclists at least three feet when passing',
+  'Cyclists may ride on shoulders but are not required to',
+  'Adults are not legally required to wear helmets (though it’s recommended)',
+  'Cyclists must obey all traffic signals and signs',
+];
+
+const bicycleCompensation = [
+  'Medical expenses (emergency care, surgery, hospitalization, rehabilitation)',
+  'Future medical costs for ongoing treatment',
+  'Lost wages and loss of earning capacity',
+  'Pain and suffering',
+  'Scarring and disfigurement',
+  'Bicycle and equipment replacement',
+  'Emotional distress and mental anguish',
+  'Loss of enjoyment of life',
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +82,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/road-highway.jpg"
+  accentColor="gold"
 >
   <h2>Experienced Bicycle Accident Attorneys in Maryland</h2>
   <p>
@@ -58,57 +98,39 @@ const breadcrumbs = [
     that prove driver fault and maximize your recovery.
   </p>
 
+  <StatHighlight stats={cyclistStats} variant="centered" columns={3} />
+
   <h3>Common Causes of Bicycle Accidents</h3>
   <p>Driver negligence causes most bicycle accidents. Common scenarios include:</p>
-  <ul>
-    <li><strong>Right hook accidents</strong> – Drivers turning right across a cyclist's path</li>
-    <li><strong>Left turn collisions</strong> – Drivers failing to yield when turning left</li>
-    <li><strong>Dooring accidents</strong> – Parked car occupants opening doors into cyclists</li>
-    <li><strong>Distracted driving</strong> – Texting, phone use, or other distractions</li>
-    <li><strong>Failure to yield</strong> – Drivers not respecting cyclists' right of way</li>
-    <li><strong>Unsafe passing</strong> – Passing too close to cyclists</li>
-    <li><strong>Running red lights/stop signs</strong> – Intersection violations</li>
-    <li><strong>Drunk driving</strong> – Impaired drivers failing to see cyclists</li>
-  </ul>
+  <IconList
+    items={[
+      { text: 'Right hook accidents', subtext: "Drivers turning right across a cyclist's path" },
+      { text: 'Left turn collisions', subtext: 'Drivers failing to yield when turning left' },
+      { text: 'Dooring accidents', subtext: 'Parked car occupants opening doors into cyclists' },
+      { text: 'Distracted driving', subtext: 'Texting, phone use, or other distractions' },
+      { text: 'Failure to yield', subtext: "Drivers not respecting cyclists' right of way" },
+      { text: 'Unsafe passing', subtext: 'Passing too close to cyclists' },
+      { text: 'Running red lights/stop signs', subtext: 'Intersection violations' },
+      { text: 'Drunk driving', subtext: 'Impaired drivers failing to see cyclists' },
+    ]}
+    columns={2}
+    variant="card"
+  />
 
   <h3>Common Bicycle Accident Injuries</h3>
   <p>Bicycle accidents frequently cause severe injuries, including:</p>
-  <ul>
-    <li><strong>Traumatic brain injuries (TBI)</strong> – Even with helmets, head injuries are common</li>
-    <li><strong>Spinal cord injuries</strong> – Potentially causing paralysis</li>
-    <li><strong>Broken bones</strong> – Wrists, arms, legs, hips, and pelvis fractures</li>
-    <li><strong>Internal organ damage</strong> – Impact injuries to organs</li>
-    <li><strong>Road rash</strong> – Severe skin abrasions that may require skin grafts</li>
-    <li><strong>Facial injuries</strong> – Dental damage, jaw fractures, facial lacerations</li>
-    <li><strong>Soft tissue injuries</strong> – Torn ligaments, tendons, and muscles</li>
-    <li><strong>PTSD and anxiety</strong> – Psychological trauma from the accident</li>
-  </ul>
+  <IconList items={commonInjuries} columns={2} variant="card" />
 
   <h3>Maryland Bicycle Laws You Should Know</h3>
   <p>
     Maryland law grants cyclists the same rights and responsibilities as motor vehicle operators. 
     Understanding these laws helps protect your claim:
   </p>
-  <ul>
-    <li>Cyclists have the right to use the full travel lane when necessary for safety</li>
-    <li>Drivers must give cyclists at least three feet when passing</li>
-    <li>Cyclists may ride on shoulders but are not required to</li>
-    <li>Adults are not legally required to wear helmets (though it's recommended)</li>
-    <li>Cyclists must obey all traffic signals and signs</li>
-  </ul>
+  <IconList items={marylandBicycleLaws} columns={2} />
 
   <h3>Compensation in Bicycle Accident Cases</h3>
   <p>Depending on your injuries and circumstances, you may be entitled to recover:</p>
-  <ul>
-    <li>Medical expenses (emergency care, surgery, hospitalization, rehabilitation)</li>
-    <li>Future medical costs for ongoing treatment</li>
-    <li>Lost wages and loss of earning capacity</li>
-    <li>Pain and suffering</li>
-    <li>Scarring and disfigurement</li>
-    <li>Bicycle and equipment replacement</li>
-    <li>Emotional distress and mental anguish</li>
-    <li>Loss of enjoyment of life</li>
-  </ul>
+  <IconList items={bicycleCompensation} columns={2} />
 
   <h3>Why Choose Our Bicycle Accident Lawyers</h3>
   <p>

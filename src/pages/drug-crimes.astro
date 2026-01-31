@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { criminalDefenseServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
 
 const faqs = [
   {
@@ -33,6 +35,52 @@ const breadcrumbs = [
   { label: 'Criminal Defense', href: '/criminal-defense/' },
   { label: 'Drug Crimes Defense' }
 ];
+
+const marijuanaPenalties = [
+  'Under 10 grams (personal use) – Civil fine up to $100',
+  '10–50 grams – Misdemeanor, up to 1 year jail, $1,000 fine',
+  'Over 50 grams – Felony, up to 5 years, $15,000 fine',
+  'Distribution – Up to 5 years, $15,000 fine (more for subsequent offenses)',
+];
+
+const scheduleIiiPenalties = [
+  'Possession – Up to 4 years, $25,000 fine',
+  'Distribution – Up to 20 years, $25,000 fine',
+  'Distribution near schools – Enhanced penalties may apply',
+  'Large quantities (trafficking) – 25+ years possible in extreme cases',
+];
+
+const prescriptionDrugPenalties = [
+  'Possession (without valid prescription) – Up to 4 years, $25,000 fine',
+  'Distribution – Up to 20 years, $25,000 fine',
+  'Prescription fraud – Additional charges possible',
+];
+
+const drugChargeDefenses = [
+  { text: 'Illegal search and seizure', subtext: 'If police violated your Fourth Amendment rights, evidence may be suppressed.' },
+  { text: 'Lack of knowledge', subtext: "You didn’t know drugs were present or what they were." },
+  { text: 'Lack of possession', subtext: 'The drugs were not yours or not in your control.' },
+  { text: 'Entrapment', subtext: "Police induced a crime you wouldn’t otherwise commit." },
+  { text: 'Lab testing errors', subtext: 'Challenging drug identification and methodology.' },
+  { text: 'Chain of custody issues', subtext: 'Evidence was not properly handled or documented.' },
+  { text: 'Valid prescription', subtext: 'You had a legitimate prescription for the medication.' },
+];
+
+const alternativeSentencing = [
+  { text: 'Drug Court', subtext: 'Treatment-focused program with intensive supervision instead of incarceration.' },
+  { text: 'Probation Before Judgment (PBJ)', subtext: 'Successful completion can avoid a conviction on your record.' },
+  { text: 'Diversion programs', subtext: 'Complete treatment/requirements and have charges dismissed (when eligible).' },
+  { text: 'Suspended sentences', subtext: 'Jail time suspended in favor of probation and conditions.' },
+];
+
+const collateralConsequences = [
+  'Employment opportunities and professional licenses',
+  'Federal student financial aid eligibility',
+  'Housing applications (especially public housing)',
+  'Child custody proceedings',
+  'Immigration status for non-citizens',
+  'Firearm ownership rights',
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +92,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/courtroom-empty.jpg"
+  accentColor="red"
 >
   <h2>Experienced Drug Crime Defense in Maryland</h2>
   <p>
@@ -59,40 +109,38 @@ const breadcrumbs = [
 
   <h3>Types of Drug Charges We Defend</h3>
   <p>We handle all types of drug-related criminal charges, including:</p>
-  <ul>
-    <li><strong>Simple possession</strong> – Having drugs for personal use</li>
-    <li><strong>Possession with intent to distribute</strong> – Possessing drugs with the intent to sell</li>
-    <li><strong>Drug distribution/dealing</strong> – Selling or delivering controlled substances</li>
-    <li><strong>Drug trafficking</strong> – Large-scale drug distribution</li>
-    <li><strong>Drug manufacturing</strong> – Producing illegal substances</li>
-    <li><strong>Prescription fraud</strong> – Illegally obtaining prescription medications</li>
-    <li><strong>Drug paraphernalia</strong> – Possessing items used for drug consumption</li>
-  </ul>
+  <IconList
+    items={[
+      { text: 'Simple possession', subtext: 'Having drugs for personal use' },
+      { text: 'Possession with intent to distribute', subtext: 'Quantity/packaging allegations used to claim intent to sell' },
+      { text: 'Distribution / dealing', subtext: 'Selling, delivering, or sharing controlled substances' },
+      { text: 'Trafficking', subtext: 'Large-scale distribution allegations with major sentencing exposure' },
+      { text: 'Manufacturing', subtext: 'Producing or processing illegal substances' },
+      { text: 'Prescription fraud', subtext: 'Obtaining prescription medications unlawfully' },
+      { text: 'Drug paraphernalia', subtext: 'Possession of items prosecutors claim are used for drug use' },
+    ]}
+    columns={2}
+    variant="card"
+  />
 
   <h3>Maryland Drug Penalties by Substance Type</h3>
+  <CalloutBox title="Penalties Often Track Drug Schedule" variant="warning">
+    <p class="mb-0">
+      Maryland penalties vary based on the substance involved (including its schedule), the amount, and whether the state
+      alleges distribution. For example, many Schedule I/II allegations can expose you to <strong>years of incarceration</strong>,
+      while some low-level marijuana possession is treated as a civil offense. We evaluate the exact charge, schedule, and
+      enhancement allegations to target the best defense.
+    </p>
+  </CalloutBox>
   
   <p><strong>Marijuana:</strong></p>
-  <ul>
-    <li>Under 10 grams (personal use) – Civil fine up to $100</li>
-    <li>10-50 grams – Misdemeanor, up to 1 year jail, $1,000 fine</li>
-    <li>Over 50 grams – Felony, up to 5 years, $15,000 fine</li>
-    <li>Distribution – Up to 5 years, $15,000 fine (more for subsequent offenses)</li>
-  </ul>
+  <IconList items={marijuanaPenalties} columns={2} />
 
   <p><strong>Cocaine, Heroin, and Other Schedule I/II Drugs:</strong></p>
-  <ul>
-    <li>Possession – Up to 4 years, $25,000 fine</li>
-    <li>Distribution – Up to 20 years, $25,000 fine</li>
-    <li>Distribution near schools – Enhanced penalties</li>
-    <li>Large quantities (trafficking) – 25+ years possible</li>
-  </ul>
+  <IconList items={scheduleIiiPenalties} columns={2} />
 
   <p><strong>Prescription Drugs (without valid prescription):</strong></p>
-  <ul>
-    <li>Possession – Up to 4 years, $25,000 fine</li>
-    <li>Distribution – Up to 20 years, $25,000 fine</li>
-    <li>Prescription fraud – Additional charges possible</li>
-  </ul>
+  <IconList items={prescriptionDrugPenalties} columns={2} />
 
   <h3>Drug-Free Zone Enhancements</h3>
   <p>
@@ -104,27 +152,14 @@ const breadcrumbs = [
 
   <h3>Defenses to Drug Charges</h3>
   <p>We explore every possible defense strategy, including:</p>
-  <ul>
-    <li><strong>Illegal search and seizure</strong> – If police violated your Fourth Amendment rights, evidence may be suppressed</li>
-    <li><strong>Lack of knowledge</strong> – You didn't know drugs were present or what they were</li>
-    <li><strong>Lack of possession</strong> – The drugs weren't yours or weren't in your control</li>
-    <li><strong>Entrapment</strong> – Police induced you to commit a crime you wouldn't otherwise commit</li>
-    <li><strong>Lab testing errors</strong> – Challenging the accuracy of drug identification</li>
-    <li><strong>Chain of custody issues</strong> – Evidence wasn't properly handled or documented</li>
-    <li><strong>Valid prescription</strong> – You had a legitimate prescription for the medication</li>
-  </ul>
+  <IconList items={drugChargeDefenses} columns={2} variant="card" />
 
   <h3>Alternative Sentencing Options</h3>
   <p>
     Maryland offers several alternatives to incarceration for drug offenders, particularly first-time 
     offenders and those struggling with addiction:
   </p>
-  <ul>
-    <li><strong>Drug Court</strong> – Intensive supervision with treatment instead of jail</li>
-    <li><strong>Probation Before Judgment (PBJ)</strong> – Successful completion means no conviction on your record</li>
-    <li><strong>Diversion Programs</strong> – Complete treatment and have charges dismissed</li>
-    <li><strong>Suspended Sentences</strong> – Jail time suspended in favor of probation</li>
-  </ul>
+  <IconList items={alternativeSentencing} columns={2} variant="card" />
   <p>
     We work to identify which alternatives may be available in your case and advocate for treatment-focused 
     solutions whenever appropriate.
@@ -132,14 +167,7 @@ const breadcrumbs = [
 
   <h3>Collateral Consequences of Drug Convictions</h3>
   <p>Beyond the immediate criminal penalties, drug convictions can affect:</p>
-  <ul>
-    <li>Employment opportunities and professional licenses</li>
-    <li>Federal student financial aid eligibility</li>
-    <li>Housing applications (especially public housing)</li>
-    <li>Child custody proceedings</li>
-    <li>Immigration status for non-citizens</li>
-    <li>Firearm ownership rights</li>
-  </ul>
+  <IconList items={collateralConsequences} columns={2} />
   <p>
     We understand these far-reaching consequences and fight to minimize the impact on every aspect 
     of your life.

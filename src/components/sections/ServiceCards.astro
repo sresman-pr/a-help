@@ -6,8 +6,9 @@ interface Props {
   services: Service[];
   title?: string;
   subtitle?: string;
-  columns?: 2 | 3 | 4;
+  columns?: 2 | 3 | 4 | 5;
   showDescription?: boolean;
+  variant?: 'default' | 'image-cards';
 }
 
 const { 
@@ -15,7 +16,8 @@ const {
   title,
   subtitle,
   columns = 3,
-  showDescription = true
+  showDescription = true,
+  variant = 'image-cards'
 } = Astro.props;
 
 const iconComponents = {
@@ -24,21 +26,19 @@ const iconComponents = {
 };
 
 const gridCols = {
-  2: 'md:grid-cols-2',
-  3: 'md:grid-cols-2 lg:grid-cols-3',
-  4: 'md:grid-cols-2 lg:grid-cols-4'
+  2: 'grid-cols-2',
+  3: 'grid-cols-2 lg:grid-cols-3',
+  4: 'grid-cols-2 lg:grid-cols-4',
+  5: 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5'
 };
 ---
 
-<section class="section-padding relative overflow-hidden">
-  <!-- Decorative Background -->
-  <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
-  
+<section class="section-padding section-light relative overflow-hidden">
   <div class="container-custom relative">
     {(title || subtitle) && (
-      <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="text-center max-w-3xl mx-auto mb-14 fade-in-up">
         {subtitle && (
-          <p class="text-gold-600 font-medium mb-2">{subtitle}</p>
+          <p class="text-gold-600 font-medium mb-3 text-lg">{subtitle}</p>
         )}
         {title && (
           <h2 class="font-heading font-bold text-navy-900">{title}</h2>
@@ -46,38 +46,28 @@ const gridCols = {
       </div>
     )}
     
-    <div class={`grid grid-cols-1 ${gridCols[columns]} gap-6`}>
+    <div class={`grid ${gridCols[columns]} gap-4 stagger-children`}>
       {services.map((service, index) => {
         const IconComponent = iconComponents[service.icon as keyof typeof iconComponents] || Shield;
+        
         return (
+          /* Clean card matching original site style */
           <a 
             href={service.href}
-            class="group bg-white rounded-2xl p-6 border border-gray-100 shadow-soft card-modern relative overflow-hidden"
-            style={`animation-delay: ${index * 50}ms`}
+            class="group relative bg-navy-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 fade-in-up"
           >
-            {/* Hover gradient overlay */}
-            <div class="absolute inset-0 bg-gradient-to-br from-gold-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            
-            <div class="relative">
-              <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mb-4 group-hover:bg-gold-500 group-hover:shadow-elevated transition-all duration-300">
-                <IconComponent class="w-7 h-7 text-gold-500 group-hover:text-navy-900 transition-colors" />
+            {/* Card content */}
+            <div class="p-5 text-center flex flex-col items-center justify-center min-h-[160px]">
+              <div class="w-14 h-14 bg-gold-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <IconComponent class="w-7 h-7 text-navy-900" />
               </div>
-              
-              <h3 class="font-heading font-bold text-lg text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
+              <h3 class="font-heading font-bold text-base lg:text-lg text-white leading-tight group-hover:text-gold-400 transition-colors">
                 {service.title}
               </h3>
-              
-              {showDescription && (
-                <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-                  {service.description}
-                </p>
-              )}
-              
-              <div class="flex items-center text-gold-600 font-medium text-sm group-hover:text-gold-500">
-                Learn More
-                <ArrowRight class="w-4 h-4 ml-1 group-hover:translate-x-2 transition-transform" />
-              </div>
             </div>
+            
+            {/* Bottom accent */}
+            <div class="h-1 bg-gold-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
           </a>
         );
       })}

@@ -1,6 +1,10 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { criminalDefenseServices } from '../data/services';
+import StatHighlight from '../components/ui/StatHighlight.astro';
+import StepCards from '../components/ui/StepCards.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
+import IconList from '../components/ui/IconList.astro';
 
 const faqs = [
   {
@@ -33,6 +37,56 @@ const breadcrumbs = [
   { label: 'Criminal Defense', href: '/criminal-defense/' },
   { label: 'DUI/DWI Defense' }
 ];
+
+const firstOffensePenaltyStats = [
+  { value: '1 year', label: 'Max Jail (DUI)', description: 'First offense DUI can carry up to 1 year in jail.' },
+  { value: '$1,000', label: 'Max Fine (DUI)', description: 'Fines can reach $1,000 for a first DUI.' },
+  { value: '8', label: 'License Points', description: 'A DUI conviction adds 8 points to your driving record.' },
+];
+
+const duiVsDwi = [
+  { text: 'DUI (Driving Under the Influence)', subtext: 'BAC of 0.08%+ or substantially impaired by alcohol or drugs' },
+  { text: 'DWI (Driving While Impaired)', subtext: 'BAC between 0.04% and 0.07% or impaired to some extent by alcohol' },
+];
+
+const firstDuiPenalties = [
+  'Up to 1 year in jail',
+  'Fines up to $1,000',
+  '8 points on your license',
+  '6-month license suspension',
+  'Possible ignition interlock requirement',
+];
+
+const secondDuiPenalties = [
+  'Up to 2 years in jail',
+  'Fines up to $2,000',
+  '8 points on your license',
+  '1-year license suspension',
+  'Mandatory ignition interlock',
+];
+
+const thirdDuiPenalties = [
+  'Up to 3 years in jail',
+  'Fines up to $3,000',
+  '12 points (automatic license revocation)',
+  '18-month license suspension',
+  'Extended ignition interlock requirement',
+];
+
+const commonDefenses = [
+  { text: 'Illegal traffic stop', subtext: 'If the stop was unlawful, evidence may be suppressed.' },
+  { text: 'Faulty breathalyzer', subtext: 'Machines must be calibrated and procedures followed.' },
+  { text: 'Improper field sobriety tests', subtext: 'Deviations from standardized procedures can invalidate results.' },
+  { text: 'Rising BAC defense', subtext: 'BAC may have been legal while driving but rose by test time.' },
+  { text: 'Medical conditions', subtext: 'Some conditions can cause false positives or misleading observations.' },
+  { text: 'Chain of custody issues', subtext: 'Blood samples must be properly handled and stored.' },
+];
+
+const timeSensitiveItems = [
+  '30 days to request an MVA hearing',
+  'Evidence and witness memories fade quickly',
+  'Early intervention can sometimes prevent formal charges',
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +98,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/courtroom-empty.jpg"
+  accentColor="red"
 >
   <h2>Aggressive DUI/DWI Defense in Maryland</h2>
   <p>
@@ -61,65 +117,49 @@ const breadcrumbs = [
   <p>
     Maryland distinguishes between DUI and DWI based on your level of impairment:
   </p>
-  <ul>
-    <li><strong>DUI (Driving Under the Influence)</strong> – BAC of 0.08% or higher, or substantially impaired by alcohol or drugs</li>
-    <li><strong>DWI (Driving While Impaired)</strong> – BAC between 0.04% and 0.07%, or impaired to some extent by alcohol</li>
-  </ul>
+  <IconList items={duiVsDwi} columns={2} variant="card" />
   <p>
     Both charges carry serious penalties, but DUI is considered the more severe offense. Commercial drivers 
     face even stricter standards with a BAC limit of 0.04%.
   </p>
 
   <h3>Penalties for DUI/DWI in Maryland</h3>
+  <StatHighlight stats={firstOffensePenaltyStats} variant="cards" columns={3} />
   <p><strong>First DUI Offense:</strong></p>
-  <ul>
-    <li>Up to 1 year in jail</li>
-    <li>Fines up to $1,000</li>
-    <li>8 points on your license</li>
-    <li>6-month license suspension</li>
-    <li>Possible ignition interlock requirement</li>
-  </ul>
+  <IconList items={firstDuiPenalties} columns={2} />
 
   <p><strong>Second DUI Offense:</strong></p>
-  <ul>
-    <li>Up to 2 years in jail</li>
-    <li>Fines up to $2,000</li>
-    <li>8 points on your license</li>
-    <li>1-year license suspension</li>
-    <li>Mandatory ignition interlock</li>
-  </ul>
+  <IconList items={secondDuiPenalties} columns={2} />
 
   <p><strong>Third or Subsequent DUI Offense:</strong></p>
-  <ul>
-    <li>Up to 3 years in jail</li>
-    <li>Fines up to $3,000</li>
-    <li>12 points (automatic license revocation)</li>
-    <li>18-month license suspension</li>
-    <li>Extended ignition interlock requirement</li>
-  </ul>
+  <IconList items={thirdDuiPenalties} columns={2} />
+
+  <CalloutBox title="Critical 30-Day Deadline" variant="warning">
+    <p class="mb-0">
+      <strong>You have only 30 days from your arrest</strong> to request an MVA hearing to challenge your license suspension. 
+      Missing this deadline can result in automatic suspension. Contact us immediately to protect your driving privileges.
+    </p>
+  </CalloutBox>
 
   <h3>The Two-Front Battle: MVA and Criminal Court</h3>
   <p>
     A DUI arrest triggers two separate proceedings in Maryland:
   </p>
-  <ol>
-    <li><strong>MVA Administrative Hearing</strong> – You have only 30 days from your arrest to request a hearing to challenge your license suspension. Missing this deadline can result in automatic suspension.</li>
-    <li><strong>Criminal Court Proceedings</strong> – The state will prosecute you for DUI/DWI, which can result in jail time, fines, and a criminal record.</li>
-  </ol>
+  <StepCards 
+    steps={[
+      { title: 'MVA Administrative Hearing', description: 'Challenge your license suspension within 30 days of arrest' },
+      { title: 'Criminal Court Proceedings', description: 'The state prosecutes DUI/DWI charges which can result in jail time and fines' },
+    ]} 
+    columns={2} 
+    variant="numbered" 
+  />
   <p>
     We represent clients at both proceedings, fighting to protect your driving privileges and your freedom.
   </p>
 
   <h3>Common DUI Defenses</h3>
   <p>Our attorneys thoroughly investigate every aspect of your case to identify the strongest defenses:</p>
-  <ul>
-    <li><strong>Illegal traffic stop</strong> – Police must have reasonable suspicion to stop you. If the stop was unlawful, evidence may be suppressed.</li>
-    <li><strong>Faulty breathalyzer</strong> – Breathalyzer machines must be properly calibrated and maintained. We challenge testing accuracy and procedures.</li>
-    <li><strong>Improper field sobriety tests</strong> – Officers must follow standardized procedures. Deviations can invalidate results.</li>
-    <li><strong>Rising BAC defense</strong> – Your BAC may have been legal while driving but rose by the time you were tested.</li>
-    <li><strong>Medical conditions</strong> – Certain conditions like diabetes or GERD can cause false positive readings.</li>
-    <li><strong>Chain of custody issues</strong> – Blood samples must be properly handled and stored.</li>
-  </ul>
+  <IconList items={commonDefenses} columns={2} variant="card" />
 
   <h3>Maryland's Ignition Interlock Program</h3>
   <p>
@@ -137,11 +177,7 @@ const breadcrumbs = [
   <p>
     After a DUI arrest, you face strict deadlines that can significantly impact your case:
   </p>
-  <ul>
-    <li>30 days to request an MVA hearing</li>
-    <li>Evidence and witness memories fade quickly</li>
-    <li>Early intervention can sometimes prevent formal charges</li>
-  </ul>
+  <IconList items={timeSensitiveItems} columns={2} />
   <p>
     Contact us immediately after your arrest. We offer 24/7 availability for DUI emergencies because 
     we understand that timing can make the difference in your case.

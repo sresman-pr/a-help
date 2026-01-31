@@ -1,5 +1,5 @@
 ---
-import { Award, Users, Clock, MessageSquare, Scale, Heart } from '@lucide/astro';
+import { Award, Clock, Globe, DollarSign } from '@lucide/astro';
 
 interface Props {
   title?: string;
@@ -11,67 +11,77 @@ const {
   subtitle = 'Dedicated to your success'
 } = Astro.props;
 
-const reasons = [
+// Simplified to 4 key points (merged from TrustBar)
+const stats = [
   {
     icon: 'Award',
-    title: '26+ Years of Experience',
-    description: 'Over two decades of successfully representing clients in personal injury and criminal defense cases throughout Maryland.'
+    value: '26',
+    suffix: '+',
+    label: 'Years Experience',
+    description: 'Over two decades fighting for Maryland families'
   },
   {
-    icon: 'Scale',
-    title: 'Proven Track Record',
-    description: 'A near-perfect success rate with hundreds of cases won and millions recovered for our clients.'
-  },
-  {
-    icon: 'Users',
-    title: 'Multilingual Team',
-    description: 'We speak English, Russian, Ukrainian, Turkish, and Uzbek to serve our diverse community.'
+    icon: 'DollarSign',
+    value: '0',
+    suffix: '',
+    label: 'No Fee Unless We Win',
+    description: 'You pay nothing unless we recover compensation'
   },
   {
     icon: 'Clock',
-    title: 'Available 24/7',
-    description: 'Accidents don\'t wait for business hours. Neither do we. Call us anytime, day or night.'
+    value: '24/7',
+    suffix: '',
+    label: 'Always Available',
+    description: 'Accidents don\'t wait. Neither do we.'
   },
   {
-    icon: 'Heart',
-    title: 'Personalized Attention',
-    description: 'You\'re not just a case number. We treat every client with the care and respect they deserve.'
-  },
-  {
-    icon: 'MessageSquare',
-    title: 'Clear Communication',
-    description: 'We keep you informed every step of the way. No legal jargon, just straight answers.'
+    icon: 'Globe',
+    value: '5',
+    suffix: '',
+    label: 'Languages Spoken',
+    description: 'English, Russian, Ukrainian, Turkish, Uzbek'
   }
 ];
 
-const iconComponents = {
-  Award, Users, Clock, MessageSquare, Scale, Heart
-};
+const iconComponents = { Award, Clock, Globe, DollarSign };
 ---
 
-<section class="section-padding bg-gray-50">
-  <div class="container-custom">
-    <div class="text-center max-w-3xl mx-auto mb-12">
+<section class="section-padding section-dark relative overflow-hidden" id="why-choose-us">
+  <!-- Subtle background texture -->
+  <div class="absolute inset-0 bg-pattern-grid-light opacity-5"></div>
+  
+  <div class="container-custom relative">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
       {subtitle && (
-        <p class="text-gold-600 font-medium mb-2">{subtitle}</p>
+        <p class="text-gold-400 font-medium mb-3 text-lg">{subtitle}</p>
       )}
       {title && (
-        <h2 class="font-heading font-bold text-navy-900">{title}</h2>
+        <h2 class="font-heading font-bold text-white">{title}</h2>
       )}
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {reasons.map((reason) => {
-        const IconComponent = iconComponents[reason.icon as keyof typeof iconComponents];
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 stagger-children">
+      {stats.map((stat, index) => {
+        const IconComponent = iconComponents[stat.icon as keyof typeof iconComponents];
+        const isCountable = stat.value !== '24/7' && stat.value !== '0';
+        
         return (
-          <div class="flex gap-4">
-            <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center flex-shrink-0">
-              <IconComponent class="w-6 h-6 text-gold-500" />
+          <div class="text-center p-6 lg:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 fade-in-up">
+            <div class="w-16 h-16 bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
+              <IconComponent class="w-8 h-8 text-navy-900" />
             </div>
-            <div>
-              <h3 class="font-heading font-bold text-navy-900 mb-2">{reason.title}</h3>
-              <p class="text-gray-600 text-sm leading-relaxed">{reason.description}</p>
+            
+            <div class="stat-number text-4xl lg:text-5xl mb-2">
+              {isCountable ? (
+                <span class="counter-animate" data-target={stat.value}>{stat.value}</span>
+              ) : (
+                stat.value
+              )}
+              {stat.suffix}
             </div>
+            
+            <h3 class="font-bold text-white text-lg mb-2">{stat.label}</h3>
+            <p class="text-gray-400 text-sm">{stat.description}</p>
           </div>
         );
       })}

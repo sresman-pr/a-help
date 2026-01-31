@@ -1,6 +1,10 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import StepCards from '../components/ui/StepCards.astro';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
+import StatHighlight from '../components/ui/StatHighlight.astro';
 
 const faqs = [
   {
@@ -33,6 +37,41 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Car Accidents' }
 ];
+
+const accidentSteps = [
+  { title: 'Check for Injuries', description: 'Call 911 if anyone needs medical attention' },
+  { title: 'Move to Safety', description: 'If possible, move vehicles out of traffic' },
+  { title: 'Exchange Information', description: 'Get details from all other drivers involved' },
+  { title: 'Document the Scene', description: 'Take photos of vehicles, damage, and road conditions' },
+  { title: 'Get Witness Info', description: 'Collect contact details from anyone who saw the accident' },
+  { title: 'Seek Medical Care', description: 'Get checked even if you feel fine—injuries can appear later' },
+  { title: 'Contact an Attorney', description: 'Speak with a lawyer before talking to insurance companies' },
+];
+
+const accidentCauses = [
+  { text: 'Distracted driving', subtext: 'Texting, phone calls, eating while driving' },
+  { text: 'Drunk driving (DUI)', subtext: 'Alcohol and drug-impaired driving' },
+  { text: 'Speeding', subtext: 'Exceeding limits or too fast for conditions' },
+  { text: 'Reckless driving', subtext: 'Aggressive driving, tailgating, illegal passing' },
+  { text: 'Failure to yield', subtext: 'Running red lights and stop signs' },
+  { text: 'Weather-related', subtext: 'Rain, snow, ice, fog conditions' },
+];
+
+const compensationItems = [
+  'Medical expenses (emergency care, hospitalization, surgery, rehabilitation)',
+  'Future medical costs for ongoing treatment',
+  'Lost wages and loss of earning capacity',
+  'Pain and suffering',
+  'Emotional distress',
+  'Vehicle repair or replacement costs',
+  'Loss of enjoyment of life'
+];
+
+const stats = [
+  { value: '26+', label: 'Years Experience' },
+  { value: '100s', label: 'Cases Won' },
+  { value: '$0', label: 'Upfront Cost' },
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +83,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/road-highway.jpg"
+  accentColor="gold"
 >
   <h2>Experienced Car Accident Representation in Maryland</h2>
   <p>
@@ -57,55 +98,37 @@ const breadcrumbs = [
     collisions involving catastrophic injuries.
   </p>
 
+  <StatHighlight stats={stats} variant="cards" columns={3} />
+
   <h3>What to Do After a Car Accident</h3>
   <p>
     If you're physically able, taking the right steps immediately after an accident can significantly 
     impact your ability to recover compensation:
   </p>
-  <ol>
-    <li><strong>Check for injuries</strong> and call 911 if anyone needs medical attention</li>
-    <li><strong>Move to safety</strong> if possible to avoid further accidents</li>
-    <li><strong>Exchange information</strong> with all other drivers involved</li>
-    <li><strong>Document the scene</strong> with photos of vehicles, damage, road conditions, and injuries</li>
-    <li><strong>Get witness information</strong> from anyone who saw the accident</li>
-    <li><strong>Seek medical attention</strong> even if you feel fine—some injuries appear later</li>
-    <li><strong>Contact an attorney</strong> before speaking with insurance companies</li>
-  </ol>
+
+  <StepCards steps={accidentSteps} columns={3} variant="numbered" />
 
   <h3>Common Causes of Car Accidents</h3>
   <p>We handle car accident cases involving:</p>
-  <ul>
-    <li><strong>Distracted driving</strong> – texting, phone calls, eating while driving</li>
-    <li><strong>Drunk driving (DUI)</strong> – alcohol and drug-impaired driving</li>
-    <li><strong>Speeding</strong> – exceeding posted limits or driving too fast for conditions</li>
-    <li><strong>Reckless driving</strong> – aggressive driving, tailgating, illegal passing</li>
-    <li><strong>Failure to yield</strong> – running red lights and stop signs</li>
-    <li><strong>Weather-related accidents</strong> – rain, snow, ice, fog</li>
-    <li><strong>Defective vehicles</strong> – brake failures, tire blowouts, mechanical defects</li>
-  </ul>
+  
+  <IconList items={accidentCauses} columns={2} variant="card" />
 
   <h3>Compensation Available in Car Accident Cases</h3>
   <p>Depending on your case, you may be entitled to recover:</p>
-  <ul>
-    <li>Medical expenses (emergency care, hospitalization, surgery, rehabilitation)</li>
-    <li>Future medical costs for ongoing treatment</li>
-    <li>Lost wages and loss of earning capacity</li>
-    <li>Pain and suffering</li>
-    <li>Emotional distress</li>
-    <li>Vehicle repair or replacement costs</li>
-    <li>Loss of enjoyment of life</li>
-  </ul>
+  
+  <IconList items={compensationItems} icon="check" variant="default" />
 
-  <h3>Maryland's Contributory Negligence Rule</h3>
-  <p>
-    Maryland is one of only a few states that follow a strict contributory negligence rule. This means 
-    if you're found even 1% at fault for the accident, you may be barred from recovering any compensation.
-  </p>
-  <p>
-    Insurance companies often try to shift blame onto victims to avoid paying claims. Our attorneys 
-    know how to build strong cases that clearly establish the other party's fault and protect your 
-    right to full compensation.
-  </p>
+  <CalloutBox title="Maryland's Contributory Negligence Rule" variant="warning">
+    <p>
+      Maryland is one of only a few states that follow a strict contributory negligence rule. This means 
+      if you're found <strong>even 1% at fault</strong> for the accident, you may be barred from recovering any compensation.
+    </p>
+    <p>
+      Insurance companies often try to shift blame onto victims to avoid paying claims. Our attorneys 
+      know how to build strong cases that clearly establish the other party's fault and protect your 
+      right to full compensation.
+    </p>
+  </CalloutBox>
 
   <h3>Why Choose Our Car Accident Lawyers</h3>
   <p>

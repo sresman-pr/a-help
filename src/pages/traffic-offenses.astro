@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { criminalDefenseServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import StatHighlight from '../components/ui/StatHighlight.astro';
 
 const faqs = [
   {
@@ -33,6 +35,66 @@ const breadcrumbs = [
   { label: 'Criminal Defense', href: '/criminal-defense/' },
   { label: 'Traffic Violations Defense' }
 ];
+
+const pointSystemStats = [
+  { value: '3–4', label: 'Points', description: 'Advisory letter from the MVA.' },
+  { value: '5–7', label: 'Points', description: 'Warning letter requiring attention to driving habits.' },
+  { value: '8–11', label: 'Points', description: 'Suspension risk; you may request a hearing.' },
+  { value: '12+', label: 'Points', description: 'Automatic license revocation.' },
+];
+
+const commonPointValues = [
+  'Speeding (1–9 mph over) – 1 point',
+  'Speeding (10–19 mph over) – 2 points',
+  'Speeding (20–29 mph over) – 2 points',
+  'Speeding (30+ mph over) – 5 points',
+  'Failure to stop at red light – 2 points',
+  'Failure to stop at stop sign – 1 point',
+  'Reckless driving – 6 points',
+  'Aggressive driving – 5 points',
+  'DUI/DWI – 8 or 12 points',
+];
+
+const pointConsequences = [
+  '3–4 points – Advisory letter from MVA',
+  '5–7 points – Warning letter requiring attention to driving habits',
+  '8–11 points – License suspension possible; may request hearing',
+  '12+ points – Automatic license revocation',
+];
+
+const criminalTrafficOffenses = [
+  { text: 'Reckless driving', subtext: 'Misdemeanor, up to $1,000 fine, 6 points' },
+  { text: 'Driving on suspended license', subtext: 'Up to 1 year jail, $1,000 fine' },
+  { text: 'Hit and run (property damage)', subtext: 'Up to 60 days jail, $500 fine' },
+  { text: 'Hit and run (injury)', subtext: 'Up to 5 years prison, felony' },
+  { text: 'Racing on highways', subtext: 'Up to 1 year jail, $1,000 fine' },
+  { text: 'Fleeing/eluding police', subtext: 'Up to 1 year jail, $1,000 fine' },
+];
+
+const defenseStrategies = [
+  { text: 'Challenging the evidence', subtext: 'Radar/lidar accuracy, calibration records, and officer training' },
+  { text: 'Procedural defenses', subtext: 'Errors in how the citation was issued or served' },
+  { text: 'Witness credibility', subtext: 'Cross-examining the citing officer' },
+  { text: 'Necessity defense', subtext: 'When circumstances required the conduct' },
+  { text: 'Negotiating reduced charges', subtext: 'Minimize points and penalties where possible' },
+  { text: 'Probation Before Judgment (PBJ)', subtext: 'Avoiding points on your record when eligible' },
+];
+
+const trueCosts = [
+  { text: 'Insurance increases', subtext: 'Rates can rise 20–40% after a violation' },
+  { text: 'Point accumulation', subtext: 'Leading to suspension or revocation' },
+  { text: 'Employment impact', subtext: 'Especially for commercial drivers' },
+  { text: 'Court costs and fees', subtext: 'In addition to fines' },
+  { text: 'Time lost', subtext: 'Court appearances and MVA consequences' },
+];
+
+const reasonsToHire = [
+  'Get charges reduced to non-point violations',
+  'Obtain Probation Before Judgment to avoid points',
+  'Have tickets dismissed entirely',
+  'Negotiate lower fines',
+  "Appear in court on your behalf so you don't miss work",
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +106,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/road-highway.jpg"
+  accentColor="red"
 >
   <h2>Experienced Traffic Violation Defense in Maryland</h2>
   <p>
@@ -60,79 +124,49 @@ const breadcrumbs = [
 
   <h3>Traffic Violations We Defend</h3>
   <p>We handle all types of traffic violations, including:</p>
-  <ul>
-    <li><strong>Speeding tickets</strong> – All speed violations including excessive speed charges</li>
-    <li><strong>Reckless driving</strong> – Operating a vehicle with willful disregard for safety</li>
-    <li><strong>Aggressive driving</strong> – Multiple violations committed as a single act</li>
-    <li><strong>Running red lights/stop signs</strong> – Including camera-issued citations</li>
-    <li><strong>Improper lane changes</strong> – Unsafe lane changes and failure to signal</li>
-    <li><strong>Following too closely</strong> – Tailgating violations</li>
-    <li><strong>Driving without a license</strong> – Operating without a valid license</li>
-    <li><strong>Driving on suspended/revoked license</strong> – A criminal offense in Maryland</li>
-    <li><strong>Hit and run</strong> – Leaving the scene of an accident</li>
-    <li><strong>Racing on highways</strong> – Street racing violations</li>
-  </ul>
+  <IconList
+    items={[
+      { text: 'Speeding tickets', subtext: 'Including excessive speed allegations' },
+      { text: 'Reckless driving', subtext: 'Willful disregard for safety; can be criminal' },
+      { text: 'Aggressive driving', subtext: 'Multiple violations committed as a single act' },
+      { text: 'Running red lights / stop signs', subtext: 'Including camera-issued citations' },
+      { text: 'Improper lane changes', subtext: 'Unsafe lane changes and failure to signal' },
+      { text: 'Following too closely', subtext: 'Tailgating violations' },
+      { text: 'Driving without a license', subtext: 'Operating without a valid license' },
+      { text: 'Driving on suspended/revoked license', subtext: 'A criminal offense in Maryland' },
+      { text: 'Hit and run', subtext: 'Leaving the scene of an accident' },
+      { text: 'Racing on highways', subtext: 'Street racing allegations' },
+    ]}
+    columns={2}
+    variant="card"
+  />
 
   <h3>Maryland's Point System Explained</h3>
   <p>
     Maryland uses a point system to track driving violations. Points accumulate on your record and 
     can lead to license suspension:
   </p>
+  <StatHighlight stats={pointSystemStats} variant="centered" columns={4} />
   
   <p><strong>Point Values for Common Violations:</strong></p>
-  <ul>
-    <li>Speeding (1-9 mph over) – 1 point</li>
-    <li>Speeding (10-19 mph over) – 2 points</li>
-    <li>Speeding (20-29 mph over) – 2 points</li>
-    <li>Speeding (30+ mph over) – 5 points</li>
-    <li>Failure to stop at red light – 2 points</li>
-    <li>Failure to stop at stop sign – 1 point</li>
-    <li>Reckless driving – 6 points</li>
-    <li>Aggressive driving – 5 points</li>
-    <li>DUI/DWI – 8 or 12 points</li>
-  </ul>
+  <IconList items={commonPointValues} columns={2} />
 
   <p><strong>Consequences of Point Accumulation:</strong></p>
-  <ul>
-    <li>3-4 points – Advisory letter from MVA</li>
-    <li>5-7 points – Warning letter requiring attention to driving habits</li>
-    <li>8-11 points – License suspension possible; may request hearing</li>
-    <li>12+ points – Automatic license revocation</li>
-  </ul>
+  <IconList items={pointConsequences} columns={2} />
 
   <h3>Criminal Traffic Offenses</h3>
   <p>
     Some traffic violations are criminal offenses that can result in jail time, not just fines and points:
   </p>
-  <ul>
-    <li><strong>Reckless driving</strong> – Misdemeanor, up to $1,000 fine, 6 points</li>
-    <li><strong>Driving on suspended license</strong> – Up to 1 year jail, $1,000 fine</li>
-    <li><strong>Hit and run (property damage)</strong> – Up to 60 days jail, $500 fine</li>
-    <li><strong>Hit and run (injury)</strong> – Up to 5 years prison, felony</li>
-    <li><strong>Racing on highways</strong> – Up to 1 year jail, $1,000 fine</li>
-    <li><strong>Fleeing/eluding police</strong> – Up to 1 year jail, $1,000 fine</li>
-  </ul>
+  <IconList items={criminalTrafficOffenses} columns={2} variant="card" />
 
   <h3>Strategies for Fighting Traffic Violations</h3>
   <p>Our attorneys use various strategies to challenge traffic violations:</p>
-  <ul>
-    <li><strong>Challenging the evidence</strong> – Questioning radar/lidar accuracy, calibration records, and officer training</li>
-    <li><strong>Procedural defenses</strong> – Identifying errors in how the citation was issued</li>
-    <li><strong>Witness credibility</strong> – Cross-examining the citing officer</li>
-    <li><strong>Necessity defense</strong> – When circumstances required the violation</li>
-    <li><strong>Negotiating reduced charges</strong> – Working with prosecutors to minimize points and penalties</li>
-    <li><strong>Requesting Probation Before Judgment</strong> – Avoiding points on your record</li>
-  </ul>
+  <IconList items={defenseStrategies} columns={2} variant="card" />
 
   <h3>The True Cost of Traffic Violations</h3>
   <p>Beyond the immediate fine, traffic violations can cost you significantly:</p>
-  <ul>
-    <li><strong>Insurance increases</strong> – Rates can rise 20-40% after a violation</li>
-    <li><strong>Point accumulation</strong> – Leading to suspension or revocation</li>
-    <li><strong>Employment impact</strong> – Especially for commercial drivers</li>
-    <li><strong>Court costs and fees</strong> – In addition to fines</li>
-    <li><strong>Time lost</strong> – Court appearances and dealing with MVA</li>
-  </ul>
+  <IconList items={trueCosts} columns={2} variant="card" />
 
   <h3>Commercial Driver's License (CDL) Holders</h3>
   <p>
@@ -146,13 +180,7 @@ const breadcrumbs = [
   <p>
     Many people think traffic tickets aren't worth fighting, but an experienced attorney can often:
   </p>
-  <ul>
-    <li>Get charges reduced to non-point violations</li>
-    <li>Obtain Probation Before Judgment to avoid points</li>
-    <li>Have tickets dismissed entirely</li>
-    <li>Negotiate lower fines</li>
-    <li>Appear in court on your behalf so you don't miss work</li>
-  </ul>
+  <IconList items={reasonsToHire} columns={2} />
   <p>
     Contact us for a free consultation to discuss whether fighting your traffic violation makes sense 
     for your situation.

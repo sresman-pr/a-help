@@ -1,6 +1,9 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
+import StepCards from '../components/ui/StepCards.astro';
 
 const faqs = [
   {
@@ -33,6 +36,63 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Nursing Home Neglect' }
 ];
+
+const neglectTypes = [
+  { text: 'Medical neglect', subtext: 'Failure to provide medications, treatment, or monitor health conditions' },
+  { text: 'Basic needs neglect', subtext: 'Inadequate food, water, or personal hygiene' },
+  { text: 'Bedsore development', subtext: 'Failure to reposition residents, leading to pressure ulcers' },
+  { text: 'Fall prevention failures', subtext: 'Lack of supervision or safety measures' },
+  { text: 'Sanitation neglect', subtext: 'Dirty rooms, soiled bedding, unsanitary conditions' },
+  { text: 'Social and emotional neglect', subtext: 'Isolation and lack of social interaction' },
+  { text: 'Understaffing', subtext: 'Insufficient staff to properly care for residents' },
+];
+
+const abuseTypes = [
+  { text: 'Physical abuse', subtext: 'Hitting, pushing, restraining, rough handling' },
+  { text: 'Emotional/psychological abuse', subtext: 'Verbal threats, humiliation, intimidation' },
+  { text: 'Sexual abuse', subtext: 'Any non-consensual sexual contact' },
+  { text: 'Financial exploitation', subtext: 'Theft, fraud, coerced changes to documents' },
+  { text: 'Medication abuse', subtext: 'Over-sedation to make residents easier to manage' },
+];
+
+const systemicCauses = [
+  'Understaffing to cut costs and increase profits',
+  'Inadequately trained staff',
+  'Poor hiring practices and failure to screen employees',
+  'Lack of supervision and oversight',
+  'Failure to follow care plans',
+  'Inadequate policies and procedures',
+  'Corporate profit prioritized over patient care',
+];
+
+const commonHarms = [
+  'Bedsores (pressure ulcers) that can become life-threatening',
+  'Falls resulting in broken bones, hip fractures, and head injuries',
+  'Infections from unclean conditions or untreated wounds',
+  'Malnutrition and dehydration',
+  'Medication errors causing adverse reactions',
+  'Worsening of existing medical conditions',
+  'Emotional trauma and depression',
+  'Wrongful death',
+];
+
+const nursingHomeCompensation = [
+  'Medical expenses for treating neglect-related injuries',
+  'Costs of relocating to a different facility',
+  'Pain and suffering',
+  'Emotional distress',
+  'Diminished quality of life',
+  'Wrongful death damages if neglect caused death',
+  'Punitive damages for egregious misconduct (when available)',
+];
+
+const reportingSteps = [
+  { title: 'Document everything', description: 'Photos of injuries, dated notes, medication lists, and incident details.' },
+  { title: 'Report concerns in writing', description: 'Notify facility management and keep copies of all communications.' },
+  { title: 'File a complaint with OHCQ', description: "Report to Maryland's Office of Health Care Quality (OHCQ) for oversight." },
+  { title: 'Seek medical attention', description: 'Make sure your loved one receives proper treatment immediately.' },
+  { title: 'Contact an attorney', description: 'An investigation can preserve evidence and protect your loved one’s rights.' },
+];
 ---
 
 <PracticeAreaLayout
@@ -44,6 +104,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/hospital-corridor.jpg"
+  accentColor="blue"
 >
   <h2>Protecting Maryland's Elderly from Nursing Home Neglect and Abuse</h2>
   <p>
@@ -60,89 +122,55 @@ const breadcrumbs = [
 
   <h3>Types of Nursing Home Neglect</h3>
   <p>Neglect occurs when facilities fail to provide necessary care, including:</p>
-  <ul>
-    <li><strong>Medical neglect</strong> – Failure to provide medications, medical treatment, or monitor health conditions</li>
-    <li><strong>Basic needs neglect</strong> – Inadequate food, water, or personal hygiene</li>
-    <li><strong>Bedsore development</strong> – Failure to reposition immobile residents, leading to pressure ulcers</li>
-    <li><strong>Fall prevention failures</strong> – Lack of supervision or safety measures</li>
-    <li><strong>Sanitation neglect</strong> – Dirty rooms, soiled bedding, unsanitary conditions</li>
-    <li><strong>Social and emotional neglect</strong> – Isolation and lack of social interaction</li>
-    <li><strong>Understaffing</strong> – Insufficient staff to properly care for all residents</li>
-  </ul>
+  <IconList items={neglectTypes} columns={2} variant="card" />
 
   <h3>Types of Nursing Home Abuse</h3>
   <p>Abuse involves intentional harm and can take many forms:</p>
-  <ul>
-    <li><strong>Physical abuse</strong> – Hitting, pushing, restraining, rough handling</li>
-    <li><strong>Emotional/psychological abuse</strong> – Verbal threats, humiliation, intimidation</li>
-    <li><strong>Sexual abuse</strong> – Any non-consensual sexual contact</li>
-    <li><strong>Financial exploitation</strong> – Theft, fraud, coerced changes to wills or financial documents</li>
-    <li><strong>Medication abuse</strong> – Over-sedation to make residents easier to manage</li>
-  </ul>
+  <IconList items={abuseTypes} columns={2} variant="card" />
 
   <h3>Warning Signs of Neglect and Abuse</h3>
   <p>Be alert to these signs that your loved one may be suffering:</p>
-  <ul>
-    <li>Unexplained bruises, cuts, burns, or fractures</li>
-    <li>Bedsores (pressure ulcers), especially at advanced stages</li>
-    <li>Sudden weight loss or signs of malnutrition</li>
-    <li>Dehydration</li>
-    <li>Poor personal hygiene—unwashed, unchanged clothing, body odor</li>
-    <li>Unclean living conditions</li>
-    <li>Medication errors or untreated medical conditions</li>
-    <li>Behavioral changes—depression, anxiety, withdrawal, fear</li>
-    <li>Reluctance to speak openly around staff</li>
-    <li>Unusual financial activity</li>
-  </ul>
+  <IconList
+    items={[
+      'Unexplained bruises, cuts, burns, or fractures',
+      'Bedsores (pressure ulcers), especially at advanced stages',
+      'Sudden weight loss or signs of malnutrition',
+      'Dehydration',
+      'Poor personal hygiene—unwashed, unchanged clothing, body odor',
+      'Unclean living conditions',
+      'Medication errors or untreated medical conditions',
+      'Behavioral changes—depression, anxiety, withdrawal, fear',
+      'Reluctance to speak openly around staff',
+      'Unusual financial activity',
+    ]}
+    columns={2}
+    variant="card"
+  />
 
   <h3>Common Causes of Nursing Home Neglect</h3>
   <p>Neglect often results from systemic problems at facilities:</p>
-  <ul>
-    <li>Understaffing to cut costs and increase profits</li>
-    <li>Inadequately trained staff</li>
-    <li>Poor hiring practices and failure to screen employees</li>
-    <li>Lack of supervision and oversight</li>
-    <li>Failure to follow care plans</li>
-    <li>Inadequate policies and procedures</li>
-    <li>Corporate profit prioritized over patient care</li>
-  </ul>
+  <IconList items={systemicCauses} columns={2} />
 
   <h3>Injuries and Harm from Nursing Home Neglect</h3>
-  <ul>
-    <li>Bedsores (pressure ulcers) that can become life-threatening</li>
-    <li>Falls resulting in broken bones, hip fractures, and head injuries</li>
-    <li>Infections from unclean conditions or untreated wounds</li>
-    <li>Malnutrition and dehydration</li>
-    <li>Medication errors causing adverse reactions</li>
-    <li>Worsening of existing medical conditions</li>
-    <li>Emotional trauma and depression</li>
-    <li>Wrongful death</li>
-  </ul>
+  <IconList items={commonHarms} columns={2} />
 
   <h3>Compensation in Nursing Home Cases</h3>
   <p>Victims and their families may recover:</p>
-  <ul>
-    <li>Medical expenses for treating neglect-related injuries</li>
-    <li>Costs of relocating to a different facility</li>
-    <li>Pain and suffering</li>
-    <li>Emotional distress</li>
-    <li>Diminished quality of life</li>
-    <li>Wrongful death damages if neglect caused death</li>
-    <li>Punitive damages for egregious misconduct</li>
-  </ul>
+  <IconList items={nursingHomeCompensation} columns={2} />
 
   <h3>Taking Action Against Negligent Facilities</h3>
   <p>
     If you suspect your loved one is being neglected or abused in a Maryland nursing home, 
     take action immediately:
   </p>
-  <ol>
-    <li>Document everything—photos of injuries, notes about incidents</li>
-    <li>Report concerns to facility management in writing</li>
-    <li>File a complaint with Maryland's Office of Health Care Quality</li>
-    <li>Seek medical attention for your loved one</li>
-    <li>Contact an experienced nursing home neglect attorney</li>
-  </ol>
+  <CalloutBox title="Reporting Suspected Neglect" variant="warning">
+    <p class="mb-0">
+      If you believe your loved one is in immediate danger, call <strong>911</strong>. You can also report concerns to facility
+      management in writing and file a complaint with Maryland’s Office of Health Care Quality (OHCQ). Documenting and
+      reporting issues early can help protect your loved one and strengthen a legal claim.
+    </p>
+  </CalloutBox>
+  <StepCards steps={reportingSteps} columns={3} variant="numbered" />
   <p>
     Our attorneys have the experience to investigate these cases, work with medical experts 
     to document harm, and hold facilities accountable. Contact us for a free, confidential 

@@ -1,6 +1,8 @@
 ---
 import PracticeAreaLayout from '../layouts/PracticeAreaLayout.astro';
 import { personalInjuryServices } from '../data/services';
+import IconList from '../components/ui/IconList.astro';
+import CalloutBox from '../components/ui/CalloutBox.astro';
 
 const faqs = [
   {
@@ -29,6 +31,15 @@ const breadcrumbs = [
   { label: 'Personal Injury', href: '/personal-injury/' },
   { label: 'Truck Accidents' }
 ];
+
+const potentiallyLiableParties = [
+  { text: 'The truck driver', subtext: 'Negligent driving, fatigue, impairment' },
+  { text: 'The trucking company', subtext: 'Negligent hiring, training, supervision, or unsafe policies' },
+  { text: 'The cargo company', subtext: 'Improper loading or securement' },
+  { text: 'The truck manufacturer', subtext: 'Defective vehicles or parts' },
+  { text: 'Maintenance providers', subtext: 'Negligent repairs or inspections' },
+  { text: 'Government entities', subtext: 'Dangerous road design or conditions in limited cases' },
+];
 ---
 
 <PracticeAreaLayout
@@ -40,6 +51,8 @@ const breadcrumbs = [
   faqs={faqs}
   relatedServices={relatedServices}
   breadcrumbs={breadcrumbs}
+  heroImage="/images/stock/road-highway.jpg"
+  accentColor="gold"
 >
   <h2>Commercial Truck Accident Attorneys in Maryland</h2>
   <p>
@@ -55,52 +68,55 @@ const breadcrumbs = [
   </p>
 
   <h3>Common Causes of Truck Accidents</h3>
-  <ul>
-    <li><strong>Driver fatigue</strong> – Truckers often drive long hours despite federal hours-of-service regulations</li>
-    <li><strong>Distracted driving</strong> – Using phones, GPS devices, or eating while driving</li>
-    <li><strong>Impaired driving</strong> – Alcohol, drugs, or prescription medications</li>
-    <li><strong>Speeding</strong> – Pressure to meet delivery deadlines</li>
-    <li><strong>Improper loading</strong> – Overloaded or improperly secured cargo</li>
-    <li><strong>Poor maintenance</strong> – Brake failures, tire blowouts, mechanical defects</li>
-    <li><strong>Inadequate training</strong> – Inexperienced or unqualified drivers</li>
-    <li><strong>Aggressive driving</strong> – Tailgating, unsafe lane changes, failure to yield</li>
-  </ul>
+  <IconList 
+    items={[
+      { text: 'Driver fatigue', subtext: 'Truckers often drive long hours despite federal regulations' },
+      { text: 'Distracted driving', subtext: 'Using phones, GPS devices, or eating while driving' },
+      { text: 'Impaired driving', subtext: 'Alcohol, drugs, or prescription medications' },
+      { text: 'Speeding', subtext: 'Pressure to meet delivery deadlines' },
+      { text: 'Improper loading', subtext: 'Overloaded or improperly secured cargo' },
+      { text: 'Poor maintenance', subtext: 'Brake failures, tire blowouts, mechanical defects' },
+      { text: 'Inadequate training', subtext: 'Inexperienced or unqualified drivers' },
+      { text: 'Aggressive driving', subtext: 'Tailgating, unsafe lane changes, failure to yield' },
+    ]}
+    columns={2}
+    variant="card"
+  />
 
   <h3>Types of Truck Accidents We Handle</h3>
-  <ul>
-    <li>18-wheeler and semi-truck accidents</li>
-    <li>Tractor-trailer collisions</li>
-    <li>Tanker truck accidents</li>
-    <li>Delivery truck accidents (UPS, FedEx, Amazon)</li>
-    <li>Garbage truck accidents</li>
-    <li>Dump truck accidents</li>
-    <li>Jackknife accidents</li>
-    <li>Rollover accidents</li>
-    <li>Underride and override accidents</li>
-    <li>Wide turn accidents</li>
-  </ul>
+  <IconList 
+    items={[
+      '18-wheeler and semi-truck accidents',
+      'Tractor-trailer collisions',
+      'Tanker truck accidents',
+      'Delivery truck accidents (UPS, FedEx, Amazon)',
+      'Garbage truck accidents',
+      'Dump truck accidents',
+      'Jackknife accidents',
+      'Rollover accidents',
+      'Underride and override accidents',
+      'Wide turn accidents',
+    ]}
+    columns={2}
+    icon="check"
+  />
 
   <h3>Multiple Parties May Be Liable</h3>
   <p>Unlike car accidents, truck accident cases often involve multiple potentially liable parties:</p>
-  <ul>
-    <li><strong>The truck driver</strong> – For negligent driving, fatigue, or impairment</li>
-    <li><strong>The trucking company</strong> – For negligent hiring, training, or supervision</li>
-    <li><strong>The cargo company</strong> – For improper loading or securement</li>
-    <li><strong>The truck manufacturer</strong> – For defective vehicles or parts</li>
-    <li><strong>Maintenance providers</strong> – For negligent repairs or inspections</li>
-    <li><strong>Government entities</strong> – For dangerous road conditions</li>
-  </ul>
+  <IconList items={potentiallyLiableParties} columns={2} variant="card" />
 
   <h3>Federal Trucking Regulations</h3>
-  <p>
-    Commercial trucks are governed by Federal Motor Carrier Safety Administration (FMCSA) regulations 
-    covering hours of service, vehicle maintenance, driver qualifications, and cargo securement. 
-    Violations of these regulations can be powerful evidence in your case.
-  </p>
-  <p>
-    Our attorneys are well-versed in these regulations and know how to identify violations that 
-    contributed to your accident.
-  </p>
+  <CalloutBox title="FMCSA Regulations" variant="info">
+    <p>
+      Commercial trucks are governed by Federal Motor Carrier Safety Administration (FMCSA) regulations 
+      covering hours of service, vehicle maintenance, driver qualifications, and cargo securement. 
+      <strong>Violations of these regulations can be powerful evidence in your case.</strong>
+    </p>
+    <p class="mb-0">
+      Our attorneys are well-versed in these regulations and know how to identify violations that 
+      contributed to your accident.
+    </p>
+  </CalloutBox>
 
   <h3>Serious Injuries Require Serious Representation</h3>
   <p>

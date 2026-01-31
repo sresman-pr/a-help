@@ -1,0 +1,60 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+  description?: string;
+}
+
+interface Props {
+  stats: Stat[];
+  variant?: 'inline' | 'cards' | 'centered';
+  columns?: 2 | 3 | 4;
+}
+
+const { 
+  stats, 
+  variant = 'cards',
+  columns = 3
+} = Astro.props;
+
+const gridCols = {
+  2: 'grid-cols-2',
+  3: 'grid-cols-2 lg:grid-cols-3',
+  4: 'grid-cols-2 lg:grid-cols-4'
+};
+---
+
+{variant === 'inline' ? (
+  <div class="flex flex-wrap gap-8 my-8">
+    {stats.map((stat) => (
+      <div class="flex items-baseline gap-2">
+        <span class="stat-number text-3xl md:text-4xl">{stat.value}</span>
+        <span class="text-gray-600">{stat.label}</span>
+      </div>
+    ))}
+  </div>
+) : variant === 'centered' ? (
+  <div class={`grid ${gridCols[columns]} gap-6 my-8 text-center`}>
+    {stats.map((stat) => (
+      <div class="py-6">
+        <div class="stat-number text-4xl md:text-5xl mb-2">{stat.value}</div>
+        <div class="font-semibold text-navy-900">{stat.label}</div>
+        {stat.description && (
+          <p class="text-sm text-gray-500 mt-1">{stat.description}</p>
+        )}
+      </div>
+    ))}
+  </div>
+) : (
+  <div class={`grid ${gridCols[columns]} gap-4 my-8`}>
+    {stats.map((stat) => (
+      <div class="bg-navy-900 rounded-xl p-5 text-center">
+        <div class="stat-number text-3xl md:text-4xl mb-1">{stat.value}</div>
+        <div class="text-white font-medium">{stat.label}</div>
+        {stat.description && (
+          <p class="text-sm text-gray-400 mt-2">{stat.description}</p>
+        )}
+      </div>
+    ))}
+  </div>
+)}

@@ -1,0 +1,191 @@
+---
+import { ArrowRight, MapPin, Scale, Award, Trophy, Star, Quote } from '@lucide/astro';
+import { featuredTestimonials } from '../../data/testimonials';
+
+interface Props {
+  showTestimonials?: boolean;
+}
+
+const { showTestimonials = true } = Astro.props;
+
+const attorneyPhotoUrl = '/images/alex-poberesky.png';
+
+// Timeline milestones - THE DIFFERENTIATOR
+const milestones = [
+  {
+    year: '1980s',
+    location: 'Moscow',
+    title: 'A Fighter is Forged',
+    description: 'Fought against Soviet oppression as a member of the Refusenik movement. Lost his father in the struggle for freedom.',
+    icon: 'MapPin'
+  },
+  {
+    year: '1998',
+    location: 'Maryland',
+    title: 'Founded the Firm',
+    description: 'Established a practice dedicated to fighting for those who can\'t fight for themselves.',
+    icon: 'Scale'
+  },
+  {
+    year: 'Champion',
+    location: 'National',
+    title: 'Discipline & Tenacity',
+    description: 'Bronze & Gold medals in full-contact martial arts. The same relentless determination in every case.',
+    icon: 'Trophy'
+  },
+  {
+    year: '26+',
+    location: 'Years',
+    title: 'Hundreds of Victories',
+    description: 'Trial-tested. Relentless. Multilingual. Serving Maryland families with unwavering dedication.',
+    icon: 'Award'
+  }
+];
+
+const iconComponents = { MapPin, Scale, Award, Trophy };
+
+// Get 2 testimonials for the section
+const displayTestimonials = featuredTestimonials.slice(0, 2);
+---
+
+<section class="section-padding-lg section-light relative overflow-hidden" id="attorney-story">
+  <!-- Subtle background pattern -->
+  <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
+  
+  <div class="container-custom relative">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+      <p class="text-gold-600 font-medium mb-3 text-lg flex items-center justify-center gap-2">
+        <span class="w-12 h-px bg-gold-500"></span>
+        Meet Your Attorney
+        <span class="w-12 h-px bg-gold-500"></span>
+      </p>
+      <h2 class="font-heading font-bold text-navy-900">A Fighter Forged by Struggle</h2>
+    </div>
+    
+    <!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <!-- Attorney Photo Column -->
+      <div class="relative fade-in-up">
+        <!-- Decorative offset background -->
+        <div class="absolute top-8 left-8 w-full h-full bg-gold-500 rounded-2xl -z-10"></div>
+        
+        <!-- Photo Container -->
+        <div class="relative rounded-2xl overflow-hidden photo-frame-gold">
+          <img 
+            src={attorneyPhotoUrl}
+            alt="Alex Poberesky - Maryland Personal Injury & Criminal Defense Attorney"
+            class="w-full aspect-[3/4] object-cover object-top"
+            loading="lazy"
+          />
+          <!-- Gradient overlay at bottom -->
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent"></div>
+          
+          <!-- Name overlay -->
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+            <h3 class="font-heading font-bold text-2xl lg:text-3xl text-white mb-1">Alex Poberesky</h3>
+            <p class="text-gold-400 font-medium">Founder & Lead Attorney</p>
+          </div>
+        </div>
+        
+        <!-- Floating badge -->
+        <div class="absolute -bottom-4 -right-4 lg:-right-8 bg-navy-900 text-white px-6 py-4 rounded-xl shadow-floating z-10">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gold-500 rounded-full flex items-center justify-center">
+              <Award class="w-6 h-6 text-navy-900" />
+            </div>
+            <div>
+              <div class="stat-number text-2xl">26+</div>
+              <div class="text-sm text-gray-400">Years Fighting</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Timeline Column -->
+      <div class="relative">
+        <!-- Intro text -->
+        <p class="text-xl text-gray-700 leading-relaxed mb-10 fade-in-up">
+          Alex Poberesky, Esq., is a committed advocate for the people. His sense of justice was forged through 
+          personal struggle — a story that defines how he fights for every client.
+        </p>
+        
+        <!-- Visual Timeline -->
+        <div class="relative">
+          {milestones.map((milestone, index) => {
+            const IconComponent = iconComponents[milestone.icon as keyof typeof iconComponents];
+            const isLast = index === milestones.length - 1;
+            
+            return (
+              <div class="timeline-milestone relative flex gap-6 pb-10" data-index={index}>
+                <!-- Timeline marker and line -->
+                <div class="relative flex-shrink-0">
+                  <div class="timeline-marker w-5 h-5 bg-gold-500 rounded-full shadow-lg z-10 relative"></div>
+                  {!isLast && (
+                    <div class="absolute top-7 left-[9px] w-0.5 h-full bg-gradient-to-b from-gold-500 to-gold-300 opacity-30"></div>
+                  )}
+                </div>
+                
+                <!-- Content -->
+                <div class="flex-grow pb-2">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="text-gold-600 font-bold text-lg">{milestone.year}</span>
+                    <span class="text-gray-400">•</span>
+                    <span class="text-gray-500 text-sm">{milestone.location}</span>
+                  </div>
+                  <h3 class="font-heading font-bold text-navy-900 text-xl mb-2">{milestone.title}</h3>
+                  <p class="text-gray-600 leading-relaxed">{milestone.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+    
+    <!-- Testimonials Row -->
+    {showTestimonials && displayTestimonials.length > 0 && (
+      <div class="mt-20 pt-16 border-t border-gray-200">
+        <div class="text-center mb-10 fade-in-up">
+          <p class="text-gold-600 font-medium">What Clients Say</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 stagger-children">
+          {displayTestimonials.map((testimonial) => (
+            <div class="bg-white rounded-2xl p-8 shadow-soft border border-gray-100 relative fade-in-up">
+              <Quote class="w-10 h-10 text-gold-500/20 absolute top-6 right-6" />
+              
+              <div class="flex gap-1 mb-4">
+                {[...Array(testimonial.rating)].map(() => (
+                  <Star class="w-5 h-5 text-gold-500 fill-gold-500" />
+                ))}
+              </div>
+              
+              <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                "{testimonial.shortText}"
+              </p>
+              
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-navy-900 rounded-full flex items-center justify-center">
+                  <span class="text-gold-500 font-bold">{testimonial.name.charAt(0)}</span>
+                </div>
+                <div>
+                  <div class="font-bold text-navy-900">{testimonial.name}</div>
+                  <div class="text-sm text-gray-500">{testimonial.location}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+    
+    <!-- CTA -->
+    <div class="text-center mt-16 fade-in-up">
+      <a href="/contact-us/" class="btn btn-primary btn-lg btn-glow shadow-elevated">
+        Schedule Free Consultation
+        <ArrowRight class="w-5 h-5" />
+      </a>
+    </div>
+  </div>
+</section>

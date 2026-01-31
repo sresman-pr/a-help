@@ -6,7 +6,7 @@ import FAQAccordion from '../components/sections/FAQAccordion.astro';
 import CTASection from '../components/sections/CTASection.astro';
 import ServiceCards from '../components/sections/ServiceCards.astro';
 import AttorneySidebarCard from '../components/ui/AttorneySidebarCard.astro';
-import { Phone, ArrowRight, Check } from '@lucide/astro';
+import { Phone, ArrowRight, Check, Award, Clock, DollarSign, Globe } from '@lucide/astro';
 
 interface FAQ {
   question: string;
@@ -22,6 +22,8 @@ interface Props {
   faqs?: FAQ[];
   relatedServices?: { title: string; href: string; description: string; icon: string; slug: string; category: string; }[];
   breadcrumbs: { label: string; href?: string }[];
+  heroImage?: string;
+  accentColor?: 'gold' | 'blue' | 'red' | 'teal';
 }
 
 const { 
@@ -32,71 +34,138 @@ const {
   category,
   faqs = [],
   relatedServices = [],
-  breadcrumbs
+  breadcrumbs,
+  heroImage = '/images/stock/hero-courthouse.jpg',
+  accentColor = 'gold'
 } = Astro.props;
 
 const categoryLabel = category === 'personal-injury' ? 'Personal Injury' : 'Criminal Defense';
 const categoryHref = category === 'personal-injury' ? '/personal-injury/' : '/criminal-defense/';
+
+// Accent color classes
+const accentClasses = {
+  gold: {
+    badge: 'bg-gold-500/20 text-gold-400 border-gold-500/30',
+    badgeDot: 'bg-gold-400',
+    check: 'text-gold-500',
+    button: 'btn-primary',
+    formGlow: 'bg-gold-500/20',
+    bottomLine: 'via-gold-500',
+    sidebarAccent: 'bg-gold-500',
+    sidebarIcon: 'bg-gold-500/20 text-gold-400',
+    sidebarButton: 'bg-gold-500 hover:bg-gold-400',
+    overlay: 'bg-navy-900/85'
+  },
+  blue: {
+    badge: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    badgeDot: 'bg-blue-400',
+    check: 'text-blue-500',
+    button: 'btn-primary bg-blue-600 hover:bg-blue-500',
+    formGlow: 'bg-blue-500/20',
+    bottomLine: 'via-blue-500',
+    sidebarAccent: 'bg-blue-500',
+    sidebarIcon: 'bg-blue-500/20 text-blue-400',
+    sidebarButton: 'bg-blue-600 hover:bg-blue-500',
+    overlay: 'bg-navy-900/85'
+  },
+  red: {
+    badge: 'bg-red-500/20 text-red-400 border-red-500/30',
+    badgeDot: 'bg-red-400',
+    check: 'text-red-500',
+    button: 'btn-primary bg-red-600 hover:bg-red-500',
+    formGlow: 'bg-red-500/20',
+    bottomLine: 'via-red-500',
+    sidebarAccent: 'bg-red-500',
+    sidebarIcon: 'bg-red-500/20 text-red-400',
+    sidebarButton: 'bg-red-600 hover:bg-red-500',
+    overlay: 'bg-navy-900/85'
+  },
+  teal: {
+    badge: 'bg-teal-500/20 text-teal-400 border-teal-500/30',
+    badgeDot: 'bg-teal-400',
+    check: 'text-teal-500',
+    button: 'btn-primary bg-teal-600 hover:bg-teal-500',
+    formGlow: 'bg-teal-500/20',
+    bottomLine: 'via-teal-500',
+    sidebarAccent: 'bg-teal-500',
+    sidebarIcon: 'bg-teal-500/20 text-teal-400',
+    sidebarButton: 'bg-teal-600 hover:bg-teal-500',
+    overlay: 'bg-navy-900/85'
+  }
+};
+
+const colors = accentClasses[accentColor];
+
+const whyChooseUsItems = [
+  { icon: Award, text: '26+ years of experience' },
+  { icon: Check, text: 'Hundreds of successful cases' },
+  { icon: DollarSign, text: 'No fee unless we win' },
+  { icon: Globe, text: 'Multilingual staff' },
+  { icon: Clock, text: 'Available 24/7' },
+];
 ---
 
 <PageLayout title={title} description={description}>
   <!-- Breadcrumbs -->
   <Breadcrumbs items={breadcrumbs} />
   
-  <!-- Hero Section -->
-  <section class="bg-gradient-animated text-white py-12 md:py-16 relative overflow-hidden">
-    <!-- Decorative Elements -->
-    <div class="absolute inset-0 bg-pattern-grid-light opacity-20"></div>
-    <div class="absolute top-10 right-10 w-64 h-64 rounded-full bg-gold-500/10 blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-navy-500/30 blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+  <!-- Hero Section - Compact with Image Background -->
+  <section class="text-white py-8 md:py-10 relative overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0">
+      <img 
+        src={heroImage} 
+        alt="" 
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class={`absolute inset-0 ${colors.overlay}`}></div>
+    </div>
     
     <div class="container-custom relative">
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-gold-500/20 text-gold-400 text-sm font-medium rounded-full mb-4 border border-gold-500/30">
-            <span class="w-2 h-2 bg-gold-400 rounded-full animate-pulse"></span>
+      <div class="grid lg:grid-cols-5 gap-8 items-center">
+        <!-- Content -->
+        <div class="lg:col-span-3">
+          <span class={`inline-flex items-center gap-2 px-3 py-1 ${colors.badge} text-sm font-medium rounded-full mb-3 border`}>
+            <span class={`w-2 h-2 ${colors.badgeDot} rounded-full animate-pulse`}></span>
             {categoryLabel}
           </span>
-          <h1 class="font-heading font-bold text-white mb-4">{heroTitle}</h1>
+          <h1 class="font-heading font-bold text-white mb-3 text-3xl md:text-4xl lg:text-5xl">{heroTitle}</h1>
           {heroDescription && (
-            <p class="text-xl text-gray-300 mb-6">{heroDescription}</p>
+            <p class="text-lg text-gray-300 mb-4 max-w-2xl">{heroDescription}</p>
           )}
           
-          <div class="flex flex-wrap gap-3 mb-8">
-            <div class="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-              <Check class="w-4 h-4 text-gold-500" />
+          <div class="flex flex-wrap gap-2 mb-5">
+            <div class="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+              <Check class={`w-4 h-4 ${colors.check}`} />
               <span class="text-gray-200 text-sm">Free Consultation</span>
             </div>
-            <div class="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-              <Check class="w-4 h-4 text-gold-500" />
+            <div class="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+              <Check class={`w-4 h-4 ${colors.check}`} />
               <span class="text-gray-200 text-sm">No Fee Unless We Win</span>
-            </div>
-            <div class="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-              <Check class="w-4 h-4 text-gold-500" />
-              <span class="text-gray-200 text-sm">Available 24/7</span>
             </div>
           </div>
           
-          <div class="flex flex-wrap gap-4">
-            <a href="/contact-us/" class="btn btn-primary btn-glow shadow-elevated">
+          <div class="flex flex-wrap gap-3">
+            <a href="/contact-us/" class={`btn ${colors.button} shadow-elevated`}>
               Free Case Review
               <ArrowRight class="w-5 h-5" />
             </a>
-            <a href="tel:+14104840400" class="btn btn-outline">
+            <a href="tel:+14104840400" class="btn btn-outline-white">
               <Phone class="w-5 h-5" />
               (410) 484-0400
             </a>
           </div>
         </div>
         
-        <!-- Contact Form -->
-        <div class="relative">
-          <div class="absolute -inset-2 bg-gold-500/20 rounded-3xl blur-xl"></div>
-          <div class="relative bg-white rounded-2xl p-6 md:p-8 shadow-floating">
+        <!-- Compact Contact Form -->
+        <div class="lg:col-span-2 relative">
+          <div class={`absolute -inset-2 ${colors.formGlow} rounded-2xl blur-xl`}></div>
+          <div class="relative bg-white rounded-xl p-4 md:p-5 shadow-floating">
             <ContactForm 
-              title="Get Your Free Case Evaluation"
-              subtitle="Tell us about your case and we'll get back to you within 24 hours."
-              variant="default"
+              title="Free Case Evaluation"
+              subtitle="We'll respond within 24 hours."
+              variant="compact"
               showPhone={false}
             />
           </div>
@@ -105,68 +174,61 @@ const categoryHref = category === 'personal-injury' ? '/personal-injury/' : '/cr
     </div>
     
     <!-- Bottom Gradient Line -->
-    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+    <div class={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent ${colors.bottomLine} to-transparent opacity-60`}></div>
   </section>
   
   <!-- Main Content -->
-  <section class="section-padding relative">
-    <div class="absolute inset-0 bg-pattern-dots opacity-20"></div>
+  <section class="py-12 md:py-16 relative">
     <div class="container-custom relative">
-      <div class="grid lg:grid-cols-3 gap-12">
+      <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
         <!-- Main Content Area -->
-        <div class="lg:col-span-2 prose max-w-none">
-          <slot />
+        <div class="lg:col-span-2">
+          <div class="prose-custom">
+            <slot />
+          </div>
         </div>
         
-        <!-- Sidebar -->
-        <aside class="space-y-6">
+        <!-- Sidebar - Sticky -->
+        <aside class="space-y-6 lg:sticky lg:top-24 lg:self-start">
           <!-- Attorney Card -->
           <AttorneySidebarCard />
           
-          <!-- Trust Badges -->
-          <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
-            <h3 class="font-heading font-bold text-navy-900 mb-4">Why Choose Us</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Check class="w-4 h-4 text-gold-600" />
-                </div>
-                <span class="text-sm text-gray-700">26+ years of experience</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Check class="w-4 h-4 text-gold-600" />
-                </div>
-                <span class="text-sm text-gray-700">Hundreds of successful cases</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Check class="w-4 h-4 text-gold-600" />
-                </div>
-                <span class="text-sm text-gray-700">No fee unless we win</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Check class="w-4 h-4 text-gold-600" />
-                </div>
-                <span class="text-sm text-gray-700">Multilingual staff</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Check class="w-4 h-4 text-gold-600" />
-                </div>
-                <span class="text-sm text-gray-700">Personalized attention</span>
-              </li>
+          <!-- Why Choose Us - Enhanced -->
+          <div class="bg-navy-900 rounded-xl p-6 shadow-elevated">
+            <h3 class="font-heading font-bold text-white mb-5 flex items-center gap-2">
+              <span class={`w-8 h-1 ${colors.sidebarAccent} rounded`}></span>
+              Why Choose Us
+            </h3>
+            <ul class="space-y-4">
+              {whyChooseUsItems.map((item) => (
+                <li class="flex items-center gap-3">
+                  <div class={`w-8 h-8 ${colors.sidebarIcon} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <item.icon class="w-4 h-4" />
+                  </div>
+                  <span class="text-gray-200 text-sm">{item.text}</span>
+                </li>
+              ))}
             </ul>
+            
+            <!-- Mini CTA -->
+            <a href="tel:+14104840400" class={`mt-6 flex items-center justify-center gap-2 w-full py-3 ${colors.sidebarButton} text-white font-bold rounded-lg transition-colors`}>
+              <Phone class="w-4 h-4" />
+              Call Now
+            </a>
           </div>
         </aside>
       </div>
     </div>
   </section>
   
+  <!-- Divider -->
+  <div class="container-custom">
+    <div class="divider-gradient"></div>
+  </div>
+  
   <!-- FAQ Section -->
   {faqs.length > 0 && (
-    <div class="bg-gray-50">
+    <div class="section-light-alt">
       <FAQAccordion 
         faqs={faqs}
         title="Frequently Asked Questions"
