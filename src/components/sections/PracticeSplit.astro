@@ -1,0 +1,78 @@
+---
+import { ArrowRight, Shield, Scale } from '@lucide/astro';
+
+const practices = [
+  {
+    title: 'Personal Injury',
+    icon: 'Shield',
+    description: 'Injured in an accident? We fight for maximum compensation so you can focus on recovery.',
+    link: '/personal-injury/',
+    examples: ['Car Accidents', 'Slip & Fall', 'Medical Malpractice', 'Workers\' Comp']
+  },
+  {
+    title: 'Criminal Defense',
+    icon: 'Scale',
+    description: 'Facing criminal charges? We protect your rights, your freedom, and your future.',
+    link: '/criminal-defense/',
+    examples: ['DUI/DWI', 'Drug Charges', 'Assault', 'Theft Crimes']
+  }
+];
+
+const iconComponents = { Shield, Scale };
+---
+
+<section class="section-light-alt py-12 md:py-16">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center mb-10">
+      <p class="text-gold-600 font-medium mb-2">How Can We Help You?</p>
+      <h2 class="font-heading font-bold text-navy-900 text-2xl md:text-3xl">Select Your Situation</h2>
+    </div>
+    
+    <!-- Two-Column Split -->
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+      {practices.map((practice) => {
+        const IconComponent = iconComponents[practice.icon as keyof typeof iconComponents];
+        return (
+          <a 
+            href={practice.link}
+            class="group relative bg-white rounded-2xl p-8 shadow-soft border border-gray-100 hover:border-gold-500/30 hover:shadow-elevated transition-all duration-300"
+          >
+            <!-- Icon -->
+            <div class="w-14 h-14 bg-gold-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold-500/20 transition-colors">
+              <IconComponent class="w-7 h-7 text-gold-600" />
+            </div>
+            
+            <!-- Title -->
+            <h3 class="font-heading font-bold text-navy-900 text-xl md:text-2xl mb-3">
+              {practice.title}
+            </h3>
+            
+            <!-- Description -->
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              {practice.description}
+            </p>
+            
+            <!-- Examples -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              {practice.examples.map((example) => (
+                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
+                  {example}
+                </span>
+              ))}
+            </div>
+            
+            <!-- CTA -->
+            <div class="flex items-center text-gold-600 font-semibold group-hover:text-gold-700 transition-colors">
+              Learn More
+              <ArrowRight class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </div>
+            
+            <!-- Hover accent line -->
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gold-500 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

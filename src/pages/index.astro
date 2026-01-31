@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/sections/Hero.astro';
+import HomeHero from '../components/sections/HomeHero.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import PracticeSplit from '../components/sections/PracticeSplit.astro';
 import ServiceCards from '../components/sections/ServiceCards.astro';
 import WhyChooseUs from '../components/sections/WhyChooseUs.astro';
 import AttorneyStory from '../components/sections/AttorneyStory.astro';
@@ -10,15 +12,17 @@ import FAQAccordion from '../components/sections/FAQAccordion.astro';
 import { featuredServices } from '../data/services';
 
 /*
-  HOMEPAGE STRUCTURE (10 sections → 6)
-  Visual rhythm: DARK → LIGHT → DARK → LIGHT → LIGHT → DARK
+  HOMEPAGE STRUCTURE
+  Visual rhythm: DARK → LIGHT → LIGHT-ALT → LIGHT → DARK → LIGHT → LIGHT-ALT → DARK
   
-  1. Hero (DARK) - Background image + form
-  2. ServiceCards (LIGHT) - Practice areas with image cards
-  3. WhyChooseUs (DARK) - 4 key stats with counters
-  4. AttorneyStory (LIGHT) - Visual timeline + testimonials
-  5. FAQ (LIGHT-ALT) - 3 key questions
-  6. CTA (DARK) - Background image
+  1. HomeHero (DARK) - Two-column with Alex photo [AUTHORITY TONE]
+  2. TrustBar (LIGHT) - Compact credibility row
+  3. PracticeSplit (LIGHT-ALT) - Two practice area blocks for self-selection
+  4. ServiceCards (LIGHT) - Practice areas with image cards
+  5. WhyChooseUs (DARK) - 4 key stats with counters
+  6. AttorneyStory (LIGHT) - Visual timeline + testimonials [HUMANITY TONE]
+  7. FAQ (LIGHT-ALT) - 3 key questions
+  8. CTA (DARK) - Background image
 */
 
 // Reduced to 3 most critical FAQs
@@ -42,18 +46,16 @@ const homeFaqs = [
   title="Maryland Personal Injury & Criminal Defense Lawyer"
   description="Experienced Maryland personal injury and criminal defense attorney with 26+ years of success. Free consultation, no fee unless we win. Call (410) 484-0400."
 >
-  <!-- 1. HERO (DARK) - Background image + courthouse -->
-  <Hero 
-    title="Injured? Get the Justice You Deserve."
-    subtitle="Maryland's Trusted Personal Injury & Criminal Defense Firm"
-    description="With over 26 years of experience and a near-perfect success rate, we fight relentlessly for our clients. From car accidents to criminal charges, we're here for you 24/7."
-    mobileDescription="With 26+ years of experience and a near-perfect success rate, we fight relentlessly for our clients in injury and criminal cases—24/7."
-    showForm={true}
-    showStats={true}
-    variant="home"
-  />
+  <!-- 1. HOME HERO (DARK) - Two-column with Alex photo [AUTHORITY TONE] -->
+  <HomeHero />
   
-  <!-- 2. SERVICE CARDS (LIGHT) - All 10 practice areas like original site -->
+  <!-- 2. TRUST BAR (LIGHT) - Compact credibility row -->
+  <TrustBar variant="compact" />
+  
+  <!-- 3. PRACTICE SPLIT (LIGHT-ALT) - Self-selection for injury vs criminal -->
+  <PracticeSplit />
+  
+  <!-- 4. SERVICE CARDS (LIGHT) - All practice areas with image cards -->
   <ServiceCards 
     services={featuredServices}
     title="Our Legal Services"
@@ -62,13 +64,13 @@ const homeFaqs = [
     variant="image-cards"
   />
   
-  <!-- 3. WHY CHOOSE US (DARK) - 4 key stats -->
+  <!-- 5. WHY CHOOSE US (DARK) - 4 key stats -->
   <WhyChooseUs />
   
-  <!-- 4. ATTORNEY STORY (LIGHT) - Timeline + testimonials -->
+  <!-- 6. ATTORNEY STORY (LIGHT) - Timeline + testimonials [HUMANITY TONE] -->
   <AttorneyStory showTestimonials={true} />
   
-  <!-- 5. FAQ (LIGHT-ALT) - 3 critical questions -->
+  <!-- 7. FAQ (LIGHT-ALT) - 3 critical questions -->
   <div class="section-light-alt">
     <FAQAccordion 
       faqs={homeFaqs}
@@ -77,7 +79,7 @@ const homeFaqs = [
     />
   </div>
   
-  <!-- 6. FINAL CTA (DARK) - Background image -->
+  <!-- 8. FINAL CTA (DARK) - Background image -->
   <CTASection 
     title="Ready to Fight for Your Rights?"
     description="Don't wait to get the legal help you need. Contact us today for a free, no-obligation case evaluation. We're available 24/7."
