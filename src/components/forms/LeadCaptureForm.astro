@@ -2,16 +2,18 @@
 interface Props {
   variant?: 'light' | 'dark';
   compact?: boolean;
+  compactOnMobile?: boolean;
 }
 
-const { variant = 'light', compact = false } = Astro.props;
+const { variant = 'light', compact = false, compactOnMobile = false } = Astro.props;
 const isDark = variant === 'dark';
+const hideEmailOnMobile = compactOnMobile && !compact;
 ---
 
 <form 
   action="https://api.web3forms.com/submit" 
   method="POST"
-  class="space-y-3"
+  class={`space-y-2 sm:space-y-3 ${compactOnMobile ? 'sm:mt-0' : ''}`}
 >
   <!-- Web3Forms Access Key - Replace with actual key -->
   <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
@@ -28,7 +30,7 @@ const isDark = variant === 'dark';
       name="name" 
       required 
       placeholder="Your Name *"
-      class={`w-full px-4 py-3 rounded-lg transition-all ${isDark 
+      class={`w-full px-4 py-2.5 sm:py-3 rounded-lg transition-all ${isDark 
         ? 'bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:bg-white/15 focus:border-gold-500 focus:outline-none' 
         : 'form-input'}`}
     />
@@ -40,20 +42,20 @@ const isDark = variant === 'dark';
       name="phone" 
       required 
       placeholder="Phone Number *"
-      class={`w-full px-4 py-3 rounded-lg transition-all ${isDark 
+      class={`w-full px-4 py-2.5 sm:py-3 rounded-lg transition-all ${isDark 
         ? 'bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:bg-white/15 focus:border-gold-500 focus:outline-none' 
         : 'form-input'}`}
     />
   </div>
   
   {!compact && (
-    <div>
+    <div class={hideEmailOnMobile ? 'hidden sm:block' : ''}>
       <input 
         type="email" 
         name="email" 
         required 
         placeholder="Email Address *"
-        class={`w-full px-4 py-3 rounded-lg transition-all ${isDark 
+        class={`w-full px-4 py-2.5 sm:py-3 rounded-lg transition-all ${isDark 
           ? 'bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:bg-white/15 focus:border-gold-500 focus:outline-none' 
           : 'form-input'}`}
       />

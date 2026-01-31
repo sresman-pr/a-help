@@ -29,7 +29,7 @@ const gridCols = {
   2: 'grid-cols-2',
   3: 'grid-cols-2 lg:grid-cols-3',
   4: 'grid-cols-2 lg:grid-cols-4',
-  5: 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5'
+  5: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5'
 };
 ---
 
@@ -57,7 +57,7 @@ const gridCols = {
             class="group relative bg-navy-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 fade-in-up"
           >
             {/* Card content */}
-            <div class="p-5 text-center flex flex-col items-center justify-center min-h-[160px]">
+            <div class="p-4 sm:p-5 text-center flex flex-col items-center justify-center min-h-[140px] sm:min-h-[160px]">
               <div class="w-14 h-14 bg-gold-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <IconComponent class="w-7 h-7 text-navy-900" />
               </div>

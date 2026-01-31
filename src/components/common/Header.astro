@@ -9,7 +9,7 @@ const currentPath = Astro.url.pathname;
   <!-- Top accent line -->
   <div class="h-1 bg-gold-500"></div>
   <!-- Top bar with phone and languages -->
-  <div class="bg-navy-900 text-white py-2.5">
+  <div class="bg-navy-900 text-white py-1.5 sm:py-2.5">
     <div class="container-custom">
       <div class="flex items-center justify-between text-sm">
         <a href={`tel:${contactInfo.phoneRaw}`} class="flex items-center gap-2 hover:text-gold-300 transition-colors">
@@ -27,14 +27,14 @@ const currentPath = Astro.url.pathname;
   </div>
   
   <!-- Main navigation -->
-  <nav class="container-custom py-4">
+  <nav class="container-custom py-3 sm:py-4">
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3">
         <img 
           src="/images/logo.png" 
           alt="Law Offices of Alex Poberesky" 
-          class="h-12 w-auto"
+          class="h-9 sm:h-12 w-auto"
         />
         <div class="hidden sm:block">
           <div class="font-heading font-bold text-navy-900 text-lg leading-tight">Law Offices of</div>

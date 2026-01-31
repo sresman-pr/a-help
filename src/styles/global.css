@@ -88,6 +88,13 @@ h1 {
   line-height: 1.0;
 }
 
+@media (max-width: 640px) {
+  h1 {
+    line-height: 0.95;
+    margin-bottom: 0.75rem;
+  }
+}
+
 h2 {
   font-size: clamp(1.75rem, 5vw, 3.5rem);
   line-height: 1.05;
@@ -147,8 +154,8 @@ a:hover {
 
 /* Section spacing - Dramatic whitespace */
 .section-padding {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
 }
 
 @media (min-width: 768px) {
@@ -159,8 +166,8 @@ a:hover {
 }
 
 .section-padding-lg {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
 }
 
 @media (min-width: 768px) {
@@ -171,8 +178,8 @@ a:hover {
 }
 
 .section-padding-sm {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 @media (min-width: 768px) {

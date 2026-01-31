@@ -66,12 +66,12 @@ const iconComponents = { Award, Clock, Globe, DollarSign };
         const isCountable = stat.value !== '24/7' && stat.value !== '0';
         
         return (
-          <div class="text-center p-6 lg:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 fade-in-up">
-            <div class="w-16 h-16 bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
-              <IconComponent class="w-8 h-8 text-navy-900" />
+          <div class="text-center p-4 sm:p-6 lg:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 fade-in-up">
+            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-5 shadow-lg">
+              <IconComponent class="w-6 h-6 sm:w-8 sm:h-8 text-navy-900" />
             </div>
             
-            <div class="stat-number text-4xl lg:text-5xl mb-2">
+            <div class="stat-number text-3xl sm:text-4xl lg:text-5xl mb-2">
               {isCountable ? (
                 <span class="counter-animate" data-target={stat.value}>{stat.value}</span>
               ) : (
@@ -80,8 +80,8 @@ const iconComponents = { Award, Clock, Globe, DollarSign };
               {stat.suffix}
             </div>
             
-            <h3 class="font-bold text-white text-lg mb-2">{stat.label}</h3>
-            <p class="text-gray-400 text-sm">{stat.description}</p>
+            <h3 class="font-bold text-white text-base sm:text-lg mb-2">{stat.label}</h3>
+            <p class="text-gray-400 text-xs sm:text-sm">{stat.description}</p>
           </div>
         );
       })}

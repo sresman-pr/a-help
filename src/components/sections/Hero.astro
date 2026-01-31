@@ -6,6 +6,7 @@ interface Props {
   title: string;
   subtitle?: string;
   description?: string;
+  mobileDescription?: string;
   showForm?: boolean;
   variant?: 'home' | 'page';
   backgroundImage?: string;
@@ -15,6 +16,7 @@ const {
   title, 
   subtitle,
   description,
+  mobileDescription,
   showForm = true,
   variant = 'home',
   backgroundImage = '/images/stock/hero-courthouse.jpg'
@@ -55,19 +57,26 @@ const trustPoints = [
           </p>
         )}
         
-        <h1 class={`font-heading font-bold mb-2 ${variant === 'home' ? 'text-white' : 'text-navy-900'}`}>
+        <h1 class={`font-heading font-bold mb-2 leading-tight sm:leading-normal ${variant === 'home' ? 'text-white' : 'text-navy-900'}`}>
           {title}
         </h1>
         
         {description && (
-          <p class={`text-lg md:text-xl mb-3 leading-relaxed max-w-2xl ${variant === 'home' ? 'text-gray-300' : 'text-gray-600'}`}>
-            {description}
+          <p class={`text-base sm:text-lg md:text-xl mb-3 leading-relaxed max-w-2xl ${variant === 'home' ? 'text-gray-300' : 'text-gray-600'}`}>
+            {mobileDescription ? (
+              <>
+                <span class="md:hidden">{mobileDescription}</span>
+                <span class="hidden md:inline">{description}</span>
+              </>
+            ) : (
+              description
+            )}
           </p>
         )}
         
         <!-- Trust Points -->
         {variant === 'home' && (
-          <div class="flex flex-wrap gap-2 mb-3">
+          <div class="hidden sm:flex flex-wrap gap-2 mb-3">
             {trustPoints.map((point) => (
               <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/20">
                 <div class="w-4 h-4 rounded-full bg-gold-500 flex items-center justify-center">
@@ -80,12 +89,12 @@ const trustPoints = [
         )}
         
         <!-- CTA Buttons -->
-        <div class={`flex flex-wrap gap-2 ${!showForm ? 'justify-center' : ''}`}>
-          <a href="/contact-us/" class="btn btn-primary btn-glow shadow-elevated">
+        <div class={`flex flex-col sm:flex-row gap-2 ${!showForm ? 'justify-center' : ''}`}>
+          <a href="/contact-us/" class="btn btn-primary btn-glow shadow-elevated w-full sm:w-auto">
             Free Case Review
             <ArrowRight class="w-5 h-5" />
           </a>
-          <a href="tel:+14104840400" class={`btn ${variant === 'home' ? 'btn-outline-white' : 'btn-secondary'}`}>
+          <a href="tel:+14104840400" class={`btn w-full sm:w-auto hidden sm:flex ${variant === 'home' ? 'btn-outline-white' : 'btn-secondary'}`}>
             <Phone class="w-5 h-5" />
             (410) 484-0400
           </a>
@@ -94,15 +103,15 @@ const trustPoints = [
       
       <!-- Form Column - Dark glass style to match hero -->
       {showForm && (
-        <div class="lg:col-span-2">
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 md:p-4 border border-white/20 max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+        <div class="lg:col-span-2 hidden sm:block">
+          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 md:p-4 border border-white/20 max-w-sm mx-auto lg:mx-0 lg:ml-auto">
             <h2 class="font-heading font-bold text-lg text-white mb-1">
               Free Case Evaluation
             </h2>
             <p class="text-gray-300 text-xs mb-3">
               Get a free, no-obligation consultation
             </p>
-            <LeadCaptureForm variant="dark" />
+            <LeadCaptureForm variant="dark" compactOnMobile={true} />
             <p class="text-xs text-gray-400 text-center mt-2">
               Response within 15 minutes
             </p>
