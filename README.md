@@ -184,6 +184,7 @@ GA_MEASUREMENT_ID=G-XXXXXXXXXX
 4. Deploy
 
 The site uses static output and the Vercel adapter is pre-configured.
+Deployment note: a small README update can trigger a fresh preview deploy.
 
 ### Manual Build
 
